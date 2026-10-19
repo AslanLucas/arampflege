@@ -1,0 +1,101 @@
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { Link, NavLink, useLocation } from "react-router";
+import { mainNavigation } from "../../content/navigation";
+import { site } from "../../content/site";
+import { CloseIcon, MenuIcon, PhoneIcon } from "../Icon/icons";
+import { Container } from "../Container/Container";
+import styles from "./SiteHeader.module.css";
+
+const NAVIGATION_ID = "hauptnavigation";
+
+const subscribeNothing = () => () => undefined;
+
+/** False during prerendering and hydration, true once React runs in the browser. */
+function useHydrated() {
+  return useSyncExternalStore(
+    subscribeNothing,
+    () => true,
+    () => false,
+  );
+}
+
+export function SiteHeader() {
+  const hydrated = useHydrated();
+  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuLocationKey, setMenuLocationKey] = useState(location.key);
+  const menuButton = useRef<HTMLButtonElement>(null);
+
+  // Every navigation closes the menu.
+  if (menuLocationKey !== location.key) {
+    setMenuLocationKey(location.key);
+    setMenuOpen(false);
+  }
+
+  useEffect(() => {
+    if (!menuOpen) {
+      return;
+    }
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        menuButton.current?.focus();
+      }
+    }
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [menuOpen]);
+
+  return (
+    <header className={styles.header}>
+      <Container className={styles.bar}>
+        <Link to="/" className={styles.logo}>
+          {site.name}
+        </Link>
+
+        <a href={site.phone.href} className={styles.phone}>
+          <PhoneIcon />
+          <span>
+            {site.phone.display}
+            <span className="visually-hidden"> anrufen</span>
+          </span>
+        </a>
+
+        {hydrated ? (
+          <button
+            ref={menuButton}
+            type="button"
+            className={styles.menuButton}
+            aria-expanded={menuOpen}
+            aria-controls={NAVIGATION_ID}
+            onClick={() => {
+              setMenuOpen((open) => !open);
+            }}
+          >
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
+            Menü
+          </button>
+        ) : (
+          <a href="#seitennavigation" className={styles.menuButton}>
+            <MenuIcon />
+            Menü
+          </a>
+        )}
+
+        <nav id={NAVIGATION_ID} aria-label="Hauptnavigation" className={styles.nav} data-open={menuOpen}>
+          <ul className={styles.navList}>
+            {mainNavigation.map((item) => (
+              <li key={item.to}>
+                <NavLink to={item.to} className={styles.navLink}>
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </Container>
+    </header>
+  );
+}

@@ -1,0 +1,165 @@
+.header {
+  border-bottom: var(--border-width) solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+/* Mobile: name left, phone and menu button right, navigation below when open */
+.bar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "logo phone"
+    "logo menu"
+    "nav nav";
+  align-items: center;
+  column-gap: var(--space-4);
+  row-gap: var(--space-1);
+  padding-block: var(--space-3);
+}
+
+.logo {
+  grid-area: logo;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-target-min);
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  text-decoration: none;
+  hyphens: auto;
+}
+
+.logo:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.phone {
+  grid-area: phone;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target-min);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.phone:hover {
+  text-decoration: underline;
+}
+
+.menuButton {
+  grid-area: menu;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target-min);
+  padding-inline: var(--space-3);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background-color: transparent;
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duration-feedback) ease-out;
+}
+
+.menuButton:hover,
+.menuButton[aria-expanded="true"] {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.nav {
+  grid-area: nav;
+  display: none;
+}
+
+.nav[data-open="true"] {
+  display: block;
+  margin-top: var(--space-3);
+}
+
+.navList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  min-height: 3rem;
+  padding-block: var(--space-2);
+  border-bottom: var(--border-width) solid var(--color-border);
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* The current page is marked by a line, not by colour alone */
+.navLink[aria-current="page"] {
+  padding-inline-start: var(--space-3);
+  border-inline-start: 3px solid var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* Desktop: name and phone in the first row, navigation as a second row */
+@media (min-width: 60rem) {
+  .bar {
+    grid-template-areas:
+      "logo phone"
+      "nav nav";
+    row-gap: var(--space-3);
+    padding-block: var(--space-5) 0;
+  }
+
+  .logo {
+    font-size: var(--font-size-h3);
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .nav,
+  .nav[data-open="true"] {
+    display: block;
+    margin-top: 0;
+  }
+
+  .navList {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space-6);
+    border-top: 0;
+  }
+
+  .navLink {
+    min-height: var(--tap-target-min);
+    padding-block: var(--space-3);
+    border-bottom: 0;
+  }
+
+  .navLink[aria-current="page"] {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.45em;
+  }
+}

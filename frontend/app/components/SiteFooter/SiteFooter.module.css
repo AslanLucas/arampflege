@@ -1,0 +1,80 @@
+.footer {
+  margin-top: var(--section-space);
+  padding-block: var(--space-8);
+  border-top: var(--border-width) solid var(--color-border);
+  background-color: var(--color-surface-alt);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.heading {
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-h4);
+}
+
+.address {
+  font-style: normal;
+}
+
+.details {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-5);
+}
+
+.details dt {
+  font-weight: var(--font-weight-semibold);
+}
+
+.details dd {
+  margin: 0;
+}
+
+.numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-target-min);
+}
+
+@media (min-width: 40rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact {
+    grid-column: 1 / -1;
+  }
+}
+
+/* 12-column grid: contact in columns 1–6, pages 8–10, legal 11–12 */
+@media (min-width: 60rem) {
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .contact {
+    grid-column: 1 / 7;
+  }
+
+  .pages {
+    grid-column: 8 / 10;
+  }
+
+  .legal {
+    grid-column: 10 / 13;
+  }
+}
