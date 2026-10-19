@@ -11,8 +11,8 @@
 ## Erste Schritte
 
 ```bash
-# Datenbank (PostgreSQL 18) starten
-docker compose up -d db
+# Datenbank (PostgreSQL 18) und Mailpit starten
+docker compose up -d db mail
 
 # Backend: http://localhost:5080, Health-Check unter /api/health
 cd backend
@@ -32,5 +32,21 @@ Alle weiteren Befehle (Lint, Tests, Build) stehen in [AGENTS.md](AGENTS.md#befeh
 - **Datenbank-Port 5433**: Der Container ist auf dem Host unter Port 5433 erreichbar, damit er nicht mit einer lokal installierten PostgreSQL kollidiert. Port und Zugangsdaten lassen sich über eine `.env` ändern (Vorlage: [.env.example](.env.example)). Bei Änderungen auch den Connection String in `backend/src/Pflege.Api/appsettings.Development.json` anpassen.
 - **Zugangsdaten**: Die Werte in `.env.example` und `appsettings.Development.json` gelten nur für die lokale Entwicklung. Produktiv wird der Connection String ausschließlich über die Umgebungsvariable `ConnectionStrings__Default` gesetzt.
 - **Backend-Tests** starten über Testcontainers eine eigene PostgreSQL. Docker muss dafür laufen.
+- **Migrationen** laufen in der Entwicklung beim Start der API automatisch (`Database:MigrateOnStartup`). Neue Migration: `cd backend && dotnet ef migrations add <Name> --project src/Pflege.Api --output-dir Infrastructure/Persistence/Migrations`.
+- **E-Mails** landen in der Entwicklung in Mailpit: http://localhost:8025. Dort ist sichtbar, was der Pflegedienst bei neuen Anfragen erhält.
+- **Formulare** holen beim Öffnen ein Zeit-Token von `/api/form-tokens`. Wer schneller als 3 Sekunden absendet oder das versteckte Feld ausfüllt, bekommt eine Bestätigung, gespeichert wird aber nichts.
 - **Frontend-Build**: `npm run build` erzeugt statisches, vorgerendertes HTML in `frontend/build/client`. `npm run preview` liefert diesen Ordner lokal aus.
 - **API-Adresse im Frontend**: Standard ist `/api`. Abweichend über `VITE_API_BASE_URL` beim Build setzen.
+
+## Konfiguration für den Betrieb
+
+Die API startet nur, wenn diese Werte gesetzt sind (Umgebungsvariablen, nie im Repository):
+
+| Variable | Zweck |
+|----------|-------|
+| `ConnectionStrings__Default` | PostgreSQL-Verbindung |
+| `Smtp__Host`, `Smtp__Port`, `Smtp__Security`, `Smtp__UserName`, `Smtp__Password` | Mailversand (`Security`: `StartTls` oder `SslOnConnect`) |
+| `Smtp__From`, `Smtp__To` | Absender und Empfangspostfach des Pflegedienstes |
+| `Retention__RequestRetentionDays` | Löschfrist für Anfragen in Tagen |
+
+Außerdem: `DataProtection__KeysPath` auf ein dauerhaftes Verzeichnis setzen, damit Formular-Tokens einen Neustart überstehen. Läuft die API hinter einem Reverse Proxy, dessen IP unter `ForwardedHeaders__KnownProxies__0` eintragen, sonst teilen sich alle Besucher ein Rate Limit.

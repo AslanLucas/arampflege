@@ -1,0 +1,38 @@
+.lead {
+  font-size: var(--font-size-h4);
+  line-height: 1.5;
+}
+
+.form {
+  margin-top: var(--space-7);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-h3);
+}
+
+.numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+.contactGrid {
+  display: grid;
+  gap: var(--space-8);
+  margin-top: var(--space-6);
+}
+
+/* Contact details in columns 1–4, form in columns 6–12 */
+@media (min-width: 60rem) {
+  .contactGrid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .details {
+    grid-column: 1 / 5;
+  }
+
+  .formColumn {
+    grid-column: 6 / 13;
+  }
+}

@@ -1,5 +1,4 @@
-import { useState, type ReactNode } from "react";
-import { Provider } from "react-redux";
+import type { ReactNode } from "react";
 import {
   isRouteErrorResponse,
   Link,
@@ -13,7 +12,6 @@ import type { Route } from "./+types/root";
 import { Container } from "./components/Container/Container";
 import { SiteLayout } from "./components/SiteLayout/SiteLayout";
 import { site } from "./content/site";
-import { makeStore } from "./store/store";
 import "./styles/fonts.css";
 import "./styles/tokens.css";
 import "./styles/base.css";
@@ -53,13 +51,7 @@ export function Layout({ children }: LayoutProps) {
 }
 
 export default function App() {
-  const [store] = useState(makeStore);
-
-  return (
-    <Provider store={store}>
-      <Outlet />
-    </Provider>
-  );
+  return <Outlet />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

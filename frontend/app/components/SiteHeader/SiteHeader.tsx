@@ -1,23 +1,13 @@
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { mainNavigation } from "../../content/navigation";
+import { useHydrated } from "../../hooks/useHydrated";
 import { site } from "../../content/site";
 import { CloseIcon, MenuIcon, PhoneIcon } from "../Icon/icons";
 import { Container } from "../Container/Container";
 import styles from "./SiteHeader.module.css";
 
 const NAVIGATION_ID = "hauptnavigation";
-
-const subscribeNothing = () => () => undefined;
-
-/** False during prerendering and hydration, true once React runs in the browser. */
-function useHydrated() {
-  return useSyncExternalStore(
-    subscribeNothing,
-    () => true,
-    () => false,
-  );
-}
 
 export function SiteHeader() {
   const hydrated = useHydrated();
