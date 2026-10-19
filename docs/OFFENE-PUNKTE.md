@@ -21,4 +21,5 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Team – Namen, Funktionen und Fotos der Pflegedienstleitung und Ansprechpartner – Über uns, Start
 - [ ] Karriere – Aktuelle Stellen, Arbeitsbedingungen, Gehalt (falls veröffentlicht) – Karriere
 - [ ] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – Formulare
+- [ ] Start – Kurzbeschreibung für Suchergebnisse (Meta-Description, max. 160 Zeichen) – `frontend/app/routes/home.tsx`
 - [ ] Fotos – Team, Fahrzeuge, Büro, Einsatzgebiet – global
