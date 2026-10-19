@@ -4,6 +4,7 @@ import { stat } from "node:fs/promises";
 import { createServer } from "node:http";
 import { extname, join, normalize, resolve, sep } from "node:path";
 import { parseArgs } from "node:util";
+import { createGzip } from "node:zlib";
 
 const { values } = parseArgs({
   options: { port: { type: "string", default: "4173" } },
@@ -49,11 +50,22 @@ async function resolveFile(pathname) {
   return null;
 }
 
-function send(res, status, file) {
-  res.writeHead(status, {
+const compressible = new Set([".html", ".js", ".css", ".json", ".txt", ".xml", ".svg"]);
+
+function send(req, res, status, file) {
+  const headers = {
     "Content-Type": contentTypes[extname(file)] ?? "application/octet-stream",
-  });
-  createReadStream(file).pipe(res);
+    Vary: "Accept-Encoding",
+  };
+  const gzip =
+    compressible.has(extname(file)) && /\bgzip\b/.test(req.headers["accept-encoding"] ?? "");
+  if (gzip) {
+    res.writeHead(status, { ...headers, "Content-Encoding": "gzip" });
+    createReadStream(file).pipe(createGzip()).pipe(res);
+  } else {
+    res.writeHead(status, headers);
+    createReadStream(file).pipe(res);
+  }
 }
 
 createServer(async (req, res) => {
@@ -61,9 +73,9 @@ createServer(async (req, res) => {
     const { pathname } = new URL(req.url ?? "/", "http://localhost");
     const file = await resolveFile(pathname);
     if (file) {
-      send(res, 200, file);
+      send(req, res, 200, file);
     } else if (await isFile(spaFallback)) {
-      send(res, 404, spaFallback);
+      send(req, res, 404, spaFallback);
     } else {
       res.writeHead(404).end();
     }
