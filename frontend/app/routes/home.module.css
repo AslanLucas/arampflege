@@ -1,0 +1,146 @@
+/* Top area: statement and call on the left (columns 1–8), availability on the right (10–12) */
+.hero {
+  display: grid;
+  gap: var(--space-7);
+  padding-bottom: var(--section-space);
+}
+
+.heroTitle {
+  max-width: 24ch;
+}
+
+.lead {
+  max-width: 46ch;
+  font-size: var(--font-size-h4);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.aside {
+  padding-top: var(--space-5);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.asideTitle {
+  margin-bottom: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.note {
+  color: var(--color-text-muted);
+}
+
+.sectionAction {
+  margin: var(--space-5) 0 0;
+}
+
+.personName {
+  margin-bottom: 0;
+  font-weight: var(--font-weight-semibold);
+}
+
+.personRole {
+  color: var(--color-text-muted);
+}
+
+.contactPhone {
+  margin-top: var(--space-5);
+}
+
+.contactPhone a {
+  font-variant-numeric: tabular-nums;
+}
+
+.careerAction {
+  align-self: center;
+}
+
+@media (min-width: 60rem) {
+  .hero,
+  .processGrid,
+  .teamGrid,
+  .careerGrid,
+  .contactGrid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .hero {
+    align-items: end;
+  }
+
+  .heroText {
+    grid-column: 1 / 9;
+  }
+
+  .aside {
+    grid-column: 10 / 13;
+    padding-top: 0;
+    padding-left: var(--space-5);
+    border-top: 0;
+    border-left: var(--border-width) solid var(--color-border);
+  }
+
+  /* Process: heading on the left (1–4), steps on the right (5–11) */
+  .processIntro {
+    grid-column: 1 / 5;
+  }
+
+  .processSteps {
+    grid-column: 5 / 12;
+  }
+
+  /* Team: photo on the left (1–6), text on the right (8–12) */
+  .teamPhoto {
+    grid-column: 1 / 7;
+  }
+
+  .teamText {
+    grid-column: 8 / 13;
+    align-self: center;
+  }
+
+  /* Career: text (1–8) and action (9–12) in one calm band */
+  .careerText {
+    grid-column: 1 / 9;
+  }
+
+  .careerAction {
+    grid-column: 10 / 13;
+    justify-self: end;
+  }
+
+  .contactText {
+    grid-column: 1 / 8;
+  }
+
+  .contactGrid .aside {
+    align-self: start;
+  }
+}
+
+@media (max-width: 59.99rem) {
+  .teamPhoto {
+    margin-bottom: var(--space-6);
+  }
+
+  .careerAction {
+    margin-top: var(--space-2);
+  }
+
+  .contactGrid .aside {
+    margin-top: var(--space-7);
+  }
+}

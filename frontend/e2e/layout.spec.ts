@@ -1,10 +1,12 @@
 import { expect, test } from "@playwright/test";
 import { callbackLink, legalNavigation, mainNavigation } from "../app/content/navigation";
+import { servicePath, services } from "../app/content/services";
 import { expectNoAxeViolations, expectNoHorizontalScroll, isCompact, tabTo } from "./helpers";
 
 const pages = [
   "/",
   ...mainNavigation.map((item) => item.to),
+  ...services.map(servicePath),
   callbackLink.to,
   ...legalNavigation.map((item) => item.to),
 ];

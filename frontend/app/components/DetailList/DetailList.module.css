@@ -1,0 +1,13 @@
+.list {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-5);
+}
+
+.list dt {
+  font-weight: var(--font-weight-semibold);
+}
+
+.list dd {
+  margin: 0;
+}

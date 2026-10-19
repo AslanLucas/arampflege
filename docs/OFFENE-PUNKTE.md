@@ -17,9 +17,14 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Recht – Einwilligungen für Teamfotos – Über uns
 
 ## Inhalte
-- [ ] Leistungen – Welche Leistungen werden angeboten, mit fachlicher Freigabe – Leistungen
+- [ ] Leistungen – Welche Leistungen werden angeboten, mit fachlicher Freigabe; vorläufige Liste aus DESIGN.md steht auf Start und Leistungen – `frontend/app/content/services.ts`
+- [ ] Leistungen – Kurzbeschreibung für „Entlastungsleistungen und Hauswirtschaft“ und „Pflegeberatung“ – `frontend/app/content/services.ts`
+- [ ] Leistungen – Je Unterseite: Für wen? Was genau? Wer bezahlt (mit Quelle und Prüfdatum)? Wie beantragen? – `/leistungen/…`
+- [ ] Start – Ablauf der Versorgung: Entwurf mit vier Schritten bestätigen oder korrigieren – `frontend/app/content/home.ts`
 - [ ] Team – Namen, Funktionen und Fotos der Pflegedienstleitung und Ansprechpartner – Über uns, Start
+- [ ] Team – Name, Qualifikation und zwei bis drei Sätze der Pflegedienstleitung für die Startseite – `frontend/app/content/home.ts`
 - [ ] Karriere – Aktuelle Stellen, Arbeitsbedingungen, Gehalt (falls veröffentlicht) – Karriere
-- [ ] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – Formulare
+- [ ] Karriere – Kurzer Hinweis auf offene Stellen für die Startseite – `frontend/app/content/home.ts`
+- [ ] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – Formulare, Startseite (Sektion „Wir rufen Sie zurück“)
 - [ ] Alle Seiten – Kurzbeschreibung für Suchergebnisse (Meta-Description, max. 160 Zeichen) je Seite – `frontend/app/routes/*.tsx`
-- [ ] Fotos – Team, Fahrzeuge, Büro, Einsatzgebiet – global
+- [ ] Fotos – Team, Fahrzeuge, Büro, Einsatzgebiet; zuerst: Pflegedienstleitung im Büro, Querformat 3 : 2 (Startseite) – global

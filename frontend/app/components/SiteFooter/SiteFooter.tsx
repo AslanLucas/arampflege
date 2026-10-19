@@ -2,6 +2,8 @@ import { Link } from "react-router";
 import { callbackLink, legalNavigation, mainNavigation } from "../../content/navigation";
 import { site } from "../../content/site";
 import { Container } from "../Container/Container";
+import { DetailList } from "../DetailList/DetailList";
+import { PostalAddress } from "../PostalAddress/PostalAddress";
 import styles from "./SiteFooter.module.css";
 
 export function SiteFooter() {
@@ -12,39 +14,22 @@ export function SiteFooter() {
           <h2 id="footer-kontakt" className={styles.heading}>
             So erreichen Sie uns
           </h2>
-          <address className={styles.address}>
-            <p>
-              {site.name}
-              <br />
-              {site.address.street}
-              <br />
-              {site.address.postalCodeAndCity}
-            </p>
-            <dl className={styles.details}>
-              <div>
-                <dt>Telefon</dt>
-                <dd>
+          <PostalAddress />
+          <DetailList
+            details={[
+              {
+                term: "Telefon",
+                description: (
                   <a href={site.phone.href} className={styles.numeric}>
                     {site.phone.display}
                   </a>
-                </dd>
-              </div>
-              <div>
-                <dt>E-Mail</dt>
-                <dd>
-                  <a href={site.email.href}>{site.email.display}</a>
-                </dd>
-              </div>
-              <div>
-                <dt>Bürozeiten</dt>
-                <dd>{site.officeHours}</dd>
-              </div>
-              <div>
-                <dt>Rufbereitschaft</dt>
-                <dd>{site.onCallService}</dd>
-              </div>
-            </dl>
-          </address>
+                ),
+              },
+              { term: "E-Mail", description: <a href={site.email.href}>{site.email.display}</a> },
+              { term: "Bürozeiten", description: site.officeHours },
+              { term: "Rufbereitschaft", description: site.onCallService },
+            ]}
+          />
           <p>
             <Link to={callbackLink.to}>{callbackLink.label}</Link>
           </p>

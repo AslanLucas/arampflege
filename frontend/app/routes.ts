@@ -1,8 +1,12 @@
 import { index, route, type RouteConfig } from "@react-router/dev/routes";
+import { services } from "./content/services";
 
 export default [
   index("routes/home.tsx"),
   route("leistungen", "routes/leistungen.tsx"),
+  ...services.map((service) =>
+    route(`leistungen/${service.slug}`, "routes/leistung.tsx", { id: `leistung-${service.slug}` }),
+  ),
   route("einsatzgebiet", "routes/einsatzgebiet.tsx"),
   route("ueber-uns", "routes/ueber-uns.tsx"),
   route("karriere", "routes/karriere.tsx"),

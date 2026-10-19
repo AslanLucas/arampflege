@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { expectNoHorizontalScroll } from "./helpers";
+import { expectNoHorizontalScroll, tabTo } from "./helpers";
 
 test.describe("Home page", () => {
   test("declares German and has exactly one h1", async ({ page }) => {
@@ -75,5 +75,31 @@ test.describe("Home page", () => {
     await page.goto("/");
 
     await expectNoHorizontalScroll(page);
+  });
+
+  test("shows the statement and the call action without scrolling", async ({ page }) => {
+    await page.goto("/");
+
+    const heading = page.getByRole("heading", { level: 1 });
+    const call = page.getByRole("main").getByRole("link", { name: /anrufen$/ });
+    await expect(heading).toBeInViewport({ ratio: 1 });
+    await expect(call).toBeInViewport({ ratio: 1 });
+
+    const contactBar = page.getByRole("complementary", { name: "Schnellkontakt" });
+    if (await contactBar.isVisible()) {
+      const callBox = await call.boundingBox();
+      const barBox = await contactBar.boundingBox();
+      expect(callBox && barBox && callBox.y + callBox.height <= barBox.y).toBe(true);
+    }
+  });
+
+  test("reaches the main action with the keyboard only", async ({ page }) => {
+    await page.goto("/");
+    const call = page.getByRole("main").getByRole("link", { name: /anrufen$/ });
+
+    await tabTo(page, () => call.evaluate((element) => element === document.activeElement));
+
+    await expect(call).toBeFocused();
+    await expect(call).toHaveAttribute("href", /^tel:/);
   });
 });

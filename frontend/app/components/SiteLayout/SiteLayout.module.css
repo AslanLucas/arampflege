@@ -7,5 +7,5 @@
 
 .main {
   flex: 1;
-  padding-top: var(--space-7);
+  padding-block: var(--space-7) var(--section-space);
 }
