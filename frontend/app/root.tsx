@@ -11,8 +11,21 @@ import {
 } from "react-router";
 import type { Route } from "./+types/root";
 import { makeStore } from "./store/store";
+import "./styles/fonts.css";
 import "./styles/tokens.css";
 import "./styles/base.css";
+
+export const links: Route.LinksFunction = () =>
+  [
+    "/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2",
+    "/fonts/source-serif-4-latin-600-normal.woff2",
+  ].map((href) => ({
+    rel: "preload",
+    href,
+    as: "font",
+    type: "font/woff2",
+    crossOrigin: "anonymous",
+  }));
 
 type LayoutProps = {
   children: ReactNode;

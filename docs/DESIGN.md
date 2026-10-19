@@ -158,7 +158,8 @@ Die folgenden Werte sind Startwerte. Sie werden mit dem Logo und der Marke des K
   --color-surface-alt:   #F2EDE4; /* abgesetzte Sektionen */
   --color-text:          #1F2421; /* ca. 15 : 1 auf --color-bg */
   --color-text-muted:    #3F4642; /* mind. 7 : 1 auf --color-bg (AAA für Fließtext) */
-  --color-border:        #DDD6CB;
+  --color-border:        #DDD6CB; /* nur dekorative Linien, ca. 1,4 : 1 */
+  --color-border-strong: #857B6E; /* Ränder von Formularfeldern, mind. 3 : 1 (WCAG 1.4.11) */
   --color-primary:       #2F5D50; /* tiefes Grün: Links, Buttons */
   --color-primary-hover: #244A40;
   --color-accent:        #B5652E; /* Terrakotta: nur Linien, kleine Flächen */
@@ -171,12 +172,15 @@ Die folgenden Werte sind Startwerte. Sie werden mit dem Logo und der Marke des K
 Regeln:
 - Fließtext erreicht mindestens 4,5 : 1 Kontrast, große Schrift und UI-Elemente mindestens 3 : 1. Jede Farbkombination wird vor der Verwendung geprüft.
 - Die Akzentfarbe wird nicht für Fließtext verwendet.
+- `--color-border` ist zu hell für Formularfelder. Ränder von Eingabefeldern verwenden `--color-border-strong`.
+- Die Kontraste aller Token-Paare prüft `frontend/app/styles/tokens.test.ts` automatisch.
 - Information wird nie nur über Farbe vermittelt, bei Fehlern immer zusätzlich mit Text.
 
 ### Typografie
 
 - **Überschriften**: eine Serifenschrift mit Charakter, z. B. *Source Serif 4*
 - **Fließtext**: eine auf Lesbarkeit ausgelegte Sans, z. B. *Atkinson Hyperlegible Next* oder *Source Sans 3*
+- **Gewählt** (Startwerte, mit dem Kunden abzustimmen): *Source Serif 4* in 600 und *Atkinson Hyperlegible Next* in 400, 400 kursiv und 600
 - Maximal zwei Familien und vier Schnitte, **selbst gehostet** als WOFF2 unter `public/fonts/`, mit `font-display: swap`
 - Grundschriftgröße **18 px** (`1.125rem`), Zeilenhöhe 1,6, wegen der älteren Zielgruppe
 - Skala mit Faktor 1,25, H1 fluid: `clamp(2rem, 1.4rem + 2.5vw, 3rem)`

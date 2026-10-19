@@ -35,6 +35,49 @@ test.describe("Home page", () => {
     await context.close();
   });
 
+  test("loads nothing from third parties", async ({ page, baseURL }) => {
+    const foreignRequests: string[] = [];
+    page.on("request", (request) => {
+      const { origin } = new URL(request.url());
+      if (origin !== baseURL && !request.url().startsWith("data:")) {
+        foreignRequests.push(request.url());
+      }
+    });
+
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+
+    expect(foreignRequests).toEqual([]);
+  });
+
+  test("uses the self-hosted fonts", async ({ page, request }) => {
+    await page.goto("/");
+
+    const families = await page.evaluate(async () => {
+      await document.fonts.ready;
+      const heading = document.querySelector("h1");
+      return {
+        body: getComputedStyle(document.body).fontFamily,
+        heading: heading ? getComputedStyle(heading).fontFamily : "",
+        headingLoaded: document.fonts.check('600 1rem "Source Serif 4"'),
+      };
+    });
+    expect(families.body).toMatch(/^"Atkinson Hyperlegible Next"/);
+    expect(families.heading).toMatch(/^"Source Serif 4"/);
+    expect(families.headingLoaded).toBe(true);
+
+    for (const file of [
+      "atkinson-hyperlegible-next-latin-400-normal",
+      "atkinson-hyperlegible-next-latin-400-italic",
+      "atkinson-hyperlegible-next-latin-600-normal",
+      "source-serif-4-latin-600-normal",
+    ]) {
+      const response = await request.get(`/fonts/${file}.woff2`);
+      expect(response.status(), file).toBe(200);
+      expect(response.headers()["content-type"], file).toBe("font/woff2");
+    }
+  });
+
   test("does not scroll horizontally", async ({ page }) => {
     await page.goto("/");
 

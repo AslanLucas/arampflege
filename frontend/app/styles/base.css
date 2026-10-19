@@ -1,3 +1,5 @@
+/* Reset, typography and focus defaults. Layout and components live in CSS Modules. */
+
 *,
 *::before,
 *::after {
@@ -16,47 +18,129 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
   line-height: var(--line-height-base);
+  overflow-wrap: break-word;
 }
+
+/* Typography */
 
 h1,
 h2,
 h3,
 h4 {
+  margin-block: 0 var(--space-4);
   font-family: var(--font-heading);
-  font-weight: 600;
-  line-height: 1.2;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
   text-wrap: balance;
+  hyphens: auto;
+  hyphenate-limit-chars: 12 5 5;
 }
 
 h1 {
   font-size: var(--font-size-h1);
 }
 
-p {
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+}
+
+p,
+ul,
+ol,
+dl {
+  margin-block: 0 var(--space-4);
+}
+
+p,
+li,
+dd {
   max-width: var(--measure);
   text-wrap: pretty;
+  /* Only long compound words are hyphenated; short words stay intact for easier reading. */
   hyphens: auto;
+  hyphenate-limit-chars: 12 5 5;
 }
+
+b,
+strong {
+  font-weight: var(--font-weight-semibold);
+}
+
+small {
+  font-size: var(--font-size-small);
+}
+
+time,
+table,
+a[href^="tel:"] {
+  font-variant-numeric: tabular-nums;
+}
+
+hr {
+  margin-block: var(--space-6);
+  border: 0;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+/* Links are recognisable without colour: always underlined */
 
 a {
   color: var(--color-primary);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition:
+    color var(--duration-feedback) ease-out,
+    text-decoration-thickness var(--duration-feedback) ease-out;
 }
 
 a:hover {
   color: var(--color-primary-hover);
+  text-decoration-thickness: 2px;
 }
 
+/* Media and form controls */
+
 img,
-svg {
+svg,
+video {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Focus: visible on every interactive element, never removed without replacement */
+
 :focus-visible {
-  outline: var(--focus-ring);
-  outline-offset: 2px;
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -67,5 +151,36 @@ svg {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.9em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
   }
 }
