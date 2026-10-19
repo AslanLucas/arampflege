@@ -1,0 +1,22 @@
+.lead {
+  font-size: var(--font-size-h4);
+  line-height: 1.5;
+}
+
+.note {
+  color: var(--color-text-muted);
+}
+
+.limits {
+  max-width: 48rem;
+  margin-top: var(--space-8);
+}
+
+.limits h2 {
+  font-size: var(--font-size-h3);
+}
+
+.prompt {
+  max-width: 48rem;
+  margin-top: var(--space-8);
+}

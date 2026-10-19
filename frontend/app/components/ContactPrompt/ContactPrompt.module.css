@@ -1,0 +1,23 @@
+.prompt {
+  padding: var(--space-6) var(--space-5);
+  border-top: 3px solid var(--color-accent);
+  background-color: var(--color-surface-alt);
+}
+
+.title {
+  font-size: var(--font-size-h3);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-6);
+  margin-top: var(--space-5);
+}
+
+@media (min-width: 60rem) {
+  .prompt {
+    padding: var(--space-7);
+  }
+}

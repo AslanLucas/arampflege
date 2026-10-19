@@ -1,3 +1,4 @@
+import { Breadcrumbs } from "../components/Breadcrumbs/Breadcrumbs";
 import { Container } from "../components/Container/Container";
 import { pageMeta } from "../meta";
 import type { Route } from "./+types/ueber-uns";
@@ -8,6 +9,7 @@ export const meta: Route.MetaFunction = () =>
 export default function UeberUns() {
   return (
     <Container>
+      <Breadcrumbs current="Über uns" />
       <h1>Über uns</h1>
       <p>[[INHALT FEHLT: Geschichte, Team und Pflegedienstleitung]]</p>
     </Container>

@@ -17,6 +17,7 @@ for (const path of pages) {
 
     await expectNoAxeViolations(page);
     await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
+    await expect(page.getByRole("navigation", { name: "Sie sind hier" })).toHaveCount(path === "/" ? 0 : 1);
     await expectNoHorizontalScroll(page);
 
     if (testInfo.project.name === "desktop") {

@@ -19,7 +19,11 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 ## Inhalte
 - [ ] Leistungen – Welche Leistungen werden angeboten, mit fachlicher Freigabe; vorläufige Liste aus DESIGN.md steht auf Start und Leistungen – `frontend/app/content/services.ts`
 - [ ] Leistungen – Kurzbeschreibung für „Entlastungsleistungen und Hauswirtschaft“ und „Pflegeberatung“ – `frontend/app/content/services.ts`
-- [ ] Leistungen – Je Unterseite: Für wen? Was genau? Wer bezahlt (mit Quelle und Prüfdatum)? Wie beantragen? – `/leistungen/…`
+- [ ] Leistungen – Entwürfe „Für wen“ und „Was wir übernehmen“ fachlich prüfen: Grundpflege, Behandlungspflege, Verhinderungspflege, Beratungsbesuche – `frontend/app/content/services.ts`
+- [ ] Leistungen – „Für wen“ und „Was wir übernehmen“ für Entlastungsleistungen und Hauswirtschaft sowie Pflegeberatung – `frontend/app/content/services.ts`
+- [ ] Leistungen – Je Leistung „Wer die Kosten trägt“ mit Quelle und Prüfdatum sowie „So beantragen Sie die Leistung“ – `frontend/app/content/services.ts`
+- [ ] Leistungen – Einleitung der Leistungsübersicht – `/leistungen`
+- [ ] Leistungen – Was der Dienst nicht anbietet (z. B. 24-Stunden-Betreuung) – `/leistungen`
 - [ ] Start – Ablauf der Versorgung: Entwurf mit vier Schritten bestätigen oder korrigieren – `frontend/app/content/home.ts`
 - [ ] Team – Namen, Funktionen und Fotos der Pflegedienstleitung und Ansprechpartner – Über uns, Start
 - [ ] Team – Name, Qualifikation und zwei bis drei Sätze der Pflegedienstleitung für die Startseite – `frontend/app/content/home.ts`

@@ -1,0 +1,30 @@
+.content {
+  max-width: 48rem;
+}
+
+.lead {
+  font-size: var(--font-size-h4);
+  line-height: 1.5;
+}
+
+.note {
+  color: var(--color-text-muted);
+}
+
+.section {
+  padding-top: var(--space-7);
+  scroll-margin-top: var(--space-5);
+}
+
+.section h2 {
+  font-size: var(--font-size-h3);
+}
+
+/* The closing contact prompt */
+.content > section:last-child {
+  margin-top: var(--space-8);
+}
+
+.more {
+  margin-top: var(--section-space);
+}

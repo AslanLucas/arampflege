@@ -1,0 +1,36 @@
+.breadcrumbs {
+  margin-bottom: var(--space-5);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--font-size-small);
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  max-width: none;
+}
+
+/* The separator is decorative; the empty alternative text keeps screen readers from reading it. */
+.item + .item::before {
+  content: "›" / "";
+  margin-inline: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.item a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-target-min);
+}
+
+.item [aria-current="page"] {
+  color: var(--color-text-muted);
+}
