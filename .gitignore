@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Frontend build output
+frontend/build/
+frontend/.react-router/
+frontend/test-results/
+frontend/playwright-report/
+frontend/blob-report/
+*.tsbuildinfo
+
+# .NET
+bin/
+obj/
+*.user
+TestResults/
+
+# Local environment
+.env
+.env.local
+
+# Editors and OS
+.vs/
+.idea/
+.DS_Store
