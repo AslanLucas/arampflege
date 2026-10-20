@@ -221,7 +221,7 @@
   padding: 0;
   border: 0;
   background: none;
-  color: var(--color-primary);
+  color: var(--color-link);
   font-weight: var(--font-weight-semibold);
   text-decoration: underline;
   text-underline-offset: 0.18em;
@@ -229,6 +229,6 @@
 }
 
 .textButton:hover {
-  color: var(--color-primary-hover);
+  color: var(--color-link-hover);
   text-decoration-thickness: 2px;
 }

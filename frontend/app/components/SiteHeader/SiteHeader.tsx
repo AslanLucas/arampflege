@@ -42,14 +42,30 @@ export function SiteHeader() {
     <header className={styles.header}>
       <Container className={styles.bar}>
         <Link to="/" className={styles.logo}>
-          {site.name}
+          <img
+            src="/images/logo-aram-160.png"
+            srcSet="/images/logo-aram-160.png 1x, /images/logo-aram-320.png 2x"
+            width={64}
+            height={64}
+            alt=""
+            className={styles.logoMark}
+          />
+          <span className={styles.wordmark}>
+            <span className={styles.name}>{site.name}</span>
+            <span className={styles.tagline}>{site.tagline}</span>
+          </span>
         </Link>
 
         <a href={site.phone.href} className={styles.phone}>
-          <PhoneIcon />
-          <span>
-            {site.phone.display}
-            <span className="visually-hidden"> anrufen</span>
+          <span className={styles.phoneIcon} aria-hidden="true">
+            <PhoneIcon />
+          </span>
+          <span className={styles.phoneText}>
+            <span className={styles.phoneLabel}>Telefon</span>
+            <span className={styles.phoneNumber}>
+              {site.phone.display}
+              <span className="visually-hidden"> anrufen</span>
+            </span>
           </span>
         </a>
 

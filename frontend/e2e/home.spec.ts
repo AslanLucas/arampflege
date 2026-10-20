@@ -42,7 +42,7 @@ test.describe("Home page", () => {
       return {
         body: getComputedStyle(document.body).fontFamily,
         heading: heading ? getComputedStyle(heading).fontFamily : "",
-        headingLoaded: document.fonts.check('600 1rem "Source Serif 4"'),
+        headingLoaded: document.fonts.check('400 1rem "Source Serif 4"'),
       };
     });
     expect(families.body).toMatch(/^"Atkinson Hyperlegible Next"/);
@@ -51,8 +51,8 @@ test.describe("Home page", () => {
 
     for (const file of [
       "atkinson-hyperlegible-next-latin-400-normal",
-      "atkinson-hyperlegible-next-latin-400-italic",
       "atkinson-hyperlegible-next-latin-600-normal",
+      "source-serif-4-latin-400-normal",
       "source-serif-4-latin-600-normal",
     ]) {
       const response = await request.get(`/fonts/${file}.woff2`);

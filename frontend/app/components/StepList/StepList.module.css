@@ -1,4 +1,7 @@
 .list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: var(--space-7);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -6,25 +9,23 @@
 }
 
 .step {
-  display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr);
-  column-gap: var(--space-4);
   max-width: none;
-  padding-block: var(--space-5);
-  border-top: var(--border-width) solid var(--color-border);
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--color-brand-deep);
   counter-increment: step;
 }
 
-/* The number is the list item's marker; screen readers announce the ordered list position. */
+/* The number is the list marker; screen readers announce the ordered list position. */
 .step::before {
   content: counter(step);
-  grid-row: 1 / 3;
-  color: var(--color-accent);
+  display: block;
+  margin-bottom: var(--space-4);
+  color: var(--color-primary);
   font-family: var(--font-heading);
-  font-size: var(--font-size-h2);
-  font-weight: var(--font-weight-semibold);
-  font-variant-numeric: lining-nums tabular-nums;
-  line-height: 1;
+  font-size: clamp(3.5rem, 2.8rem + 2vw, 4.5rem);
+  font-weight: var(--font-weight-display);
+  font-variant-numeric: lining-nums;
+  line-height: 0.9;
 }
 
 .title {
@@ -34,4 +35,5 @@
 
 .text {
   margin: 0;
+  color: var(--color-text-muted);
 }

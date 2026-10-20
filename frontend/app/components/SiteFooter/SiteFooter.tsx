@@ -8,9 +8,13 @@ import styles from "./SiteFooter.module.css";
 
 export function SiteFooter() {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} data-surface="brand">
       <Container className={styles.grid}>
         <section aria-labelledby="footer-kontakt" className={styles.contact}>
+          <p className={styles.wordmark}>
+            <span className={styles.name}>{site.name}</span>
+            <span className={styles.tagline}>{site.tagline}</span>
+          </p>
           <h2 id="footer-kontakt" className={styles.heading}>
             So erreichen Sie uns
           </h2>

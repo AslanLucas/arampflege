@@ -9,3 +9,8 @@
   flex: 1;
   padding-block: var(--space-7) var(--section-space);
 }
+
+/* A page that ends on a dark brand section runs straight into the footer */
+.main:has(> :last-child[data-surface="brand"]) {
+  padding-bottom: 0;
+}

@@ -9,18 +9,24 @@ type ServiceListProps = {
   headingLevel: "h2" | "h3";
 };
 
+/** Numbered rows; the whole row is clickable while the name stays the link's accessible name. */
 export function ServiceList({ services, headingLevel: Heading }: ServiceListProps) {
   return (
     <ul className={styles.list}>
-      {services.map((service) => (
+      {services.map((service, index) => (
         <li key={service.slug} className={styles.item}>
+          <span className={styles.number} aria-hidden="true">
+            {String(index + 1).padStart(2, "0")}
+          </span>
           <Heading className={styles.name}>
             <Link to={servicePath(service)} className={styles.link}>
               {service.name}
-              <ArrowRightIcon size={20} />
             </Link>
           </Heading>
           <p className={styles.summary}>{service.summary}</p>
+          <span className={styles.arrow} aria-hidden="true">
+            <ArrowRightIcon size={18} />
+          </span>
         </li>
       ))}
     </ul>

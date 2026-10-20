@@ -37,7 +37,7 @@ Hochwertig heißt hier: **wenige Elemente, perfekt ausgeführt.** Den Unterschie
 
 ### Details
 - Feine Linien (1 px, `--color-border`) statt Schatten und Kästen, um Bereiche zu gliedern.
-- Einheitliche Bildformate (z. B. 4 : 3 und 3 : 2), einheitliche Bildbearbeitung (gleiche Farbstimmung, natürliches Licht, keine Filter).
+- Einheitliche Bildformate: Hochformat 4 : 5 (oberer Bereich, Porträts), Querformat 5 : 4 und 3 : 2. Einheitliche Bildbearbeitung (gleiche Farbstimmung, natürliches Licht, keine Filter).
 - Saubere Zustände für alles Interaktive: Hover, Fokus, Aktiv, Deaktiviert, Laden und Fehler sind gestaltet, nicht dem Browser überlassen.
 - Pixelgenaue Ausrichtung: Text, Bilder und Linien beginnen auf denselben Kanten.
 - Favicon, Social-Preview-Bild (`og:image`), 404-Seite und Druckansicht (`@media print`) sind gestaltet.
@@ -86,8 +86,8 @@ Vertrauen entsteht durch **Überprüfbarkeit**, nicht durch Behauptungen. Jedes 
 - Übertriebene Versprechen und Superlative
 
 ### Vertrauensvoll und warm, ohne kitschig zu sein
-- Wärme entsteht durch das warme Off-White, die Serifenschrift, echte Gesichter und eine zugewandte Sprache.
-- Keine Herzen, Hände, Blätter oder Puzzleteile als Symbole.
+- Wärme entsteht durch das warme Off-White, das Himbeerrot aus dem Logo, die Serifenschrift, echte Gesichter und eine zugewandte Sprache.
+- Keine Herzen, Hände, Blätter oder Puzzleteile als Symbole. Ausnahme ist das Logo des Kunden selbst (Herz mit zwei Personen); sein Motiv wird nirgends als Gestaltungselement wiederholt.
 - Keine Pastell-Kinderfarben. Die Seite richtet sich an Erwachsene in einer ernsten Lebenslage.
 
 ---
@@ -147,50 +147,67 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 
 ## Design-Tokens
 
-Die folgenden Werte sind Startwerte. Sie werden mit dem Logo und der Marke des Kunden abgestimmt. Alle Tokens liegen in `frontend/app/styles/tokens.css`. In Komponenten sind keine Hex-Werte erlaubt, nur Tokens.
+Die Farben sind aus dem Logo von Aram abgeleitet (Himbeerrot `#AA1A4B`) und mit dem Kunden noch zu bestätigen. Alle Tokens liegen in `frontend/app/styles/tokens.css`. In Komponenten sind keine Hex-Werte erlaubt, nur Tokens.
 
 ### Farben
 
 ```css
 :root {
-  --color-bg:            #FBF8F3; /* warmes Off-White */
-  --color-surface:       #FFFFFF;
-  --color-surface-alt:   #F2EDE4; /* abgesetzte Sektionen */
-  --color-text:          #1F2421; /* ca. 15 : 1 auf --color-bg */
-  --color-text-muted:    #3F4642; /* mind. 7 : 1 auf --color-bg (AAA für Fließtext) */
-  --color-border:        #DDD6CB; /* nur dekorative Linien, ca. 1,4 : 1 */
-  --color-border-strong: #857B6E; /* Ränder von Formularfeldern, mind. 3 : 1 (WCAG 1.4.11) */
-  --color-primary:       #2F5D50; /* tiefes Grün: Links, Buttons */
-  --color-primary-hover: #244A40;
-  --color-accent:        #B5652E; /* Terrakotta: nur Linien, kleine Flächen */
-  --color-focus:         #0B57D0;
-  --color-error:         #B3261E;
-  --color-success:       #2E6B34;
+  /* Helle Flächen */
+  --color-bg:              #FBF8F5; /* warmes Off-White */
+  --color-surface:         #FFFFFF;
+  --color-surface-alt:     #F6EAEE; /* zartes Rosé für abgesetzte Sektionen, kein Pastell-Kinderrosa */
+  --color-text:            #241A1E; /* ca. 16 : 1 */
+  --color-text-muted:      #4A3F43; /* mind. 7 : 1 auf allen hellen Flächen */
+  --color-border:          #E6DCDF; /* nur dekorative Linien */
+  --color-border-strong:   #857479; /* Ränder von Formularfeldern, mind. 3 : 1 (WCAG 1.4.11) */
+
+  /* Marke */
+  --color-primary:         #AA1A4B; /* Himbeerrot aus dem Logo: Buttons, Ziffern, Linien */
+  --color-primary-hover:   #8C1540;
+  --color-link:            #931541; /* Links im Fließtext, mind. 7 : 1 */
+  --color-link-hover:      #7A1236;
+  --color-brand-deep:      #5E0F2E; /* dunkle Markenflächen: oberer Bereich, Kontakt */
+  --color-brand-darkest:   #3F0A20; /* Footer */
+  --color-on-brand:        #FBF8F5; /* Text auf Markenflächen */
+  --color-on-brand-muted:  #F3D9E2;
+
+  /* Status und Fokus */
+  --color-focus:           #0B57D0;
+  --color-focus-on-brand:  #FBF8F5; /* auf dunklen Markenflächen ist Blau zu dunkel */
+  --color-error:           #B3261E;
+  --color-success:         #2E6B34;
 }
 ```
 
 Regeln:
-- Fließtext erreicht mindestens 4,5 : 1 Kontrast, große Schrift und UI-Elemente mindestens 3 : 1. Jede Farbkombination wird vor der Verwendung geprüft.
-- Die Akzentfarbe wird nicht für Fließtext verwendet.
+- Fließtext und Links im Fließtext erreichen mindestens 7 : 1, große Schrift und UI-Elemente mindestens 3 : 1. Die Kontraste aller Token-Paare prüft `frontend/app/styles/tokens.test.ts` automatisch.
+- Dunkle Markenflächen tragen `data-surface="brand"`: Links und Fokusrahmen werden dort automatisch hell.
+- Auf der himbeerroten Fläche steht Text in Weiß (7,1 : 1), nicht in Off-White (6,7 : 1).
 - `--color-border` ist zu hell für Formularfelder. Ränder von Eingabefeldern verwenden `--color-border-strong`.
-- Die Kontraste aller Token-Paare prüft `frontend/app/styles/tokens.test.ts` automatisch.
-- Information wird nie nur über Farbe vermittelt, bei Fehlern immer zusätzlich mit Text.
+- Fehler und Marke liegen farblich nah beieinander. Information wird deshalb nie nur über Farbe vermittelt, Fehler immer zusätzlich mit Text („Fehler: …“).
+- Keine Verläufe, auch nicht aus den Logofarben.
+
+### Logo
+
+- Bis zur Vektordatei vom Kunden wird eine aufbereitete Bilddatei mit transparentem Hintergrund verwendet (`frontend/public/images/logo-aram-*.png`, Favicons in `frontend/public/`).
+- Im Header steht neben dem Bildzeichen der Schriftzug „Aram“ als Text, weil der Schriftzug im Logo bei kleiner Größe nicht lesbar ist.
 
 ### Typografie
 
 - **Überschriften**: eine Serifenschrift mit Charakter, z. B. *Source Serif 4*
 - **Fließtext**: eine auf Lesbarkeit ausgelegte Sans, z. B. *Atkinson Hyperlegible Next* oder *Source Sans 3*
-- **Gewählt** (Startwerte, mit dem Kunden abzustimmen): *Source Serif 4* in 600 und *Atkinson Hyperlegible Next* in 400, 400 kursiv und 600
+- **Gewählt** (mit dem Kunden abzustimmen): *Source Serif 4* in 400 und 600, *Atkinson Hyperlegible Next* in 400 und 600
 - Maximal zwei Familien und vier Schnitte, **selbst gehostet** als WOFF2 unter `public/fonts/`, mit `font-display: swap`
 - Grundschriftgröße **18 px** (`1.125rem`), Zeilenhöhe 1,6, wegen der älteren Zielgruppe
-- Skala mit Faktor 1,25, H1 fluid: `clamp(2rem, 1.4rem + 2.5vw, 3rem)`
-- Überschriften in Gewicht 600, Fließtext 400, Hervorhebungen 600 (sparsam)
+- Skala mit Faktor 1,25 für kleine Überschriften; Seiten- und Sektionsüberschriften größer und fluid, die große Aussage der Startseite höchstens 64 px (`--font-size-display`). Normale Laufweite, keine enge Spationierung.
+- Große Überschriften (h1, h2) in der Serifenschrift mit Gewicht 400, kleine Überschriften (h3, h4) 600, Fließtext 400, Hervorhebungen 600 (sparsam)
 
 ### Abstände, Raster, Formen
 
-- Abstandsskala: 4, 8, 12, 16, 24, 32, 48, 64, 96 px (`--space-1` bis `--space-9`)
-- Breakpoints: Basis 360 px, dann 640, 960 und 1200 px. Container maximal 1200 px.
-- Eckenradius: 4 px für Buttons und Formularfelder, 0 bis 6 px für Bilder. Keine Pill-Buttons.
+- Abstandsskala: 4, 8, 12, 16, 24, 32, 48, 64, 96, 128 px (`--space-1` bis `--space-10`)
+- Breakpoints: Basis 360 px, dann 640, 960 und 1280 px. Container maximal 1280 px.
+- Eckenradius: 4 px für Buttons und Formularfelder, 6 px für Bilder und Farbflächen wie den Karriere-Block. Kreise nur für Symbol-Schaltflächen (Telefon, Pfeil). Keine Pill-Buttons.
 - Schatten: standardmäßig keiner. Höchstens ein dezenter Schatten für Dropdowns und Overlays.
 
 ---

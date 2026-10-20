@@ -6,51 +6,81 @@
 }
 
 .item {
-  display: grid;
-  gap: var(--space-2);
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-6);
   max-width: none;
-  padding-block: var(--space-5);
+  padding-block: var(--space-6);
   border-top: var(--border-width) solid var(--color-border);
+  transition: background-color var(--duration-feedback) ease-out;
+}
+
+.number {
+  flex: 0 0 2.5rem;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  font-variant-numeric: tabular-nums;
 }
 
 .name {
+  flex: 1 1 15rem;
   margin: 0;
-  font-size: var(--font-size-h4);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-display);
 }
 
 .link {
-  text-decoration-thickness: 1px;
+  color: var(--color-text);
+  text-decoration: none;
 }
 
-/* Inline so the arrow follows the last word when a long name wraps */
-.link svg {
-  display: inline-block;
-  margin-left: var(--space-2);
-  vertical-align: -0.1em;
-  transition: transform var(--duration-feedback) ease-out;
-}
-
-.link:hover svg {
-  transform: translateX(2px);
+/* Stretch the link over the whole row */
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 .summary {
+  flex: 1 1 16rem;
   margin: 0;
+  color: var(--color-text-muted);
 }
 
-/* Name in columns 1–5, explanation in columns 6–12 */
-@media (min-width: 60rem) {
-  .item {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--space-6);
-    align-items: baseline;
-  }
+.arrow {
+  display: grid;
+  flex: 0 0 2.75rem;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: var(--border-width) solid var(--color-primary);
+  border-radius: 50%;
+  color: var(--color-primary);
+  transition:
+    background-color var(--duration-feedback) ease-out,
+    color var(--duration-feedback) ease-out;
+}
 
-  .name {
-    grid-column: 1 / 6;
-  }
+.item:hover .link {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
 
-  .summary {
-    grid-column: 6 / 13;
-  }
+.item:hover .arrow {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+/* The focus ring belongs to the whole row the link covers */
+.link:focus-visible {
+  outline: none;
+}
+
+.item:has(.link:focus-visible) {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
 }

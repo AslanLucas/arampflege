@@ -1,6 +1,7 @@
 // Single source for the care service's master data. Placeholders are tracked in docs/OFFENE-PUNKTE.md.
 export const site = {
-  name: "[[PFLEGEDIENST-NAME]]",
+  name: "Aram",
+  tagline: "Ambulanter Pflegedienst",
   region: "[[ORT/REGION]]",
   phone: {
     display: "[[TELEFON]]",

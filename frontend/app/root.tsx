@@ -16,17 +16,21 @@ import "./styles/fonts.css";
 import "./styles/tokens.css";
 import "./styles/base.css";
 
-export const links: Route.LinksFunction = () =>
-  [
+export const links: Route.LinksFunction = () => [
+  ...[
     "/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2",
-    "/fonts/source-serif-4-latin-600-normal.woff2",
+    "/fonts/source-serif-4-latin-400-normal.woff2",
   ].map((href) => ({
     rel: "preload",
     href,
     as: "font",
     type: "font/woff2",
-    crossOrigin: "anonymous",
-  }));
+    crossOrigin: "anonymous" as const,
+  })),
+  { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+  { rel: "icon", href: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+  { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+];
 
 type LayoutProps = {
   children: ReactNode;

@@ -5,10 +5,11 @@ Agenten tragen hier jeden `[[INHALT FEHLT: …]]`-Platzhalter ein. Erledigte Pun
 Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 
 ## Stammdaten
-- [ ] Allgemein – Name des Pflegedienstes, Rechtsform, Logo (SVG), daraus auch Favicon – global
+- [x] Allgemein – Name des Pflegedienstes (Aram) und Logo als Bilddatei – global
+- [ ] Allgemein – Rechtsform; Logo als Vektordatei (SVG), dazu eine Variante nur mit Bildzeichen; Slogan im Logo mit kleinem „a“ („Ihr ambulanter Pflegedienst“) – global, Favicon
 - [ ] Allgemein – Adresse, Telefon, E-Mail, Bürozeiten, Rufbereitschaft – Header, Footer, Kontaktleiste, Kontakt (`frontend/app/content/site.ts`)
 - [ ] Allgemein – Einsatzgebiet: Orte und Postleitzahlen – Einsatzgebiet
-- [ ] Allgemein – Markenfarben und Schriften (falls vorhanden) – `tokens.css`
+- [ ] Allgemein – Aus dem Logo abgeleitete Markenfarben (Himbeerrot #AA1A4B, Weinrot) und die gewählten Schriften bestätigen – `tokens.css`, `docs/DESIGN.md`
 
 ## Rechtliches
 - [ ] Recht – Impressum (Inhaber, Registereintrag, zuständige Aufsichtsbehörde, IK-Nummer falls gewünscht) – Impressum

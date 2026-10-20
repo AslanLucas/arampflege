@@ -52,7 +52,7 @@ describe("Home", () => {
       "Wobei wir Sie unterstützen",
       "Was passiert nach Ihrem Anruf?",
       "Wer Sie betreut",
-      "Arbeiten bei uns",
+      "Arbeiten bei Aram",
       "Wir rufen Sie zurück",
     ]) {
       expect(screen.getByRole("region", { name })).toBeInTheDocument();

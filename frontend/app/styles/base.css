@@ -40,10 +40,12 @@ h4 {
 
 h1 {
   font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-display);
 }
 
 h2 {
   font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-display);
 }
 
 h3 {
@@ -93,14 +95,14 @@ hr {
 }
 
 ::selection {
-  background-color: var(--color-primary);
-  color: var(--color-surface);
+  background-color: var(--color-brand-deep);
+  color: var(--color-on-brand);
 }
 
 /* Links are recognisable without colour: always underlined */
 
 a {
-  color: var(--color-primary);
+  color: var(--color-link);
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
@@ -110,8 +112,20 @@ a {
 }
 
 a:hover {
-  color: var(--color-primary-hover);
+  color: var(--color-link-hover);
   text-decoration-thickness: 2px;
+}
+
+/*
+ * Dark brand surfaces (data-surface="brand"): links and focus ring turn light.
+ * :where keeps the specificity low so button variants still win.
+ */
+:where([data-surface="brand"]) a {
+  color: var(--color-on-brand);
+}
+
+:where([data-surface="brand"]) a:hover {
+  color: var(--color-on-brand-muted);
 }
 
 /* Media and form controls */

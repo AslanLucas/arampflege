@@ -2,13 +2,23 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
-const css = readFileSync(new URL("./tokens.css", import.meta.url), "utf8");
+const file = readFileSync(new URL("./tokens.css", import.meta.url), "utf8");
+// Only the global defaults; scoped overrides (e.g. on brand surfaces) are checked as their own tokens.
+const rootStart = file.indexOf(":root {");
+const css = file.slice(rootStart, file.indexOf("\n}", rootStart));
 
 const colors = new Map(
   [...css.matchAll(/--color-([\w-]+):\s*(#[0-9a-f]{6})/gi)].map(
     ([, name = "", hex = ""]) => [name, hex] as const,
   ),
 );
+
+for (const [, name = "", target = ""] of css.matchAll(/--color-([\w-]+):\s*var\(--color-([\w-]+)\)/g)) {
+  const hex = colors.get(target);
+  if (hex) {
+    colors.set(name, hex);
+  }
+}
 
 function color(name: string): string {
   const hex = colors.get(name);
@@ -33,23 +43,33 @@ function contrast(foreground: string, background: string): number {
   return (lighter + 0.05) / (darker + 0.05);
 }
 
-const backgrounds = ["bg", "surface", "surface-alt"];
+const light = ["bg", "surface", "surface-alt"];
+const brand = ["brand-deep", "brand-darkest"];
 
 // Minimum ratios from docs/DESIGN.md and WCAG 2.2.
 const requirements: { purpose: string; foregrounds: string[]; backgrounds: string[]; min: number }[] = [
-  { purpose: "body text (AAA)", foregrounds: ["text", "text-muted"], backgrounds, min: 7 },
-  { purpose: "links (AA)", foregrounds: ["primary", "primary-hover"], backgrounds, min: 4.5 },
-  { purpose: "status messages (AA)", foregrounds: ["error", "success"], backgrounds, min: 4.5 },
+  { purpose: "body text (AAA)", foregrounds: ["text", "text-muted"], backgrounds: light, min: 7 },
+  { purpose: "links in running text (AAA)", foregrounds: ["link", "link-hover"], backgrounds: light, min: 7 },
+  { purpose: "brand-coloured text such as numbers (AA)", foregrounds: ["primary"], backgrounds: light, min: 4.5 },
+  { purpose: "status messages (AA)", foregrounds: ["error", "success"], backgrounds: light, min: 4.5 },
   {
     purpose: "button label on primary (AA)",
-    foregrounds: ["surface"],
+    foregrounds: ["surface", "on-brand"],
     backgrounds: ["primary", "primary-hover"],
     min: 4.5,
   },
+  { purpose: "text on dark brand surfaces (AAA)", foregrounds: ["on-brand", "on-brand-muted"], backgrounds: brand, min: 7 },
+  { purpose: "inverted button label (AAA)", foregrounds: ["brand-deep"], backgrounds: ["on-brand"], min: 7 },
   {
     purpose: "form borders, focus ring, accent lines (non-text)",
     foregrounds: ["border-strong", "focus", "accent"],
-    backgrounds,
+    backgrounds: light,
+    min: 3,
+  },
+  {
+    purpose: "focus ring on brand surfaces (non-text)",
+    foregrounds: ["focus-on-brand"],
+    backgrounds: [...brand, "primary"],
     min: 3,
   },
 ];

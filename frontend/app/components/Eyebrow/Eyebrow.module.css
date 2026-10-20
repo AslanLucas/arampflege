@@ -1,0 +1,22 @@
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-4);
+  color: var(--color-link);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  flex: 0 0 2.5rem;
+  height: 2px;
+  background-color: currentColor;
+}
+
+:where([data-surface="brand"]) .eyebrow {
+  color: var(--color-on-brand-muted);
+}

@@ -1,22 +1,34 @@
 /*
- * Design tokens from docs/DESIGN.md. Starting values, to be aligned with the client's logo and brand.
+ * Design tokens. Colours derive from the Aram logo (raspberry #AA1A4B); see docs/DESIGN.md.
  * Components use these tokens only, never raw values. Contrast ratios are enforced by tokens.test.ts.
  */
 :root {
   color-scheme: light;
 
-  /* Colors */
-  --color-bg: #fbf8f3;
+  /* Light surfaces */
+  --color-bg: #fbf8f5;
   --color-surface: #ffffff;
-  --color-surface-alt: #f2ede4;
-  --color-text: #1f2421;
-  --color-text-muted: #3f4642;
-  --color-border: #ddd6cb; /* decorative dividers only, too light for form controls */
-  --color-border-strong: #857b6e; /* form control borders, at least 3 : 1 on every background */
-  --color-primary: #2f5d50;
-  --color-primary-hover: #244a40;
-  --color-accent: #b5652e; /* lines and small areas only, never text */
+  --color-surface-alt: #f6eaee; /* blush, for calm alternating sections */
+  --color-text: #241a1e;
+  --color-text-muted: #4a3f43;
+  --color-border: #e6dcdf; /* decorative dividers only, too light for form controls */
+  --color-border-strong: #857479; /* form control borders, at least 3 : 1 on every light surface */
+
+  /* Brand */
+  --color-primary: #aa1a4b; /* logo raspberry: buttons, numbers, lines */
+  --color-primary-hover: #8c1540;
+  --color-link: #931541; /* links in running text, at least 7 : 1 on every light surface */
+  --color-link-hover: #7a1236;
+  --color-accent: var(--color-primary);
+  --color-brand-deep: #5e0f2e; /* dark brand surfaces: top area, contact */
+  --color-brand-darkest: #3f0a20; /* footer */
+  --color-on-brand: #fbf8f5; /* text on brand surfaces */
+  --color-on-brand-muted: #f3d9e2;
+  --color-photo-placeholder: #e9d3da;
+
+  /* Status and focus */
   --color-focus: #0b57d0;
+  --color-focus-on-brand: #fbf8f5; /* blue is too dark on brand surfaces */
   --color-error: #b3261e;
   --color-success: #2e6b34;
 
@@ -27,24 +39,29 @@
   /* Font weights */
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
+  --font-weight-display: 400; /* large serif headings are set light */
 
   /*
-   * Type scale, factor 1.25 from an 18 px base. Headings grow fluidly so that the order
-   * h1 > h2 > h3 > h4 also holds at 360 px. Nothing is set smaller than 16 px.
+   * Type scale, factor 1.25 from an 18 px base for small headings, larger display sizes for
+   * page and section headings. All grow fluidly so the order h1 > h2 > h3 > h4 holds at 360 px.
+   * Nothing is set smaller than 16 px except short uppercase labels (14 px, semibold).
    */
+  --font-size-label: 0.875rem;
   --font-size-small: 1rem;
   --font-size-base: 1.125rem;
+  --font-size-lead: clamp(1.1875rem, 1.05rem + 0.5vw, 1.375rem);
   --font-size-h4: clamp(1.25rem, 1.15rem + 0.45vw, 1.4063rem);
-  --font-size-h3: clamp(1.4063rem, 1.25rem + 0.7vw, 1.7578rem);
-  --font-size-h2: clamp(1.625rem, 1.35rem + 1.2vw, 2.1973rem);
-  --font-size-h1: clamp(2rem, 1.4rem + 2.5vw, 3rem);
+  --font-size-h3: clamp(1.4063rem, 1.25rem + 0.7vw, 1.875rem);
+  --font-size-h2: clamp(2.125rem, 1.6rem + 2vw, 3.25rem);
+  --font-size-h1: clamp(2.25rem, 1.5rem + 2.8vw, 3.5rem);
+  --font-size-display: clamp(2.125rem, 1.4rem + 3.1vw, 4rem);
 
   --line-height-base: 1.6;
-  --line-height-heading: 1.2;
-  --tracking-caps: 0.06em;
+  --line-height-heading: 1.12;
+  --tracking-caps: 0.08em;
   --measure: 68ch;
 
-  /* Spacing: 4, 8, 12, 16, 24, 32, 48, 64, 96 px */
+  /* Spacing: 4, 8, 12, 16, 24, 32, 48, 64, 96, 128 px */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -54,18 +71,19 @@
   --space-7: 3rem;
   --space-8: 4rem;
   --space-9: 6rem;
+  --space-10: 8rem;
 
   /*
    * Layout. Breakpoints cannot be custom properties inside media queries;
-   * use 40rem (640 px), 60rem (960 px) and 75rem (1200 px).
+   * use 40rem (640 px), 60rem (960 px) and 80rem (1280 px).
    */
-  --container-max: 75rem;
+  --container-max: 80rem;
   --gutter: var(--space-4);
   --section-space: var(--space-8);
 
   /* Shape */
   --radius-control: 4px;
-  --radius-image: 4px;
+  --radius-image: 6px;
   --border-width: 1px;
   --tap-target-min: 44px;
 
@@ -77,7 +95,12 @@
 
 @media (min-width: 60rem) {
   :root {
-    --gutter: var(--space-6);
-    --section-space: var(--space-9);
+    --gutter: var(--space-7);
+    --section-space: var(--space-10);
   }
+}
+
+/* Dark brand surfaces switch the focus ring to ivory so it stays visible. */
+[data-surface="brand"] {
+  --color-focus: var(--color-focus-on-brand);
 }

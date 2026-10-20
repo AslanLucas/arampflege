@@ -1,7 +1,32 @@
 .footer {
-  padding-block: var(--space-8);
-  border-top: var(--border-width) solid var(--color-border);
-  background-color: var(--color-surface-alt);
+  padding-block: var(--space-9) var(--space-8);
+  background-color: var(--color-brand-darkest);
+  color: var(--color-on-brand);
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 var(--space-6);
+  line-height: 1.15;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: var(--font-weight-semibold);
+}
+
+.tagline {
+  color: var(--color-on-brand-muted);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.contact dd {
+  color: var(--color-on-brand-muted);
 }
 
 .grid {
@@ -11,7 +36,11 @@
 
 .heading {
   margin-bottom: var(--space-4);
-  font-size: var(--font-size-h4);
+  color: var(--color-on-brand-muted);
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
 }
 
 .numeric {
