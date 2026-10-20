@@ -1,0 +1,144 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  max-width: none;
+}
+
+/* Default (touch, small screens, reduced motion): both sides stacked, nothing hidden */
+.inner {
+  display: grid;
+  height: 100%;
+  border-radius: var(--radius-image);
+  overflow: hidden;
+}
+
+.front,
+.back {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+
+.front {
+  position: relative;
+  border: var(--border-width) solid var(--color-border);
+  border-bottom: 0;
+  border-radius: var(--radius-image) var(--radius-image) 0 0;
+  background-color: var(--color-surface);
+}
+
+.back {
+  justify-content: space-between;
+  border-radius: 0 0 var(--radius-image) var(--radius-image);
+  background-color: var(--color-brand-deep);
+  color: var(--color-on-brand);
+}
+
+.number {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: var(--color-surface-alt);
+  color: var(--color-primary);
+}
+
+.name {
+  margin: var(--space-2) 0 0;
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-display);
+  line-height: 1.2;
+}
+
+.flipHint {
+  display: none;
+}
+
+.summary {
+  margin: 0;
+  font-size: var(--font-size-lead);
+  line-height: 1.5;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target-min);
+  font-weight: var(--font-weight-semibold);
+}
+
+.link svg {
+  transition: transform var(--duration-hover) var(--ease-out);
+}
+
+.link:hover svg {
+  transform: translateX(4px);
+}
+
+/* Devices with a mouse and no motion reduction: the card turns over */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (min-width: 40rem) {
+  .card {
+    min-height: 19rem;
+    perspective: 1200px;
+  }
+
+  .inner {
+    position: relative;
+    display: block;
+    min-height: 19rem;
+    overflow: visible;
+    transform-style: preserve-3d;
+    transition: transform var(--duration-flip) var(--ease-out);
+  }
+
+  .front,
+  .back {
+    position: absolute;
+    inset: 0;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-image);
+    backface-visibility: hidden;
+  }
+
+  .front {
+    transition: box-shadow var(--duration-hover) var(--ease-out);
+  }
+
+  .back {
+    border-color: var(--color-brand-deep);
+    transform: rotateY(180deg);
+  }
+
+  .flipHint {
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+    display: block;
+    color: var(--color-text-muted);
+  }
+
+  .card:hover .inner,
+  .card:focus-within .inner {
+    transform: rotateY(180deg);
+  }
+
+  .card:hover .front {
+    box-shadow: var(--shadow-raised);
+  }
+}

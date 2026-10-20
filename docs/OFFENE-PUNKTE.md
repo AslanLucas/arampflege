@@ -40,7 +40,8 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – Startseite, `/rueckruf`, Bestätigung im Rückrufformular
 - [ ] Kontakt – Zusage, in welcher Frist auf Nachrichten geantwortet wird – Bestätigung im Kontaktformular
 - [ ] Alle Seiten – Kurzbeschreibung für Suchergebnisse (Meta-Description, max. 160 Zeichen) je Seite – `frontend/app/routes/*.tsx`
-- [ ] Fotos – Team, Fahrzeuge, Büro, Einsatzgebiet; zuerst: Pflegedienstleitung im Büro, Querformat 3 : 2 (Startseite) – global
+- [ ] Fotos – Team, Fahrzeuge, Büro, Einsatzgebiet; zuerst: Pflegedienstleitung im Büro, Querformat 5 : 4 (Startseite) – global
+- [ ] Videos – Eigene kurze Clips für den oberen Bereich (3–4 Clips à 6–10 Sekunden, Querformat, ruhige Alltagsszenen; Personen nur mit schriftlicher Einwilligung); ersetzen die lizenzfreien Übergangsvideos – `frontend/public/videos/`
 
 ## Betrieb
 - [ ] Betrieb – **Blockiert den Livegang:** Wie liest der Pflegedienst eingegangene Anfragen, Bewerbungen und Lebensläufe? Lebensläufe liegen verschlüsselt auf dem Server und dürfen nicht unverschlüsselt per Mail verschickt werden. Die Benachrichtigungs-Mail enthält bewusst nur die Vorgangsnummer. Optionen: verschlüsselter Mailversand (S/MIME oder PGP) mit Inhalt oder ein geschützter Lesezugang – mit Kunde abstimmen – Backend

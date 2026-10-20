@@ -98,9 +98,9 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 
 ### Layout
 - Hero mit zentrierter Riesenüberschrift, Untertitel, zwei Buttons nebeneinander und Verlauf oder Blob im Hintergrund
-- Raster aus 3, 4 oder 6 identischen Karten mit Icon oben, Überschrift und zwei Zeilen Text
+- Raster aus 3, 4 oder 6 identischen Karten mit Icon oben, Überschrift und zwei Zeilen Text (Ausnahme: die Drehkarten der Leistungen, siehe „Effekte“)
 - Jede Sektion zentriert, gleich hoch und mit gleichem Abstand übereinandergestapelt
-- Bento-Grids, Karten in Karten, Glassmorphism, Blur-Effekte, Glow
+- Bento-Grids, Karten in Karten, Glow; Glassmorphism und Blur nur beim mitlaufenden Header (siehe „Effekte“)
 - Pill-Badges über Überschriften („Unser Versprechen“, „Warum wir?“)
 - Statistikleisten mit hochzählenden Zahlen
 - Testimonial-Karussells, Logo-Laufbänder, Slider jeder Art
@@ -122,9 +122,10 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 - 3D-Illustrationen
 
 ### Bewegung
-- Einblend-Animationen beim Scrollen
 - Parallax-Effekte
-- Automatisch startende Animationen, Videos oder Karussells
+- Karussells und Slider jeder Art
+- Videos mit Ton oder ohne Pause-Knopf; Animationen, die sich endlos wiederholen (außer dem Hintergrundvideo)
+- Jede Bewegung, die bei `prefers-reduced-motion: reduce` weiterläuft
 
 ### Typografie
 - Ausschließlich Inter bzw. system-ui ohne gestalterische Entscheidung
@@ -141,7 +142,24 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 - **Konkretheit sichtbar machen**: Telefonnummer, Bürozeiten, Rufbereitschaft, Einsatzorte mit Namen, feste Ansprechpartnerin mit Foto.
 - **Farbe zur Orientierung, nicht zur Dekoration**: eine Hauptfarbe, ein sparsamer Akzent, viel ruhige Fläche.
 - **Icons nur mit Bedeutung**: Telefon, E-Mail, Pfeil, Download, externer Link. Eine Icon-Familie mit einheitlicher Strichstärke.
-- **Bewegung nur als Rückmeldung**: Hover- und Fokuszustände mit höchstens 150 ms. `prefers-reduced-motion` wird respektiert.
+- **Bewegung mit Zurückhaltung**: Rückmeldungen (Hover, Fokus) 150–250 ms, Einblendungen höchstens 700 ms. `prefers-reduced-motion` wird immer respektiert.
+
+---
+
+## Effekte (Entscheidung 2026-10-20)
+
+Auf Wunsch des Kunden ist die Seite lebendiger. Diese Effekte sind erlaubt, jeweils nur mit den genannten Bedingungen:
+
+| Effekt | Bedingungen |
+|--------|-------------|
+| Hintergrundvideo im oberen Bereich (`HeroVideo`) | Ohne Ton, mehrere kurze Clips nacheinander, darüber die Markenfarbe mit 80 % Deckkraft (Text mind. 7 : 1 auch über weißen Bildstellen), sichtbarer Pause-Knopf (WCAG 2.2.2). Nur ab 640 px, ohne „Bewegung reduzieren“ und ohne Datensparmodus; sonst ein Standbild. Lädt erst nach der Seite. |
+| Drehkarten der Leistungen (`ServiceCards`) | Drehen bei Hover und bei Tastaturfokus auf dem Link. Beide Seiten sind immer im DOM und werden vorgelesen. Bei Touch-Geräten, unter 640 px und bei „Bewegung reduzieren“ stehen beide Seiten ohne Drehung untereinander. |
+| Einblenden beim Scrollen (`useReveal`) | Nur Elemente, die beim Laden unterhalb des sichtbaren Bereichs liegen; ohne JavaScript und bei „Bewegung reduzieren“ ist alles sofort sichtbar. |
+| Animierte Ablauf-Schritte | Linie zeichnet sich, Ziffer erscheint, Schritte versetzt; gleiche Bedingungen wie das Einblenden. |
+| Mitlaufender Header | Wird beim Scrollen kompakter und leicht durchscheinend mit Unschärfe (Deckkraft 88 %). In niedrigen Fenstern (unter 544 px Höhe, z. B. bei Zoom) läuft er nicht mit. `scroll-padding` hält fokussierte Elemente frei. |
+| Hover | Buttons heben sich leicht an, Pfeile gleiten, Karten bekommen einen dezenten Schatten. |
+
+Das Hintergrundvideo zeigt übergangsweise lizenzfreie Stimmungsbilder ohne Personen (`frontend/public/videos/LICENSES.txt`), bis eigene Aufnahmen vorliegen. Gestellte Pflegeszenen aus Bildarchiven bleiben verboten.
 
 ---
 

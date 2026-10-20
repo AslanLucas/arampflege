@@ -14,7 +14,19 @@
   transition:
     background-color var(--duration-feedback) ease-out,
     border-color var(--duration-feedback) ease-out,
-    color var(--duration-feedback) ease-out;
+    color var(--duration-feedback) ease-out,
+    transform var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-raised);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .large {

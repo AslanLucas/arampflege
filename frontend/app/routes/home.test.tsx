@@ -30,7 +30,7 @@ describe("Home", () => {
     const section = screen.getByRole("region", { name: "Wobei wir Sie unterstützen" });
 
     for (const service of services) {
-      expect(within(section).getByRole("link", { name: service.name })).toHaveAttribute(
+      expect(within(section).getByRole("link", { name: `Zur Leistung ${service.name}` })).toHaveAttribute(
         "href",
         `/leistungen/${service.slug}`,
       );

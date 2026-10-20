@@ -9,10 +9,23 @@
 }
 
 .step {
+  position: relative;
   max-width: none;
   padding-top: var(--space-5);
-  border-top: 2px solid var(--color-brand-deep);
   counter-increment: step;
+}
+
+/* The line above each step draws itself from left to right when the step appears */
+.step::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--color-brand-deep);
+  transform-origin: left;
+  transition: transform 900ms var(--ease-out) calc(var(--reveal-delay, 0ms) + 150ms);
 }
 
 /* The number is the list marker; screen readers announce the ordered list position. */
@@ -26,6 +39,18 @@
   font-weight: var(--font-weight-display);
   font-variant-numeric: lining-nums;
   line-height: 0.9;
+  transition:
+    opacity 600ms var(--ease-out) calc(var(--reveal-delay, 0ms) + 300ms),
+    transform 600ms var(--ease-out) calc(var(--reveal-delay, 0ms) + 300ms);
+}
+
+.step[data-reveal="hidden"]::after {
+  transform: scaleX(0);
+}
+
+.step[data-reveal="hidden"]::before {
+  opacity: 0;
+  transform: translateY(0.75rem) scale(0.9);
 }
 
 .title {

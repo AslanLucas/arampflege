@@ -27,6 +27,8 @@ const contentTypes = {
   ".webp": "image/webp",
   ".avif": "image/avif",
   ".woff2": "font/woff2",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
 };
 
 async function isFile(path) {
@@ -52,18 +54,41 @@ async function resolveFile(pathname) {
 
 const compressible = new Set([".html", ".js", ".css", ".json", ".txt", ".xml", ".svg"]);
 
+/** Byte ranges, as browsers request them for video. */
+async function sendRange(req, res, file, headers) {
+  const { size } = await stat(file);
+  const match = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range ?? "");
+  const start = match?.[1] ? Number(match[1]) : size - Number(match?.[2] ?? 0);
+  const end = match?.[1] && match[2] ? Math.min(Number(match[2]), size - 1) : size - 1;
+  if (!match || start > end || start < 0) {
+    res.writeHead(416, { "Content-Range": `bytes */${size}` }).end();
+    return;
+  }
+  res.writeHead(206, {
+    ...headers,
+    "Accept-Ranges": "bytes",
+    "Content-Range": `bytes ${start}-${end}/${size}`,
+    "Content-Length": end - start + 1,
+  });
+  createReadStream(file, { start, end }).pipe(res);
+}
+
 function send(req, res, status, file) {
   const headers = {
     "Content-Type": contentTypes[extname(file)] ?? "application/octet-stream",
     Vary: "Accept-Encoding",
   };
+  if (status === 200 && req.headers.range) {
+    void sendRange(req, res, file, headers);
+    return;
+  }
   const gzip =
     compressible.has(extname(file)) && /\bgzip\b/.test(req.headers["accept-encoding"] ?? "");
   if (gzip) {
     res.writeHead(status, { ...headers, "Content-Encoding": "gzip" });
     createReadStream(file).pipe(createGzip()).pipe(res);
   } else {
-    res.writeHead(status, headers);
+    res.writeHead(status, { ...headers, "Accept-Ranges": "bytes" });
     createReadStream(file).pipe(res);
   }
 }

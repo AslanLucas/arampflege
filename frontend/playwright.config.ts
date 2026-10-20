@@ -12,6 +12,8 @@ export default defineConfig({
   use: {
     baseURL,
     locale: "de-DE",
+    // Stable layout for most tests; e2e/effects.spec.ts turns motion back on.
+    reducedMotion: "reduce",
     trace: "on-first-retry",
   },
   projects: [

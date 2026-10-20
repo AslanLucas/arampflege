@@ -22,6 +22,23 @@ export function SiteHeader() {
     setMenuOpen(false);
   }
 
+  // Compact, translucent header once the page is scrolled; state lives in a data attribute.
+  const header = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const element = header.current;
+    if (!element) {
+      return;
+    }
+    const update = () => {
+      element.dataset.scrolled = String(window.scrollY > 8);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", update);
+    };
+  }, []);
+
   useEffect(() => {
     if (!menuOpen) {
       return;
@@ -39,7 +56,7 @@ export function SiteHeader() {
   }, [menuOpen]);
 
   return (
-    <header className={styles.header}>
+    <header ref={header} className={styles.header}>
       <Container className={styles.bar}>
         <Link to="/" className={styles.logo}>
           <img
@@ -61,10 +78,13 @@ export function SiteHeader() {
             <PhoneIcon />
           </span>
           <span className={styles.phoneText}>
-            <span className={styles.phoneLabel}>Telefon</span>
+            <span className={styles.phoneLabel} aria-hidden="true">
+              Telefon
+            </span>
             <span className={styles.phoneNumber}>
               {site.phone.display}
-              <span className="visually-hidden"> anrufen</span>
+              {" "}
+              <span className="visually-hidden">anrufen</span>
             </span>
           </span>
         </a>

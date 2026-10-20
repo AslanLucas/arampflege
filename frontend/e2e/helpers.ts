@@ -8,10 +8,20 @@ export async function expectNoHorizontalScroll(page: Page) {
   expect(overflow).toBeLessThanOrEqual(0);
 }
 
-export async function expectNoAxeViolations(page: Page) {
-  const results = await new AxeBuilder({ page })
-    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])
-    .analyze();
+/** Runs axe on the page, or only inside `include` (a CSS selector) when given. */
+export async function expectNoAxeViolations(page: Page, include?: string) {
+  let builder = new AxeBuilder({ page }).withTags([
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa",
+    "best-practice",
+  ]);
+  if (include) {
+    builder = builder.include(include);
+  }
+  const results = await builder.analyze();
   expect(results.violations).toEqual([]);
 }
 

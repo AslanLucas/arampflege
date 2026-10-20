@@ -25,6 +25,10 @@
   --color-on-brand: #fbf8f5; /* text on brand surfaces */
   --color-on-brand-muted: #f3d9e2;
   --color-photo-placeholder: #e9d3da;
+  /* Over the top-area video: 80 % keeps ivory text at 7.2 : 1 even over pure white pixels */
+  --color-video-overlay: rgb(94 15 46 / 0.8);
+  /* Sticky header after scrolling: translucent off-white with blur */
+  --color-header-scrolled: rgb(251 248 245 / 0.88);
 
   /* Status and focus */
   --color-focus: #0b57d0;
@@ -91,6 +95,11 @@
   --focus-ring-width: 3px;
   --focus-ring-offset: 2px;
   --duration-feedback: 150ms;
+  --duration-hover: 250ms;
+  --duration-reveal: 700ms;
+  --duration-flip: 650ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-raised: 0 10px 30px -12px rgb(63 10 32 / 0.35);
 }
 
 @media (min-width: 60rem) {

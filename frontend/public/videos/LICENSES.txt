@@ -1,0 +1,13 @@
+Hintergrundvideos im oberen Bereich der Startseite
+==================================================
+
+Übergangsweise lizenzfreie Stimmungsbilder ohne Personen, bis eigene Aufnahmen
+des Pflegedienstes vorliegen (docs/OFFENE-PUNKTE.md). Gekürzt, ohne Ton und
+verkleinert (960 x 540).
+
+Quelle: Mixkit (https://mixkit.co), Lizenz: Mixkit Stock Video Free License
+(https://mixkit.co/license/#videoFree), geprüft am 2026-10-20.
+
+stimmung-1.mp4  Minimalist room with gray sofa            https://mixkit.co/free-stock-video/minimalist-room-with-gray-sofa-3110/
+stimmung-2.mp4  Rays of the sun passing through branches  https://mixkit.co/free-stock-video/rays-of-the-sun-passing-through-the-branches-of-a-51106/
+stimmung-3.mp4  Sun setting over a garden                 https://mixkit.co/free-stock-video/sun-setting-over-a-garden-4205/

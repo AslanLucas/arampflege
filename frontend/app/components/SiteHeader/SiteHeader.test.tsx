@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { createRoutesStub, Outlet } from "react-router";
 import { describe, expect, it } from "vitest";
+import { site } from "../../content/site";
 import { SiteHeader } from "./SiteHeader";
 
 function renderHeader() {
@@ -26,7 +27,7 @@ describe("SiteHeader", () => {
   it("shows the phone number as a call link", () => {
     renderHeader();
 
-    expect(screen.getByRole("link", { name: /anrufen$/ })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: `${site.phone.display} anrufen` })).toHaveAttribute(
       "href",
       expect.stringMatching(/^tel:/),
     );

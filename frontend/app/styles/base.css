@@ -10,6 +10,9 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   background-color: var(--color-bg);
+  /* Keep focused elements and jump targets clear of the sticky header and the mobile contact bar */
+  scroll-padding-top: 7rem;
+  scroll-padding-bottom: 5rem;
 }
 
 body {
@@ -155,6 +158,23 @@ textarea {
 :focus-visible {
   outline: var(--focus-ring-width) solid var(--color-focus);
   outline-offset: var(--focus-ring-offset);
+}
+
+/* Scroll reveal (useReveal): only set by JavaScript on elements below the fold */
+[data-reveal] {
+  transition:
+    opacity var(--duration-reveal) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--duration-reveal) var(--ease-out) var(--reveal-delay, 0ms);
+}
+
+[data-reveal="hidden"] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+}
+
+[data-reveal="shown"] {
+  opacity: 1;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

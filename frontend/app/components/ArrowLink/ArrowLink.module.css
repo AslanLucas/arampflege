@@ -8,9 +8,9 @@
 
 .link svg {
   flex-shrink: 0;
-  transition: transform var(--duration-feedback) ease-out;
+  transition: transform var(--duration-hover) var(--ease-out);
 }
 
 .link:hover svg {
-  transform: translateX(2px);
+  transform: translateX(5px);
 }

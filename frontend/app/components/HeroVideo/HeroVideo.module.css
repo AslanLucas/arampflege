@@ -1,0 +1,56 @@
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.still,
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video {
+  animation: fade-in 900ms var(--ease-out);
+}
+
+/* Brand-coloured layer in the logo tone; its opacity guarantees the text contrast */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-video-overlay);
+}
+
+.toggle {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--space-5);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-4);
+  border: var(--border-width) solid var(--color-on-brand-muted);
+  border-radius: var(--radius-control);
+  background-color: var(--color-brand-darkest);
+  color: var(--color-on-brand);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background-color var(--duration-feedback) ease-out;
+}
+
+.toggle:hover {
+  background-color: var(--color-brand-deep);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
