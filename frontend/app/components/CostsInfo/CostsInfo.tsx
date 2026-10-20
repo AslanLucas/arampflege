@@ -1,12 +1,6 @@
 import type { Costs } from "../../content/services";
+import { formatDate } from "../../utils/formatDate";
 import styles from "./CostsInfo.module.css";
-
-const dateFormat = new Intl.DateTimeFormat("de-DE", {
-  day: "2-digit",
-  month: "2-digit",
-  year: "numeric",
-  timeZone: "UTC",
-});
 
 type CostsInfoProps = {
   costs: Costs | null;
@@ -21,7 +15,7 @@ export function CostsInfo({ costs }: CostsInfoProps) {
     <>
       <p>{costs.text}</p>
       <p className={styles.source}>
-        Stand: <time dateTime={costs.checkedOn}>{dateFormat.format(new Date(costs.checkedOn))}</time>
+        Stand: <time dateTime={costs.checkedOn}>{formatDate(costs.checkedOn)}</time>
         {" · "}Quelle: {costs.source}
       </p>
     </>

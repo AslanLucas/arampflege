@@ -1,0 +1,24 @@
+.page > * {
+  max-width: 48rem;
+}
+
+.lead {
+  font-size: var(--font-size-h4);
+  line-height: 1.5;
+}
+
+.section {
+  margin-top: var(--space-8);
+}
+
+.section h2 {
+  font-size: var(--font-size-h3);
+}
+
+.action {
+  margin-top: var(--space-5);
+}
+
+.prompt {
+  margin-top: var(--space-8);
+}

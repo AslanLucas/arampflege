@@ -8,10 +8,12 @@ Das Backend ist bewusst schlank. Es stellt nur bereit, was die öffentliche Seit
 
 - Kontaktanfragen und Rückrufwünsche entgegennehmen
 - Kurzbewerbungen inklusive Lebenslauf-Upload entgegennehmen
-- Stellenanzeigen ausliefern
+- Stellenanzeigen ausliefern (vorerst nicht: Stellen sind Frontend-Inhalt in `frontend/app/content/jobs.ts`, siehe unten)
 - Benachrichtigung des Pflegedienstes per E-Mail
 
 Kein CMS, keine Benutzerverwaltung und kein Admin-Bereich ohne ausdrücklichen Auftrag.
+
+**Entscheidung Stellenanzeigen (2026-10-20):** Solange es keinen Pflegeweg (Admin-Bereich oder CMS) gibt, werden Stellen als Inhaltsdatei im Frontend gepflegt und vorgerendert. So sind sie ohne JavaScript sichtbar und für Suchmaschinen auffindbar. `GET /api/jobs` wird erst gebaut, wenn Stellen ohne Code-Änderung gepflegt werden sollen.
 
 ## Stack
 

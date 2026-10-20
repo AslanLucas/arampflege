@@ -1,4 +1,5 @@
 import { index, route, type RouteConfig } from "@react-router/dev/routes";
+import { jobs } from "./content/jobs";
 import { services } from "./content/services";
 
 export default [
@@ -10,6 +11,8 @@ export default [
   route("einsatzgebiet", "routes/einsatzgebiet.tsx"),
   route("ueber-uns", "routes/ueber-uns.tsx"),
   route("karriere", "routes/karriere.tsx"),
+  route("karriere/bewerben", "routes/bewerben.tsx"),
+  ...jobs.map((job) => route(`karriere/${job.slug}`, "routes/stelle.tsx", { id: `stelle-${job.slug}` })),
   route("kontakt", "routes/kontakt.tsx"),
   route("rueckruf", "routes/rueckruf.tsx"),
   route("impressum", "routes/impressum.tsx"),

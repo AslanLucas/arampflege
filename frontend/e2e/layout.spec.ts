@@ -8,6 +8,7 @@ const pages = [
   ...mainNavigation.map((item) => item.to),
   ...services.map(servicePath),
   callbackLink.to,
+  "/karriere/bewerben",
   ...legalNavigation.map((item) => item.to),
 ];
 

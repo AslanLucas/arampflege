@@ -34,6 +34,7 @@ Alle weiteren Befehle (Lint, Tests, Build) stehen in [AGENTS.md](AGENTS.md#befeh
 - **Backend-Tests** starten über Testcontainers eine eigene PostgreSQL. Docker muss dafür laufen.
 - **Migrationen** laufen in der Entwicklung beim Start der API automatisch (`Database:MigrateOnStartup`). Neue Migration: `cd backend && dotnet ef migrations add <Name> --project src/Pflege.Api --output-dir Infrastructure/Persistence/Migrations`.
 - **E-Mails** landen in der Entwicklung in Mailpit: http://localhost:8025. Dort ist sichtbar, was der Pflegedienst bei neuen Anfragen erhält.
+- **Lebensläufe** liegen lokal verschlüsselt unter `backend/.data/application-files` (nicht im Repository).
 - **Formulare** holen beim Öffnen ein Zeit-Token von `/api/form-tokens`. Wer schneller als 3 Sekunden absendet oder das versteckte Feld ausfüllt, bekommt eine Bestätigung, gespeichert wird aber nichts.
 - **Frontend-Build**: `npm run build` erzeugt statisches, vorgerendertes HTML in `frontend/build/client`. `npm run preview` liefert diesen Ordner lokal aus.
 - **API-Adresse im Frontend**: Standard ist `/api`. Abweichend über `VITE_API_BASE_URL` beim Build setzen.
@@ -48,5 +49,7 @@ Die API startet nur, wenn diese Werte gesetzt sind (Umgebungsvariablen, nie im R
 | `Smtp__Host`, `Smtp__Port`, `Smtp__Security`, `Smtp__UserName`, `Smtp__Password` | Mailversand (`Security`: `StartTls` oder `SslOnConnect`) |
 | `Smtp__From`, `Smtp__To` | Absender und Empfangspostfach des Pflegedienstes |
 | `Retention__RequestRetentionDays` | Löschfrist für Anfragen in Tagen |
+| `Retention__ApplicationRetentionDays` | Löschfrist für Bewerbungen und Lebensläufe in Tagen |
+| `Storage__ApplicationFilesPath` | Verzeichnis für hochgeladene Lebensläufe, außerhalb des Web-Roots |
 
-Außerdem: `DataProtection__KeysPath` auf ein dauerhaftes Verzeichnis setzen, damit Formular-Tokens einen Neustart überstehen. Läuft die API hinter einem Reverse Proxy, dessen IP unter `ForwardedHeaders__KnownProxies__0` eintragen, sonst teilen sich alle Besucher ein Rate Limit.
+Außerdem: `DataProtection__KeysPath` auf ein dauerhaftes, gesichertes Verzeichnis setzen. Davon hängen nicht nur die Formular-Tokens ab: Mit diesen Schlüsseln sind die **Lebensläufe verschlüsselt**. Geht der Schlüsselbund verloren, sind die Dateien nicht mehr lesbar; er gehört deshalb ins Backup, aber getrennt von den Dateien selbst. Läuft die API hinter einem Reverse Proxy, dessen IP unter `ForwardedHeaders__KnownProxies__0` eintragen, sonst teilen sich alle Besucher ein Rate Limit.
