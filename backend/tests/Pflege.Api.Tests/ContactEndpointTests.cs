@@ -42,6 +42,31 @@ public sealed class ContactEndpointTests(ApiFactory factory)
     }
 
     [Fact]
+    public async Task Accepts_empty_optional_fields_as_browsers_send_them()
+    {
+        using var client = factory.CreateClient();
+        var name = $"Test {Guid.NewGuid()}";
+        var token = await factory.GetValidFormTokenAsync(client);
+
+        var response = await client.PostAsJsonAsync(Path, new
+        {
+            name,
+            phone = "0521 123456",
+            email = "",
+            message = "Bitte rufen Sie zurück.",
+            consent = true,
+            formToken = token,
+            website = "",
+        }, TestContext.Current.CancellationToken);
+
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        await using var scope = factory.Services.CreateAsyncScope();
+        var stored = await scope.ServiceProvider.GetRequiredService<AppDbContext>().ContactRequests
+            .SingleAsync(request => request.Name == name, TestContext.Current.CancellationToken);
+        Assert.Null(stored.Email);
+    }
+
+    [Fact]
     public async Task Requires_phone_or_email()
     {
         using var client = factory.CreateClient();

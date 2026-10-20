@@ -19,7 +19,7 @@ public sealed class CreateApplicationRequest : IFormSubmission
     [RegularExpression(FormMessages.PhonePattern, ErrorMessage = FormMessages.PhoneInvalid)]
     public string? Phone { get; set; }
 
-    [EmailAddress(ErrorMessage = FormMessages.EmailInvalid)]
+    [OptionalEmailAddress(ErrorMessage = FormMessages.EmailInvalid)]
     [MaxLength(254, ErrorMessage = FormMessages.EmailInvalid)]
     public string? Email { get; set; }
 

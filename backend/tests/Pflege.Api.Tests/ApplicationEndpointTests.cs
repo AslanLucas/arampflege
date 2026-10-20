@@ -106,6 +106,26 @@ public sealed class ApplicationEndpointTests(ApiFactory factory)
         Assert.Null(stored.ResumeContentType);
     }
 
+    [Fact]
+    public async Task Accepts_empty_optional_fields_as_browsers_send_them()
+    {
+        using var client = factory.CreateClient();
+        var name = $"Bewerbung {Guid.NewGuid()}";
+        var token = await factory.GetValidFormTokenAsync(client);
+        using var form = Form(token, name);
+        form.Add(new StringContent(""), "email");
+        form.Add(new StringContent(""), "message");
+        form.Add(new StringContent(""), "website");
+
+        var response = await client.PostAsync(Path, form, TestContext.Current.CancellationToken);
+
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        var stored = await FindAsync(name);
+        Assert.NotNull(stored);
+        Assert.Null(stored.Email);
+        Assert.Null(stored.Message);
+    }
+
     public static TheoryData<byte[], string, string> FakedFiles => new()
     {
         { "MZ\u0090\0\u0003\0\0\0"u8.ToArray(), "lebenslauf.pdf", "application/pdf" },

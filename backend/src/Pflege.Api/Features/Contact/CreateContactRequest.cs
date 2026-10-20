@@ -9,7 +9,7 @@ public sealed record CreateContactRequest(
     string? Name,
     [RegularExpression(FormMessages.PhonePattern, ErrorMessage = FormMessages.PhoneInvalid)]
     string? Phone,
-    [EmailAddress(ErrorMessage = FormMessages.EmailInvalid)]
+    [OptionalEmailAddress(ErrorMessage = FormMessages.EmailInvalid)]
     [MaxLength(254, ErrorMessage = FormMessages.EmailInvalid)]
     string? Email,
     [Required(ErrorMessage = FormMessages.MessageRequired)]
