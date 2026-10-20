@@ -6,6 +6,8 @@ const baseURL = `http://127.0.0.1:${String(port)}`;
 export default defineConfig({
   testDir: "e2e",
   fullyParallel: true,
+  // Video playback and animations are CPU-heavy; full parallelism caused timeouts under load.
+  workers: process.env.CI ? 2 : "50%",
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
   reporter: process.env.CI ? "github" : "list",
