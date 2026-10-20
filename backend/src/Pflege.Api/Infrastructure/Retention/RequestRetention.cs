@@ -2,11 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Pflege.Api.Infrastructure.BackgroundJobs;
 using Pflege.Api.Infrastructure.Persistence;
+using Pflege.Api.Infrastructure.Storage;
 
 namespace Pflege.Api.Infrastructure.Retention;
 
 public sealed class RequestRetention(
     AppDbContext db,
+    EncryptedFileStore files,
     IOptions<RetentionOptions> options,
     TimeProvider time,
     ILogger<RequestRetention> logger) : IPeriodicJob
@@ -17,15 +19,31 @@ public sealed class RequestRetention(
 
     public async Task<int> PurgeExpiredAsync(CancellationToken cancellationToken)
     {
-        var cutoff = time.GetUtcNow().AddDays(-options.Value.RequestRetentionDays);
+        var settings = options.Value;
+        var now = time.GetUtcNow();
+        var requestCutoff = now.AddDays(-settings.RequestRetentionDays);
+        var applicationCutoff = now.AddDays(-settings.ApplicationRetentionDays);
 
         var deleted =
-            await db.CallbackRequests.Where(request => request.CreatedAt < cutoff).ExecuteDeleteAsync(cancellationToken) +
-            await db.ContactRequests.Where(request => request.CreatedAt < cutoff).ExecuteDeleteAsync(cancellationToken);
+            await db.CallbackRequests.Where(request => request.CreatedAt < requestCutoff).ExecuteDeleteAsync(cancellationToken) +
+            await db.ContactRequests.Where(request => request.CreatedAt < requestCutoff).ExecuteDeleteAsync(cancellationToken);
+
+        // Files first: a row without its file is harmless, a file without its row would be forgotten.
+        var expiredFiles = await db.JobApplications
+            .Where(application => application.CreatedAt < applicationCutoff && application.ResumeFileId != null)
+            .Select(application => application.ResumeFileId!.Value)
+            .ToListAsync(cancellationToken);
+        foreach (var fileId in expiredFiles)
+        {
+            files.Delete(fileId);
+        }
+        deleted += await db.JobApplications
+            .Where(application => application.CreatedAt < applicationCutoff)
+            .ExecuteDeleteAsync(cancellationToken);
 
         if (deleted > 0)
         {
-            logger.LogInformation("Deleted {Count} requests older than {Days} days", deleted, options.Value.RequestRetentionDays);
+            logger.LogInformation("Deleted {Count} expired requests and applications", deleted);
         }
         return deleted;
     }

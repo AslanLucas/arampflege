@@ -1,6 +1,8 @@
+using Pflege.Api.Infrastructure.Notifications;
+
 namespace Pflege.Api.Features.Callback;
 
-public sealed class CallbackRequest
+public sealed class CallbackRequest : INotifiableRequest
 {
     public Guid Id { get; init; } = Guid.CreateVersion7();
     public required string Name { get; init; }

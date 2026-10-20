@@ -22,6 +22,86 @@ namespace Pflege.Api.Infrastructure.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Pflege.Api.Features.Applications.JobApplication", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<DateTimeOffset>("ConsentGivenAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("consent_given_at");
+
+                    b.Property<string>("ConsentVersion")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("consent_version");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(254)
+                        .HasColumnType("character varying(254)")
+                        .HasColumnName("email");
+
+                    b.Property<string>("Message")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)")
+                        .HasColumnName("message");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("name");
+
+                    b.Property<DateTimeOffset?>("NotifiedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("notified_at");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)")
+                        .HasColumnName("phone");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)")
+                        .HasColumnName("position");
+
+                    b.Property<string>("Qualification")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)")
+                        .HasColumnName("qualification");
+
+                    b.Property<string>("ResumeContentType")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("resume_content_type");
+
+                    b.Property<Guid?>("ResumeFileId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("resume_file_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_job_applications");
+
+                    b.HasIndex("CreatedAt")
+                        .HasDatabaseName("ix_job_applications_created_at");
+
+                    b.HasIndex("NotifiedAt")
+                        .HasDatabaseName("ix_job_applications_notified_at");
+
+                    b.ToTable("job_applications", (string)null);
+                });
+
             modelBuilder.Entity("Pflege.Api.Features.Callback.CallbackRequest", b =>
                 {
                     b.Property<Guid>("Id")

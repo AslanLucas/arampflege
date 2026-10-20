@@ -12,4 +12,11 @@ public sealed class RetentionOptions
     /// </summary>
     [Range(1, 3650)]
     public int RequestRetentionDays { get; set; }
+
+    /// <summary>
+    /// Days after which job applications and their documents are deleted. Counted from receipt
+    /// until there is a way to close an application; also has no default on purpose.
+    /// </summary>
+    [Range(1, 3650)]
+    public int ApplicationRetentionDays { get; set; }
 }

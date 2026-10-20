@@ -24,39 +24,38 @@ public sealed class RequestNotifier(
 
     public async Task<int> NotifyPendingAsync(CancellationToken cancellationToken)
     {
-        var sent = 0;
-
-        var callbacks = await db.CallbackRequests
-            .Where(request => request.NotifiedAt == null)
-            .OrderBy(request => request.CreatedAt)
-            .Take(BatchSize)
-            .ToListAsync(cancellationToken);
-        foreach (var request in callbacks)
-        {
-            await mailer.SendAsync("Neue Rückrufbitte über die Webseite", Body("Rückrufbitte", request.Id), cancellationToken);
-            request.NotifiedAt = time.GetUtcNow();
-            await db.SaveChangesAsync(cancellationToken);
-            sent++;
-        }
-
-        var contacts = await db.ContactRequests
-            .Where(request => request.NotifiedAt == null)
-            .OrderBy(request => request.CreatedAt)
-            .Take(BatchSize)
-            .ToListAsync(cancellationToken);
-        foreach (var request in contacts)
-        {
-            await mailer.SendAsync("Neue Kontaktanfrage über die Webseite", Body("Kontaktanfrage", request.Id), cancellationToken);
-            request.NotifiedAt = time.GetUtcNow();
-            await db.SaveChangesAsync(cancellationToken);
-            sent++;
-        }
+        var sent =
+            await NotifyAsync(db.CallbackRequests, "Neue Rückrufbitte über die Webseite", "Rückrufbitte", cancellationToken) +
+            await NotifyAsync(db.ContactRequests, "Neue Kontaktanfrage über die Webseite", "Kontaktanfrage", cancellationToken) +
+            await NotifyAsync(db.JobApplications, "Neue Bewerbung über die Webseite", "Bewerbung", cancellationToken);
 
         if (sent > 0)
         {
             logger.LogInformation("Sent {Count} request notifications", sent);
         }
         return sent;
+    }
+
+    private async Task<int> NotifyAsync<TRequest>(
+        DbSet<TRequest> requests,
+        string subject,
+        string kind,
+        CancellationToken cancellationToken)
+        where TRequest : class, INotifiableRequest
+    {
+        var pending = await requests
+            .Where(request => request.NotifiedAt == null)
+            .OrderBy(request => request.CreatedAt)
+            .Take(BatchSize)
+            .ToListAsync(cancellationToken);
+
+        foreach (var request in pending)
+        {
+            await mailer.SendAsync(subject, Body(kind, request.Id), cancellationToken);
+            request.NotifiedAt = time.GetUtcNow();
+            await db.SaveChangesAsync(cancellationToken);
+        }
+        return pending.Count;
     }
 
     private static string Body(string kind, Guid id) =>

@@ -19,7 +19,11 @@ public class ApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
 
     public FakeNotificationMailer Mailer { get; } = new();
 
+    public string FilesPath { get; } = Path.Combine(Path.GetTempPath(), $"pflege-tests-{Guid.NewGuid():N}");
+
     protected virtual int FormPermitLimit => 1000;
+
+    public int StoredFileCount => Directory.Exists(FilesPath) ? Directory.GetFiles(FilesPath).Length : 0;
 
     public async ValueTask InitializeAsync() => await _database.StartAsync();
 
@@ -27,6 +31,10 @@ public class ApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
     {
         await _database.DisposeAsync();
         await base.DisposeAsync();
+        if (Directory.Exists(FilesPath))
+        {
+            Directory.Delete(FilesPath, recursive: true);
+        }
     }
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
@@ -39,6 +47,8 @@ public class ApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
                 ["Database:MigrateOnStartup"] = "true",
                 ["BackgroundJobs:Enabled"] = "false",
                 ["Retention:RequestRetentionDays"] = "30",
+                ["Retention:ApplicationRetentionDays"] = "60",
+                ["Storage:ApplicationFilesPath"] = FilesPath,
                 ["RateLimiting:FormSubmissions:PermitLimit"] = FormPermitLimit.ToString(System.Globalization.CultureInfo.InvariantCulture),
                 ["Smtp:Host"] = "localhost",
                 ["Smtp:From"] = "webseite@pflegedienst.test",

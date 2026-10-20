@@ -16,6 +16,7 @@ public sealed class RateLimitTests(RateLimitedApiFactory factory) : IClassFixtur
     [Theory]
     [InlineData("/api/callback-requests")]
     [InlineData("/api/contact-requests")]
+    [InlineData("/api/applications")]
     public async Task Rejects_too_many_submissions_with_a_german_problem(string path)
     {
         var cancellationToken = TestContext.Current.CancellationToken;
@@ -24,7 +25,10 @@ public sealed class RateLimitTests(RateLimitedApiFactory factory) : IClassFixtur
         HttpResponseMessage? response = null;
         for (var attempt = 0; attempt <= RateLimitedApiFactory.PermitLimit; attempt++)
         {
-            response = await client.PostAsJsonAsync(path, new { }, cancellationToken);
+            // The application endpoint only accepts multipart form data; routing rejects JSON before rate limiting.
+            response = path == "/api/applications"
+                ? await client.PostAsync(path, new MultipartFormDataContent(), cancellationToken)
+                : await client.PostAsJsonAsync(path, new { }, cancellationToken);
         }
 
         Assert.Equal(HttpStatusCode.TooManyRequests, response!.StatusCode);

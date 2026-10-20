@@ -23,3 +23,6 @@ TestResults/
 .vs/
 .idea/
 .DS_Store
+
+# Local application files (encrypted uploads in development)
+backend/.data/

@@ -63,4 +63,29 @@ public sealed class RequestNotifierTests(ApiFactory factory)
         await notifier.NotifyPendingAsync(cancellationToken);
         Assert.Equal(sentBefore, factory.Mailer.Sent.Count);
     }
+
+    [Fact]
+    public async Task Notifies_about_applications_without_name_or_file_name()
+    {
+        var cancellationToken = TestContext.Current.CancellationToken;
+        using var client = factory.CreateClient();
+        var name = $"Bewerberin {Guid.NewGuid()}";
+        var token = await factory.GetValidFormTokenAsync(client);
+        await client.PostAsync(
+            "/api/applications",
+            ApplicationEndpointTests.Form(token, name, (ApplicationEndpointTests.Pdf, "Lebenslauf-Muster.pdf", "application/pdf")),
+            cancellationToken);
+
+        await using var scope = factory.Services.CreateAsyncScope();
+        await scope.ServiceProvider.GetRequiredService<RequestNotifier>().NotifyPendingAsync(cancellationToken);
+
+        var application = await scope.ServiceProvider.GetRequiredService<AppDbContext>().JobApplications
+            .SingleAsync(candidate => candidate.Name == name, cancellationToken);
+        Assert.NotNull(application.NotifiedAt);
+        var mail = Assert.Single(factory.Mailer.Sent, sent => sent.Body.Contains(application.Id.ToString(), StringComparison.Ordinal));
+        Assert.Equal("Neue Bewerbung über die Webseite", mail.Subject);
+        Assert.DoesNotContain("Bewerberin", mail.Body, StringComparison.Ordinal);
+        Assert.DoesNotContain("Lebenslauf-Muster", mail.Body, StringComparison.Ordinal);
+        Assert.DoesNotContain("0521", mail.Body, StringComparison.Ordinal);
+    }
 }

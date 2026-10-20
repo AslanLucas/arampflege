@@ -3,6 +3,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
+using Pflege.Api.Features.Applications;
 using Pflege.Api.Features.Callback;
 using Pflege.Api.Features.Contact;
 using Pflege.Api.Features.Forms;
@@ -12,6 +13,7 @@ using Pflege.Api.Infrastructure.Http;
 using Pflege.Api.Infrastructure.Notifications;
 using Pflege.Api.Infrastructure.Persistence;
 using Pflege.Api.Infrastructure.Retention;
+using Pflege.Api.Infrastructure.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -70,6 +72,20 @@ builder.Services.AddOptions<RetentionOptions>()
     .BindConfiguration(RetentionOptions.SectionName)
     .ValidateDataAnnotations()
     .ValidateOnStart();
+builder.Services.AddOptions<StorageOptions>()
+    .BindConfiguration(StorageOptions.SectionName)
+    .PostConfigure<IHostEnvironment>((options, environment) =>
+    {
+        // Relative paths are resolved against the project, not the current working directory.
+        if (options.ApplicationFilesPath.Length > 0 && !Path.IsPathRooted(options.ApplicationFilesPath))
+        {
+            options.ApplicationFilesPath = Path.GetFullPath(
+                Path.Combine(environment.ContentRootPath, options.ApplicationFilesPath));
+        }
+    })
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
+builder.Services.AddSingleton<EncryptedFileStore>();
 builder.Services.Configure<BackgroundJobOptions>(configuration.GetSection(BackgroundJobOptions.SectionName));
 
 builder.Services.AddScoped<INotificationMailer, SmtpNotificationMailer>();
@@ -87,7 +103,13 @@ if (configuration.GetValue<bool>("Database:MigrateOnStartup"))
 }
 
 app.UseForwardedHeaders();
-app.UseExceptionHandler();
+app.UseExceptionHandler(new ExceptionHandlerOptions
+{
+    // Development throws on malformed requests (ThrowOnBadRequest); keep them client errors there too.
+    StatusCodeSelector = exception => exception is BadHttpRequestException badRequest
+        ? badRequest.StatusCode
+        : StatusCodes.Status500InternalServerError,
+});
 app.UseStatusCodePages();
 if (!app.Environment.IsDevelopment())
 {
@@ -105,5 +127,6 @@ app.MapHealthChecks("/api/health");
 app.MapFormEndpoints();
 app.MapCallbackEndpoints();
 app.MapContactEndpoints();
+app.MapApplicationEndpoints();
 
 await app.RunAsync();

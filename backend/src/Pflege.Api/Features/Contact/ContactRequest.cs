@@ -1,6 +1,8 @@
+using Pflege.Api.Infrastructure.Notifications;
+
 namespace Pflege.Api.Features.Contact;
 
-public sealed class ContactRequest
+public sealed class ContactRequest : INotifiableRequest
 {
     public Guid Id { get; init; } = Guid.CreateVersion7();
     public required string Name { get; init; }
