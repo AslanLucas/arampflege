@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { StoreProvider } from "../../store/StoreProvider";
 import { formTokenHandler, jsonResponse, mockApi } from "../../test/mockApi";
 import { messages } from "../forms/messages";
-import { ContactForm } from "./ContactForm";
+import { ContactForm, topicOptions } from "./ContactForm";
 
 const POST = "POST /api/contact-requests";
 
@@ -76,10 +76,33 @@ describe("ContactForm", () => {
       name: "Erika Muster",
       phone: "",
       email: "erika@beispiel.de",
+      topic: "",
       message: "Bitte rufen Sie zurück.",
       consent: true,
       formToken: "test-token",
     });
+  });
+
+  it("offers every service as an optional topic and sends the chosen one", async () => {
+    const api = mockApi({ ...formTokenHandler, [POST]: () => jsonResponse(201) });
+    await renderForm();
+    const topic = screen.getByRole("combobox", { name: /Wie können wir Ihnen helfen\?/ });
+    expect(topic).toHaveValue("");
+    expect(screen.getAllByRole("option").map((option) => option.textContent)).toEqual([
+      "Bitte wählen",
+      ...topicOptions.map((option) => option.label),
+    ]);
+    expect(topicOptions.at(-1)).toEqual({ value: "sonstiges", label: "Etwas anderes" });
+
+    fireEvent.change(screen.getByLabelText(/Ihr Name/), { target: { value: "Erika Muster" } });
+    fireEvent.change(screen.getByLabelText(/Telefonnummer/), { target: { value: "0521 123456" } });
+    fireEvent.change(topic, { target: { value: "behandlungspflege" } });
+    fireEvent.change(screen.getByLabelText(/Ihre Nachricht/), { target: { value: "Hallo" } });
+    fireEvent.click(screen.getByRole("checkbox"));
+    submit();
+
+    await screen.findByRole("heading", { name: "Danke, wir haben Ihre Nachricht erhalten" });
+    expect(api.calls.find((call) => call.route === POST)?.body).toMatchObject({ topic: "behandlungspflege" });
   });
 
   it("asks to reload when the server reports an expired form", async () => {

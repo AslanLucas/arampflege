@@ -210,6 +210,11 @@ namespace Pflege.Api.Infrastructure.Persistence.Migrations
                         .HasColumnType("character varying(30)")
                         .HasColumnName("phone");
 
+                    b.Property<string>("Topic")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("topic");
+
                     b.HasKey("Id")
                         .HasName("pk_contact_requests");
 

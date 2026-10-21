@@ -66,6 +66,53 @@ public sealed class ContactEndpointTests(ApiFactory factory)
         Assert.Null(stored.Email);
     }
 
+    [Theory]
+    [InlineData("behandlungspflege", "behandlungspflege")]
+    [InlineData("", null)]
+    [InlineData(null, null)]
+    public async Task Stores_the_optional_topic(string? topic, string? expected)
+    {
+        using var client = factory.CreateClient();
+        var name = $"Test {Guid.NewGuid()}";
+        var token = await factory.GetValidFormTokenAsync(client);
+
+        var response = await client.PostAsJsonAsync(Path, new
+        {
+            name,
+            phone = "0521 123456",
+            topic,
+            message = "Mein Vater braucht Hilfe bei den Medikamenten.",
+            consent = true,
+            formToken = token,
+        }, TestContext.Current.CancellationToken);
+
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        await using var scope = factory.Services.CreateAsyncScope();
+        var stored = await scope.ServiceProvider.GetRequiredService<AppDbContext>().ContactRequests
+            .SingleAsync(request => request.Name == name, TestContext.Current.CancellationToken);
+        Assert.Equal(expected, stored.Topic);
+    }
+
+    [Fact]
+    public async Task Rejects_an_unknown_topic()
+    {
+        using var client = factory.CreateClient();
+        var token = await factory.GetValidFormTokenAsync(client);
+
+        var response = await client.PostAsJsonAsync(Path, new
+        {
+            name = "Test",
+            phone = "0521 123456",
+            topic = "intensivpflege",
+            message = "Bitte melden Sie sich.",
+            consent = true,
+            formToken = token,
+        }, TestContext.Current.CancellationToken);
+
+        var errors = await ProblemDetailsAssertions.ReadFieldErrorsAsync(response);
+        Assert.Equal([FormMessages.TopicInvalid], errors["topic"]);
+    }
+
     [Fact]
     public async Task Requires_phone_or_email()
     {

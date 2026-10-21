@@ -12,6 +12,19 @@ public sealed record CreateContactRequest(
     [OptionalEmailAddress(ErrorMessage = FormMessages.EmailInvalid)]
     [MaxLength(254, ErrorMessage = FormMessages.EmailInvalid)]
     string? Email,
+    // Optional; the values mirror the service slugs in frontend/app/content/services.ts.
+    [AllowedValues(
+        null,
+        "",
+        "grundpflege",
+        "behandlungspflege",
+        "verhinderungspflege",
+        "entlastung-und-hauswirtschaft",
+        "beratungsbesuche",
+        "pflegeberatung",
+        "sonstiges",
+        ErrorMessage = FormMessages.TopicInvalid)]
+    string? Topic,
     [Required(ErrorMessage = FormMessages.MessageRequired)]
     [MaxLength(2000, ErrorMessage = FormMessages.MessageTooLong)]
     string? Message,

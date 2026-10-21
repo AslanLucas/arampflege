@@ -13,6 +13,7 @@ type TextFieldProps = {
   autoComplete?: HTMLInputAutoCompleteAttribute;
   hint?: ReactNode;
   error?: string;
+  describedBy?: string;
   maxLength?: number;
 };
 
@@ -27,10 +28,18 @@ export function TextField({
   autoComplete,
   hint,
   error,
+  describedBy,
   maxLength,
 }: TextFieldProps) {
   return (
-    <FieldShell id={id} label={label} requirement={requirement} hint={hint} error={error}>
+    <FieldShell
+      id={id}
+      label={label}
+      requirement={requirement}
+      hint={hint}
+      error={error}
+      describedBy={describedBy}
+    >
       {(control) => (
         <input
           {...control}

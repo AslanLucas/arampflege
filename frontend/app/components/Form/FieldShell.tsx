@@ -15,6 +15,8 @@ type FieldShellProps = {
   requirement: Requirement;
   hint?: ReactNode;
   error?: string;
+  /** Id of a description outside the field, e.g. a hint shared by a group of fields. */
+  describedBy?: string;
   children: (control: ControlProps) => ReactNode;
 };
 
@@ -37,10 +39,10 @@ export function ErrorMessage({ id, error }: { id: string; error?: string }) {
 }
 
 /** Label above the control, then hint and error, all linked via aria-describedby. */
-export function FieldShell({ id, label, requirement, hint, error, children }: FieldShellProps) {
+export function FieldShell({ id, label, requirement, hint, error, describedBy, children }: FieldShellProps) {
   const hintId = hint ? `${id}-hinweis` : undefined;
   const errorId = error ? `${id}-fehler` : undefined;
-  const describedBy = [errorId, hintId].filter(Boolean).join(" ") || undefined;
+  const descriptionIds = [errorId, hintId, describedBy].filter(Boolean).join(" ") || undefined;
 
   return (
     <div className={styles.field} data-invalid={Boolean(error)}>
@@ -54,7 +56,7 @@ export function FieldShell({ id, label, requirement, hint, error, children }: Fi
         </p>
       )}
       <ErrorMessage id={`${id}-fehler`} error={error} />
-      {children({ id, "aria-invalid": Boolean(error), "aria-describedby": describedBy })}
+      {children({ id, "aria-invalid": Boolean(error), "aria-describedby": descriptionIds })}
     </div>
   );
 }

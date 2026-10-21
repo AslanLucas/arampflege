@@ -30,6 +30,7 @@
 }
 
 .input,
+.select,
 .textarea {
   width: 100%;
   min-height: 3rem;
@@ -44,7 +45,26 @@
   resize: vertical;
 }
 
+/* Native select with a drawn chevron; the text stays clear of it */
+.select {
+  padding-right: var(--space-7);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23241a1e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right var(--space-3) center;
+  background-repeat: no-repeat;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Two fields side by side once there is room for both */
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: var(--space-6) var(--space-4);
+  align-items: start;
+}
+
 .input:hover,
+.select:hover,
 .textarea:hover {
   border-color: var(--color-text-muted);
 }
@@ -57,6 +77,7 @@
 }
 
 .field[data-invalid="true"] .input,
+.field[data-invalid="true"] .select,
 .field[data-invalid="true"] .textarea {
   border: 2px solid var(--color-error);
 }

@@ -4,6 +4,7 @@ export type ContactRequestBody = {
   name: string;
   phone: string;
   email: string;
+  topic: string;
   message: string;
   consent: boolean;
   formToken: string;

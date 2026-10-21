@@ -32,6 +32,7 @@ public static class ContactEndpoints
                 Name = request.Name!.Trim(),
                 Phone = NullIfEmpty(request.Phone),
                 Email = NullIfEmpty(request.Email),
+                Topic = NullIfEmpty(request.Topic),
                 Message = request.Message!.Trim(),
                 ConsentVersion = Consent.CurrentVersion,
                 ConsentGivenAt = now,

@@ -3,9 +3,11 @@ import { Checkbox } from "../../components/Form/Checkbox";
 import { ErrorSummary, type SummaryEntry } from "../../components/Form/ErrorSummary";
 import styles from "../../components/Form/Form.module.css";
 import { Honeypot } from "../../components/Form/Honeypot";
+import { Select } from "../../components/Form/Select";
 import { SubmitButton } from "../../components/Form/SubmitButton";
 import { TextArea } from "../../components/Form/TextArea";
 import { TextField } from "../../components/Form/TextField";
+import { services } from "../../content/services";
 import { site } from "../../content/site";
 import { useHydrated } from "../../hooks/useHydrated";
 import { useGetFormTokenQuery } from "../forms/formApi";
@@ -19,16 +21,26 @@ const fieldIds = {
   name: "kontakt-name",
   phone: "kontakt-telefon",
   email: "kontakt-email",
+  topic: "kontakt-thema",
   message: "kontakt-nachricht",
   consent: "kontakt-einwilligung",
 } as const;
 
 type Field = keyof typeof fieldIds;
 
+const REACH_HINT_ID = "kontakt-erreichbarkeit-hinweis";
+
+/** Values match the allowed topics in the backend's CreateContactRequest. */
+export const topicOptions = [
+  ...services.map((service) => ({ value: service.slug, label: service.name })),
+  { value: "sonstiges", label: "Etwas anderes" },
+];
+
 const initialValues = {
   name: "",
   phone: "",
   email: "",
+  topic: "",
   message: "",
   consent: false,
   website: "",
@@ -95,6 +107,7 @@ export function ContactForm() {
         name: values.name.trim(),
         phone: values.phone.trim(),
         email: values.email.trim(),
+        topic: values.topic,
         message: values.message.trim(),
         consent: values.consent,
         website: values.website,
@@ -116,7 +129,7 @@ export function ContactForm() {
         <h2 ref={confirmationRef} tabIndex={-1}>
           Danke, wir haben Ihre Nachricht erhalten
         </h2>
-        <p>Wir melden uns innerhalb von [[INHALT FEHLT: Antwortfrist]].</p>
+        <p>Wir melden uns innerhalb von {site.replyTime}.</p>
         <p>
           Wenn es dringend ist, rufen Sie uns direkt an: <a href={site.phone.href}>{site.phone.display}</a>
         </p>
@@ -158,33 +171,55 @@ export function ContactForm() {
           setValue("name", value);
         }}
       />
-      <TextField
-        id={fieldIds.phone}
-        name="phone"
-        label="Telefonnummer"
-        requirement="none"
-        hint="Telefonnummer oder E-Mail-Adresse genügt."
-        type="tel"
-        autoComplete="tel"
-        maxLength={30}
-        value={values.phone}
-        error={fieldErrors.phone}
+      <fieldset className={styles.fieldset}>
+        <legend className={styles.label}>Wie erreichen wir Sie?</legend>
+        <p id={REACH_HINT_ID} className={styles.hint}>
+          Telefonnummer oder E-Mail-Adresse genügt.
+        </p>
+        <div className={styles.row}>
+          <TextField
+            id={fieldIds.phone}
+            name="phone"
+            label="Telefonnummer"
+            requirement="none"
+            describedBy={REACH_HINT_ID}
+            type="tel"
+            autoComplete="tel"
+            maxLength={30}
+            value={values.phone}
+            error={fieldErrors.phone}
+            onChange={(value) => {
+              setValue("phone", value);
+            }}
+          />
+          <TextField
+            id={fieldIds.email}
+            name="email"
+            label="E-Mail-Adresse"
+            requirement="none"
+            describedBy={REACH_HINT_ID}
+            type="email"
+            autoComplete="email"
+            maxLength={254}
+            value={values.email}
+            error={fieldErrors.email}
+            onChange={(value) => {
+              setValue("email", value);
+            }}
+          />
+        </div>
+      </fieldset>
+      <Select
+        id={fieldIds.topic}
+        name="topic"
+        label="Wie können wir Ihnen helfen?"
+        requirement="optional"
+        placeholder="Bitte wählen"
+        options={topicOptions}
+        value={values.topic}
+        error={fieldErrors.topic}
         onChange={(value) => {
-          setValue("phone", value);
-        }}
-      />
-      <TextField
-        id={fieldIds.email}
-        name="email"
-        label="E-Mail-Adresse"
-        requirement="none"
-        type="email"
-        autoComplete="email"
-        maxLength={254}
-        value={values.email}
-        error={fieldErrors.email}
-        onChange={(value) => {
-          setValue("email", value);
+          setValue("topic", value);
         }}
       />
       <TextArea

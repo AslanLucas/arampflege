@@ -12,6 +12,7 @@ public static class FormMessages
     public const string LocationRequired = "Bitte geben Sie Ihre Postleitzahl oder Ihren Ort an.";
     public const string LocationTooLong = "Bitte kürzen Sie die Angabe auf höchstens 100 Zeichen.";
     public const string PreferredTimeRequired = "Bitte wählen Sie, wann wir Sie anrufen dürfen.";
+    public const string TopicInvalid = "Bitte wählen Sie ein Thema aus der Liste.";
     public const string MessageRequired = "Bitte schreiben Sie uns kurz, worum es geht.";
     public const string MessageTooLong = "Bitte kürzen Sie Ihre Nachricht auf höchstens 2000 Zeichen.";
     public const string PositionRequired = "Bitte wählen Sie eine Stelle oder „Initiativbewerbung“.";

@@ -17,11 +17,20 @@ export const site = {
   address: {
     street: "Ochtruper Straße 83",
     postalCodeAndCity: "48599 Gronau (Westfalen)",
+    /** Opens the location in OpenStreetMap; only requested when the visitor clicks. */
+    mapUrl: "https://www.openstreetmap.org/?mlat=52.20777&mlon=7.03951#map=17/52.20777/7.03951",
   },
   register: {
     court: "Amtsgericht Coesfeld",
     number: "HRB 24086",
   },
   officeHours: "[[INHALT FEHLT: Bürozeiten]]",
+  /** Office hours per day group, for the table on the contact panel. */
+  officeHoursByDay: [
+    { days: "Montag bis Freitag", hours: "[[INHALT FEHLT]]" },
+    { days: "Samstag", hours: "[[INHALT FEHLT]]" },
+    { days: "Sonntag und Feiertage", hours: "[[INHALT FEHLT]]" },
+  ],
   onCallService: "[[INHALT FEHLT: Rufbereitschaft]]",
+  replyTime: "[[INHALT FEHLT: Antwortfrist]]",
 } as const;

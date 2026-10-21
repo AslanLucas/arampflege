@@ -11,6 +11,7 @@ export const messages = {
   locationRequired: "Bitte geben Sie Ihre Postleitzahl oder Ihren Ort an.",
   locationTooLong: "Bitte kürzen Sie die Angabe auf höchstens 100 Zeichen.",
   preferredTimeRequired: "Bitte wählen Sie, wann wir Sie anrufen dürfen.",
+  topicInvalid: "Bitte wählen Sie ein Thema aus der Liste.",
   messageRequired: "Bitte schreiben Sie uns kurz, worum es geht.",
   messageTooLong: "Bitte kürzen Sie Ihre Nachricht auf höchstens 2000 Zeichen.",
   positionRequired: "Bitte wählen Sie eine Stelle oder „Initiativbewerbung“.",
