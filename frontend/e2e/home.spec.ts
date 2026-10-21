@@ -42,18 +42,18 @@ test.describe("Home page", () => {
       return {
         body: getComputedStyle(document.body).fontFamily,
         heading: heading ? getComputedStyle(heading).fontFamily : "",
-        headingLoaded: document.fonts.check('400 1rem "Source Serif 4"'),
+        headingLoaded: document.fonts.check('500 1rem "Plus Jakarta Sans"'),
       };
     });
     expect(families.body).toMatch(/^"Atkinson Hyperlegible Next"/);
-    expect(families.heading).toMatch(/^"Source Serif 4"/);
+    expect(families.heading).toMatch(/^"Plus Jakarta Sans"/);
     expect(families.headingLoaded).toBe(true);
 
     for (const file of [
       "atkinson-hyperlegible-next-latin-400-normal",
       "atkinson-hyperlegible-next-latin-600-normal",
-      "source-serif-4-latin-400-normal",
-      "source-serif-4-latin-600-normal",
+      "plus-jakarta-sans-latin-500-normal",
+      "plus-jakarta-sans-latin-700-normal",
     ]) {
       const response = await request.get(`/fonts/${file}.woff2`);
       expect(response.status(), file).toBe(200);

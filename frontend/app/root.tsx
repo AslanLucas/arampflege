@@ -19,7 +19,7 @@ import "./styles/base.css";
 export const links: Route.LinksFunction = () => [
   ...[
     "/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2",
-    "/fonts/source-serif-4-latin-400-normal.woff2",
+    "/fonts/plus-jakarta-sans-latin-500-normal.woff2",
   ].map((href) => ({
     rel: "preload",
     href,

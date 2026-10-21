@@ -14,7 +14,8 @@
 .name {
   font-family: var(--font-heading);
   font-size: 2rem;
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--tracking-display);
 }
 
 .tagline {

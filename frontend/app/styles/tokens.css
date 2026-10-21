@@ -37,13 +37,14 @@
   --color-success: #2e6b34;
 
   /* Font families */
-  --font-heading: "Source Serif 4", "Source Serif 4 Fallback", Georgia, serif;
+  --font-heading: "Plus Jakarta Sans", "Plus Jakarta Sans Fallback", Arial, sans-serif;
   --font-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible Next Fallback", Arial, sans-serif;
 
   /* Font weights */
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
-  --font-weight-display: 400; /* large serif headings are set light */
+  --font-weight-display: 500; /* large headings */
+  --font-weight-heading: 700; /* small headings, names */
 
   /*
    * Type scale, factor 1.25 from an 18 px base for small headings, larger display sizes for
@@ -61,7 +62,8 @@
   --font-size-display: clamp(2.125rem, 1.4rem + 3.1vw, 4rem);
 
   --line-height-base: 1.6;
-  --line-height-heading: 1.12;
+  --line-height-heading: 1.15;
+  --tracking-display: -0.01em; /* large headings only; never tighter */
   --tracking-caps: 0.08em;
   --measure: 68ch;
 
@@ -86,8 +88,10 @@
   --section-space: var(--space-8);
 
   /* Shape */
-  --radius-control: 4px;
-  --radius-image: 6px;
+  --radius-control: 10px; /* buttons, form fields */
+  --radius-card: 16px; /* cards, tiles, panels, images */
+  --radius-image: var(--radius-card);
+  --radius-pill: 999px; /* small status chips only, never for actions */
   --border-width: 1px;
   --tap-target-min: 44px;
 
@@ -100,6 +104,7 @@
   --duration-flip: 650ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --shadow-raised: 0 10px 30px -12px rgb(63 10 32 / 0.35);
+  --shadow-card: 0 1px 2px rgb(63 10 32 / 0.06), 0 8px 24px -12px rgb(63 10 32 / 0.18);
 }
 
 @media (min-width: 60rem) {

@@ -1,6 +1,7 @@
 .prompt {
   padding: var(--space-6) var(--space-5);
   border-top: 3px solid var(--color-accent);
+  border-radius: var(--radius-card);
   background-color: var(--color-surface-alt);
 }
 
