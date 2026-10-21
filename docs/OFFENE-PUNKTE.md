@@ -47,7 +47,7 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Kontakt – Ist die Rufbereitschaft rund um die Uhr erreichbar? Erst dann darf „24/7“ oder „jetzt erreichbar“ auf der Seite stehen – Kontakt-Karten
 - [ ] Kontakt – Ist das erste Beratungsgespräch kostenlos? Erst dann darf es so auf der Seite stehen – `/kontakt`
 - [ ] Kontakt – Optional: Hinweise zu Parkplätzen und barrierefreiem Zugang zum Büro – Kontakt-Karten (Adresse)
-- [ ] Kontakt – Welcher Messenger für Angehörige? Vorher mit dem Datenschutzbeauftragten klären, ob er für Gesundheitsdaten zulässig ist – Kachel „Per E-Mail oder Messenger“ (`frontend/app/content/home.ts`)
+- [ ] Kontakt – Welcher Messenger für Angehörige? Vorher mit dem Datenschutzbeauftragten klären, ob er für Gesundheitsdaten zulässig ist – derzeit nirgends auf der Seite genannt; bei Bedarf in den Kontakt-Karten ergänzen
 - [x] Einsatzgebiet – Startseiten-Abschnitt „Kommen wir auch zu Ihnen?“ nennt Gronau (Westfalen) und Umgebung – `frontend/app/content/home.ts`
 - [ ] Alle Seiten – Kurzbeschreibung für Suchergebnisse (Meta-Description, max. 160 Zeichen) je Seite – `frontend/app/routes/*.tsx`
 - [ ] Fotos – Team, Fahrzeuge, Büro, Einsatzgebiet; zuerst: Pflegedienstleitung im Büro, Querformat 5 : 4 (Startseite) – global

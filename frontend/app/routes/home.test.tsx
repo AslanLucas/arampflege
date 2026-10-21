@@ -79,19 +79,4 @@ describe("Home", () => {
 
     expect(text).not.toMatch(/Pflegedokumentation|Online-Termin|Termin online|App für/i);
   });
-
-  it("links every online service tile to its destination", () => {
-    renderHome();
-    const section = screen.getByRole("region", { name: "Vieles erledigen Sie bei uns online" });
-
-    for (const [name, href] of [
-      ["Rückruf anfordern", "/rueckruf"],
-      ["Zum Kontaktformular", "/kontakt"],
-      ["E-Mail schreiben", "mailto:info@arampflege.de"],
-      ["Zur Kurzbewerbung", "/karriere/bewerben"],
-      ["Zur Datenschutzerklärung", "/datenschutz"],
-    ]) {
-      expect(within(section).getByRole("link", { name })).toHaveAttribute("href", href);
-    }
-  });
 });

@@ -98,7 +98,7 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 
 ### Layout
 - Hero mit zentrierter Riesenüberschrift, Untertitel, zwei Buttons nebeneinander und Verlauf oder Blob im Hintergrund
-- Raster aus 3, 4 oder 6 identischen Karten mit Icon oben, Überschrift und zwei Zeilen Text (Ausnahmen: die Drehkarten der Leistungen und die Kacheln „Online erledigen“, siehe „Effekte“ und „Digitale Formsprache“)
+- Raster aus 3, 4 oder 6 identischen Karten mit Icon oben, Überschrift und zwei Zeilen Text (Ausnahme: die Drehkarten der Leistungen, siehe „Effekte“)
 - Jede Sektion zentriert, gleich hoch und mit gleichem Abstand übereinandergestapelt
 - Bento-Grids, Karten in Karten, Glow; Glassmorphism und Blur nur beim mitlaufenden Header (siehe „Effekte“)
 - Pill-Badges über Überschriften („Unser Versprechen“, „Warum wir?“); runde Chips nur als kurze Status-Hinweise mit wahrer Aussage, nie als Button
@@ -150,8 +150,7 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 
 Die Seite soll wie ein neuer, digital aufgestellter Pflegedienst wirken. Dafür:
 
-- **Kacheln „Online erledigen“** (`OnlineTiles`): Rückruf, Kontaktformular, E-Mail/Messenger, Kurzbewerbung, Datenschutz. Eine hervorgehobene Kachel ist auf dem Desktop doppelt breit (ruhiger Bento-Rhythmus). Jede Kachel ist als Ganzes anklickbar, der Link behält seinen Namen.
-- **Status-Chips** im oberen Bereich und in den Kacheln: kurze, wahre Aussagen, keine Aktionen.
+- **Status-Chips** im oberen Bereich: kurze, wahre Aussagen, keine Aktionen.
 - **Einsatzgebiet-Animation** (`AreaIllustration`): die vom Kunden gelieferte Grafik in Markenfarben. Läuft einmal, wenn sie ins Bild kommt, und bleibt auf dem Endbild; bei „Bewegung reduzieren“ sofort das Endbild.
 - **Kontakt-Karten** (`ContactPanel`, Entscheidung 2026-10-21): Telefon (hervorgehoben in Markenfarbe), E-Mail und Rückruf, Adresse mit Karte, Bürozeiten als Tabelle, Hinweis aufs Einsatzgebiet. Die Karten stehen untereinander, nur E-Mail und Rückruf teilen sich eine Zeile. Auf `/kontakt` neben dem Formular, auf der Startseite neben kurzem Text mit Buttons zum Formular und zum Rückruf, dort ohne Formular (JS-Budget).
 - **Statisches Kartenbild**: einmalig mit `frontend/scripts/static-map.py` aus OpenStreetMap-Kacheln erzeugt und selbst ausgeliefert (AVIF/WebP), Pin als SVG darüber, Quellenangabe „© OpenStreetMap-Mitwirkende“ und Link „In Karten-App öffnen“. Keine eingebettete Karte, keine Anfragen an Kartendienste beim Seitenaufruf.
