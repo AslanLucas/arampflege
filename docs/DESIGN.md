@@ -24,7 +24,7 @@ Der Inhalt bestimmt das Layout. Eine Sektion mit Öffnungszeiten sieht anders au
 Hochwertig heißt hier: **wenige Elemente, perfekt ausgeführt.** Den Unterschied zum Template machen Details, die niemand bewusst bemerkt, die aber jeder spürt.
 
 ### Typografie als Hauptgestaltungsmittel
-- Die Schrift trägt die Gestaltung, nicht Grafiken. Überschriften in der Serifenschrift mit großzügigem Größenkontrast zum Fließtext.
+- Die Schrift trägt die Gestaltung, nicht Grafiken. Überschriften in der modernen Sans (Plus Jakarta Sans) mit großzügigem Größenkontrast zum Fließtext.
 - Echte typografische Zeichen: „deutsche Anführungszeichen“, Gedankenstrich – statt Bindestrich, Halbgeviert für Zeiträume (8–16 Uhr), geschütztes Leerzeichen zwischen Zahl und Einheit sowie in Telefonnummern.
 - `text-wrap: balance` für Überschriften, `text-wrap: pretty` für Absätze, `hyphens: auto` mit `lang="de"`. Keine einzelnen Wörter in der letzten Zeile einer Überschrift.
 - Tabellenziffern (`font-variant-numeric: tabular-nums`) für Zeiten, Telefonnummern und Tabellen.
@@ -98,10 +98,10 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 
 ### Layout
 - Hero mit zentrierter Riesenüberschrift, Untertitel, zwei Buttons nebeneinander und Verlauf oder Blob im Hintergrund
-- Raster aus 3, 4 oder 6 identischen Karten mit Icon oben, Überschrift und zwei Zeilen Text (Ausnahme: die Drehkarten der Leistungen, siehe „Effekte“)
+- Raster aus 3, 4 oder 6 identischen Karten mit Icon oben, Überschrift und zwei Zeilen Text (Ausnahmen: die Drehkarten der Leistungen und die Kacheln „Online erledigen“, siehe „Effekte“ und „Digitale Formsprache“)
 - Jede Sektion zentriert, gleich hoch und mit gleichem Abstand übereinandergestapelt
 - Bento-Grids, Karten in Karten, Glow; Glassmorphism und Blur nur beim mitlaufenden Header (siehe „Effekte“)
-- Pill-Badges über Überschriften („Unser Versprechen“, „Warum wir?“)
+- Pill-Badges über Überschriften („Unser Versprechen“, „Warum wir?“); runde Chips nur als kurze Status-Hinweise mit wahrer Aussage, nie als Button
 - Statistikleisten mit hochzählenden Zahlen
 - Testimonial-Karussells, Logo-Laufbänder, Slider jeder Art
 - Dark Mode als Standard
@@ -110,8 +110,8 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 - Farbverläufe als Hintergrund, auf Buttons oder auf Text
 - Lila, Indigo und Violett sowie Cyan-zu-Blau-Verläufe
 - Klischee-Krankenhaus-Türkis als Hauptfarbe
-- Überall große Eckenradien mit weichen Schatten
-- Schatten als Standard-Gestaltungsmittel. Für Abgrenzung werden Linien und Flächen verwendet.
+- Schatten als alleiniges Gestaltungsmittel ohne Linie oder Fläche
+- Unschärfe (`backdrop-filter`) über bewegtem Bild, z. B. über dem Hintergrundvideo: zu teuer auf schwachen Geräten
 
 ### Icons und Bilder
 - Emojis als Icons oder Aufzählungszeichen
@@ -145,6 +145,15 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 - **Bewegung mit Zurückhaltung**: Rückmeldungen (Hover, Fokus) 150–250 ms, Einblendungen höchstens 700 ms. `prefers-reduced-motion` wird immer respektiert.
 
 ---
+
+## Digitale Formsprache (Entscheidung 2026-10-21)
+
+Die Seite soll wie ein neuer, digital aufgestellter Pflegedienst wirken. Dafür:
+
+- **Kacheln „Online erledigen“** (`OnlineTiles`): Rückruf, Kontaktformular, E-Mail/Messenger, Kurzbewerbung, Datenschutz. Eine hervorgehobene Kachel ist auf dem Desktop doppelt breit (ruhiger Bento-Rhythmus). Jede Kachel ist als Ganzes anklickbar, der Link behält seinen Namen.
+- **Status-Chips** im oberen Bereich und in den Kacheln: kurze, wahre Aussagen, keine Aktionen.
+- **Einsatzgebiet-Animation** (`AreaIllustration`): die vom Kunden gelieferte Grafik in Markenfarben. Läuft einmal, wenn sie ins Bild kommt, und bleibt auf dem Endbild; bei „Bewegung reduzieren“ sofort das Endbild.
+- Digitale Angebote werden nur genannt, wenn sie bestätigt sind (`docs/CONTENT.md`).
 
 ## Effekte (Entscheidung 2026-10-20)
 
@@ -213,19 +222,20 @@ Regeln:
 
 ### Typografie
 
-- **Überschriften**: eine Serifenschrift mit Charakter, z. B. *Source Serif 4*
-- **Fließtext**: eine auf Lesbarkeit ausgelegte Sans, z. B. *Atkinson Hyperlegible Next* oder *Source Sans 3*
-- **Gewählt** (mit dem Kunden abzustimmen): *Source Serif 4* in 400 und 600, *Atkinson Hyperlegible Next* in 400 und 600
+- **Überschriften**: *Plus Jakarta Sans*, eine moderne, runde Sans passend zur Logo-Schrift (Entscheidung 2026-10-21, ersetzt Source Serif 4)
+- **Fließtext**: *Atkinson Hyperlegible Next*, auf Lesbarkeit für Menschen mit eingeschränkter Sehkraft ausgelegt
+- **Schnitte**: Plus Jakarta Sans 500 und 700, Atkinson Hyperlegible Next 400 und 600
 - Maximal zwei Familien und vier Schnitte, **selbst gehostet** als WOFF2 unter `public/fonts/`, mit `font-display: swap`
 - Grundschriftgröße **18 px** (`1.125rem`), Zeilenhöhe 1,6, wegen der älteren Zielgruppe
-- Skala mit Faktor 1,25 für kleine Überschriften; Seiten- und Sektionsüberschriften größer und fluid, die große Aussage der Startseite höchstens 64 px (`--font-size-display`). Normale Laufweite, keine enge Spationierung.
-- Große Überschriften (h1, h2) in der Serifenschrift mit Gewicht 400, kleine Überschriften (h3, h4) 600, Fließtext 400, Hervorhebungen 600 (sparsam)
+- Skala mit Faktor 1,25 für kleine Überschriften; Seiten- und Sektionsüberschriften größer und fluid, die große Aussage der Startseite höchstens 64 px (`--font-size-display`). Große Überschriften mit höchstens −0,01 em Laufweite, sonst normal.
+- Große Überschriften (h1, h2) mit Gewicht 500, kleine Überschriften (h3, h4) 700, Fließtext 400, Hervorhebungen 600 (sparsam)
 
 ### Abstände, Raster, Formen
 
 - Abstandsskala: 4, 8, 12, 16, 24, 32, 48, 64, 96, 128 px (`--space-1` bis `--space-10`)
 - Breakpoints: Basis 360 px, dann 640, 960 und 1280 px. Container maximal 1280 px.
-- Eckenradius: 4 px für Buttons und Formularfelder, 6 px für Bilder und Farbflächen wie den Karriere-Block. Kreise nur für Symbol-Schaltflächen (Telefon, Pfeil). Keine Pill-Buttons.
+- Eckenradius: 10 px für Buttons und Formularfelder (`--radius-control`), 16 px für Karten, Kacheln, Panels und Bilder (`--radius-card`). Kreise für Symbol-Schaltflächen, voll gerundete Form nur für Status-Chips (`--radius-pill`). Keine Pill-Buttons.
+- Schatten: weich (`--shadow-card`) für Karten und Kacheln, stärker (`--shadow-raised`) nur bei Hover und für die Karte über dem Video.
 - Schatten: standardmäßig keiner. Höchstens ein dezenter Schatten für Dropdowns und Overlays.
 
 ---

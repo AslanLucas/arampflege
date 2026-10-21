@@ -40,6 +40,7 @@ Wir schreiben so, wie eine erfahrene Pflegedienstleitung am Telefon spricht: fre
 - Emojis
 
 ### Inhalte, die nicht erfunden werden dürfen
+- Digitale Angebote, die der Kunde nicht bestätigt hat (bestätigt am 2026-10-21: Kontakt per E-Mail und Messenger; **nicht** vorhanden: digitale Pflegedokumentation, Online-Termine). Über die Webseite selbst darf gesagt werden, was technisch stimmt: Rückruf, Kontakt und Kurzbewerbung online, verschlüsselte Übertragung, keine Tracking-Cookies.
 - Kundenstimmen, Zitate, Bewertungen, Sterne
 - Zahlen zu Kunden, Mitarbeitenden, Jahren, Einsätzen oder Zufriedenheit
 - MDK-/MD-Noten, Siegel, Zertifikate, Auszeichnungen
