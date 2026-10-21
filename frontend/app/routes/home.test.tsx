@@ -55,7 +55,7 @@ describe("Home", () => {
       "Was passiert nach Ihrem Anruf?",
       "Wer Sie betreut",
       "Arbeiten bei Aram",
-      "Wir rufen Sie zurück",
+      "Sprechen Sie mit uns",
     ]) {
       expect(screen.getByRole("region", { name })).toBeInTheDocument();
     }

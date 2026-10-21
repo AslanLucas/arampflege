@@ -1,4 +1,5 @@
 import { AreaIllustration } from "../components/AreaIllustration/AreaIllustration";
+import { ContactPanel } from "../components/ContactPanel/ContactPanel";
 import { ArrowLink } from "../components/ArrowLink/ArrowLink";
 import { ButtonLink } from "../components/ButtonLink/ButtonLink";
 import { Container } from "../components/Container/Container";
@@ -7,14 +8,13 @@ import { HeroVideo } from "../components/HeroVideo/HeroVideo";
 import { OnlineTiles } from "../components/OnlineTiles/OnlineTiles";
 import { PhoneIcon } from "../components/Icon/icons";
 import { PhotoPlaceholder } from "../components/PhotoPlaceholder/PhotoPlaceholder";
-import { PostalAddress } from "../components/PostalAddress/PostalAddress";
 import { Reveal } from "../components/Reveal/Reveal";
 import { Section } from "../components/Section/Section";
 import { ServiceCards } from "../components/ServiceCards/ServiceCards";
 import { StepList } from "../components/StepList/StepList";
 import {
   areaTeaser,
-  callbackTeaser,
+  contactTeaser,
   careerTeaser,
   careProcess,
   hero,
@@ -174,23 +174,19 @@ export default function Home() {
         )}
       </Section>
 
-      <Section id="kontakt" title={callbackTeaser.title} tone="brand" className={styles.contactGrid}>
+      <Section id="kontakt" title={contactTeaser.title} tone="alt" className={styles.contactGrid}>
         {(heading) => (
           <>
-            <div>
+            <div className={styles.contactText}>
+              <Eyebrow>{contactTeaser.eyebrow}</Eyebrow>
               {heading}
-              <p className={styles.contactText}>{callbackTeaser.text}</p>
-              <ButtonLink to={callbackLink.to} variant="inverse" size="large">
-                {callbackLink.label}
-              </ButtonLink>
+              <p className={styles.contactLead}>{contactTeaser.text}</p>
+              <div className={styles.contactActions}>
+                <ButtonLink to="/kontakt">Nachricht schreiben</ButtonLink>
+                <ArrowLink to={callbackLink.to}>{callbackLink.label}</ArrowLink>
+              </div>
             </div>
-            <div className={styles.contactDirect}>
-              <p className={styles.contactLabel}>Oder direkt anrufen</p>
-              <a href={site.phone.href} className={styles.bigPhone}>
-                {site.phone.display}
-              </a>
-              <PostalAddress />
-            </div>
+            <ContactPanel />
           </>
         )}
       </Section>

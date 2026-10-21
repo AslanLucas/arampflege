@@ -63,9 +63,10 @@ export const careerTeaser = {
   text: "[[INHALT FEHLT: Kurzer Hinweis auf offene Stellen und Arbeitsbedingungen]]",
 };
 
-export const callbackTeaser = {
-  title: "Wir rufen Sie zurück",
-  text: "Hinterlassen Sie Ihren Namen und Ihre Telefonnummer. Wir melden uns innerhalb von [[INHALT FEHLT: Rückruffrist]].",
+export const contactTeaser = {
+  eyebrow: "Kontakt",
+  title: "Sprechen Sie mit uns",
+  text: "Rufen Sie an, schreiben Sie uns oder lassen Sie sich zurückrufen. Wir besprechen mit Ihnen, welche Unterstützung Sie brauchen und was die Pflegekasse übernimmt.",
 };
 
 export type OnlineTile = {
