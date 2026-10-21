@@ -1,0 +1,179 @@
+.panel {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: var(--space-4);
+}
+
+.card,
+.phoneCard {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.phoneCard {
+  border-color: var(--color-brand-deep);
+  background: linear-gradient(135deg, var(--color-brand-darkest), var(--color-brand-deep) 70%);
+  color: var(--color-on-brand);
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-1);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.phoneCard .cardTitle {
+  color: var(--color-on-brand-muted);
+}
+
+.icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-control);
+  background-color: var(--color-surface-alt);
+  color: var(--color-primary);
+}
+
+.phoneCard .icon {
+  background-color: var(--color-on-brand);
+  color: var(--color-brand-deep);
+}
+
+.bigPhone {
+  justify-self: start;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  overflow-wrap: anywhere;
+}
+
+.value {
+  justify-self: start;
+  font-weight: var(--font-weight-semibold);
+  overflow-wrap: anywhere;
+}
+
+.cardText {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+.phoneCard .cardText {
+  color: var(--color-on-brand-muted);
+}
+
+.map {
+  margin: 0;
+}
+
+/* The image keeps its natural size and is cropped around its centre, so the pin and the labels stay put */
+.mapFrame {
+  position: relative;
+  height: 15rem;
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-control);
+  background-color: var(--color-surface-alt);
+}
+
+.mapImage {
+  width: 100%;
+  height: 100%;
+  object-fit: none;
+  object-position: center;
+}
+
+/* The pin's tip sits on the centre of the image */
+.pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--color-primary);
+  filter: drop-shadow(0 2px 2px rgb(63 10 32 / 0.4));
+  transform: translate(-50%, -100%);
+}
+
+.pin svg {
+  display: block;
+  fill: var(--color-surface);
+}
+
+.attribution {
+  margin-top: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-label);
+}
+
+.mapLink {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-target-min);
+  font-weight: var(--font-weight-semibold);
+}
+
+.hours {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.hours th,
+.hours td {
+  padding: var(--space-2) 0;
+  border-bottom: var(--border-width) solid var(--color-border);
+  vertical-align: top;
+}
+
+.hours tr:last-child th,
+.hours tr:last-child td {
+  border-bottom: 0;
+}
+
+.hours th {
+  padding-right: var(--space-4);
+  font-weight: var(--font-weight-regular);
+  text-align: left;
+}
+
+.hours td {
+  font-weight: var(--font-weight-semibold);
+  text-align: right;
+}
+
+.area {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-5);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 var(--radius-control) var(--radius-control) 0;
+  background-color: var(--color-surface-alt);
+}
+
+.area p {
+  margin: 0;
+}

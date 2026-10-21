@@ -115,12 +115,30 @@ test.describe("Contact form", () => {
 
     await page.getByLabel(/Ihr Name/).fill("Erika Muster");
     await page.getByLabel(/E-Mail-Adresse/).fill("erika@beispiel.de");
+    await page.getByLabel(/Wie können wir Ihnen helfen/).selectOption({ label: "Grundpflege" });
     await page.getByLabel(/Ihre Nachricht/).fill("Bitte rufen Sie mich zurück.");
     await page.getByRole("checkbox").check();
     await page.getByRole("button", { name: "Nachricht senden" }).click();
 
     await expect(page.getByRole("heading", { name: "Danke, wir haben Ihre Nachricht erhalten" })).toBeFocused();
-    expect(captured.body).toMatchObject({ email: "erika@beispiel.de", formToken: "e2e-token" });
+    expect(captured.body).toMatchObject({ email: "erika@beispiel.de", topic: "grundpflege", formToken: "e2e-token" });
+  });
+
+  test("shows the self-hosted map without requests to third parties", async ({ page, baseURL }) => {
+    const foreignRequests: string[] = [];
+    page.on("request", (request) => {
+      if (new URL(request.url()).origin !== baseURL && !request.url().startsWith("data:")) {
+        foreignRequests.push(request.url());
+      }
+    });
+    await page.goto("/kontakt");
+
+    const map = page.getByRole("img", { name: /Stadtplan von Gronau/ });
+    await map.scrollIntoViewIfNeeded();
+    await expect(map).toHaveJSProperty("complete", true);
+    expect(await map.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBe(960);
+    await page.waitForLoadState("networkidle");
+    expect(foreignRequests).toEqual([]);
   });
 
   test("is accessible in the error state", async ({ page }) => {

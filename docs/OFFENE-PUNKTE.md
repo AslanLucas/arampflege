@@ -42,7 +42,11 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Karriere – Qualifikationsoptionen im Bewerbungsformular bestätigen (Pflegefachkraft, Pflegehilfskraft, in Ausbildung, andere) – `frontend/app/content/careers.ts`
 - [ ] Karriere – Frist für die Rückmeldung auf Bewerbungen – Bestätigung im Bewerbungsformular
 - [ ] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – Startseite, `/rueckruf`, Bestätigung im Rückrufformular
-- [ ] Kontakt – Zusage, in welcher Frist auf Nachrichten geantwortet wird – Bestätigung im Kontaktformular
+- [ ] Kontakt – Zusage, in welcher Frist auf Nachrichten geantwortet wird – `site.replyTime`: Kontakt-Karten (E-Mail), `/kontakt`, Bestätigung im Kontaktformular
+- [ ] Kontakt – Bürozeiten je Tag (Mo–Fr, Sa, So/Feiertage) für die Tabelle in den Kontakt-Karten – `site.officeHoursByDay` in `frontend/app/content/site.ts`
+- [ ] Kontakt – Ist die Rufbereitschaft rund um die Uhr erreichbar? Erst dann darf „24/7“ oder „jetzt erreichbar“ auf der Seite stehen – Kontakt-Karten
+- [ ] Kontakt – Ist das erste Beratungsgespräch kostenlos? Erst dann darf es so auf der Seite stehen – `/kontakt`
+- [ ] Kontakt – Optional: Hinweise zu Parkplätzen und barrierefreiem Zugang zum Büro – Kontakt-Karten (Adresse)
 - [ ] Kontakt – Welcher Messenger für Angehörige? Vorher mit dem Datenschutzbeauftragten klären, ob er für Gesundheitsdaten zulässig ist – Kachel „Per E-Mail oder Messenger“ (`frontend/app/content/home.ts`)
 - [x] Einsatzgebiet – Startseiten-Abschnitt „Kommen wir auch zu Ihnen?“ nennt Gronau (Westfalen) und Umgebung – `frontend/app/content/home.ts`
 - [ ] Alle Seiten – Kurzbeschreibung für Suchergebnisse (Meta-Description, max. 160 Zeichen) je Seite – `frontend/app/routes/*.tsx`
