@@ -68,5 +68,3 @@ export const contactTeaser = {
   title: "Sprechen Sie mit uns",
   text: "Rufen Sie an, schreiben Sie uns oder lassen Sie sich zurückrufen. Wir besprechen mit Ihnen, welche Unterstützung Sie brauchen und was die Pflegekasse übernimmt.",
 };
-
-export const heroChips = ["Rückruf online", "Bewerbung in Minuten", "Ohne Tracking"];

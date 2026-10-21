@@ -17,7 +17,6 @@ import {
   careerTeaser,
   careProcess,
   hero,
-  heroChips,
   servicesTeaser,
   teamTeaser,
 } from "../content/home";
@@ -54,6 +53,20 @@ export default function Home() {
               </ButtonLink>
               <ArrowLink to={callbackLink.to}>{callbackLink.label}</ArrowLink>
             </div>
+            <dl className={styles.availabilityList} aria-label="Erreichbarkeit">
+              <div>
+                <dt>Bürozeiten</dt>
+                <dd>{site.officeHours}</dd>
+              </div>
+              <div>
+                <dt>Rufbereitschaft</dt>
+                <dd>{site.onCallService}</dd>
+              </div>
+              <div>
+                <dt>Einsatzgebiet</dt>
+                <dd>{site.serviceArea}</dd>
+              </div>
+            </dl>
           </div>
           <div className={styles.callbackCard}>
             <p className={styles.cardLabel}>Rückruf</p>
@@ -61,28 +74,6 @@ export default function Home() {
           </div>
         </Container>
       </div>
-
-      <Container className={styles.availability}>
-        <dl className={styles.availabilityList} aria-label="Erreichbarkeit">
-          <div>
-            <dt>Bürozeiten</dt>
-            <dd>{site.officeHours}</dd>
-          </div>
-          <div>
-            <dt>Rufbereitschaft</dt>
-            <dd>{site.onCallService}</dd>
-          </div>
-          <div>
-            <dt>Einsatzgebiet</dt>
-            <dd>{site.serviceArea}</dd>
-          </div>
-        </dl>
-        <ul className={styles.chips} aria-label="Online bei Aram">
-          {heroChips.map((chip) => (
-            <li key={chip}>{chip}</li>
-          ))}
-        </ul>
-      </Container>
 
       <Section id="leistungen" title={servicesTeaser.title} intro={<p>{servicesTeaser.intro}</p>}>
         <p className={styles.note}>[[INHALT FEHLT: Leistungen vom Kunden bestätigen]]</p>

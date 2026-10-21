@@ -150,7 +150,7 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 
 Die Seite soll wie ein neuer, digital aufgestellter Pflegedienst wirken. Dafür:
 
-- **Status-Chips** unter der Erreichbarkeit (Bürozeiten, Rufbereitschaft, Einsatzgebiet) direkt unter dem oberen Bereich: kurze, wahre Aussagen, keine Aktionen.
+- **Erreichbarkeit im oberen Bereich**: Bürozeiten, Rufbereitschaft und Einsatzgebiet stehen über dem Video direkt unter „Anrufen“ und „Rückruf anfordern“.
 - **Einsatzgebiet-Animation** (`AreaIllustration`): die vom Kunden gelieferte Grafik in Markenfarben. Läuft einmal, wenn sie ins Bild kommt, und bleibt auf dem Endbild; bei „Bewegung reduzieren“ sofort das Endbild.
 - **Kontakt-Karten** (`ContactPanel`, Entscheidung 2026-10-21): Telefon (hervorgehoben in Markenfarbe), E-Mail und Rückruf, Adresse mit Karte, Bürozeiten als Tabelle, Hinweis aufs Einsatzgebiet. Die Karten stehen untereinander, nur E-Mail und Rückruf teilen sich eine Zeile. Auf `/kontakt` neben dem Formular, auf der Startseite neben kurzem Text mit Buttons zum Formular und zum Rückruf, dort ohne Formular (JS-Budget).
 - **Statisches Kartenbild**: einmalig mit `frontend/scripts/static-map.py` aus OpenStreetMap-Kacheln erzeugt und selbst ausgeliefert (AVIF/WebP), Pin als SVG darüber, Quellenangabe „© OpenStreetMap-Mitwirkende“ und Link „In Karten-App öffnen“. Keine eingebettete Karte, keine Anfragen an Kartendienste beim Seitenaufruf.
