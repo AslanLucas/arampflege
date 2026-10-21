@@ -54,11 +54,6 @@ export default function Home() {
               </ButtonLink>
               <ArrowLink to={callbackLink.to}>{callbackLink.label}</ArrowLink>
             </div>
-            <ul className={styles.heroChips} aria-label="Online bei Aram">
-              {heroChips.map((chip) => (
-                <li key={chip}>{chip}</li>
-              ))}
-            </ul>
           </div>
           <div className={styles.callbackCard}>
             <p className={styles.cardLabel}>Rückruf</p>
@@ -82,6 +77,11 @@ export default function Home() {
             <dd>{site.serviceArea}</dd>
           </div>
         </dl>
+        <ul className={styles.chips} aria-label="Online bei Aram">
+          {heroChips.map((chip) => (
+            <li key={chip}>{chip}</li>
+          ))}
+        </ul>
       </Container>
 
       <Section id="leistungen" title={servicesTeaser.title} intro={<p>{servicesTeaser.intro}</p>}>

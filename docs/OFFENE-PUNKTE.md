@@ -9,7 +9,9 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [x] Allgemein – Firmenname und Rechtsform: Aram Pflege GmbH – global
 - [ ] Allgemein – Logo als Vektordatei (SVG), dazu eine Variante nur mit Bildzeichen; Slogan im Logo mit kleinem „a“ („Ihr ambulanter Pflegedienst“) – global, Favicon
 - [x] Allgemein – Geschäftsanschrift (Ochtruper Straße 83, 48599 Gronau (Westfalen)) und E-Mail (info@arampflege.de) – `frontend/app/content/site.ts`
-- [ ] Allgemein – Telefon, Bürozeiten, Rufbereitschaft – Header, Footer, Kontaktleiste, Kontakt (`frontend/app/content/site.ts`)
+- [x] Allgemein – Bürozeiten (Mo–Fr 8–18 Uhr, Sa 9–13 Uhr) und Rufbereitschaft (24/7, auch am Wochenende) – `frontend/app/content/site.ts`
+- [ ] Allgemein – Telefonnummer – Header, Footer, Kontaktleiste, Kontakt (`frontend/app/content/site.ts`)
+- [ ] Allgemein – Bürozeiten an Feiertagen (derzeit nicht genannt) – `site.officeHoursByDay`
 - [x] Allgemein – Einsatzgebiet grob: Gronau (Westfalen) und Umgebung – global
 - [ ] Allgemein – Einsatzgebiet genau: welche Orte und Postleitzahlen gehören zur „Umgebung“? – `/einsatzgebiet`
 - [ ] Allgemein – Aus dem Logo abgeleitete Markenfarben (Himbeerrot #AA1A4B, Weinrot) und die gewählten Schriften bestätigen – `tokens.css`, `docs/DESIGN.md`
@@ -43,8 +45,7 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Karriere – Frist für die Rückmeldung auf Bewerbungen – Bestätigung im Bewerbungsformular
 - [ ] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – Startseite, `/rueckruf`, Bestätigung im Rückrufformular
 - [ ] Kontakt – Zusage, in welcher Frist auf Nachrichten geantwortet wird – `site.replyTime`: Kontakt-Karten (E-Mail), `/kontakt`, Bestätigung im Kontaktformular
-- [ ] Kontakt – Bürozeiten je Tag (Mo–Fr, Sa, So/Feiertage) für die Tabelle in den Kontakt-Karten – `site.officeHoursByDay` in `frontend/app/content/site.ts`
-- [ ] Kontakt – Ist die Rufbereitschaft rund um die Uhr erreichbar? Erst dann darf „24/7“ oder „jetzt erreichbar“ auf der Seite stehen – Kontakt-Karten
+- [x] Kontakt – Rufbereitschaft rund um die Uhr erreichbar, auch am Wochenende (bestätigt 2026-10-21) – Kontakt-Karten
 - [ ] Kontakt – Ist das erste Beratungsgespräch kostenlos? Erst dann darf es so auf der Seite stehen – `/kontakt`
 - [ ] Kontakt – Optional: Hinweise zu Parkplätzen und barrierefreiem Zugang zum Büro – Kontakt-Karten (Adresse)
 - [ ] Kontakt – Welcher Messenger für Angehörige? Vorher mit dem Datenschutzbeauftragten klären, ob er für Gesundheitsdaten zulässig ist – derzeit nirgends auf der Seite genannt; bei Bedarf in den Kontakt-Karten ergänzen

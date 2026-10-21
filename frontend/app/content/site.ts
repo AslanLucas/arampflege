@@ -24,13 +24,13 @@ export const site = {
     court: "Amtsgericht Coesfeld",
     number: "HRB 24086",
   },
-  officeHours: "[[INHALT FEHLT: Bürozeiten]]",
+  officeHours: "Mo–Fr\u00a08–18\u00a0Uhr, Sa\u00a09–13\u00a0Uhr",
   /** Office hours per day group, for the table on the contact panel. */
   officeHoursByDay: [
-    { days: "Montag bis Freitag", hours: "[[INHALT FEHLT]]" },
-    { days: "Samstag", hours: "[[INHALT FEHLT]]" },
-    { days: "Sonntag und Feiertage", hours: "[[INHALT FEHLT]]" },
+    { days: "Montag bis Freitag", hours: "8–18\u00a0Uhr" },
+    { days: "Samstag", hours: "9–13\u00a0Uhr" },
+    { days: "Sonntag", hours: "geschlossen" },
   ],
-  onCallService: "[[INHALT FEHLT: Rufbereitschaft]]",
+  onCallService: "24/7 erreichbar, auch am Wochenende",
   replyTime: "[[INHALT FEHLT: Antwortfrist]]",
 } as const;

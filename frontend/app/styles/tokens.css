@@ -30,7 +30,6 @@
   /* Glass card over the video: dense enough for 12 : 1 text over any frame */
   --color-glass: rgb(251 248 245 / 0.92);
   /* Status chips over the video: darkens the background behind ivory text */
-  --color-chip-on-video: rgb(63 10 32 / 0.6);
   /* Sticky header after scrolling: translucent off-white with blur */
   --color-header-scrolled: rgb(251 248 245 / 0.88);
 

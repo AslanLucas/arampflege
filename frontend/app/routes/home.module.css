@@ -69,36 +69,6 @@
 }
 
 /* Status chips: information, not actions */
-.heroChips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin: var(--space-2) 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.heroChips li {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-1) var(--space-3);
-  border: var(--border-width) solid var(--color-on-brand-muted);
-  border-radius: var(--radius-pill);
-  background-color: var(--color-chip-on-video);
-  color: var(--color-on-brand);
-  font-size: var(--font-size-label);
-  font-weight: var(--font-weight-semibold);
-}
-
-.heroChips li::before {
-  content: "";
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background-color: var(--color-on-brand-muted);
-}
-
 .callbackCard p {
   color: var(--color-text);
 }
@@ -128,9 +98,9 @@
 
 .availabilityList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
   gap: var(--space-5);
-  max-width: 40rem;
+  max-width: 54rem;
   margin: 0;
 }
 
@@ -150,6 +120,37 @@
 .availabilityList dd {
   margin: var(--space-1) 0 0;
   font-weight: var(--font-weight-semibold);
+}
+
+/* Status chips: short true statements, never actions */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-alt);
+  color: var(--color-link);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+}
+
+.chips li::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
 }
 
 .note {
