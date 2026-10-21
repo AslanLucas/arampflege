@@ -4,7 +4,7 @@ import styles from "./PostalAddress.module.css";
 export function PostalAddress() {
   return (
     <address className={styles.address}>
-      {site.name}
+      {site.legalName}
       <br />
       {site.address.street}
       <br />

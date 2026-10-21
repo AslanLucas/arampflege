@@ -1,10 +1,10 @@
-# Webseite [[PFLEGEDIENST-NAME]] – Ambulanter Pflegedienst
+# Webseite Aram Pflege GmbH – Ambulanter Pflegedienst
 
 Diese Datei gilt für das gesamte Repository. Unterordner haben eigene `AGENTS.md`, die diese ergänzen.
 
 ## Zweck der Seite
 
-Öffentliche Webseite eines ambulanten Pflegedienstes in [[ORT/REGION]]. Ziele in dieser Reihenfolge:
+Öffentliche Webseite eines ambulanten Pflegedienstes in Gronau (Westfalen) und Umgebung. Ziele in dieser Reihenfolge:
 
 1. **Pflegeanfragen**: Anruf, Rückrufwunsch, Kontaktformular
 2. **Bewerbungen** von Pflegefach- und Pflegehilfskräften

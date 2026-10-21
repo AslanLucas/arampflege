@@ -49,7 +49,7 @@ export const areaTeaser = {
   eyebrow: "Einsatzgebiet",
   title: "Kommen wir auch zu Ihnen?",
   text: `Wir pflegen Menschen in ${site.region} und den umliegenden Gemeinden.`,
-  places: "[[INHALT FEHLT: Orte und Postleitzahlen im Einsatzgebiet]]",
+  places: site.serviceArea,
   note: "Wenn Ihr Ort nicht dabei ist, rufen Sie uns trotzdem an. Wir sagen Ihnen, ob wir Sie versorgen können.",
 };
 

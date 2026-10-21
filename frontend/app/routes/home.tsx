@@ -81,7 +81,7 @@ export default function Home() {
           </div>
           <div>
             <dt>Einsatzgebiet</dt>
-            <dd>[[INHALT FEHLT: Orte]]</dd>
+            <dd>{site.serviceArea}</dd>
           </div>
         </dl>
       </Container>

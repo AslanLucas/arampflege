@@ -87,7 +87,7 @@ describe("Home", () => {
     for (const [name, href] of [
       ["Rückruf anfordern", "/rueckruf"],
       ["Zum Kontaktformular", "/kontakt"],
-      ["E-Mail schreiben", "mailto:[[E-MAIL]]"],
+      ["E-Mail schreiben", "mailto:info@arampflege.de"],
       ["Zur Kurzbewerbung", "/karriere/bewerben"],
       ["Zur Datenschutzerklärung", "/datenschutz"],
     ]) {

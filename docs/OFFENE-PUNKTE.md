@@ -6,13 +6,17 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 
 ## Stammdaten
 - [x] Allgemein – Name des Pflegedienstes (Aram) und Logo als Bilddatei – global
-- [ ] Allgemein – Rechtsform; Logo als Vektordatei (SVG), dazu eine Variante nur mit Bildzeichen; Slogan im Logo mit kleinem „a“ („Ihr ambulanter Pflegedienst“) – global, Favicon
-- [ ] Allgemein – Adresse, Telefon, E-Mail, Bürozeiten, Rufbereitschaft – Header, Footer, Kontaktleiste, Kontakt (`frontend/app/content/site.ts`)
-- [ ] Allgemein – Einsatzgebiet: Orte und Postleitzahlen – Einsatzgebiet
+- [x] Allgemein – Firmenname und Rechtsform: Aram Pflege GmbH – global
+- [ ] Allgemein – Logo als Vektordatei (SVG), dazu eine Variante nur mit Bildzeichen; Slogan im Logo mit kleinem „a“ („Ihr ambulanter Pflegedienst“) – global, Favicon
+- [x] Allgemein – Geschäftsanschrift (Ochtruper Straße 83, 48599 Gronau (Westfalen)) und E-Mail (info@arampflege.de) – `frontend/app/content/site.ts`
+- [ ] Allgemein – Telefon, Bürozeiten, Rufbereitschaft – Header, Footer, Kontaktleiste, Kontakt (`frontend/app/content/site.ts`)
+- [x] Allgemein – Einsatzgebiet grob: Gronau (Westfalen) und Umgebung – global
+- [ ] Allgemein – Einsatzgebiet genau: welche Orte und Postleitzahlen gehören zur „Umgebung“? – `/einsatzgebiet`
 - [ ] Allgemein – Aus dem Logo abgeleitete Markenfarben (Himbeerrot #AA1A4B, Weinrot) und die gewählten Schriften bestätigen – `tokens.css`, `docs/DESIGN.md`
 
 ## Rechtliches
-- [ ] Recht – Impressum (Inhaber, Registereintrag, zuständige Aufsichtsbehörde, IK-Nummer falls gewünscht) – Impressum
+- [x] Recht – Impressum: Firma, Anschrift, E-Mail, Registereintrag (Amtsgericht Coesfeld, HRB 24086) – `/impressum`
+- [ ] Recht – Impressum ergänzen: Geschäftsführung (vertretungsberechtigt), Telefon, USt-IdNr. falls vorhanden, zuständige Aufsichtsbehörde, IK-Nummer falls gewünscht; danach rechtlich prüfen lassen – `/impressum`
 - [ ] Recht – Datenschutzerklärung (vom Kunden bzw. Datenschutzbeauftragten freigegeben) – Datenschutz
 - [ ] Recht – Erklärung zur Barrierefreiheit – Barrierefreiheit
 - [ ] Recht – Einwilligungen für Teamfotos – Über uns
@@ -40,7 +44,7 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – Startseite, `/rueckruf`, Bestätigung im Rückrufformular
 - [ ] Kontakt – Zusage, in welcher Frist auf Nachrichten geantwortet wird – Bestätigung im Kontaktformular
 - [ ] Kontakt – Welcher Messenger für Angehörige? Vorher mit dem Datenschutzbeauftragten klären, ob er für Gesundheitsdaten zulässig ist – Kachel „Per E-Mail oder Messenger“ (`frontend/app/content/home.ts`)
-- [ ] Einsatzgebiet – Orte und Postleitzahlen auch für den Startseiten-Abschnitt „Kommen wir auch zu Ihnen?“ – `frontend/app/content/home.ts`
+- [x] Einsatzgebiet – Startseiten-Abschnitt „Kommen wir auch zu Ihnen?“ nennt Gronau (Westfalen) und Umgebung – `frontend/app/content/home.ts`
 - [ ] Alle Seiten – Kurzbeschreibung für Suchergebnisse (Meta-Description, max. 160 Zeichen) je Seite – `frontend/app/routes/*.tsx`
 - [ ] Fotos – Team, Fahrzeuge, Büro, Einsatzgebiet; zuerst: Pflegedienstleitung im Büro, Querformat 5 : 4 (Startseite) – global
 - [ ] Videos – Eigene kurze Clips für den oberen Bereich (3–4 Clips à 6–10 Sekunden, Querformat, ruhige Alltagsszenen; Personen nur mit schriftlicher Einwilligung); ersetzen die lizenzfreien Übergangsvideos – `frontend/public/videos/`
