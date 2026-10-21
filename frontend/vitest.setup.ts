@@ -19,6 +19,14 @@ if (typeof Element !== "undefined") {
       dispatchEvent: () => false,
     }) satisfies MediaQueryList;
 
+  // jsdom does not implement SMIL animation control on <svg>.
+  Object.assign(SVGSVGElement.prototype, {
+    pauseAnimations: () => undefined,
+    unpauseAnimations: () => undefined,
+    setCurrentTime: () => undefined,
+    animationsPaused: () => true,
+  });
+
   window.IntersectionObserver = class {
     readonly root = null;
     readonly rootMargin = "";

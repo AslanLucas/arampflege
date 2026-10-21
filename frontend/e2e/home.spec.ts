@@ -81,7 +81,7 @@ test.describe("Home page", () => {
     await page.goto("/");
 
     const heading = page.getByRole("heading", { level: 1 });
-    const call = page.getByRole("main").getByRole("link", { name: /anrufen$/ });
+    const call = page.getByRole("main").getByRole("link", { name: /anrufen$/ }).first();
     await expect(heading).toBeInViewport({ ratio: 1 });
     await expect(call).toBeInViewport({ ratio: 1 });
 
@@ -95,7 +95,7 @@ test.describe("Home page", () => {
 
   test("reaches the main action with the keyboard only", async ({ page }) => {
     await page.goto("/");
-    const call = page.getByRole("main").getByRole("link", { name: /anrufen$/ });
+    const call = page.getByRole("main").getByRole("link", { name: /anrufen$/ }).first();
 
     await tabTo(page, () => call.evaluate((element) => element === document.activeElement));
 

@@ -128,6 +128,50 @@
   margin: var(--space-7) 0 0;
 }
 
+/* Service area: illustration on a blush surface next to the places */
+.areaGrid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.areaMedia {
+  display: grid;
+  place-items: center;
+  padding: var(--space-6);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface-alt);
+}
+
+.areaLead {
+  font-size: var(--font-size-lead);
+  line-height: 1.5;
+}
+
+.places {
+  padding: var(--space-4) var(--space-5);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0 var(--radius-control) var(--radius-control) 0;
+  background-color: var(--color-surface);
+  font-weight: var(--font-weight-semibold);
+}
+
+.areaActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-6);
+  margin-top: var(--space-5);
+}
+
+.areaPhone {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-target-min);
+  font-weight: var(--font-weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
 /* Team: photo and text side by side on wide screens */
 .teamGrid {
   display: grid;
@@ -240,6 +284,20 @@
   .callbackCard {
     grid-column: 10 / 13;
     justify-self: end;
+  }
+
+  .areaGrid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .areaMedia {
+    grid-column: 1 / 7;
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .areaText {
+    grid-column: 8 / 13;
   }
 
   .teamGrid {

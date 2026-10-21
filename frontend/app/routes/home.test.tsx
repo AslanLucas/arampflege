@@ -19,7 +19,9 @@ describe("Home", () => {
   it("offers the phone call as the main action in the top area", () => {
     renderHome();
 
-    expect(screen.getByRole("link", { name: /anrufen$/ })).toHaveAttribute(
+    const [firstCall] = screen.getAllByRole("link", { name: /anrufen$/ });
+    expect(firstCall?.closest("[data-surface]")).not.toBeNull();
+    expect(firstCall).toHaveAttribute(
       "href",
       expect.stringMatching(/^tel:/),
     );
@@ -57,5 +59,24 @@ describe("Home", () => {
     ]) {
       expect(screen.getByRole("region", { name })).toBeInTheDocument();
     }
+  });
+
+  it("answers whether we come to the visitor and links to the service area", () => {
+    renderHome();
+    const section = screen.getByRole("region", { name: "Kommen wir auch zu Ihnen?" });
+
+    expect(within(section).getByRole("link", { name: "Einsatzgebiet ansehen" })).toHaveAttribute(
+      "href",
+      "/einsatzgebiet",
+    );
+    const illustration = section.querySelector("svg");
+    expect(illustration).toHaveAttribute("aria-hidden", "true");
+  });
+
+  it("claims no digital services the client has not confirmed", () => {
+    renderHome();
+    const text = document.body.textContent;
+
+    expect(text).not.toMatch(/Pflegedokumentation|Online-Termin|Termin online|App für/i);
   });
 });

@@ -1,3 +1,4 @@
+import { AreaIllustration } from "../components/AreaIllustration/AreaIllustration";
 import { ArrowLink } from "../components/ArrowLink/ArrowLink";
 import { ButtonLink } from "../components/ButtonLink/ButtonLink";
 import { Container } from "../components/Container/Container";
@@ -11,6 +12,7 @@ import { Section } from "../components/Section/Section";
 import { ServiceCards } from "../components/ServiceCards/ServiceCards";
 import { StepList } from "../components/StepList/StepList";
 import {
+  areaTeaser,
   callbackTeaser,
   careerTeaser,
   careProcess,
@@ -82,6 +84,29 @@ export default function Home() {
         <p className={styles.sectionAction}>
           <ArrowLink to="/leistungen">Alle Leistungen im Überblick</ArrowLink>
         </p>
+      </Section>
+
+      <Section id="einsatzgebiet" title={areaTeaser.title} className={styles.areaGrid}>
+        {(heading) => (
+          <>
+            <Reveal className={styles.areaMedia}>
+              <AreaIllustration />
+            </Reveal>
+            <div className={styles.areaText}>
+              <Eyebrow>{areaTeaser.eyebrow}</Eyebrow>
+              {heading}
+              <p className={styles.areaLead}>{areaTeaser.text}</p>
+              <p className={styles.places}>{areaTeaser.places}</p>
+              <p>{areaTeaser.note}</p>
+              <div className={styles.areaActions}>
+                <ButtonLink to="/einsatzgebiet">Einsatzgebiet ansehen</ButtonLink>
+                <a href={site.phone.href} className={styles.areaPhone}>
+                  {site.phone.display} anrufen
+                </a>
+              </div>
+            </div>
+          </>
+        )}
       </Section>
 
       <Section

@@ -53,6 +53,16 @@ test.describe("Effects with motion allowed", () => {
     await expect(step).toHaveAttribute("data-reveal", "shown");
   });
 
+  test("plays the service area animation once it scrolls into view", async ({ page }) => {
+    await page.goto("/");
+    const svg = page.locator("#einsatzgebiet svg");
+    await expect.poll(() => svg.evaluate((element: SVGSVGElement) => element.animationsPaused())).toBe(true);
+
+    await svg.scrollIntoViewIfNeeded();
+
+    await expect.poll(() => svg.evaluate((element: SVGSVGElement) => element.animationsPaused())).toBe(false);
+  });
+
   test("makes the header compact after scrolling", async ({ page }) => {
     await page.goto("/");
     const header = page.getByRole("banner");
@@ -66,6 +76,14 @@ test.describe("Effects with motion allowed", () => {
 });
 
 test.describe("Effects with reduced motion", () => {
+  test("shows the service area illustration as a finished still", async ({ page }) => {
+    await page.goto("/");
+    const svg = page.locator("#einsatzgebiet svg");
+
+    await expect.poll(() => svg.evaluate((element: SVGSVGElement) => element.animationsPaused())).toBe(true);
+    expect(await svg.evaluate((element: SVGSVGElement) => element.getCurrentTime())).toBeGreaterThanOrEqual(4);
+  });
+
   test("shows no video and hides no content", async ({ page }) => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");

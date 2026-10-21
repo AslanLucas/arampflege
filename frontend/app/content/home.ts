@@ -45,6 +45,14 @@ export const teamTeaser = {
   text: "[[INHALT FEHLT: Zwei bis drei Sätze der Pflegedienstleitung zum Team]]",
 };
 
+export const areaTeaser = {
+  eyebrow: "Einsatzgebiet",
+  title: "Kommen wir auch zu Ihnen?",
+  text: `Wir pflegen Menschen in ${site.region} und den umliegenden Gemeinden.`,
+  places: "[[INHALT FEHLT: Orte und Postleitzahlen im Einsatzgebiet]]",
+  note: "Wenn Ihr Ort nicht dabei ist, rufen Sie uns trotzdem an. Wir sagen Ihnen, ob wir Sie versorgen können.",
+};
+
 export const servicesTeaser = {
   title: "Wobei wir Sie unterstützen",
   intro: "Wählen Sie eine Leistung, um zu erfahren, für wen sie gedacht ist und wer die Kosten trägt.",
