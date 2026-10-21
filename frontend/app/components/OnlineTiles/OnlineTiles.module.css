@@ -1,0 +1,145 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: none;
+  padding: var(--space-6);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out),
+    opacity var(--duration-reveal) var(--ease-out) var(--reveal-delay, 0ms);
+}
+
+.tile:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-raised);
+}
+
+.featured {
+  border-color: var(--color-brand-deep);
+  background-color: var(--color-brand-deep);
+  color: var(--color-on-brand);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-control);
+  background-color: var(--color-surface-alt);
+  color: var(--color-primary);
+}
+
+.featured .icon {
+  background-color: var(--color-on-brand);
+  color: var(--color-brand-deep);
+}
+
+/* Status chip: information only, never an action */
+.chip {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-alt);
+  color: var(--color-link);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+}
+
+.featured .chip {
+  background-color: var(--color-brand-darkest);
+  color: var(--color-on-brand);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-display);
+}
+
+.text {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.featured .text {
+  color: var(--color-on-brand);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target-min);
+  margin-top: auto;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* The whole tile is clickable; the link keeps its own name */
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+}
+
+.link svg {
+  transition: transform var(--duration-hover) var(--ease-out);
+}
+
+.tile:hover .link svg {
+  transform: translateX(5px);
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+/* The outline lies outside the tile on the light page, so it stays blue even on the dark tile */
+.tile:has(.link:focus-visible) {
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Desktop: the callback tile is wider, giving a calm bento rhythm */
+@media (min-width: 60rem) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .featured {
+    grid-column: span 2;
+  }
+
+  .featured .title {
+    font-size: var(--font-size-h2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile:hover {
+    transform: none;
+  }
+}

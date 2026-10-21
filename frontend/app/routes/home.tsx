@@ -4,6 +4,7 @@ import { ButtonLink } from "../components/ButtonLink/ButtonLink";
 import { Container } from "../components/Container/Container";
 import { Eyebrow } from "../components/Eyebrow/Eyebrow";
 import { HeroVideo } from "../components/HeroVideo/HeroVideo";
+import { OnlineTiles } from "../components/OnlineTiles/OnlineTiles";
 import { PhoneIcon } from "../components/Icon/icons";
 import { PhotoPlaceholder } from "../components/PhotoPlaceholder/PhotoPlaceholder";
 import { PostalAddress } from "../components/PostalAddress/PostalAddress";
@@ -17,6 +18,8 @@ import {
   careerTeaser,
   careProcess,
   hero,
+  heroChips,
+  onlineServices,
   servicesTeaser,
   teamTeaser,
 } from "../content/home";
@@ -53,6 +56,11 @@ export default function Home() {
               </ButtonLink>
               <ArrowLink to={callbackLink.to}>{callbackLink.label}</ArrowLink>
             </div>
+            <ul className={styles.heroChips} aria-label="Online bei Aram">
+              {heroChips.map((chip) => (
+                <li key={chip}>{chip}</li>
+              ))}
+            </ul>
           </div>
           <div className={styles.callbackCard}>
             <p className={styles.cardLabel}>Rückruf</p>
@@ -123,6 +131,10 @@ export default function Home() {
         <p className={styles.sectionAction}>
           <ButtonLink to={callbackLink.to}>{callbackLink.label}</ButtonLink>
         </p>
+      </Section>
+
+      <Section id="online" title={onlineServices.title} intro={<p>{onlineServices.intro}</p>}>
+        <OnlineTiles tiles={onlineServices.tiles} />
       </Section>
 
       <Section id="team" title={teamTeaser.title} className={styles.teamGrid}>

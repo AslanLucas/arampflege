@@ -62,7 +62,7 @@ const requirements: { purpose: string; foregrounds: string[]; backgrounds: strin
   { purpose: "inverted button label (AAA)", foregrounds: ["brand-deep"], backgrounds: ["on-brand"], min: 7 },
   {
     purpose: "form borders, focus ring, accent lines (non-text)",
-    foregrounds: ["border-strong", "focus", "accent"],
+    foregrounds: ["border-strong", "focus", "focus-ring", "accent"],
     backgrounds: light,
     min: 3,
   },

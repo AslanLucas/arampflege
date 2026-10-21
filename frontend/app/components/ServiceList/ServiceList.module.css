@@ -81,6 +81,6 @@
 }
 
 .item:has(.link:focus-visible) {
-  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
   outline-offset: var(--focus-ring-offset);
 }

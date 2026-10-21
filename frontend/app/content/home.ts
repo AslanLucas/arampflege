@@ -67,3 +67,70 @@ export const callbackTeaser = {
   title: "Wir rufen Sie zurück",
   text: "Hinterlassen Sie Ihren Namen und Ihre Telefonnummer. Wir melden uns innerhalb von [[INHALT FEHLT: Rückruffrist]].",
 };
+
+export type OnlineTile = {
+  id: string;
+  icon: "phoneCall" | "message" | "mail" | "fileUp" | "shield";
+  chip: string;
+  title: string;
+  text: string;
+  to: string;
+  linkLabel: string;
+  featured?: boolean;
+};
+
+// Only services the client confirmed or the website itself provides (docs/CONTENT.md).
+export const onlineServices = {
+  title: "Vieles erledigen Sie bei uns online",
+  intro: "Rückruf, Nachricht oder Bewerbung: zu jeder Tageszeit und in wenigen Minuten.",
+  tiles: [
+    {
+      id: "rueckruf",
+      icon: "phoneCall",
+      chip: "In wenigen Minuten",
+      title: "Rückruf anfordern",
+      text: "Name und Telefonnummer genügen. Wir rufen Sie innerhalb von [[INHALT FEHLT: Rückruffrist]] zurück.",
+      to: "/rueckruf",
+      linkLabel: "Rückruf anfordern",
+      featured: true,
+    },
+    {
+      id: "nachricht",
+      icon: "message",
+      chip: "Kontaktformular",
+      title: "Nachricht schreiben",
+      text: "Schreiben Sie uns Ihr Anliegen, auch abends oder am Wochenende.",
+      to: "/kontakt",
+      linkLabel: "Zum Kontaktformular",
+    },
+    {
+      id: "digital",
+      icon: "mail",
+      chip: "Digital erreichbar",
+      title: "Per E-Mail oder Messenger",
+      text: `Schreiben Sie uns an ${site.email.display} oder über [[INHALT FEHLT: Messenger]].`,
+      to: site.email.href,
+      linkLabel: "E-Mail schreiben",
+    },
+    {
+      id: "bewerbung",
+      icon: "fileUp",
+      chip: "Karriere",
+      title: "In wenigen Minuten bewerben",
+      text: "Kurzbewerbung vom Smartphone, ohne Anschreiben. Ein Foto vom Lebenslauf genügt.",
+      to: "/karriere/bewerben",
+      linkLabel: "Zur Kurzbewerbung",
+    },
+    {
+      id: "datenschutz",
+      icon: "shield",
+      chip: "Datenschutz",
+      title: "Ihre Daten sind geschützt",
+      text: "Ihre Angaben werden verschlüsselt übertragen. Diese Webseite nutzt keine Tracking-Cookies und keine Analyse-Dienste.",
+      to: "/datenschutz",
+      linkLabel: "Zur Datenschutzerklärung",
+    },
+  ] satisfies OnlineTile[],
+};
+
+export const heroChips = ["Rückruf online", "Bewerbung in Minuten", "Ohne Tracking"];

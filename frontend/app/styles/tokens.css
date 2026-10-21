@@ -27,11 +27,16 @@
   --color-photo-placeholder: #e9d3da;
   /* Over the top-area video: 80 % keeps ivory text at 7.2 : 1 even over pure white pixels */
   --color-video-overlay: rgb(94 15 46 / 0.8);
+  /* Glass card over the video: dense enough for 12 : 1 text over any frame */
+  --color-glass: rgb(251 248 245 / 0.92);
+  /* Status chips over the video: darkens the background behind ivory text */
+  --color-chip-on-video: rgb(63 10 32 / 0.6);
   /* Sticky header after scrolling: translucent off-white with blur */
   --color-header-scrolled: rgb(251 248 245 / 0.88);
 
   /* Status and focus */
-  --color-focus: #0b57d0;
+  --color-focus-ring: #0b57d0; /* always blue: for outlines drawn outside a dark surface */
+  --color-focus: var(--color-focus-ring);
   --color-focus-on-brand: #fbf8f5; /* blue is too dark on brand surfaces */
   --color-error: #b3261e;
   --color-success: #2e6b34;
