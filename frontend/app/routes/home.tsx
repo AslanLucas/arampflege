@@ -66,10 +66,6 @@ export default function Home() {
                 <dt>Rufbereitschaft</dt>
                 <dd>{site.onCallService}</dd>
               </div>
-              <div>
-                <dt>Einsatzgebiet</dt>
-                <dd>{site.serviceArea}</dd>
-              </div>
             </dl>
           </div>
           {/* Decorative: the header already names Aram. Only on wide screens, where the space is free. */}
