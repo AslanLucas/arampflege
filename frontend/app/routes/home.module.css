@@ -132,10 +132,11 @@
 }
 
 /* Availability inside the top area, below the actions; ivory like all text over the video */
+/* Items only as wide as their text, so the gap between them stays small */
 .availabilityList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
-  gap: var(--space-4) var(--space-5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-7);
   max-width: 50rem;
   margin: var(--space-5) 0 0;
 }
