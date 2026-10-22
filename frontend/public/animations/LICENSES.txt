@@ -1,0 +1,12 @@
+Illustrierte Szenen (Lottie)
+============================
+
+Zwei Animationen, vom Kunden geliefert am 2026-10-22 (Entscheidung in docs/DESIGN.md,
+„Effekte“). Mit frontend/scripts/prepare-lottie.py in die Markenfarben umgefärbt,
+Expressions entfernt.
+
+rollstuhl-spaziergang.json   Quelldatei „Helping the needy.json“
+beratung.json                Quelldatei „Helping Doctor to aged people.json“
+
+Quelle und Lizenz: OFFEN. Vor dem Livegang nachweisen, dass kommerzielle Nutzung
+und Bearbeitung erlaubt sind (docs/OFFENE-PUNKTE.md).

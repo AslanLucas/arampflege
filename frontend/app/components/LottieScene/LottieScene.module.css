@@ -1,0 +1,10 @@
+/* A soft blush disc behind the scene; it is all that shows without JavaScript */
+.scene {
+  width: 100%;
+  border-radius: var(--radius-card);
+  background: radial-gradient(ellipse 48% 46% at 50% 52%, var(--scene-backdrop, var(--color-surface-alt)) 99%, transparent 100%);
+}
+
+.scene svg {
+  display: block;
+}

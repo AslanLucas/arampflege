@@ -118,13 +118,14 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 - Ein Icon vor jeder Überschrift
 - Sparkle-, Stern- oder Zauberstab-Symbole
 - Stockfotos (lächelnde Seniorin mit Pflegerin im weißen Kittel, Händehalten in Nahaufnahme)
-- KI-generierte Menschen oder Illustrationen im „Corporate Memphis“-Stil
+- KI-generierte Menschen oder Illustrationen im „Corporate Memphis“-Stil (Ausnahme: die zwei Lottie-Szenen unter „Effekte“)
 - 3D-Illustrationen
 
 ### Bewegung
 - Parallax-Effekte
 - Karussells und Slider jeder Art
 - Videos mit Ton oder ohne Pause-Knopf; Animationen, die sich endlos wiederholen (außer dem Hintergrundvideo)
+- Animationsbibliotheken (Ausnahme: `lottie-web` im Light-Build, nur für `LottieScene`)
 - Jede Bewegung, die bei `prefers-reduced-motion: reduce` weiterläuft
 
 ### Typografie
@@ -170,6 +171,7 @@ Auf Wunsch des Kunden ist die Seite lebendiger. Diese Effekte sind erlaubt, jewe
 | Mitlaufender Header | Wird beim Scrollen kompakter und leicht durchscheinend mit Unschärfe (Deckkraft 88 %). In niedrigen Fenstern (unter 544 px Höhe, z. B. bei Zoom) läuft er nicht mit. `scroll-padding` hält fokussierte Elemente frei. |
 | Hover | Buttons heben sich leicht an, Pfeile gleiten, Karten bekommen einen dezenten Schatten, Fotos zoomen leicht. |
 | Leistungsübersicht (`ServiceShowcase`, Entscheidung 2026-10-22) | Eine große Zeile pro Leistung, Foto und Text im Wechsel links und rechts; das Foto gleitet von seiner Seite herein. Die ganze Zeile ist anklickbar, der Leistungsname bleibt der Linkname. Oben eine Collage aus drei Fotos, die sich beim Laden einmal auffächert. |
+| Illustrierte Szenen (`LottieScene`, Entscheidung 2026-10-22 auf Wunsch des Kunden) | Genau zwei Szenen: Spaziergang mit Rollstuhl auf „Über uns“ neben dem Leitsatz, Beratungsgespräch statt Foto oben auf „Pflegeberatung“. In Markenfarben umgefärbt (`frontend/scripts/prepare-lottie.py`), Hauttöne bleiben. Rein dekorativ (`aria-hidden`). Der Player lädt erst, wenn die Szene sichtbar wird, spielt einmal höchstens 5 s (WCAG 2.2.2, keine Schleife) und noch einmal beim Darüberfahren. Bei „Bewegung reduzieren“ nur das erste Bild. Keine weiteren Szenen ohne neue Entscheidung. |
 | Leistungsseiten | Kopfbereich mit Foto, Eckdaten-Karte (Wer zahlt, Voraussetzung, Rechtsgrundlage), mitlaufende Seitennavigation, die den aktuellen Abschnitt markiert (`aria-current="location"`), Leistungsumfang als Liste mit Haken, die nacheinander erscheint, Antragsschritte als Zeitleiste, deren Linie sich zeichnet. Gleiche Bedingungen wie das Einblenden. |
 
 Das Hintergrundvideo zeigt übergangsweise lizenzfreie Stimmungsbilder ohne Personen (`frontend/public/videos/LICENSES.txt`), bis eigene Aufnahmen vorliegen. Ebenso zeigen die Leistungsseiten übergangsweise lizenzfreie Fotos von Gegenständen und Räumen ohne Personen (`frontend/public/images/leistungen/LICENSES.txt`). Gestellte Pflegeszenen aus Bildarchiven bleiben verboten.

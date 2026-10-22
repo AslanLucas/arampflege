@@ -78,7 +78,7 @@ frontend/
 ## Performance
 
 - JavaScript-Budget: initial unter 120 KB (gzip) pro Route. **Ausnahme Formularseiten** (`/kontakt`, `/rueckruf`, `/karriere/bewerben`): bis 150 KB, weil Redux Toolkit und RTK Query nur dort geladen werden (Entscheidung 2026-10-20). Alle anderen Seiten laden kein Redux.
-- Keine Animationsbibliotheken (Framer Motion o. ä.).
+- Keine Animationsbibliotheken (Framer Motion o. ä.). Ausnahme (Entscheidung 2026-10-22): `lottie-web/build/player/lottie_light`, nur per dynamischem Import in `LottieScene`, nie im initialen Bundle.
 - Routen per Code-Splitting laden.
 
 ## Tests
