@@ -46,6 +46,8 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Karriere – Entwürfe für Aufgaben und Voraussetzungen prüfen; Führerschein nötig?; Qualifikation für Pflegehilfskraft und Betreuungskraft; Arbeitsbedingungen (Arbeitszeiten, Dienstfahrzeug, Vergütung, falls veröffentlicht) – `frontend/app/content/jobs.ts`
 - [ ] Karriere – Qualifikationsoptionen im Bewerbungsformular bestätigen (Pflegefachkraft, Pflegehilfskraft oder Pflegeassistenz, Hauswirtschafts- oder Betreuungskraft, in Ausbildung, andere) – `frontend/app/content/careers.ts`
 - [ ] Karriere – Frist für die Rückmeldung auf Bewerbungen – Bestätigung im Bewerbungsformular
+- [ ] Karriere – Dienstwagen oder Fahrtkostenerstattung? – „Was dich bei uns erwartet“ (`frontend/app/content/careers.ts`)
+- [ ] Karriere – Weitere Zusagen nur nach Bestätigung, z. B. Zuschläge, Einarbeitung mit fester Ansprechperson, bezahlte Fortbildung – `frontend/app/content/careers.ts`
 - [ ] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – Startseite, `/rueckruf`, Bestätigung im Rückrufformular
 - [ ] Kontakt – Zusage, in welcher Frist auf Nachrichten geantwortet wird – `site.replyTime`: Kontakt-Karten (E-Mail), `/kontakt`, Bestätigung im Kontaktformular
 - [x] Kontakt – Rufbereitschaft rund um die Uhr erreichbar, auch am Wochenende (bestätigt 2026-10-21) – Kontakt-Karten

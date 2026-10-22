@@ -213,3 +213,32 @@ export function CheckIcon(props: IconProps) {
     </Icon>
   );
 }
+
+export function HeartIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+    </Icon>
+  );
+}
+
+export function EuroIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M4 10h12" />
+      <path d="M4 14h9" />
+      <path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2" />
+    </Icon>
+  );
+}
+
+export function CarIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+      <circle cx="7" cy="17" r="2" />
+      <path d="M9 17h6" />
+      <circle cx="17" cy="17" r="2" />
+    </Icon>
+  );
+}

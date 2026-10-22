@@ -3,6 +3,7 @@ import { Breadcrumbs } from "../components/Breadcrumbs/Breadcrumbs";
 import { ButtonLink } from "../components/ButtonLink/ButtonLink";
 import { ContactPrompt } from "../components/ContactPrompt/ContactPrompt";
 import { Container } from "../components/Container/Container";
+import { EmployerPromises } from "../components/EmployerPromises/EmployerPromises";
 import { JobList } from "../components/JobList/JobList";
 import { careersIntro } from "../content/careers";
 import { applyPath, jobs } from "../content/jobs";
@@ -23,6 +24,10 @@ export default function Karriere() {
       <Breadcrumbs current="Karriere" />
       <h1>Karriere</h1>
       <p className={styles.lead}>{careersIntro}</p>
+
+      <div className={styles.wide}>
+        <EmployerPromises />
+      </div>
 
       <section aria-labelledby="offene-stellen" className={styles.section}>
         <h2 id="offene-stellen">Offene Stellen</h2>

@@ -1,0 +1,141 @@
+.section {
+  margin-top: var(--space-8);
+}
+
+.header {
+  max-width: 44rem;
+  margin-bottom: var(--space-6);
+}
+
+.intro {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lead);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+.featured {
+  display: flex;
+}
+
+/* The most important promise on the brand colour */
+.featuredCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  padding: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+  border-radius: var(--radius-card);
+  background: linear-gradient(140deg, var(--color-brand-darkest), var(--color-brand-deep) 75%);
+  color: var(--color-on-brand);
+  box-shadow: var(--shadow-raised);
+}
+
+.featuredIcon {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: var(--color-on-brand);
+  color: var(--color-brand-deep);
+}
+
+.featuredTitle {
+  margin: var(--space-4) 0 0;
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-display);
+}
+
+.featuredText {
+  margin: 0;
+  color: var(--color-on-brand);
+  font-size: var(--font-size-lead);
+}
+
+/* The other promises: a calm list with dividers, items appear one after another */
+.list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list[data-reveal="hidden"] {
+  opacity: 1;
+  transform: none;
+}
+
+.item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  max-width: none;
+  padding-block: var(--space-5);
+  border-bottom: var(--border-width) solid var(--color-border);
+  transition:
+    opacity 500ms var(--ease-out) calc(var(--n) * 90ms),
+    transform 500ms var(--ease-out) calc(var(--n) * 90ms);
+}
+
+.item:first-child {
+  padding-top: 0;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+.list[data-reveal="hidden"] .item {
+  opacity: 0;
+  transform: translateX(1rem);
+}
+
+.icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--color-surface-alt);
+  color: var(--color-primary);
+  transition:
+    background-color var(--duration-hover) var(--ease-out),
+    color var(--duration-hover) var(--ease-out);
+}
+
+.item:hover .icon {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.title {
+  margin: 0 0 var(--space-1);
+  font-size: var(--font-size-h4);
+}
+
+.text {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 60rem) {
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-7);
+  }
+
+  .featured {
+    grid-column: 1 / 6;
+  }
+
+  .list {
+    grid-column: 6 / 13;
+  }
+}

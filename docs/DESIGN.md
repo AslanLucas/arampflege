@@ -154,6 +154,7 @@ Die Seite soll wie ein neuer, digital aufgestellter Pflegedienst wirken. Dafür:
 - **Einsatzgebiet-Animation** (`AreaIllustration`): die vom Kunden gelieferte Grafik in Markenfarben. Läuft einmal, wenn sie ins Bild kommt, und bleibt auf dem Endbild; bei „Bewegung reduzieren“ sofort das Endbild.
 - **Kontakt-Karten** (`ContactPanel`, Entscheidung 2026-10-21): Telefon (hervorgehoben in Markenfarbe), E-Mail und Rückruf, Adresse mit Karte, Bürozeiten als Tabelle, Hinweis aufs Einsatzgebiet. Die Karten stehen untereinander, nur E-Mail und Rückruf teilen sich eine Zeile. Auf `/kontakt` neben dem Formular, auf der Startseite neben kurzem Text mit Buttons zum Formular und zum Rückruf, dort ohne Formular (JS-Budget).
 - **Statisches Kartenbild**: einmalig mit `frontend/scripts/static-map.py` aus OpenStreetMap-Kacheln erzeugt und selbst ausgeliefert (AVIF/WebP), Pin als SVG darüber, Quellenangabe „© OpenStreetMap-Mitwirkende“ und Link „In Karten-App öffnen“. Keine eingebettete Karte, keine Anfragen an Kartendienste beim Seitenaufruf.
+- **Was dich bei uns erwartet** (`EmployerPromises`, Karriereseite, Entscheidung 2026-10-22): der wichtigste Punkt als große Karte in Markenfarbe, die übrigen als ruhige Liste mit Symbol und Trennlinien daneben, versetzt einblendend. Bewusst kein Raster gleicher Karten. Nur vom Kunden bestätigte Zusagen.
 - Digitale Angebote werden nur genannt, wenn sie bestätigt sind (`docs/CONTENT.md`).
 
 ## Effekte (Entscheidung 2026-10-20)
