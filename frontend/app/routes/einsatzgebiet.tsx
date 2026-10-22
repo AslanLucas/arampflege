@@ -2,7 +2,7 @@ import { Breadcrumbs } from "../components/Breadcrumbs/Breadcrumbs";
 import { ContactPrompt } from "../components/ContactPrompt/ContactPrompt";
 import { Container } from "../components/Container/Container";
 import { Eyebrow } from "../components/Eyebrow/Eyebrow";
-import { MapPinIcon } from "../components/Icon/icons";
+import { ServiceAreaMap } from "../components/ServiceAreaMap/ServiceAreaMap";
 import { site } from "../content/site";
 import { pageMeta } from "../meta";
 import type { Route } from "./+types/einsatzgebiet";
@@ -30,17 +30,9 @@ export default function Einsatzgebiet() {
       <Container>
         <section aria-labelledby="orte" className={styles.section}>
           <h2 id="orte">Hier sind wir für Sie da</h2>
-          <ul className={styles.places}>
-            {site.places.map((place) => (
-              <li key={place.name} className={styles.place}>
-                <span className={styles.icon} aria-hidden="true">
-                  <MapPinIcon size={20} />
-                </span>
-                <span className={styles.name}>{place.name}</span>
-                <span className={styles.postalCode}>{place.postalCode}</span>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.map}>
+            <ServiceAreaMap />
+          </div>
           <p className={styles.note}>
             Wir versorgen auch weitere Orte in der Umgebung. Rufen Sie uns an, dann sagen wir Ihnen, ob wir zu Ihnen
             kommen: <a href={site.phone.href}>{site.phone.display}</a>

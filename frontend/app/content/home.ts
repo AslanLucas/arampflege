@@ -47,7 +47,6 @@ export const areaTeaser = {
   eyebrow: "Einsatzgebiet",
   title: "Kommen wir auch zu Ihnen?",
   text: `Wir pflegen Menschen in ${site.region} und den umliegenden Gemeinden.`,
-  places: `${site.places.map((place) => place.name).join(", ")} und Umgebung`,
   note: "Wenn Ihr Ort nicht dabei ist, rufen Sie uns trotzdem an. Wir sagen Ihnen, ob wir Sie versorgen können.",
 };
 

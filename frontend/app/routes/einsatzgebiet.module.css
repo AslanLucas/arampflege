@@ -23,49 +23,9 @@
   margin-top: var(--space-8);
 }
 
-.places {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
-  gap: var(--space-4);
+.map {
+  max-width: 52rem;
   margin: var(--space-5) 0 var(--space-6);
-  padding: 0;
-  list-style: none;
-}
-
-.place {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: var(--space-3);
-  align-items: center;
-  max-width: none;
-  padding: var(--space-4) var(--space-5);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-card);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-card);
-}
-
-.icon {
-  display: grid;
-  grid-row: span 2;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  background-color: var(--color-surface-alt);
-  color: var(--color-primary);
-}
-
-.name {
-  font-family: var(--font-heading);
-  white-space: nowrap;
-  font-size: var(--font-size-h4);
-  font-weight: var(--font-weight-heading);
-}
-
-.postalCode {
-  color: var(--color-text-muted);
-  font-variant-numeric: tabular-nums;
 }
 
 .note {

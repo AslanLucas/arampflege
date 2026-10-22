@@ -109,24 +109,12 @@
 }
 
 .areaMedia {
-  display: grid;
-  place-items: center;
-  padding: var(--space-6);
-  border-radius: var(--radius-card);
-  background-color: var(--color-surface-alt);
+  min-width: 0;
 }
 
 .areaLead {
   font-size: var(--font-size-lead);
   line-height: 1.5;
-}
-
-.places {
-  padding: var(--space-4) var(--space-5);
-  border-left: 3px solid var(--color-primary);
-  border-radius: 0 var(--radius-control) var(--radius-control) 0;
-  background-color: var(--color-surface);
-  font-weight: var(--font-weight-semibold);
 }
 
 .areaActions {
@@ -244,8 +232,7 @@
   }
 
   .areaMedia {
-    grid-column: 1 / 7;
-    padding: var(--space-8) var(--space-6);
+    grid-column: 1 / 8;
   }
 
   .areaText {

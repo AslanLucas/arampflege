@@ -25,6 +25,7 @@
   --color-on-brand: #fbf8f5; /* text on brand surfaces */
   --color-on-brand-muted: #f3d9e2;
   --color-photo-placeholder: #e9d3da;
+  --color-water: #9cc3e0; /* rivers on the service area map, decorative */
   /* Over the top-area video: 80 % keeps ivory text at 7.2 : 1 even over pure white pixels */
   --color-video-overlay: rgb(94 15 46 / 0.8);
   /* Glass card over the video: dense enough for 12 : 1 text over any frame */

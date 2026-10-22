@@ -1,0 +1,291 @@
+.wrapper[data-reveal="hidden"] {
+  opacity: 1;
+  transform: none;
+}
+
+.frame {
+  position: relative;
+  padding: var(--space-4);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-card);
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Places: appear one after another, lift and darken on hover */
+.region {
+  fill: var(--color-photo-placeholder);
+  stroke: var(--color-surface);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    fill var(--duration-hover) var(--ease-out),
+    opacity var(--duration-hover) var(--ease-out),
+    transform var(--duration-reveal) var(--ease-out) calc(var(--i) * 90ms);
+}
+
+.region:nth-child(even) {
+  fill: var(--color-surface-alt);
+}
+
+.wrapper[data-reveal="hidden"] .region {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.frame[data-active] .region:not([data-active]) {
+  opacity: 0.55;
+}
+
+/* The active place is drawn again on top, so its shadow is not covered by its neighbours */
+.lifted {
+  fill: var(--color-brand-deep);
+  stroke: var(--color-surface);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 14px rgb(63 10 32 / 0.35));
+  transform: translateY(-5px);
+  animation: lift var(--duration-hover) var(--ease-out);
+}
+
+@keyframes lift {
+  from {
+    transform: none;
+    filter: none;
+  }
+}
+
+.river {
+  fill: none;
+  stroke: var(--color-water);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.label {
+  fill: var(--color-brand-deep);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: fill var(--duration-hover) var(--ease-out);
+}
+
+.label[data-active] {
+  fill: var(--color-on-brand);
+  transform: translateY(-5px);
+}
+
+/* Route from the office: the dashed line draws itself, then the dashes keep moving */
+.routeLine {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2.5;
+  stroke-dasharray: 6 6;
+  stroke-linecap: round;
+  animation:
+    route-in 500ms var(--ease-out),
+    route-flow 1.2s linear infinite;
+}
+
+.routeEnd {
+  fill: var(--color-on-brand);
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  animation: route-in 500ms var(--ease-out);
+}
+
+@keyframes route-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes route-flow {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+.officeDot {
+  fill: var(--color-primary);
+  stroke: var(--color-surface);
+  stroke-width: 3;
+}
+
+.pulse {
+  fill: var(--color-primary);
+  opacity: 0.25;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse 2.4s var(--ease-out) infinite;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.35;
+    transform: scale(0.6);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+/* Office badge in the empty corner of the map; shows the route to the active place */
+.badge {
+  position: absolute;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  display: grid;
+  width: min(17rem, 45%);
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-brand-deep);
+  border-radius: var(--radius-control);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  font-size: var(--font-size-label);
+}
+
+.badgeOffice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+}
+
+.badgeLogo {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: auto;
+}
+
+.badgeText {
+  display: grid;
+  color: var(--color-text-muted);
+}
+
+.badgeTitle {
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+}
+
+.badgeHint {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border-top: var(--border-width) dashed var(--color-border-strong);
+  color: var(--color-text-muted);
+}
+
+.badgeRoute {
+  display: grid;
+  gap: 0.1rem;
+  padding: var(--space-2) var(--space-3) var(--space-3);
+  border-top: var(--border-width) dashed var(--color-primary);
+  background-color: var(--color-surface-alt);
+  animation: route-card-in var(--duration-hover) var(--ease-out);
+}
+
+@keyframes route-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+.routeName {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-heading);
+}
+
+.routeMeta {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-regular);
+}
+
+.routeDistance {
+  color: var(--color-link);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Accessible list of the places: also selects them on the map */
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+  gap: var(--space-2);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  max-width: none;
+}
+
+.place {
+  display: grid;
+  width: 100%;
+  min-height: var(--tap-target-min);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-control);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-feedback) ease-out,
+    background-color var(--duration-feedback) ease-out;
+}
+
+.place[data-active] {
+  border-color: var(--color-primary);
+  background-color: var(--color-surface-alt);
+}
+
+.place[aria-pressed="true"] {
+  border-width: 2px;
+}
+
+.placeName {
+  font-weight: var(--font-weight-semibold);
+}
+
+.placeMeta {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-label);
+}
+
+.source {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-label);
+}
+
+/* Narrow screens: the badge would cover the map; the list below carries the same details */
+@media (max-width: 36rem) {
+  .badge {
+    display: none;
+  }
+}

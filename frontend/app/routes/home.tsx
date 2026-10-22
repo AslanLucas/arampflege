@@ -1,5 +1,5 @@
-import { AreaIllustration } from "../components/AreaIllustration/AreaIllustration";
 import { ContactPanel } from "../components/ContactPanel/ContactPanel";
+import { ServiceAreaMap } from "../components/ServiceAreaMap/ServiceAreaMap";
 import { ArrowLink } from "../components/ArrowLink/ArrowLink";
 import { ButtonLink } from "../components/ButtonLink/ButtonLink";
 import { Container } from "../components/Container/Container";
@@ -85,14 +85,13 @@ export default function Home() {
       <Section id="einsatzgebiet" title={areaTeaser.title} className={styles.areaGrid}>
         {(heading) => (
           <>
-            <Reveal className={styles.areaMedia}>
-              <AreaIllustration />
-            </Reveal>
+            <div className={styles.areaMedia}>
+              <ServiceAreaMap />
+            </div>
             <div className={styles.areaText}>
               <Eyebrow>{areaTeaser.eyebrow}</Eyebrow>
               {heading}
               <p className={styles.areaLead}>{areaTeaser.text}</p>
-              <p className={styles.places}>{areaTeaser.places}</p>
               <p>{areaTeaser.note}</p>
               <div className={styles.areaActions}>
                 <ButtonLink to="/einsatzgebiet">Einsatzgebiet ansehen</ButtonLink>

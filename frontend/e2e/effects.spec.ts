@@ -53,14 +53,16 @@ test.describe("Effects with motion allowed", () => {
     await expect(step).toHaveAttribute("data-reveal", "shown");
   });
 
-  test("plays the service area animation once it scrolls into view", async ({ page }) => {
-    await page.goto("/");
-    const svg = page.locator("#einsatzgebiet svg");
-    await expect.poll(() => svg.evaluate((element: SVGSVGElement) => element.animationsPaused())).toBe(true);
+  test("highlights a place on the service area map on hover and shows the driving distance", async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== "desktop", "Hover needs a mouse; small screens use the list below the map");
+    await page.goto("/einsatzgebiet");
+    const map = page.locator("svg").filter({ has: page.locator("text", { hasText: "Ochtrup" }) });
+    const ochtrup = map.locator("path").nth(2);
 
-    await svg.scrollIntoViewIfNeeded();
-
-    await expect.poll(() => svg.evaluate((element: SVGSVGElement) => element.animationsPaused())).toBe(false);
+    await ochtrup.hover();
+    await expect(page.getByText("Zeigen Sie auf einen Ort.")).toBeHidden();
+    await expect(map.locator("..").getByText(/^ca\. \d+\s?km · ca\. \d+\s?Min\. mit dem Auto$/)).toBeVisible();
+    await expect(page.getByRole("button", { name: /^Ochtrup/ })).toHaveAttribute("data-active", "true");
   });
 
   test("makes the header compact after scrolling", async ({ page }) => {
@@ -76,14 +78,6 @@ test.describe("Effects with motion allowed", () => {
 });
 
 test.describe("Effects with reduced motion", () => {
-  test("shows the service area illustration as a finished still", async ({ page }) => {
-    await page.goto("/");
-    const svg = page.locator("#einsatzgebiet svg");
-
-    await expect.poll(() => svg.evaluate((element: SVGSVGElement) => element.animationsPaused())).toBe(true);
-    expect(await svg.evaluate((element: SVGSVGElement) => element.getCurrentTime())).toBeGreaterThanOrEqual(4);
-  });
-
   test("shows no video and hides no content", async ({ page }) => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
