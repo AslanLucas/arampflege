@@ -13,7 +13,7 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [x] Allgemein – Telefonnummer 02562 8162218 – `frontend/app/content/site.ts`
 - [ ] Allgemein – Bürozeiten an Feiertagen (derzeit nicht genannt) – `site.officeHoursByDay`
 - [x] Allgemein – Einsatzgebiet grob: Gronau (Westfalen) und Umgebung – global
-- [ ] Allgemein – Einsatzgebiet genau: welche Orte und Postleitzahlen gehören zur „Umgebung“? – `/einsatzgebiet`
+- [x] Allgemein – Einsatzgebiet genau: Gronau, Gronau-Epe, Ochtrup, Heek, Ahaus u. a. (bestätigt 2026-10-22; Postleitzahlen ergänzt) – `site.places`
 - [ ] Allgemein – Aus dem Logo abgeleitete Markenfarben (Himbeerrot #AA1A4B, Weinrot) und die gewählten Schriften bestätigen – `tokens.css`, `docs/DESIGN.md`
 
 ## Rechtliches

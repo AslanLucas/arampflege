@@ -5,7 +5,15 @@ export const site = {
   tagline: "Ambulanter Pflegedienst",
   /** Short form for running text: "in Gronau und den umliegenden Gemeinden". */
   region: "Gronau",
-  serviceArea: "Gronau (Westfalen) und Umgebung",
+  serviceArea: "Gronau, Epe und Umgebung",
+  /** Places served, confirmed by the client on 2026-10-22 ("u. a."; more places nearby on request). */
+  places: [
+    { name: "Gronau", postalCode: "48599" },
+    { name: "Gronau-Epe", postalCode: "48599" },
+    { name: "Ochtrup", postalCode: "48607" },
+    { name: "Heek", postalCode: "48619" },
+    { name: "Ahaus", postalCode: "48683" },
+  ],
   phone: {
     display: "02562\u00a08162218",
     href: "tel:+4925628162218",

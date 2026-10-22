@@ -1,0 +1,77 @@
+/* Starts right below the header: cancels the main element's top padding */
+.hero {
+  margin-top: calc(-1 * var(--space-7));
+  padding-block: var(--space-5) var(--space-8);
+  background:
+    radial-gradient(50rem 26rem at 90% 0%, rgb(170 26 75 / 0.12), transparent 70%),
+    var(--color-surface-alt);
+}
+
+.title {
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-display);
+}
+
+.lead {
+  max-width: 36rem;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lead);
+}
+
+.section {
+  margin-top: var(--space-8);
+}
+
+.places {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  gap: var(--space-4);
+  margin: var(--space-5) 0 var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+.place {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-3);
+  align-items: center;
+  max-width: none;
+  padding: var(--space-4) var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.icon {
+  display: grid;
+  grid-row: span 2;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--color-surface-alt);
+  color: var(--color-primary);
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-heading);
+}
+
+.postalCode {
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.note {
+  max-width: 44rem;
+}
+
+.prompt {
+  max-width: 48rem;
+  margin-top: var(--space-8);
+}
