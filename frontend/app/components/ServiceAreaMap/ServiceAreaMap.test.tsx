@@ -55,4 +55,14 @@ describe("ServiceAreaMap", () => {
       unmount();
     }
   });
+
+  it("can hide the list and still names the places for screen readers", () => {
+    render(<ServiceAreaMap listPosition="hidden" />);
+
+    expect(screen.queryAllByRole("button")).toHaveLength(0);
+    const places = within(screen.getByRole("list", { name: "Orte im Einsatzgebiet" })).getAllByRole("listitem");
+    expect(places.map((item) => item.textContent)).toEqual(
+      serviceAreaMap.regions.map((region) => `${region.name}, ${region.postalCode}`),
+    );
+  });
 });

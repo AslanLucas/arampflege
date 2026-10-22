@@ -90,7 +90,7 @@ export default function Home() {
         {(heading) => (
           <>
             <div className={styles.areaMedia}>
-              <ServiceAreaMap />
+              <ServiceAreaMap listPosition="hidden" />
             </div>
             <div className={styles.areaText}>
               <Eyebrow>{areaTeaser.eyebrow}</Eyebrow>

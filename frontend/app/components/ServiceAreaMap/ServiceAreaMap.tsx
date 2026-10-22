@@ -41,8 +41,11 @@ function distanceText(region: Region) {
  * version: keyboard, touch and screen readers select the same places there.
  */
 type ServiceAreaMapProps = {
-  /** "side" puts the list of places next to the map on wide screens, "below" under it. */
-  listPosition?: "below" | "side";
+  /**
+   * "side" puts the list of places next to the map on wide screens, "below" under it. "hidden"
+   * shows no list; screen readers still get the places from a visually hidden one.
+   */
+  listPosition?: "below" | "side" | "hidden";
 };
 
 export function ServiceAreaMap({ listPosition = "below" }: ServiceAreaMapProps) {
@@ -130,39 +133,49 @@ export function ServiceAreaMap({ listPosition = "below" }: ServiceAreaMapProps) 
         </div>
       </div>
 
-      <ul className={styles.list} aria-label="Orte und Entfernungen vom Büro">
-        {regions.map((region) => (
-          <li key={region.id}>
-            <button
-              type="button"
-              className={styles.place}
-              aria-pressed={region.id === pinned}
-              data-active={region.id === activeId ? "true" : undefined}
-              onPointerEnter={() => {
-                setHovered(region.id);
-              }}
-              onPointerLeave={() => {
-                setHovered(undefined);
-              }}
-              onFocus={() => {
-                setFocused(region.id);
-              }}
-              onBlur={() => {
-                setFocused(undefined);
-              }}
-              onClick={() => {
-                setPinned((current) => (current === region.id ? undefined : region.id));
-              }}
-            >
-              <span className={styles.placeIcon} aria-hidden="true">
-                <MapPinIcon size={24} />
-              </span>
-              <span className={styles.placeName}>{region.name}</span>
-              <span className={styles.placeMeta}>{region.postalCode}</span>
-            </button>
-          </li>
-        ))}
-      </ul>
+      {listPosition === "hidden" ? (
+        <ul className="visually-hidden" aria-label="Orte im Einsatzgebiet">
+          {regions.map((region) => (
+            <li key={region.id}>
+              {region.name}, {region.postalCode}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul className={styles.list} aria-label="Orte und Entfernungen vom Büro">
+          {regions.map((region) => (
+            <li key={region.id}>
+              <button
+                type="button"
+                className={styles.place}
+                aria-pressed={region.id === pinned}
+                data-active={region.id === activeId ? "true" : undefined}
+                onPointerEnter={() => {
+                  setHovered(region.id);
+                }}
+                onPointerLeave={() => {
+                  setHovered(undefined);
+                }}
+                onFocus={() => {
+                  setFocused(region.id);
+                }}
+                onBlur={() => {
+                  setFocused(undefined);
+                }}
+                onClick={() => {
+                  setPinned((current) => (current === region.id ? undefined : region.id));
+                }}
+              >
+                <span className={styles.placeIcon} aria-hidden="true">
+                  <MapPinIcon size={24} />
+                </span>
+                <span className={styles.placeName}>{region.name}</span>
+                <span className={styles.placeMeta}>{region.postalCode}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
       <p className={styles.source}>
         Zeigen Sie auf einen Ort, um die ungefähre Fahrstrecke vom Büro in der {site.address.street} zu sehen.
         Kartendaten ©{" "}
