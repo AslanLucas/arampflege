@@ -15,7 +15,6 @@ export type Step = {
 
 export const careProcess = {
   title: "Was passiert nach Ihrem Anruf?",
-  intro: "Vier Schritte, bis die Pflege beginnt.",
   steps: [
     {
       title: "Sie rufen an oder bitten um Rückruf",

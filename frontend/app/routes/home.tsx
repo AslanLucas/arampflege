@@ -108,11 +108,6 @@ export default function Home() {
         id="ablauf"
         title={careProcess.title}
         tone="alt"
-        intro={
-          <p>
-            {careProcess.intro}
-          </p>
-        }
       >
         <StepList steps={careProcess.steps} />
         <p className={styles.sectionAction}>
