@@ -7,8 +7,8 @@ export const site = {
   region: "Gronau",
   serviceArea: "Gronau (Westfalen) und Umgebung",
   phone: {
-    display: "[[TELEFON]]",
-    href: "tel:[[TELEFON]]",
+    display: "02562\u00a08162218",
+    href: "tel:+4925628162218",
   },
   email: {
     display: "info@arampflege.de",
@@ -24,13 +24,20 @@ export const site = {
     court: "Amtsgericht Coesfeld",
     number: "HRB 24086",
   },
-  officeHours: "Mo–Fr\u00a08–18\u00a0Uhr, Sa\u00a09–13\u00a0Uhr",
+  managingDirector: "Stephan Gabriel",
+  supervisoryAuthority: {
+    name: "Kreis Borken, WTG-Behörde (Heimaufsicht)",
+    street: "Burloer Straße 93",
+    postalCodeAndCity: "46325 Borken",
+  },
+  officeHours: "Mo–Fr\u00a08–16\u00a0Uhr",
   /** Office hours per day group, for the table on the contact panel. */
   officeHoursByDay: [
-    { days: "Montag bis Freitag", hours: "8–18\u00a0Uhr" },
-    { days: "Samstag", hours: "9–13\u00a0Uhr" },
-    { days: "Sonntag", hours: "geschlossen" },
+    { days: "Montag bis Freitag", hours: "8–16\u00a0Uhr" },
+    { days: "Samstag und Sonntag", hours: "geschlossen" },
   ],
+  /** For structured data (schema.org openingHoursSpecification). */
+  openingHours: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "16:00" },
   onCallService: "24/7 erreichbar, auch am Wochenende",
   replyTime: "[[INHALT FEHLT: Antwortfrist]]",
 } as const;

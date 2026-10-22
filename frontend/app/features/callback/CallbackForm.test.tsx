@@ -6,6 +6,11 @@ import { formTokenHandler, jsonResponse, mockApi } from "../../test/mockApi";
 import { messages } from "../forms/messages";
 import { CallbackForm } from "./CallbackForm";
 
+/** Testing Library collapses the non-breaking spaces in the rendered text, but not in a string matcher. */
+function normalized(text: string) {
+  return text.replace(/\u00a0/g, " ");
+}
+
 const POST = "POST /api/callback-requests";
 
 async function renderForm() {
@@ -120,7 +125,7 @@ describe("CallbackForm", () => {
 
     submit();
 
-    expect(await screen.findByText(messages.tooManyRequests)).toBeInTheDocument();
+    expect(await screen.findByText(normalized(messages.tooManyRequests))).toBeInTheDocument();
   });
 
   it("offers the phone number when the request fails for other reasons", async () => {
@@ -130,7 +135,7 @@ describe("CallbackForm", () => {
 
     submit();
 
-    expect(await screen.findByText(messages.failed)).toBeInTheDocument();
+    expect(await screen.findByText(normalized(messages.failed))).toBeInTheDocument();
   });
 
   it("sends only once when submitted twice in a row", async () => {

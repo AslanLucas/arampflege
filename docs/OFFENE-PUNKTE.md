@@ -9,8 +9,8 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [x] Allgemein – Firmenname und Rechtsform: Aram Pflege GmbH – global
 - [ ] Allgemein – Logo als Vektordatei (SVG), dazu eine Variante nur mit Bildzeichen; Slogan im Logo mit kleinem „a“ („Ihr ambulanter Pflegedienst“) – global, Favicon
 - [x] Allgemein – Geschäftsanschrift (Ochtruper Straße 83, 48599 Gronau (Westfalen)) und E-Mail (info@arampflege.de) – `frontend/app/content/site.ts`
-- [x] Allgemein – Bürozeiten (Mo–Fr 8–18 Uhr, Sa 9–13 Uhr) und Rufbereitschaft (24/7, auch am Wochenende) – `frontend/app/content/site.ts`
-- [ ] Allgemein – Telefonnummer – Header, Footer, Kontaktleiste, Kontakt (`frontend/app/content/site.ts`)
+- [x] Allgemein – Bürozeiten (Mo–Fr 8–16 Uhr, bestätigt 2026-10-22) und Rufbereitschaft (24/7, auch am Wochenende) – `frontend/app/content/site.ts`
+- [x] Allgemein – Telefonnummer 02562 8162218 – `frontend/app/content/site.ts`
 - [ ] Allgemein – Bürozeiten an Feiertagen (derzeit nicht genannt) – `site.officeHoursByDay`
 - [x] Allgemein – Einsatzgebiet grob: Gronau (Westfalen) und Umgebung – global
 - [ ] Allgemein – Einsatzgebiet genau: welche Orte und Postleitzahlen gehören zur „Umgebung“? – `/einsatzgebiet`
@@ -18,7 +18,8 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 
 ## Rechtliches
 - [x] Recht – Impressum: Firma, Anschrift, E-Mail, Registereintrag (Amtsgericht Coesfeld, HRB 24086) – `/impressum`
-- [ ] Recht – Impressum ergänzen: Geschäftsführung (vertretungsberechtigt), Telefon, USt-IdNr. falls vorhanden, zuständige Aufsichtsbehörde, IK-Nummer falls gewünscht; danach rechtlich prüfen lassen – `/impressum`
+- [x] Recht – Impressum ergänzt: Geschäftsführer Stephan Gabriel, Telefon, Aufsichtsbehörde Kreis Borken (WTG-Behörde); keine USt-IdNr. (umsatzsteuerfreie Pflegeleistungen) – `/impressum`
+- [ ] Recht – Impressum rechtlich prüfen lassen; IK-Nummer angeben, falls gewünscht – `/impressum`
 - [ ] Recht – Datenschutzerklärung (vom Kunden bzw. Datenschutzbeauftragten freigegeben) – Datenschutz
 - [ ] Recht – Erklärung zur Barrierefreiheit – Barrierefreiheit
 - [ ] Recht – Einwilligungen für Teamfotos – Über uns

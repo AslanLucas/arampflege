@@ -21,7 +21,7 @@ export default function Impressum() {
 
       <DetailList
         details={[
-          { term: "Vertreten durch", description: "[[INHALT FEHLT: Geschäftsführung]]" },
+          { term: "Vertreten durch", description: `${site.managingDirector} (Geschäftsführer)` },
           {
             term: "Telefon",
             description: <a href={site.phone.href}>{site.phone.display}</a>,
@@ -32,8 +32,18 @@ export default function Impressum() {
           },
           { term: "Registergericht", description: site.register.court },
           { term: "Registernummer", description: site.register.number },
-          { term: "Umsatzsteuer-Identifikationsnummer", description: "[[INHALT FEHLT: USt-IdNr., falls vorhanden]]" },
-          { term: "Zuständige Aufsichtsbehörde", description: "[[INHALT FEHLT: Aufsichtsbehörde, falls erforderlich]]" },
+          {
+            term: "Zuständige Aufsichtsbehörde",
+            description: (
+              <>
+                {site.supervisoryAuthority.name}
+                <br />
+                {site.supervisoryAuthority.street}
+                <br />
+                {site.supervisoryAuthority.postalCodeAndCity}
+              </>
+            ),
+          },
         ]}
       />
     </Container>
