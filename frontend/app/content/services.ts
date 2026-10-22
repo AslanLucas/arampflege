@@ -216,7 +216,7 @@ export const services: Service[] = [
   {
     slug: "pflegeberatung",
     name: "Pflegeberatung",
-    summary: "Wir beraten Sie zu Hause: zum Pflegegrad, zu Ihren Ansprüchen und beim Beratungsbesuch für Pflegegeld.",
+    summary: "Wir beraten Pflegebedürftige und Angehörige zu Hause, helfen rund um Pflegegrad und Anträge und übernehmen die Pflichtberatung für Pflegegeld.",
     photoAlt: "Aufgeschlagenes Notizbuch mit Bleistift, daneben Brille und Kaffee",
     facts: [
       { label: "Wer zahlt", value: "Pflegekasse (Beratungsbesuch)" },
@@ -227,7 +227,8 @@ export const services: Service[] = [
     audience:
       "Für Menschen, die einen Pflegegrad beantragen wollen oder schon einen haben, und für Angehörige. Wer Pflegegeld bezieht, muss regelmäßig einen Beratungsbesuch nachweisen. Diesen Besuch übernehmen wir.",
     scope: [
-      "Beratungsbesuch nach § 37 Abs. 3 SGB XI für Menschen, die Pflegegeld beziehen",
+      "Beratungseinsatz nach § 37 Abs. 3 SGB XI, die Pflichtberatung für Menschen, die Pflegegeld beziehen",
+      "Beratung von Pflegebedürftigen und Angehörigen",
       "Hilfe beim Antrag auf einen Pflegegrad",
       "Vorbereitung auf die Begutachtung durch den Medizinischen Dienst",
       "Hilfe bei einem Widerspruch gegen den Bescheid",
