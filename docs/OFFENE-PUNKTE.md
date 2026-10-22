@@ -23,6 +23,7 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Recht – Datenschutzerklärung (vom Kunden bzw. Datenschutzbeauftragten freigegeben) – Datenschutz
 - [ ] Recht – Erklärung zur Barrierefreiheit – Barrierefreiheit
 - [ ] Recht – Einwilligungen für Teamfotos – Über uns
+- [ ] Recht – **Blockiert den Livegang:** Quelle und Lizenz des Fotos auf `/karriere` (Handschlag im Bewerbungsgespräch) nachweisen; besser durch ein eigenes Foto des Teams ersetzen – `frontend/public/images/karriere/LICENSES.txt`
 - [ ] Recht – **Vor dem Livegang:** Quelle und Lizenz der zwei Lottie-Animationen („Helping the needy“, „Helping Doctor to aged people“) nachweisen; kommerzielle Nutzung und Umfärben müssen erlaubt sein – `frontend/public/animations/LICENSES.txt`
 - [ ] Recht – **Blockiert den Livegang:** Einwilligungstext für Kontakt- und Rückrufformular (Gesundheitsdaten, Art. 9 DSGVO), freigegeben vom Datenschutzbeauftragten; danach Versionskennung in `Consent.CurrentVersion` setzen (derzeit „entwurf“) – `frontend/app/features/forms/FormNotices.tsx`, `backend/src/Pflege.Api/Features/Forms/Consent.cs`
 - [ ] Recht – Löschfrist für Kontakt- und Rückrufanfragen (lokal Platzhalter 90 Tage) – `Retention:RequestRetentionDays`, Datenschutzhinweis an den Formularen

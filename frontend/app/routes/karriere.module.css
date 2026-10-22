@@ -2,9 +2,44 @@
   max-width: 48rem;
 }
 
-/* The employer promises use the full width next to each other */
-.page > .wide {
+/* The employer promises and the intro with photo use the full width */
+.page > .wide,
+.page > .intro {
   max-width: none;
+}
+
+.intro {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.intro > div {
+  max-width: 48rem;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 6px solid var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+}
+
+@media (min-width: 60rem) {
+  .intro {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .intro > div {
+    grid-column: 1 / 7;
+  }
+
+  .photo {
+    grid-column: 7 / 13;
+  }
 }
 
 .lead {

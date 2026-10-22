@@ -22,8 +22,29 @@ export default function Karriere() {
   return (
     <Container className={styles.page}>
       <Breadcrumbs current="Karriere" />
-      <h1>Karriere</h1>
-      <p className={styles.lead}>{careersIntro}</p>
+      <div className={styles.intro}>
+        <div>
+          <h1>Karriere</h1>
+          <p className={styles.lead}>{careersIntro}</p>
+        </div>
+        {/* Stock photo, exception from AGENTS.md (decision 2026-10-22); licence in public/images/karriere/ */}
+        <picture className={styles.photo}>
+          <source
+            type="image/avif"
+            srcSet="/images/karriere/bewerbungsgespraech-640.avif 640w, /images/karriere/bewerbungsgespraech-1064.avif 1064w"
+            sizes="(min-width: 60rem) 40vw, 100vw"
+          />
+          <img
+            src="/images/karriere/bewerbungsgespraech-640.webp"
+            srcSet="/images/karriere/bewerbungsgespraech-640.webp 640w, /images/karriere/bewerbungsgespraech-1064.webp 1064w"
+            sizes="(min-width: 60rem) 40vw, 100vw"
+            width={1064}
+            height={709}
+            alt="Händedruck an einem Schreibtisch zum Abschluss eines Bewerbungsgesprächs"
+            decoding="async"
+          />
+        </picture>
+      </div>
 
       <div className={styles.wide}>
         <EmployerPromises />
