@@ -159,12 +159,7 @@
   line-height: 1.45;
 }
 
-.personName {
-  margin-bottom: 0;
-  font-weight: var(--font-weight-semibold);
-}
-
-.personRole {
+.teamDetail {
   color: var(--color-text-muted);
 }
 

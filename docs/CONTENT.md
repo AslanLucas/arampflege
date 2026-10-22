@@ -29,6 +29,8 @@ Wir schreiben so, wie eine erfahrene Pflegedienstleitung am Telefon spricht: fre
 - „Ihr kompetenter Partner“, „Qualität, die man spürt“
 - „Lebensqualität“ als leeres Schlagwort ohne konkreten Bezug
 
+Einzige Ausnahme (Entscheidung 2026-10-22): der eigene Leitsatz des Kunden „Pflege, die von Herzen kommt.“, einmal als Zitat oben auf „Über uns“, sonst nirgends.
+
 ### Typische KI-Muster
 - Dreierreihungen als Stilmittel („kompetent, zuverlässig und herzlich“)
 - Rhetorische Fragen als Einstieg („Sie suchen einen zuverlässigen Pflegedienst?“)

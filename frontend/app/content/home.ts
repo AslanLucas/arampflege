@@ -36,13 +36,11 @@ export const careProcess = {
 };
 
 export const teamTeaser = {
-  eyebrow: "Ihre Ansprechperson",
+  eyebrow: "Über uns",
   title: "Wer Sie betreut",
   photo: "Pflegedienstleitung im Büro, Querformat 5 : 4",
-  name: "[[INHALT FEHLT: Name der Pflegedienstleitung]]",
-  role: "Pflegedienstleitung",
-  qualification: "[[INHALT FEHLT: Qualifikation der Pflegedienstleitung]]",
-  text: "[[INHALT FEHLT: Zwei bis drei Sätze der Pflegedienstleitung zum Team]]",
+  text: "Unser Team besteht aus erfahrenen, examinierten Pflegefachkräften. Eine qualifizierte Pflegedienstleitung sorgt für Qualität und Sicherheit in der Versorgung.",
+  detail: "Feste Bezugspersonen, verlässliche Einsatzzeiten und ein Team, das sich Zeit nimmt.",
 };
 
 export const areaTeaser = {

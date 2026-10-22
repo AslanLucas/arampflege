@@ -25,7 +25,7 @@
 
 .places {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
   gap: var(--space-4);
   margin: var(--space-5) 0 var(--space-6);
   padding: 0;
@@ -58,6 +58,7 @@
 
 .name {
   font-family: var(--font-heading);
+  white-space: nowrap;
   font-size: var(--font-size-h4);
   font-weight: var(--font-weight-heading);
 }
@@ -74,4 +75,8 @@
 .prompt {
   max-width: 48rem;
   margin-top: var(--space-8);
+}
+
+.nowrap {
+  white-space: nowrap;
 }

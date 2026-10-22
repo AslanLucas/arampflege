@@ -131,10 +131,7 @@ export default function Home() {
               <Eyebrow>{teamTeaser.eyebrow}</Eyebrow>
               {heading}
               <p className={styles.teamQuote}>{teamTeaser.text}</p>
-              <p className={styles.personName}>{teamTeaser.name}</p>
-              <p className={styles.personRole}>
-                {teamTeaser.role}, {teamTeaser.qualification}
-              </p>
+              <p className={styles.teamDetail}>{teamTeaser.detail}</p>
               <ArrowLink to="/ueber-uns">Unser Team kennenlernen</ArrowLink>
             </Reveal>
           </>

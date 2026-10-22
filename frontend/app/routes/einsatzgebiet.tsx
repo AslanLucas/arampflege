@@ -22,7 +22,7 @@ export default function Einsatzgebiet() {
           <Eyebrow>Kommen wir auch zu Ihnen?</Eyebrow>
           <h1 className={styles.title}>Einsatzgebiet</h1>
           <p className={styles.lead}>
-            Wir pflegen Menschen zu Hause in Gronau und Gronau-Epe sowie in den umliegenden Orten.
+            Wir pflegen Menschen zu Hause in Gronau und <span className={styles.nowrap}>Gronau-Epe</span> sowie in den umliegenden Orten.
           </p>
         </Container>
       </div>
