@@ -5,7 +5,7 @@ import { site } from "../../content/site";
 import { ServiceAreaMap } from "./ServiceAreaMap";
 
 describe("ServiceAreaMap", () => {
-  it("lists every confirmed place with postal code and driving distance", () => {
+  it("lists every confirmed place with its postal code but without distances", () => {
     render(<ServiceAreaMap />);
     const list = screen.getByRole("list", { name: "Orte und Entfernungen vom Büro" });
 
@@ -13,7 +13,7 @@ describe("ServiceAreaMap", () => {
     for (const region of serviceAreaMap.regions) {
       const button = within(list).getByRole("button", { name: new RegExp(`^${region.name}(?!-)`) });
       expect(button).toHaveTextContent(region.postalCode);
-      expect(button).toHaveTextContent(`ca. ${String(region.distanceKm)} km`);
+      expect(button).not.toHaveTextContent(/km|Min\./);
     }
   });
 
@@ -48,12 +48,11 @@ describe("ServiceAreaMap", () => {
     expect(screen.getByRole("link", { name: "OpenStreetMap-Mitwirkende" })).toBeInTheDocument();
   });
 
-  it("shows a pin per place only when the list sits next to the map", () => {
-    const { container, unmount } = render(<ServiceAreaMap />);
-    expect(container.querySelectorAll("ul button svg")).toHaveLength(0);
-    unmount();
-
-    const side = render(<ServiceAreaMap listPosition="side" />);
-    expect(side.container.querySelectorAll("ul button svg")).toHaveLength(serviceAreaMap.regions.length);
+  it("shows a pin for every place in both layouts", () => {
+    for (const listPosition of ["below", "side"] as const) {
+      const { container, unmount } = render(<ServiceAreaMap listPosition={listPosition} />);
+      expect(container.querySelectorAll("ul button svg")).toHaveLength(serviceAreaMap.regions.length);
+      unmount();
+    }
   });
 });

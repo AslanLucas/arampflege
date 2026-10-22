@@ -245,9 +245,12 @@
 
 .place {
   display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-3);
+  align-items: center;
   width: 100%;
   min-height: var(--tap-target-min);
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-3) var(--space-4);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-control);
   background-color: var(--color-surface);
@@ -270,7 +273,11 @@
 }
 
 .placeName {
-  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-heading);
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .placeMeta {
@@ -278,20 +285,13 @@
   font-size: var(--font-size-label);
 }
 
-/* Side layout (/einsatzgebiet): places stacked next to the map, each with a pin */
-.side .place {
-  grid-template-columns: auto 1fr;
-  column-gap: var(--space-3);
-  align-items: center;
-  padding: var(--space-3) var(--space-4);
-}
-
+/* Side layout (/einsatzgebiet): places stacked next to the map */
 .placeIcon {
   display: grid;
   grid-row: span 2;
   place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   background-color: var(--color-surface-alt);
   color: var(--color-primary);

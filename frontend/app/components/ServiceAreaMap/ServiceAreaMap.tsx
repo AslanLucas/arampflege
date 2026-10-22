@@ -154,21 +154,18 @@ export function ServiceAreaMap({ listPosition = "below" }: ServiceAreaMapProps) 
                 setPinned((current) => (current === region.id ? undefined : region.id));
               }}
             >
-              {listPosition === "side" && (
-                <span className={styles.placeIcon} aria-hidden="true">
-                  <MapPinIcon size={20} />
-                </span>
-              )}
-              <span className={styles.placeName}>{region.name}</span>
-              <span className={styles.placeMeta}>
-                {region.postalCode} · {distanceText(region)}
+              <span className={styles.placeIcon} aria-hidden="true">
+                <MapPinIcon size={24} />
               </span>
+              <span className={styles.placeName}>{region.name}</span>
+              <span className={styles.placeMeta}>{region.postalCode}</span>
             </button>
           </li>
         ))}
       </ul>
       <p className={styles.source}>
-        Ungefähre Fahrstrecken vom Büro in der {site.address.street}. Kartendaten ©{" "}
+        Zeigen Sie auf einen Ort, um die ungefähre Fahrstrecke vom Büro in der {site.address.street} zu sehen.
+        Kartendaten ©{" "}
         <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>
       </p>
     </div>
