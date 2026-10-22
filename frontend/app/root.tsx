@@ -12,6 +12,7 @@ import type { Route } from "./+types/root";
 import { Container } from "./components/Container/Container";
 import { SiteLayout } from "./components/SiteLayout/SiteLayout";
 import { site } from "./content/site";
+import { localBusiness, toJsonLd } from "./content/structuredData";
 import "./styles/fonts.css";
 import "./styles/tokens.css";
 import "./styles/base.css";
@@ -44,6 +45,7 @@ export function Layout({ children }: LayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <Meta />
         <Links />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toJsonLd(localBusiness) }} />
       </head>
       <body>
         <SiteLayout>{children}</SiteLayout>
