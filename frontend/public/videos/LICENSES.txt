@@ -1,13 +1,20 @@
 Hintergrundvideos im oberen Bereich der Startseite
 ==================================================
 
-Übergangsweise lizenzfreie Stimmungsbilder ohne Personen, bis eigene Aufnahmen
-des Pflegedienstes vorliegen (docs/OFFENE-PUNKTE.md). Gekürzt, ohne Ton und
-verkleinert (960 x 540).
+Übergangsweise Pflegeszenen aus einem Bildarchiv, auf ausdrücklichen Wunsch des
+Kunden (Entscheidung 2026-10-22, Ausnahme von AGENTS.md Grundregel 2 und
+docs/DESIGN.md), bis eigene Aufnahmen des Pflegedienstes vorliegen
+(docs/OFFENE-PUNKTE.md). Auf 10 s gekürzt, ohne Ton, auf 960 x 540 zugeschnitten.
+Die Clips laufen nacheinander in Dauerschleife, mit Pause-Knopf.
 
-Quelle: Mixkit (https://mixkit.co), Lizenz: Mixkit Stock Video Free License
-(https://mixkit.co/license/#videoFree), geprüft am 2026-10-20.
+Quelle: Pexels (https://www.pexels.com), Lizenz: Pexels-Lizenz
+(https://www.pexels.com/de-de/lizenz/), kommerzielle Nutzung und Bearbeitung
+erlaubt, keine Namensnennung nötig; geprüft am 2026-10-22.
 
-stimmung-1.mp4  Minimalist room with gray sofa            https://mixkit.co/free-stock-video/minimalist-room-with-gray-sofa-3110/
-stimmung-2.mp4  Rays of the sun passing through branches  https://mixkit.co/free-stock-video/rays-of-the-sun-passing-through-the-branches-of-a-51106/
-stimmung-3.mp4  Sun setting over a garden                 https://mixkit.co/free-stock-video/sun-setting-over-a-garden-4205/
+pflege-1.mp4  Ein Bartträger hilft einem älteren Mann ins Bett (Kampus Production)
+              https://www.pexels.com/de-de/video/bett-schlafzimmer-zuhause-hausarbeit-7522208/
+pflege-2.mp4  Menschen helfen einem älteren Mann (Kampus Production)
+              https://www.pexels.com/de-de/video/frau-manner-sitzung-zuhause-7522219/
+pflege-3.mp4  Frauen gehen in einem Flur (cottonbro studio)
+              https://www.pexels.com/de-de/video/gehen-glucklich-lacheln-sprechen-7224944/
+pflege-1-poster.webp  Standbild aus pflege-1.mp4

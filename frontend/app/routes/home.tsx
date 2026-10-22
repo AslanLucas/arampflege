@@ -35,13 +35,13 @@ export const meta: Route.MetaFunction = () => [
   },
 ];
 
-const heroClips = ["/videos/stimmung-1.mp4", "/videos/stimmung-2.mp4", "/videos/stimmung-3.mp4"];
+const heroClips = ["/videos/pflege-1.mp4", "/videos/pflege-2.mp4", "/videos/pflege-3.mp4"];
 
 export default function Home() {
   return (
     <>
       <div className={styles.hero} data-surface="brand">
-        <HeroVideo clips={heroClips} poster="/videos/stimmung-1-poster.webp" />
+        <HeroVideo clips={heroClips} poster="/videos/pflege-1-poster.webp" />
         <Container className={styles.heroGrid}>
           <div className={styles.heroText}>
             <Eyebrow>{hero.eyebrow}</Eyebrow>
