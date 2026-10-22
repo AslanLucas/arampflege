@@ -12,11 +12,12 @@
   box-shadow: var(--shadow-card);
 }
 
+/* Clipped to the map area, so the river does not run out of the frame */
 .map {
   display: block;
   width: 100%;
   height: auto;
-  overflow: visible;
+  overflow: hidden;
 }
 
 /* Places: appear one after another, lift and darken on hover */
