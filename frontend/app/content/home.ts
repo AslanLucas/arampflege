@@ -4,6 +4,8 @@ export const hero = {
   eyebrow: `Ambulante Pflege in ${site.region}`,
   title: `Wir pflegen Menschen zu Hause in ${site.region} und den umliegenden Gemeinden.`,
   lead: "Rufen Sie uns an. Wir besprechen mit Ihnen, welche Unterstützung Sie brauchen und was die Pflegekasse übernimmt.",
+  /** Confirmed by the client on 2026-10-22: the first consultation is free. Leads to the callback form. */
+  consultation: "Kostenloses Beratungsgespräch",
 };
 
 export type Step = {

@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { ContactPanel } from "../components/ContactPanel/ContactPanel";
 import { ServiceAreaMap } from "../components/ServiceAreaMap/ServiceAreaMap";
 import { ArrowLink } from "../components/ArrowLink/ArrowLink";
@@ -5,7 +6,7 @@ import { ButtonLink } from "../components/ButtonLink/ButtonLink";
 import { Container } from "../components/Container/Container";
 import { Eyebrow } from "../components/Eyebrow/Eyebrow";
 import { HeroVideo } from "../components/HeroVideo/HeroVideo";
-import { PhoneIcon } from "../components/Icon/icons";
+import { ArrowRightIcon, PhoneIcon } from "../components/Icon/icons";
 import { PhotoPlaceholder } from "../components/PhotoPlaceholder/PhotoPlaceholder";
 import { Reveal } from "../components/Reveal/Reveal";
 import { Section } from "../components/Section/Section";
@@ -51,7 +52,10 @@ export default function Home() {
                 <PhoneIcon />
                 {site.phone.display} anrufen
               </ButtonLink>
-              <ArrowLink to={callbackLink.to}>{callbackLink.label}</ArrowLink>
+              <Link to={callbackLink.to} className={styles.consult}>
+                {hero.consultation}
+                <ArrowRightIcon size={18} />
+              </Link>
             </div>
             <dl className={styles.availabilityList} aria-label="Erreichbarkeit">
               <div>

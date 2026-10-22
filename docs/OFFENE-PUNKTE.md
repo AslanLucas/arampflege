@@ -51,7 +51,7 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – Startseite, `/rueckruf`, Bestätigung im Rückrufformular
 - [ ] Kontakt – Zusage, in welcher Frist auf Nachrichten geantwortet wird – `site.replyTime`: Kontakt-Karten (E-Mail), `/kontakt`, Bestätigung im Kontaktformular
 - [x] Kontakt – Rufbereitschaft rund um die Uhr erreichbar, auch am Wochenende (bestätigt 2026-10-21) – Kontakt-Karten
-- [ ] Kontakt – Ist das erste Beratungsgespräch kostenlos? Erst dann darf es so auf der Seite stehen – `/kontakt`
+- [x] Kontakt – Das erste Beratungsgespräch ist kostenlos (bestätigt 2026-10-22) – Startseite oben
 - [ ] Kontakt – Optional: Hinweise zu Parkplätzen und barrierefreiem Zugang zum Büro – Kontakt-Karten (Adresse)
 - [ ] Kontakt – Welcher Messenger für Angehörige? Vorher mit dem Datenschutzbeauftragten klären, ob er für Gesundheitsdaten zulässig ist – derzeit nirgends auf der Seite genannt; bei Bedarf in den Kontakt-Karten ergänzen
 - [x] Einsatzgebiet – Startseiten-Abschnitt „Kommen wir auch zu Ihnen?“ nennt Gronau (Westfalen) und Umgebung – `frontend/app/content/home.ts`

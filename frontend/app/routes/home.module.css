@@ -56,6 +56,68 @@
   margin-top: var(--space-2);
 }
 
+/*
+ * Free consultation: an outlined button on the video with a ring that pulses three times after
+ * loading (under 5 s, WCAG 2.2.2) and again while hovered. No pulse with "reduce motion".
+ */
+.consult {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-2);
+  min-height: 3.625rem;
+  padding: var(--space-2) var(--space-5);
+  border: 2px solid var(--color-on-brand);
+  border-radius: var(--radius-control);
+  color: var(--color-on-brand);
+  font-size: 1.1875rem;
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition:
+    background-color var(--duration-feedback) ease-out,
+    color var(--duration-feedback) ease-out,
+    transform var(--duration-hover) var(--ease-out);
+}
+
+.consult::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: consult-pulse 1.5s var(--ease-out) 600ms 3;
+}
+
+.consult:hover {
+  background-color: var(--color-on-brand);
+  color: var(--color-brand-deep);
+  transform: translateY(-2px);
+}
+
+.consult:hover::after {
+  animation: consult-pulse 1.5s var(--ease-out) infinite;
+}
+
+.consult svg {
+  transition: transform var(--duration-hover) var(--ease-out);
+}
+
+.consult:hover svg {
+  transform: translateX(4px);
+}
+
+@keyframes consult-pulse {
+  from {
+    box-shadow: 0 0 0 0 rgb(251 248 245 / 0.6);
+  }
+
+  to {
+    box-shadow: 0 0 0 14px rgb(251 248 245 / 0);
+  }
+}
+
 /* Logo directly over the video, transparent background; a soft shadow keeps its edges visible */
 .heroLogo {
   display: none;
