@@ -9,10 +9,19 @@ export type Costs = {
   checkedOn: string | null;
 };
 
+export type Fact = {
+  label: string;
+  value: string;
+};
+
 export type Service = {
   slug: string;
   name: string;
   summary: string;
+  /** Alt text of the photo in public/images/leistungen/<slug>-<width>.(avif|webp) */
+  photoAlt: string;
+  /** Key facts below the page title; the first one names who pays. */
+  facts: [Fact, Fact, Fact];
   /** True while audience, scope, costs and application are unreviewed drafts. */
   draft: boolean;
   audience: string;
@@ -27,6 +36,12 @@ export const services: Service[] = [
     slug: "grundpflege",
     name: "Grundpflege",
     summary: "Hilfe bei der täglichen Körperpflege, beim Essen und beim Bewegen, in Ruhe und in Ihrem Tempo.",
+    photoAlt: "Gefaltete weiße Handtücher, frisch bereitgelegt",
+    facts: [
+      { label: "Wer zahlt", value: "Pflegekasse" },
+      { label: "Voraussetzung", value: "Pflegegrad" },
+      { label: "Rechtsgrundlage", value: "§ 36 SGB XI" },
+    ],
     draft: true,
     audience:
       "Für Menschen, die sich nicht mehr allein waschen, anziehen oder bewegen können, und für Angehörige, die diese Pflege nicht mehr allein schaffen.",
@@ -60,6 +75,12 @@ export const services: Service[] = [
     name: "Behandlungspflege",
     summary:
       "Pflege, die Ihre Ärztin oder Ihr Arzt verordnet, zum Beispiel Verbandwechsel, Injektionen oder Medikamente.",
+    photoAlt: "Stethoskop und Blutdruckmessgerät auf einem Bett",
+    facts: [
+      { label: "Wer zahlt", value: "Krankenkasse" },
+      { label: "Voraussetzung", value: "Ärztliche Verordnung" },
+      { label: "Rechtsgrundlage", value: "§ 37 SGB V" },
+    ],
     draft: true,
     audience:
       "Für Menschen, denen eine Ärztin oder ein Arzt Pflege zu Hause verordnet hat, zum Beispiel nach einem Krankenhausaufenthalt. Ein Pflegegrad ist dafür nicht nötig.",
@@ -91,6 +112,12 @@ export const services: Service[] = [
     slug: "hauswirtschaft",
     name: "Hauswirtschaftliche Versorgung",
     summary: "Hilfe im Haushalt, wenn Einkaufen, Putzen oder Wäsche zu viel geworden sind.",
+    photoAlt: "Zwei Einkaufstüten mit Äpfeln, Bananen, Brot und Kohl",
+    facts: [
+      { label: "Wer zahlt", value: "Pflegekasse" },
+      { label: "Voraussetzung", value: "Pflegegrad" },
+      { label: "Rechtsgrundlage", value: "§§ 36, 45b SGB XI" },
+    ],
     draft: true,
     audience:
       "Für Menschen mit Pflegegrad, denen der Haushalt schwerfällt, und für Angehörige, die nicht alles nebenher erledigen können.",
@@ -121,6 +148,12 @@ export const services: Service[] = [
     slug: "betreuung-und-entlastung",
     name: "Betreuung und Entlastung",
     summary: "Zeit für Gespräche, Spaziergänge und Begleitung, damit der Alltag Struktur hat und Angehörige durchatmen können.",
+    photoAlt: "Teekanne und zwei Tassen auf einem Tisch",
+    facts: [
+      { label: "Wer zahlt", value: "Pflegekasse" },
+      { label: "Voraussetzung", value: "Pflegegrad" },
+      { label: "Rechtsgrundlage", value: "§ 45b SGB XI" },
+    ],
     draft: true,
     audience:
       "Für Menschen mit Pflegegrad, die viel allein sind, an Demenz erkrankt sind oder Begleitung im Alltag brauchen. Und für Angehörige, die regelmäßig Zeit für sich brauchen.",
@@ -151,6 +184,12 @@ export const services: Service[] = [
     slug: "verhinderungspflege",
     name: "Verhinderungspflege",
     summary: "Wir pflegen, wenn Angehörige Urlaub machen, krank sind oder eine Pause brauchen.",
+    photoAlt: "Sessel an einem hellen Fenster",
+    facts: [
+      { label: "Wer zahlt", value: "Pflegekasse" },
+      { label: "Voraussetzung", value: "Pflegegrad 2 bis 5" },
+      { label: "Rechtsgrundlage", value: "§ 39 SGB XI" },
+    ],
     draft: true,
     audience:
       "Für Menschen ab Pflegegrad 2, die zu Hause von Angehörigen oder anderen privaten Personen gepflegt werden, wenn diese zeitweise verhindert sind.",
@@ -178,6 +217,12 @@ export const services: Service[] = [
     slug: "pflegeberatung",
     name: "Pflegeberatung",
     summary: "Wir beraten Sie zu Hause: zum Pflegegrad, zu Ihren Ansprüchen und beim Beratungsbesuch für Pflegegeld.",
+    photoAlt: "Aufgeschlagenes Notizbuch mit Bleistift, daneben Brille und Kaffee",
+    facts: [
+      { label: "Wer zahlt", value: "Pflegekasse (Beratungsbesuch)" },
+      { label: "Voraussetzung", value: "Für alle mit Pflegebedarf" },
+      { label: "Rechtsgrundlage", value: "§ 37 Abs. 3 SGB XI" },
+    ],
     draft: true,
     audience:
       "Für Menschen, die einen Pflegegrad beantragen wollen oder schon einen haben, und für Angehörige. Wer Pflegegeld bezieht, muss regelmäßig einen Beratungsbesuch nachweisen. Diesen Besuch übernehmen wir.",

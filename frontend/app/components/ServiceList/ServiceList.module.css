@@ -24,6 +24,25 @@
   font-variant-numeric: tabular-nums;
 }
 
+.thumb {
+  flex: 0 0 7rem;
+  overflow: hidden;
+  border-radius: var(--radius-control);
+}
+
+.thumbPhoto {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform 600ms var(--ease-out);
+}
+
+.item:hover .thumbPhoto {
+  transform: scale(1.08);
+}
+
 .name {
   flex: 1 1 15rem;
   margin: 0;

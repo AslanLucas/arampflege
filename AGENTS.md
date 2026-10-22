@@ -42,7 +42,7 @@ Details stehen in `frontend/AGENTS.md` und `backend/AGENTS.md`.
 ## Grundregeln
 
 1. **Nichts erfinden.** Keine Kundenstimmen, Bewertungen, Zahlen („über 500 zufriedene Kunden“), Auszeichnungen, Siegel, Teamnamen, Preise oder Leistungsbeträge. Fehlt Inhalt, setze `[[INHALT FEHLT: kurze Beschreibung]]` und trage den Punkt in `docs/OFFENE-PUNKTE.md` ein.
-2. **Keine Stockfotos und keine KI-generierten Bilder von Menschen.** Bildplatzhalter benennen das benötigte Motiv, z. B. `[[FOTO: Pflegekraft beim Hausbesuch, Querformat]]`. Ausnahme (Entscheidung 2026-10-20): Das Hintergrundvideo der Startseite darf lizenzfreie Stimmungsbilder ohne Personen zeigen, mit dokumentierter Lizenz in `frontend/public/videos/LICENSES.txt`, bis eigene Aufnahmen vorliegen.
+2. **Keine Stockfotos und keine KI-generierten Bilder von Menschen.** Bildplatzhalter benennen das benötigte Motiv, z. B. `[[FOTO: Pflegekraft beim Hausbesuch, Querformat]]`. Ausnahme (Entscheidung 2026-10-20): Das Hintergrundvideo der Startseite darf lizenzfreie Stimmungsbilder ohne Personen zeigen, mit dokumentierter Lizenz in `frontend/public/videos/LICENSES.txt`, bis eigene Aufnahmen vorliegen. Ebenso (Entscheidung 2026-10-22) die Leistungsseiten: lizenzfreie Fotos von Gegenständen und Räumen ohne Personen, Lizenz in `frontend/public/images/leistungen/LICENSES.txt`, bis eigene Fotos vorliegen.
 3. **Datenschutz vor Komfort.** Keine Requests an Drittanbieter ohne Einwilligung. Das gilt für Fonts, Karten, Videos, Analytics, Captchas und CDNs.
 4. **Barrierefreiheit nach WCAG 2.2 AA ist Pflicht** (Barrierefreiheitsstärkungsgesetz), keine Kür.
 5. **Keine neue Abhängigkeit ohne Begründung** im Commit. Erst prüfen, ob es mit Plattformmitteln geht.

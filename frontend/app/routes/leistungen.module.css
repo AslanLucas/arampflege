@@ -1,7 +1,76 @@
+/* Top area on blush with a fanned collage of service photos */
+/* Starts right below the header: cancels the main element's top padding */
+.hero {
+  margin-top: calc(-1 * var(--space-7));
+  overflow: hidden;
+  padding-block: var(--space-5) var(--space-8);
+  background:
+    radial-gradient(60rem 30rem at 85% 10%, rgb(170 26 75 / 0.12), transparent 70%),
+    var(--color-surface-alt);
+}
+
+.heroGrid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.title {
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-display);
+}
+
 .lead {
-  max-width: 44rem;
-  font-size: var(--font-size-h4);
-  line-height: 1.5;
+  max-width: 34rem;
+  margin-bottom: var(--space-5);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lead);
+}
+
+.heroLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-6);
+  margin: 0;
+}
+
+.collage {
+  position: relative;
+  height: 17rem;
+}
+
+/* Three photos fan out once on load; with "reduce motion" they simply appear */
+.collageItem {
+  position: absolute;
+  top: calc(var(--i) * 2.5rem);
+  left: calc(var(--i) * 28%);
+  width: 46%;
+  overflow: hidden;
+  border: 6px solid var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  transform: rotate(calc((var(--i) - 1) * 4deg));
+  animation: fan-in 900ms var(--ease-out) both;
+  animation-delay: calc(var(--i) * 140ms);
+}
+
+.collagePhoto {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+@keyframes fan-in {
+  from {
+    opacity: 0;
+    transform: translateY(2rem) rotate(0deg) scale(0.94);
+  }
+}
+
+.services {
+  margin-top: var(--section-space);
 }
 
 .note {
@@ -10,6 +79,7 @@
 
 .block {
   margin-top: var(--section-space);
+  scroll-margin-top: var(--space-9);
 }
 
 .block h2,
@@ -44,6 +114,14 @@
   border-radius: var(--radius-card);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-card);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--duration-reveal) var(--ease-out) var(--reveal-delay, 0ms),
+    box-shadow var(--duration-hover) var(--ease-out);
+}
+
+.payer:hover {
+  box-shadow: var(--shadow-raised);
 }
 
 .payerName {
@@ -75,4 +153,30 @@
 .prompt {
   max-width: 48rem;
   margin-top: var(--space-8);
+}
+
+@media (min-width: 40rem) {
+  .collage {
+    height: 22rem;
+  }
+}
+
+@media (min-width: 60rem) {
+  .hero {
+    padding-block: var(--space-6) var(--space-9);
+  }
+
+  .heroGrid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .heroText {
+    grid-column: 1 / 7;
+  }
+
+  .collage {
+    grid-column: 7 / 13;
+    height: 26rem;
+  }
 }

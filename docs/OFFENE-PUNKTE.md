@@ -53,6 +53,7 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [x] Einsatzgebiet – Startseiten-Abschnitt „Kommen wir auch zu Ihnen?“ nennt Gronau (Westfalen) und Umgebung – `frontend/app/content/home.ts`
 - [ ] Alle Seiten – Kurzbeschreibung für Suchergebnisse (Meta-Description, max. 160 Zeichen) je Seite – `frontend/app/routes/*.tsx`
 - [ ] Fotos – Team, Fahrzeuge, Büro, Einsatzgebiet; zuerst: Pflegedienstleitung im Büro, Querformat 5 : 4 (Startseite) – global
+- [ ] Fotos – Eigene Fotos je Leistung (Querformat 3 : 2, z. B. Pflegematerial im Dienstwagen, Büro, Einsatz ohne erkennbare Patienten); ersetzen die lizenzfreien Übergangsfotos – `frontend/public/images/leistungen/`
 - [ ] Videos – Eigene kurze Clips für den oberen Bereich (3–4 Clips à 6–10 Sekunden, Querformat, ruhige Alltagsszenen; Personen nur mit schriftlicher Einwilligung); ersetzen die lizenzfreien Übergangsvideos – `frontend/public/videos/`
 
 ## Betrieb

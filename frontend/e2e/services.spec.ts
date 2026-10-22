@@ -19,6 +19,23 @@ test.describe("Service pages", () => {
     }
   });
 
+  test("loads the service photos from our own server only", async ({ page, baseURL }) => {
+    const foreignRequests: string[] = [];
+    page.on("request", (request) => {
+      if (new URL(request.url()).origin !== baseURL && !request.url().startsWith("data:")) {
+        foreignRequests.push(request.url());
+      }
+    });
+    await page.goto("/leistungen");
+
+    const photo = page.getByRole("img", { name: services[0]?.photoAlt });
+    await photo.scrollIntoViewIfNeeded();
+    await expect(photo).toHaveJSProperty("complete", true);
+    expect(await photo.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0);
+    await page.waitForLoadState("networkidle");
+    expect(foreignRequests).toEqual([]);
+  });
+
   test("the jump list leads to its section", async ({ page }) => {
     await page.goto(servicePath(service));
 

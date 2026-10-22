@@ -48,6 +48,16 @@ describe("Leistung", () => {
     expect(within(costs).getByText(/Quelle: §§ 37 und 61 SGB V/)).toBeInTheDocument();
   });
 
+  it("shows the key facts and the service photo at the top", () => {
+    renderService("/leistungen/behandlungspflege");
+
+    const facts = screen.getByLabelText("Auf einen Blick");
+    for (const fact of behandlungspflege?.facts ?? []) {
+      expect(within(facts).getByText(fact.value)).toBeInTheDocument();
+    }
+    expect(screen.getByRole("img", { name: behandlungspflege?.photoAlt })).toHaveAttribute("loading", "eager");
+  });
+
   it("links all other services but not the current one", () => {
     renderService("/leistungen/behandlungspflege");
     const more = screen.getByRole("region", { name: "Weitere Leistungen" });

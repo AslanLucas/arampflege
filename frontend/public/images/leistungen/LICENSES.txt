@@ -1,0 +1,17 @@
+Fotos der Leistungsseiten
+=========================
+
+Übergangsweise lizenzfreie Fotos von Gegenständen und Räumen, ohne Personen
+(Entscheidung 2026-10-22), bis eigene Fotos des Pflegedienstes vorliegen
+(docs/OFFENE-PUNKTE.md). Zugeschnitten auf 3 : 2, je 640 und 1280 px breit,
+als AVIF und WebP.
+
+Quelle: Unsplash (https://unsplash.com), Lizenz: Unsplash License
+(https://unsplash.com/license), geprüft am 2026-10-22. Kein Unsplash+.
+
+grundpflege               Mads Leif Hansen       https://unsplash.com/photos/qPNgpYUCW0c
+behandlungspflege         Immo Wegmann           https://unsplash.com/photos/f0h8EIdTXWo
+hauswirtschaft            Maria Lin Kim          https://unsplash.com/photos/8RaUEd8zD-U
+betreuung-und-entlastung  Zulfugar Karimov       https://unsplash.com/photos/FfbE69dyX9c
+verhinderungspflege       Javier Alvarez         https://unsplash.com/photos/FYXcPebLi4k
+pflegeberatung            Ionela Mat             https://unsplash.com/photos/kZypzn4qVPg

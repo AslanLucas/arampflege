@@ -5,8 +5,9 @@
 
 .title {
   margin-bottom: var(--space-2);
+  color: var(--color-text-muted);
   font-family: var(--font-body);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-label);
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
 }
@@ -17,8 +18,27 @@
   list-style: none;
 }
 
+/* A bar on the left marks the section being read */
 .list a {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   min-height: var(--tap-target-min);
+  padding-left: var(--space-4);
+  border-left: 3px solid var(--color-border);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition:
+    border-color var(--duration-hover) var(--ease-out),
+    color var(--duration-hover) var(--ease-out);
+}
+
+.list a:hover {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+.list a[aria-current="location"] {
+  border-left-color: var(--color-primary);
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
 }
