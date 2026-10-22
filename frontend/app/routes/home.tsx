@@ -110,7 +110,7 @@ export default function Home() {
         tone="alt"
         intro={
           <p>
-            {careProcess.intro} {careProcess.draftNote}
+            {careProcess.intro}
           </p>
         }
       >
