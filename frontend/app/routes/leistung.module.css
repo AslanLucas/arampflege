@@ -43,6 +43,14 @@
   animation: settle 900ms var(--ease-out) both;
 }
 
+/* The hero is blush already, so the scene sits on a lighter disc */
+.heroScene {
+  --scene-backdrop: var(--color-bg);
+
+  justify-self: center;
+  max-width: 24rem;
+}
+
 .heroPhoto {
   display: block;
   width: 100%;
@@ -264,6 +272,11 @@
 
   .heroMedia {
     grid-column: 7 / 13;
+  }
+
+  .heroScene {
+    grid-column: 7 / 13;
+    max-width: 28rem;
   }
 
   .layout {

@@ -7,6 +7,7 @@ import { ContactPrompt } from "../components/ContactPrompt/ContactPrompt";
 import { Container } from "../components/Container/Container";
 import { CostsInfo } from "../components/CostsInfo/CostsInfo";
 import { Eyebrow } from "../components/Eyebrow/Eyebrow";
+import { LottieScene } from "../components/LottieScene/LottieScene";
 import { CheckIcon, PhoneIcon } from "../components/Icon/icons";
 import { OnThisPage, type PageSection } from "../components/OnThisPage/OnThisPage";
 import { ServiceList } from "../components/ServiceList/ServiceList";
@@ -111,9 +112,13 @@ export default function Leistung() {
               <ArrowLink to={callbackLink.to}>{callbackLink.label}</ArrowLink>
             </div>
           </div>
-          <div className={styles.heroMedia}>
-            <ServicePhoto service={service} sizes="(min-width: 60rem) 45vw, 100vw" priority className={styles.heroPhoto} />
-          </div>
+          {service.heroAnimation ? (
+            <LottieScene {...service.heroAnimation} className={styles.heroScene} />
+          ) : (
+            <div className={styles.heroMedia}>
+              <ServicePhoto service={service} sizes="(min-width: 60rem) 45vw, 100vw" priority className={styles.heroPhoto} />
+            </div>
+          )}
         </Container>
       </div>
 

@@ -20,6 +20,8 @@ export type Service = {
   summary: string;
   /** Alt text of the photo in public/images/leistungen/<slug>-<width>.(avif|webp) */
   photoAlt: string;
+  /** Decorative scene in public/animations shown instead of the photo at the top of the page. */
+  heroAnimation?: { src: string; width: number; height: number };
   /** Key facts below the page title; the first one names who pays. */
   facts: [Fact, Fact, Fact];
   /** True while audience, scope, costs and application are unreviewed drafts. */
@@ -218,6 +220,7 @@ export const services: Service[] = [
     name: "Pflegeberatung",
     summary: "Wir beraten Pflegebedürftige und Angehörige zu Hause, helfen rund um Pflegegrad und Anträge und übernehmen die Pflichtberatung für Pflegegeld.",
     photoAlt: "Aufgeschlagenes Notizbuch mit Bleistift, daneben Brille und Kaffee",
+    heroAnimation: { src: "/animations/beratung.json", width: 500, height: 500 },
     facts: [
       { label: "Wer zahlt", value: "Pflegekasse (Beratungsbesuch)" },
       { label: "Voraussetzung", value: "Für alle mit Pflegebedarf" },
