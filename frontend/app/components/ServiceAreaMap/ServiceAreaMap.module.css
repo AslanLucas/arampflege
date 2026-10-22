@@ -278,6 +278,52 @@
   font-size: var(--font-size-label);
 }
 
+/* Side layout (/einsatzgebiet): places stacked next to the map, each with a pin */
+.side .place {
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+}
+
+.placeIcon {
+  display: grid;
+  grid-row: span 2;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--color-surface-alt);
+  color: var(--color-primary);
+  transition:
+    background-color var(--duration-hover) var(--ease-out),
+    color var(--duration-hover) var(--ease-out);
+}
+
+.place[data-active] .placeIcon {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+@media (min-width: 60rem) {
+  .side {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr);
+    column-gap: var(--space-6);
+    align-items: start;
+  }
+
+  .side .list {
+    grid-template-columns: 1fr;
+    align-content: start;
+    margin-top: 0;
+  }
+
+  .side .source {
+    grid-column: 1 / -1;
+  }
+}
+
 .source {
   margin: var(--space-3) 0 0;
   color: var(--color-text-muted);

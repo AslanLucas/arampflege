@@ -2,6 +2,8 @@ import { useState, type CSSProperties } from "react";
 import { serviceAreaMap } from "../../content/serviceAreaMap";
 import { site } from "../../content/site";
 import { useReveal } from "../../hooks/useReveal";
+import { cx } from "../../utils/cx";
+import { MapPinIcon } from "../Icon/icons";
 import styles from "./ServiceAreaMap.module.css";
 
 type Region = (typeof serviceAreaMap.regions)[number];
@@ -38,7 +40,12 @@ function distanceText(region: Region) {
  * route from the office and shows the driving distance. The list below is the accessible
  * version: keyboard, touch and screen readers select the same places there.
  */
-export function ServiceAreaMap() {
+type ServiceAreaMapProps = {
+  /** "side" puts the list of places next to the map on wide screens, "below" under it. */
+  listPosition?: "below" | "side";
+};
+
+export function ServiceAreaMap({ listPosition = "below" }: ServiceAreaMapProps) {
   const ref = useReveal<HTMLDivElement>();
   const [hovered, setHovered] = useState<string | undefined>(undefined);
   const [focused, setFocused] = useState<string | undefined>(undefined);
@@ -47,7 +54,7 @@ export function ServiceAreaMap() {
   const active = regions.find((region) => region.id === activeId);
 
   return (
-    <div ref={ref} className={styles.wrapper}>
+    <div ref={ref} className={cx(styles.wrapper, listPosition === "side" && styles.side)}>
       <div className={styles.frame} data-active={active ? "true" : undefined}>
         <svg
           viewBox={`0 0 ${String(width)} ${String(height)}`}
@@ -147,6 +154,11 @@ export function ServiceAreaMap() {
                 setPinned((current) => (current === region.id ? undefined : region.id));
               }}
             >
+              {listPosition === "side" && (
+                <span className={styles.placeIcon} aria-hidden="true">
+                  <MapPinIcon size={20} />
+                </span>
+              )}
               <span className={styles.placeName}>{region.name}</span>
               <span className={styles.placeMeta}>
                 {region.postalCode} · {distanceText(region)}

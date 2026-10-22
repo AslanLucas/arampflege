@@ -47,4 +47,13 @@ describe("ServiceAreaMap", () => {
     expect(container.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
     expect(screen.getByRole("link", { name: "OpenStreetMap-Mitwirkende" })).toBeInTheDocument();
   });
+
+  it("shows a pin per place only when the list sits next to the map", () => {
+    const { container, unmount } = render(<ServiceAreaMap />);
+    expect(container.querySelectorAll("ul button svg")).toHaveLength(0);
+    unmount();
+
+    const side = render(<ServiceAreaMap listPosition="side" />);
+    expect(side.container.querySelectorAll("ul button svg")).toHaveLength(serviceAreaMap.regions.length);
+  });
 });

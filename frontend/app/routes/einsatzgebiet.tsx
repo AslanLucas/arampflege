@@ -31,7 +31,7 @@ export default function Einsatzgebiet() {
         <section aria-labelledby="orte" className={styles.section}>
           <h2 id="orte">Hier sind wir für Sie da</h2>
           <div className={styles.map}>
-            <ServiceAreaMap />
+            <ServiceAreaMap listPosition="side" />
           </div>
           <p className={styles.note}>
             Wir versorgen auch weitere Orte in der Umgebung. Rufen Sie uns an, dann sagen wir Ihnen, ob wir zu Ihnen
