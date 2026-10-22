@@ -40,11 +40,11 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [x] Über uns – Text, Leitsatz und Start ab Januar 2027 (geliefert 2026-10-22) – `frontend/app/content/about.ts`
 - [ ] Team – Namen, Funktionen und Fotos der Pflegedienstleitung und Ansprechpartner – Über uns, Start
 - [ ] Team – Name und Foto der Pflegedienstleitung für die Startseite (Text zum Team liegt vor) – `frontend/app/content/home.ts`
-- [ ] Karriere – Aktuelle Stellen, Arbeitsbedingungen, Gehalt (falls veröffentlicht) – Karriere
-- [ ] Karriere – Kurzer Hinweis auf offene Stellen für die Startseite – `frontend/app/content/home.ts`
-- [ ] Karriere – Einleitung der Karriereseite – `frontend/app/content/careers.ts`
-- [ ] Karriere – Aktuelle Stellen mit Titel, Umfang, Ort, Datum, Aufgaben, Voraussetzungen und bestätigten Arbeitsbedingungen – `frontend/app/content/jobs.ts`
-- [ ] Karriere – Qualifikationsoptionen im Bewerbungsformular bestätigen (Pflegefachkraft, Pflegehilfskraft, in Ausbildung, andere) – `frontend/app/content/careers.ts`
+- [x] Karriere – Hinweis auf offene Stellen für die Startseite – `frontend/app/content/home.ts`
+- [x] Karriere – Einleitung der Karriereseite – `frontend/app/content/careers.ts`
+- [x] Karriere – Drei Stellen mit Titel und Umfang (bestätigt 2026-10-22) – `frontend/app/content/jobs.ts`
+- [ ] Karriere – Entwürfe für Aufgaben und Voraussetzungen prüfen; Führerschein nötig?; Qualifikation für Pflegehilfskraft und Betreuungskraft; Arbeitsbedingungen (Arbeitszeiten, Dienstfahrzeug, Vergütung, falls veröffentlicht) – `frontend/app/content/jobs.ts`
+- [ ] Karriere – Qualifikationsoptionen im Bewerbungsformular bestätigen (Pflegefachkraft, Pflegehilfskraft oder Pflegeassistenz, Hauswirtschafts- oder Betreuungskraft, in Ausbildung, andere) – `frontend/app/content/careers.ts`
 - [ ] Karriere – Frist für die Rückmeldung auf Bewerbungen – Bestätigung im Bewerbungsformular
 - [ ] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – Startseite, `/rueckruf`, Bestätigung im Rückrufformular
 - [ ] Kontakt – Zusage, in welcher Frist auf Nachrichten geantwortet wird – `site.replyTime`: Kontakt-Karten (E-Mail), `/kontakt`, Bestätigung im Kontaktformular

@@ -6,12 +6,16 @@ import { Container } from "../components/Container/Container";
 import { JobList } from "../components/JobList/JobList";
 import { careersIntro } from "../content/careers";
 import { applyPath, jobs } from "../content/jobs";
+import { site } from "../content/site";
 import { pageMeta } from "../meta";
 import type { Route } from "./+types/karriere";
 import styles from "./karriere.module.css";
 
 export const meta: Route.MetaFunction = () =>
-  pageMeta("Karriere", "[[INHALT FEHLT: Kurzbeschreibung für Suchergebnisse]]");
+  pageMeta(
+    "Karriere",
+    "Stellen bei der Aram Pflege GmbH in Gronau: Pflegefachkraft, Pflegehilfskraft, Hauswirtschafts- und Betreuungskraft.",
+  );
 
 export default function Karriere() {
   return (
@@ -45,6 +49,9 @@ export default function Karriere() {
         <p>
           Die Kurzbewerbung füllen Sie in wenigen Minuten am Smartphone aus. Ein Anschreiben brauchen Sie nicht. Ein
           Lebenslauf hilft uns, ist aber keine Pflicht.
+        </p>
+        <p>
+          Sie können Ihre Bewerbung auch per E-Mail schicken: <a href={site.email.href}>{site.email.display}</a>
         </p>
       </section>
 

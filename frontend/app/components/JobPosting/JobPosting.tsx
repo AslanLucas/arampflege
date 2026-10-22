@@ -50,6 +50,7 @@ export function JobPosting({ job }: JobPostingProps) {
         <ButtonLink to={applyPath(job.slug)}>Auf diese Stelle bewerben</ButtonLink>
       </p>
 
+      {job.draft && <p className={styles.note}>[[ENTWURF: Aufgaben und Voraussetzungen vom Kunden prüfen]]</p>}
       <Section id="aufgaben" title="Ihre Aufgaben" items={job.tasks} fallback="[[INHALT FEHLT: Aufgaben]]" />
       <Section
         id="voraussetzungen"

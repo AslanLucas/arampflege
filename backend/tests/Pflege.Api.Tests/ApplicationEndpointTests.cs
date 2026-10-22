@@ -183,6 +183,26 @@ public sealed class ApplicationEndpointTests(ApiFactory factory)
         Assert.Equal([FormMessages.ConsentRequired], errors["consent"]);
     }
 
+    [Theory]
+    [InlineData("pflegefachkraft")]
+    [InlineData("pflegehilfskraft")]
+    [InlineData("hauswirtschaft-betreuung")]
+    [InlineData("ausbildung")]
+    [InlineData("andere")]
+    public async Task Accepts_every_qualification_offered_in_the_form(string qualification)
+    {
+        var cancellationToken = TestContext.Current.CancellationToken;
+        using var client = factory.CreateClient();
+        var name = $"Bewerbung {Guid.NewGuid()}";
+        var token = await factory.GetValidFormTokenAsync(client);
+
+        using var form = Form(token, name, qualification: qualification);
+        var response = await client.PostAsync(Path, form, cancellationToken);
+
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        Assert.Equal(qualification, (await FindAsync(name))?.Qualification);
+    }
+
     [Fact]
     public async Task Rejects_an_unknown_qualification()
     {

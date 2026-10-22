@@ -58,7 +58,7 @@ export const servicesTeaser = {
 
 export const careerTeaser = {
   title: `Arbeiten bei ${site.name}`,
-  text: "[[INHALT FEHLT: Kurzer Hinweis auf offene Stellen und Arbeitsbedingungen]]",
+  text: "Wir suchen Pflegefachkräfte in Vollzeit oder Teilzeit sowie Pflegehilfskräfte, Hauswirtschafts- und Betreuungskräfte in Teilzeit oder als Minijob.",
 };
 
 export const contactTeaser = {

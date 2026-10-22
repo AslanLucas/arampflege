@@ -24,7 +24,7 @@ public sealed class CreateApplicationRequest : IFormSubmission
     public string? Email { get; set; }
 
     [Required(ErrorMessage = FormMessages.QualificationRequired)]
-    [AllowedValues("pflegefachkraft", "pflegehilfskraft", "ausbildung", "andere", ErrorMessage = FormMessages.QualificationRequired)]
+    [AllowedValues("pflegefachkraft", "pflegehilfskraft", "hauswirtschaft-betreuung", "ausbildung", "andere", ErrorMessage = FormMessages.QualificationRequired)]
     public string? Qualification { get; set; }
 
     [MaxLength(1000, ErrorMessage = FormMessages.ApplicationMessageTooLong)]

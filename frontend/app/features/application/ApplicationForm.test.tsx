@@ -18,6 +18,7 @@ vi.mock("../../content/jobs", async (importOriginal) => {
       tasks: [],
       requirements: [],
       offer: [],
+      draft: false,
     },
   ];
   return { ...original, jobs, jobBySlug: (slug: string | null | undefined) => jobs.find((job) => job.slug === slug) };
@@ -45,7 +46,7 @@ async function renderForm(path = "/karriere/bewerben") {
 function fillRequired() {
   fireEvent.change(screen.getByLabelText(/Ihr Name/), { target: { value: "Erika Muster" } });
   fireEvent.change(screen.getByLabelText(/Telefonnummer/), { target: { value: "0521 123456" } });
-  fireEvent.click(screen.getByLabelText("Pflegehilfskraft"));
+  fireEvent.click(screen.getByLabelText("Pflegehilfskraft oder Pflegeassistenz"));
   fireEvent.click(screen.getByRole("checkbox"));
 }
 
@@ -90,7 +91,7 @@ describe("ApplicationForm", () => {
     const append = vi.spyOn(FormData.prototype, "append");
     await renderForm("/karriere/bewerben?stelle=pflegefachkraft-teilzeit");
 
-    expect(screen.getByLabelText(/Pflegefachkraft \(Teilzeit, Testort\)/)).toBeChecked();
+    expect(screen.getByLabelText("Pflegefachkraft, Teilzeit")).toBeChecked();
     fillRequired();
     chooseFile(["%PDF-1.7"], "lebenslauf.pdf", "application/pdf");
     submit();

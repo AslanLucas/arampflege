@@ -34,7 +34,7 @@ const fieldIds = {
 type Field = keyof typeof fieldIds;
 
 const positionOptions = [
-  ...jobs.map((job) => ({ value: job.slug, label: `${job.title} (${job.scope}, ${job.location})` })),
+  ...jobs.map((job) => ({ value: job.slug, label: `${job.title}, ${job.scope}` })),
   { value: INITIATIVE, label: "Initiativbewerbung" },
 ];
 

@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { jobs } from "../app/content/jobs";
 import { expectNoAxeViolations, tabTo } from "./helpers";
 
 const pdf = { name: "lebenslauf.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.7\nTest\n%%EOF") };
@@ -21,14 +22,31 @@ async function mockApplicationApi(page: Page, status = 201, response?: unknown) 
 }
 
 test.describe("Careers", () => {
-  test("leads to an unsolicited application while no jobs are published", async ({ page }) => {
+  test("lists the open positions and applies with the position preselected", async ({ page }) => {
+    await page.goto("/karriere");
+    const positions = page.getByRole("region", { name: "Offene Stellen" });
+
+    for (const job of jobs) {
+      await expect(positions.getByRole("link", { name: job.title })).toHaveAttribute("href", `/karriere/${job.slug}`);
+    }
+    await positions.getByRole("link", { name: "Pflegefachkraft (m/w/d)" }).click();
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Pflegefachkraft (m/w/d)");
+
+    await page.getByRole("link", { name: "Auf diese Stelle bewerben" }).first().click();
+    await expect(page).toHaveURL(/\/karriere\/bewerben\?stelle=pflegefachkraft$/);
+    await expect(page.getByLabel("Pflegefachkraft (m/w/d), Vollzeit oder Teilzeit")).toBeChecked();
+  });
+
+  test("offers an unsolicited application and e-mail as alternatives", async ({ page }) => {
     await page.goto("/karriere");
 
+    await expect(page.getByRole("main").getByRole("link", { name: "info@arampflege.de" })).toHaveAttribute(
+      "href",
+      "mailto:info@arampflege.de",
+    );
     await page.getByRole("main").getByRole("link", { name: "Initiativ bewerben" }).click();
-
     await expect(page).toHaveURL(/\/karriere\/bewerben$/);
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Kurzbewerbung");
-    await expect(page.getByText("Sie bewerben sich ohne bestimmte Stellenanzeige (Initiativbewerbung).")).toBeVisible();
+    await expect(page.getByLabel("Initiativbewerbung")).toBeChecked();
   });
 
   test("sends a short application with resume using the keyboard", async ({ page }) => {
@@ -89,7 +107,7 @@ test.describe("Careers", () => {
 
     await page.getByLabel(/Ihr Name/).fill("Erika Muster");
     await page.getByLabel(/Telefonnummer/).fill("0521 123456");
-    await page.getByLabel("Pflegehilfskraft").check();
+    await page.getByLabel("Pflegehilfskraft oder Pflegeassistenz", { exact: true }).check();
     await page.getByLabel(/Lebenslauf/).setInputFiles(pdf);
     await page.getByRole("checkbox").check();
     await page.getByRole("button", { name: "Bewerbung senden" }).click();

@@ -35,3 +35,7 @@
 .closing {
   margin-top: var(--space-7);
 }
+
+.note {
+  color: var(--color-text-muted);
+}

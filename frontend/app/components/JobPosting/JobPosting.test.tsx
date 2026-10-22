@@ -14,6 +14,7 @@ const job: Job = {
   tasks: ["Behandlungspflege bei Hausbesuchen"],
   requirements: ["Examen als Pflegefachkraft"],
   offer: [],
+  draft: false,
 };
 
 function renderWithRouter(element: React.ReactElement) {
@@ -50,5 +51,11 @@ describe("JobList", () => {
       "/karriere/pflegefachkraft-teilzeit",
     );
     expect(screen.getByText(/Teilzeit, 20 Stunden pro Woche · Testort · Veröffentlicht am/)).toBeInTheDocument();
+  });
+
+  it("marks unreviewed tasks and requirements as a draft", () => {
+    renderWithRouter(<JobPosting job={{ ...job, draft: true }} />);
+
+    expect(screen.getByText(/ENTWURF/)).toBeInTheDocument();
   });
 });
