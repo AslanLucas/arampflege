@@ -43,6 +43,14 @@
   font-size: var(--font-size-small);
 }
 
+/* The scene has its own ground and sky, so it stands on the blush hero without a disc */
+.scene {
+  --scene-backdrop: transparent;
+
+  justify-self: center;
+  max-width: 24rem;
+}
+
 .logo {
   display: none;
 }
@@ -51,19 +59,17 @@
   display: block;
   width: 100%;
   height: auto;
-  animation: settle 900ms var(--ease-out) both;
-}
-
-@keyframes settle {
-  from {
-    opacity: 0;
-    transform: translateY(1rem) scale(0.96);
-  }
 }
 
 .intro {
-  max-width: 48rem;
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
   margin-top: var(--space-8);
+}
+
+.intro > div:first-child {
+  max-width: 48rem;
 }
 
 .lead {
@@ -152,11 +158,26 @@
     grid-column: 1 / 8;
   }
 
+  .scene {
+    grid-column: 8 / 13;
+    justify-self: end;
+    max-width: 30rem;
+  }
+
+  .intro {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .intro > div:first-child {
+    grid-column: 1 / 9;
+  }
+
   .logo {
     display: block;
-    grid-column: 9 / 13;
+    grid-column: 10 / 13;
     justify-self: end;
-    width: min(100%, 18rem);
+    width: min(100%, 14rem);
   }
 
   .teamGrid {

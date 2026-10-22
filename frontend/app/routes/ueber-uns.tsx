@@ -4,6 +4,7 @@ import { ContactPrompt } from "../components/ContactPrompt/ContactPrompt";
 import { Container } from "../components/Container/Container";
 import { Eyebrow } from "../components/Eyebrow/Eyebrow";
 import { CheckIcon } from "../components/Icon/icons";
+import { LottieScene } from "../components/LottieScene/LottieScene";
 import { PhotoPlaceholder } from "../components/PhotoPlaceholder/PhotoPlaceholder";
 import { Reveal } from "../components/Reveal/Reveal";
 import { about } from "../content/about";
@@ -50,17 +51,20 @@ export default function UeberUns() {
               <figcaption>Leitsatz der {site.legalName}</figcaption>
             </figure>
           </div>
-          <div className={styles.logo} aria-hidden="true">
-            <img src="/images/logo-aram-320.png" width={320} height={320} alt="" />
-          </div>
+          <LottieScene src="/animations/rollstuhl-spaziergang.json" width={500} height={350} className={styles.scene} />
         </Container>
       </div>
 
       <Container>
         <section aria-labelledby="wer-wir-sind" className={styles.intro}>
-          <h2 id="wer-wir-sind">Wer wir sind</h2>
-          <p className={styles.lead}>{about.lead}</p>
-          <p>{about.text}</p>
+          <div>
+            <h2 id="wer-wir-sind">Wer wir sind</h2>
+            <p className={styles.lead}>{about.lead}</p>
+            <p>{about.text}</p>
+          </div>
+          <div className={styles.logo} aria-hidden="true">
+            <img src="/images/logo-aram-320.png" width={320} height={320} loading="lazy" alt="" />
+          </div>
         </section>
 
         <section aria-labelledby="worauf-verlassen" className={styles.section}>
