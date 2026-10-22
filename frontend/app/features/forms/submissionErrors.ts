@@ -16,14 +16,19 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
 }
 
-/** Maps an RTK Query error (ProblemDetails from the API) to field and form errors. */
-export function toSubmissionErrors(error: unknown): SubmissionErrors {
+type FallbackTexts = Pick<typeof messages, "failed" | "tooManyRequests">;
+
+/**
+ * Maps an RTK Query error (ProblemDetails from the API) to field and form errors. `texts` holds
+ * the client's own messages, so a form can use its own form of address.
+ */
+export function toSubmissionErrors(error: unknown, texts: FallbackTexts = messages): SubmissionErrors {
   if (!isRecord(error)) {
-    return { fields: {}, form: messages.failed };
+    return { fields: {}, form: texts.failed };
   }
 
   if (error.status === 429) {
-    return { fields: {}, form: messages.tooManyRequests };
+    return { fields: {}, form: texts.tooManyRequests };
   }
 
   if (error.status === 400 && isRecord(error.data)) {
@@ -46,5 +51,5 @@ export function toSubmissionErrors(error: unknown): SubmissionErrors {
     }
   }
 
-  return { fields: {}, form: messages.failed };
+  return { fields: {}, form: texts.failed };
 }

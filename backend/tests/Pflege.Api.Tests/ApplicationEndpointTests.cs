@@ -145,7 +145,7 @@ public sealed class ApplicationEndpointTests(ApiFactory factory)
         var response = await client.PostAsync(Path, Form(token, name, (content, fileName, contentType)), TestContext.Current.CancellationToken);
 
         var errors = await ProblemDetailsAssertions.ReadFieldErrorsAsync(response);
-        Assert.Equal([FormMessages.ResumeType], errors["resume"]);
+        Assert.Equal([ApplicationMessages.ResumeType], errors["resume"]);
         Assert.Null(await FindAsync(name));
         Assert.Equal(filesBefore, factory.StoredFileCount);
     }
@@ -162,7 +162,7 @@ public sealed class ApplicationEndpointTests(ApiFactory factory)
         var response = await client.PostAsync(Path, Form(token, name, (content, "lebenslauf.pdf", "application/pdf")), TestContext.Current.CancellationToken);
 
         var errors = await ProblemDetailsAssertions.ReadFieldErrorsAsync(response);
-        Assert.Equal([FormMessages.ResumeTooLarge], errors["resume"]);
+        Assert.Equal([ApplicationMessages.ResumeTooLarge], errors["resume"]);
         Assert.Null(await FindAsync(name));
     }
 
@@ -176,11 +176,23 @@ public sealed class ApplicationEndpointTests(ApiFactory factory)
         var response = await client.PostAsync(Path, form, TestContext.Current.CancellationToken);
 
         var errors = await ProblemDetailsAssertions.ReadFieldErrorsAsync(response);
-        Assert.Equal([FormMessages.PositionRequired], errors["position"]);
-        Assert.Equal([FormMessages.NameRequired], errors["name"]);
-        Assert.Equal([FormMessages.PhoneRequired], errors["phone"]);
-        Assert.Equal([FormMessages.QualificationRequired], errors["qualification"]);
-        Assert.Equal([FormMessages.ConsentRequired], errors["consent"]);
+        Assert.Equal([ApplicationMessages.PositionRequired], errors["position"]);
+        Assert.Equal([ApplicationMessages.NameRequired], errors["name"]);
+        Assert.Equal([ApplicationMessages.PhoneRequired], errors["phone"]);
+        Assert.Equal([ApplicationMessages.QualificationRequired], errors["qualification"]);
+        Assert.Equal([ApplicationMessages.ConsentRequired], errors["consent"]);
+    }
+
+    [Fact]
+    public async Task Addresses_applicants_informally_when_the_form_expired()
+    {
+        using var client = factory.CreateClient();
+
+        using var form = Form("abgelaufen", "Test");
+        var response = await client.PostAsync(Path, form, TestContext.Current.CancellationToken);
+
+        var errors = await ProblemDetailsAssertions.ReadFieldErrorsAsync(response);
+        Assert.Equal([ApplicationMessages.FormExpired], errors["form"]);
     }
 
     [Theory]
@@ -213,7 +225,7 @@ public sealed class ApplicationEndpointTests(ApiFactory factory)
         var response = await client.PostAsync(Path, form, TestContext.Current.CancellationToken);
 
         var errors = await ProblemDetailsAssertions.ReadFieldErrorsAsync(response);
-        Assert.Equal([FormMessages.QualificationRequired], errors["qualification"]);
+        Assert.Equal([ApplicationMessages.QualificationRequired], errors["qualification"]);
     }
 
     [Fact]

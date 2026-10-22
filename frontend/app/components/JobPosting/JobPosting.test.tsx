@@ -36,7 +36,7 @@ describe("JobPosting", () => {
   it("never invents an offer when the client has not confirmed one", () => {
     renderWithRouter(<JobPosting job={job} />);
 
-    const offer = screen.getByRole("region", { name: "Was wir Ihnen bieten" });
+    const offer = screen.getByRole("region", { name: "Was wir dir bieten" });
     expect(within(offer).getByText(/INHALT FEHLT/)).toBeInTheDocument();
     expect(within(offer).queryByRole("listitem")).not.toBeInTheDocument();
   });

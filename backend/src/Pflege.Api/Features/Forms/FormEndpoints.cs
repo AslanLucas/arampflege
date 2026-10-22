@@ -23,20 +23,22 @@ public static class FormEndpoints
 
     /// <summary>
     /// Shared handling for all form submissions. Suspected spam gets the same response as a
-    /// real submission but is not stored.
+    /// real submission but is not stored. <paramref name="formExpiredMessage"/> lets a form use
+    /// its own form of address.
     /// </summary>
     public static async Task<Results<Created, ValidationProblem>> HandleSubmissionAsync(
         IFormSubmission submission,
         FormTokenService tokens,
         ILogger logger,
         Func<CancellationToken, Task<Guid>> store,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        string formExpiredMessage = FormMessages.FormExpired)
     {
         switch (tokens.Check(submission.FormToken, submission.Website))
         {
             case SubmissionCheck.Invalid:
                 return TypedResults.ValidationProblem(
-                    new Dictionary<string, string[]> { ["form"] = [FormMessages.FormExpired] });
+                    new Dictionary<string, string[]> { ["form"] = [formExpiredMessage] });
             case SubmissionCheck.Suspected:
                 logger.LogInformation("Discarded suspected automated submission");
                 return TypedResults.Created();

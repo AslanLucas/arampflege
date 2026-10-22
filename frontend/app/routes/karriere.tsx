@@ -36,7 +36,7 @@ export default function Karriere() {
         ) : (
           <>
             <p>[[INHALT FEHLT: aktuelle Stellen]]</p>
-            <p>Sie können sich jederzeit auch ohne bestimmte Stellenanzeige bei uns bewerben.</p>
+            <p>Du kannst dich jederzeit auch ohne bestimmte Stellenanzeige bei uns bewerben.</p>
             <p className={styles.action}>
               <ButtonLink to={applyPath()}>Initiativ bewerben</ButtonLink>
             </p>
@@ -45,20 +45,20 @@ export default function Karriere() {
       </section>
 
       <section aria-labelledby="so-bewerben" className={styles.section}>
-        <h2 id="so-bewerben">So bewerben Sie sich</h2>
+        <h2 id="so-bewerben">So bewirbst du dich</h2>
         <p>
-          Die Kurzbewerbung füllen Sie in wenigen Minuten am Smartphone aus. Ein Anschreiben brauchen Sie nicht. Ein
+          Die Kurzbewerbung füllst du in wenigen Minuten am Smartphone aus. Ein Anschreiben brauchst du nicht. Ein
           Lebenslauf hilft uns, ist aber keine Pflicht.
         </p>
         <p>
-          Sie können Ihre Bewerbung auch per E-Mail schicken: <a href={site.email.href}>{site.email.display}</a>
+          Du kannst deine Bewerbung auch per E-Mail schicken: <a href={site.email.href}>{site.email.display}</a>
         </p>
       </section>
 
       <div className={styles.prompt}>
         <ContactPrompt
-          title="Sprechen Sie vorher mit uns"
-          text="Sie haben Fragen zu einer Stelle oder zur Arbeit bei uns? Rufen Sie uns an."
+          title="Sprich vorher mit uns"
+          text="Du hast Fragen zu einer Stelle oder zur Arbeit bei uns? Ruf uns an."
         />
       </div>
     </Container>

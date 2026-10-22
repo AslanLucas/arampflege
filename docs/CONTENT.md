@@ -12,7 +12,7 @@ Wir schreiben so, wie eine erfahrene Pflegedienstleitung am Telefon spricht: fre
 
 ## Grundregeln
 
-- **Anrede „Sie“**, durchgehend. Auf der Karriereseite ebenfalls „Sie“, sofern der Kunde nichts anderes festlegt.
+- **Anrede „Sie“**, durchgehend. Ausnahme (Entscheidung 2026-10-22): Die Karriereseiten (Übersicht, Stellenanzeigen, Kurzbewerbung samt Fehlermeldungen) sprechen Bewerberinnen und Bewerber mit „du“ an. Der Karriere-Hinweis auf der Startseite bleibt beim „Sie“.
 - **Kurze Sätze**, im Schnitt unter 15 Wörtern. Ein Gedanke pro Satz.
 - **Aktiv statt passiv**: „Wir kommen zu Ihnen nach Hause“, nicht „Die Versorgung erfolgt in der Häuslichkeit“.
 - **Konkret statt allgemein**: Orte, Zeiten, Abläufe und Namen nennen. Wenn ein Satz genauso auf der Seite jedes anderen Pflegedienstes stehen könnte, wird er gestrichen oder konkretisiert.

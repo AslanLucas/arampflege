@@ -3,7 +3,7 @@ import { createRoutesStub } from "react-router";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { StoreProvider } from "../../store/StoreProvider";
 import { formTokenHandler, jsonResponse, mockApi } from "../../test/mockApi";
-import { messages } from "../forms/messages";
+import { applicationMessages as messages } from "../forms/messages";
 import { ApplicationForm } from "./ApplicationForm";
 
 vi.mock("../../content/jobs", async (importOriginal) => {
@@ -44,7 +44,7 @@ async function renderForm(path = "/karriere/bewerben") {
 }
 
 function fillRequired() {
-  fireEvent.change(screen.getByLabelText(/Ihr Name/), { target: { value: "Erika Muster" } });
+  fireEvent.change(screen.getByLabelText(/Dein Name/), { target: { value: "Erika Muster" } });
   fireEvent.change(screen.getByLabelText(/Telefonnummer/), { target: { value: "0521 123456" } });
   fireEvent.click(screen.getByLabelText("Pflegehilfskraft oder Pflegeassistenz"));
   fireEvent.click(screen.getByRole("checkbox"));
@@ -96,7 +96,7 @@ describe("ApplicationForm", () => {
     chooseFile(["%PDF-1.7"], "lebenslauf.pdf", "application/pdf");
     submit();
 
-    expect(await screen.findByRole("heading", { name: "Danke, wir haben Ihre Bewerbung erhalten" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "Danke, wir haben deine Bewerbung erhalten" })).toBeInTheDocument();
     expect(api.calls.find((call) => call.route === POST)?.body).toMatchObject({
       position: "pflegefachkraft-teilzeit",
       name: "Erika Muster",
@@ -151,5 +151,14 @@ describe("ApplicationForm", () => {
       expect(screen.getByLabelText(/Lebenslauf/)).toHaveAttribute("aria-invalid", "true");
     });
     expect(screen.getByRole("link", { name: messages.resumeType })).toBeInTheDocument();
+  });
+
+  it("addresses applicants informally", async () => {
+    mockApi({ ...formTokenHandler });
+    await renderForm();
+
+    expect(screen.getByLabelText(/Dein Name/)).toBeInTheDocument();
+    expect(screen.getByText(/Wir verwenden deine Angaben nur, um deine Bewerbung zu bearbeiten/)).toBeInTheDocument();
+    expect(document.body.textContent).not.toMatch(/\b(Sie|Ihre?)\b/);
   });
 });

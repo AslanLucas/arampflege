@@ -51,16 +51,16 @@ export function JobPosting({ job }: JobPostingProps) {
       </p>
 
       {job.draft && <p className={styles.note}>[[ENTWURF: Aufgaben und Voraussetzungen vom Kunden prüfen]]</p>}
-      <Section id="aufgaben" title="Ihre Aufgaben" items={job.tasks} fallback="[[INHALT FEHLT: Aufgaben]]" />
+      <Section id="aufgaben" title="Deine Aufgaben" items={job.tasks} fallback="[[INHALT FEHLT: Aufgaben]]" />
       <Section
         id="voraussetzungen"
-        title="Was Sie mitbringen"
+        title="Was du mitbringst"
         items={job.requirements}
         fallback="[[INHALT FEHLT: Voraussetzungen]]"
       />
       <Section
         id="angebot"
-        title="Was wir Ihnen bieten"
+        title="Was wir dir bieten"
         items={job.offer}
         fallback="[[INHALT FEHLT: Arbeitsbedingungen vom Kunden bestätigen]]"
       />

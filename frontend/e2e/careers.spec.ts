@@ -54,7 +54,7 @@ test.describe("Careers", () => {
     await page.goto("/karriere/bewerben");
     await page.waitForLoadState("networkidle");
 
-    const name = page.getByLabel(/Ihr Name/);
+    const name = page.getByLabel(/Dein Name/);
     await tabTo(page, () => name.evaluate((element) => element === document.activeElement), 40);
     await page.keyboard.type("Erika Muster");
     await page.keyboard.press("Tab");
@@ -73,7 +73,7 @@ test.describe("Careers", () => {
     await tabTo(page, () => page.getByRole("button", { name: "Bewerbung senden" }).evaluate((element) => element === document.activeElement));
     await page.keyboard.press("Enter");
 
-    await expect(page.getByRole("heading", { name: "Danke, wir haben Ihre Bewerbung erhalten" })).toBeFocused();
+    await expect(page.getByRole("heading", { name: "Danke, wir haben deine Bewerbung erhalten" })).toBeFocused();
     expect(captured.contentType).toMatch(/^multipart\/form-data; boundary=/);
     expect(captured.body).toContain('name="position"\r\n\r\ninitiativ');
     expect(captured.body).toContain('name="qualification"\r\n\r\npflegefachkraft');
@@ -105,7 +105,7 @@ test.describe("Careers", () => {
     await expect(page.getByRole("heading", { name: "Bitte prüfen Sie Ihre Angaben" })).toBeVisible();
     await expectNoAxeViolations(page);
 
-    await page.getByLabel(/Ihr Name/).fill("Erika Muster");
+    await page.getByLabel(/Dein Name/).fill("Erika Muster");
     await page.getByLabel(/Telefonnummer/).fill("0521 123456");
     await page.getByLabel("Pflegehilfskraft oder Pflegeassistenz", { exact: true }).check();
     await page.getByLabel(/Lebenslauf/).setInputFiles(pdf);

@@ -39,13 +39,13 @@ public static class ApplicationEndpoints
         {
             if (resume.Length > ResumeFileValidator.MaxBytes)
             {
-                return ResumeError(FormMessages.ResumeTooLarge);
+                return ResumeError(ApplicationMessages.ResumeTooLarge);
             }
             await using var header = resume.OpenReadStream();
             resumeContentType = await ResumeFileValidator.DetectContentTypeAsync(header, cancellationToken);
             if (resumeContentType is null)
             {
-                return ResumeError(FormMessages.ResumeType);
+                return ResumeError(ApplicationMessages.ResumeType);
             }
         }
 
@@ -84,7 +84,7 @@ public static class ApplicationEndpoints
                 throw;
             }
             return entity.Id;
-        }, cancellationToken);
+        }, cancellationToken, ApplicationMessages.FormExpired);
     }
 
     private static ValidationProblem ResumeError(string message) =>

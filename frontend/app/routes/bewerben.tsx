@@ -15,7 +15,7 @@ export default function Bewerben() {
     <Container>
       <Breadcrumbs trail={[{ label: "Karriere", to: "/karriere" }]} current="Kurzbewerbung" />
       <h1>Kurzbewerbung</h1>
-      <p className={styles.lead}>Ein Anschreiben brauchen Sie nicht. Das Formular dauert nur wenige Minuten.</p>
+      <p className={styles.lead}>Ein Anschreiben brauchst du nicht. Das Formular dauert nur wenige Minuten.</p>
       <p>
         Lieber persönlich sprechen? <a href={site.phone.href}>{site.phone.display} anrufen</a>
       </p>

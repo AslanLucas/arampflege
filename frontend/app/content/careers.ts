@@ -10,4 +10,4 @@ export const qualificationOptions: { value: Qualification; label: string }[] = [
 ];
 
 export const careersIntro =
-  "Wir versorgen Menschen in Gronau, Epe und Umgebung zu Hause. Dafür suchen wir Pflegefachkräfte, Pflegehilfskräfte sowie Hauswirtschafts- und Betreuungskräfte für unser Team mit einer qualifizierten Pflegedienstleitung.";
+  "Wir versorgen Menschen in Gronau, Epe und Umgebung zu Hause. Dafür suchen wir dich: als Pflegefachkraft, Pflegehilfskraft oder Hauswirtschafts- und Betreuungskraft in unserem Team mit einer qualifizierten Pflegedienstleitung.";

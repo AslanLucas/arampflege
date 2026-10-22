@@ -7,30 +7,30 @@ namespace Pflege.Api.Features.Applications;
 // record constructor parameter as required and fails before validation can report German messages.
 public sealed class CreateApplicationRequest : IFormSubmission
 {
-    [Required(ErrorMessage = FormMessages.PositionRequired)]
-    [RegularExpression(@"^[a-z0-9-]{1,80}$", ErrorMessage = FormMessages.PositionRequired)]
+    [Required(ErrorMessage = ApplicationMessages.PositionRequired)]
+    [RegularExpression(@"^[a-z0-9-]{1,80}$", ErrorMessage = ApplicationMessages.PositionRequired)]
     public string? Position { get; set; }
 
-    [Required(ErrorMessage = FormMessages.NameRequired)]
-    [MaxLength(100, ErrorMessage = FormMessages.NameTooLong)]
+    [Required(ErrorMessage = ApplicationMessages.NameRequired)]
+    [MaxLength(100, ErrorMessage = ApplicationMessages.NameTooLong)]
     public string? Name { get; set; }
 
-    [Required(ErrorMessage = FormMessages.PhoneRequired)]
-    [RegularExpression(FormMessages.PhonePattern, ErrorMessage = FormMessages.PhoneInvalid)]
+    [Required(ErrorMessage = ApplicationMessages.PhoneRequired)]
+    [RegularExpression(FormMessages.PhonePattern, ErrorMessage = ApplicationMessages.PhoneInvalid)]
     public string? Phone { get; set; }
 
-    [OptionalEmailAddress(ErrorMessage = FormMessages.EmailInvalid)]
-    [MaxLength(254, ErrorMessage = FormMessages.EmailInvalid)]
+    [OptionalEmailAddress(ErrorMessage = ApplicationMessages.EmailInvalid)]
+    [MaxLength(254, ErrorMessage = ApplicationMessages.EmailInvalid)]
     public string? Email { get; set; }
 
-    [Required(ErrorMessage = FormMessages.QualificationRequired)]
-    [AllowedValues("pflegefachkraft", "pflegehilfskraft", "hauswirtschaft-betreuung", "ausbildung", "andere", ErrorMessage = FormMessages.QualificationRequired)]
+    [Required(ErrorMessage = ApplicationMessages.QualificationRequired)]
+    [AllowedValues("pflegefachkraft", "pflegehilfskraft", "hauswirtschaft-betreuung", "ausbildung", "andere", ErrorMessage = ApplicationMessages.QualificationRequired)]
     public string? Qualification { get; set; }
 
-    [MaxLength(1000, ErrorMessage = FormMessages.ApplicationMessageTooLong)]
+    [MaxLength(1000, ErrorMessage = ApplicationMessages.MessageTooLong)]
     public string? Message { get; set; }
 
-    [Range(typeof(bool), "true", "true", ErrorMessage = FormMessages.ConsentRequired)]
+    [Range(typeof(bool), "true", "true", ErrorMessage = ApplicationMessages.ConsentRequired)]
     public bool Consent { get; set; }
 
     public string? FormToken { get; set; }

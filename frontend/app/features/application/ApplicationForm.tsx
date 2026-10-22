@@ -15,7 +15,7 @@ import { site } from "../../content/site";
 import { useHydrated } from "../../hooks/useHydrated";
 import { useGetFormTokenQuery } from "../forms/formApi";
 import { CONSENT_LABEL, NoScriptNotice, PrivacyNotice } from "../forms/FormNotices";
-import { EMAIL_PATTERN, messages, PHONE_PATTERN, RESUME_ACCEPT, resumeError } from "../forms/messages";
+import { applicationMessages as messages, EMAIL_PATTERN, PHONE_PATTERN, RESUME_ACCEPT, resumeError } from "../forms/messages";
 import { toSubmissionErrors, type FieldErrors } from "../forms/submissionErrors";
 import { useForm } from "../forms/useForm";
 import { useCreateApplicationMutation } from "./applicationApi";
@@ -63,7 +63,7 @@ function validate(values: Values, resume: File | null): FieldErrors {
   else if (!PHONE_PATTERN.test(phone)) errors.phone = messages.phoneInvalid;
   if (email && !EMAIL_PATTERN.test(email)) errors.email = messages.emailInvalid;
   if (!values.qualification) errors.qualification = messages.qualificationRequired;
-  if (values.message.trim().length > 1000) errors.message = messages.applicationMessageTooLong;
+  if (values.message.trim().length > 1000) errors.message = messages.messageTooLong;
   const fileError = resumeError(resume);
   if (fileError) errors.resume = fileError;
   if (!values.consent) errors.consent = messages.consentRequired;
@@ -130,7 +130,7 @@ export function ApplicationForm() {
       await createApplication(body).unwrap();
       markSubmitted();
     } catch (error) {
-      const { fields, form: formMessage } = toSubmissionErrors(error);
+      const { fields, form: formMessage } = toSubmissionErrors(error, messages);
       showErrors(fields, formMessage);
       void refetchToken();
     } finally {
@@ -142,11 +142,11 @@ export function ApplicationForm() {
     return (
       <div className={styles.confirmation}>
         <h2 ref={confirmationRef} tabIndex={-1}>
-          Danke, wir haben Ihre Bewerbung erhalten
+          Danke, wir haben deine Bewerbung erhalten
         </h2>
-        <p>Wir melden uns innerhalb von [[INHALT FEHLT: Frist für Rückmeldung auf Bewerbungen]].</p>
+        <p>Wir melden uns bei dir innerhalb von [[INHALT FEHLT: Frist für Rückmeldung auf Bewerbungen]].</p>
         <p>
-          Fragen beantworten wir gern am Telefon: <a href={site.phone.href}>{site.phone.display}</a>
+          Fragen beantworten wir dir gern am Telefon: <a href={site.phone.href}>{site.phone.display}</a>
         </p>
       </div>
     );
@@ -171,14 +171,14 @@ export function ApplicationForm() {
         void submit();
       }}
     >
-      <NoScriptNotice />
+      <NoScriptNotice address="du" />
       <ErrorSummary entries={summary} ref={summaryRef} />
 
       {jobs.length > 0 ? (
         <RadioGroup
           id={fieldIds.position}
           name="position"
-          legend="Auf welche Stelle bewerben Sie sich?"
+          legend="Auf welche Stelle bewirbst du dich?"
           requirement="required"
           options={positionOptions}
           value={position}
@@ -188,13 +188,13 @@ export function ApplicationForm() {
           }}
         />
       ) : (
-        <p id={fieldIds.position}>Sie bewerben sich ohne bestimmte Stellenanzeige (Initiativbewerbung).</p>
+        <p id={fieldIds.position}>Du bewirbst dich ohne bestimmte Stellenanzeige (Initiativbewerbung).</p>
       )}
 
       <TextField
         id={fieldIds.name}
         name="name"
-        label="Ihr Name"
+        label="Dein Name"
         requirement="required"
         autoComplete="name"
         maxLength={100}
@@ -209,7 +209,7 @@ export function ApplicationForm() {
         name="phone"
         label="Telefonnummer"
         requirement="required"
-        hint="Wir melden uns zuerst telefonisch."
+        hint="Wir melden uns zuerst telefonisch bei dir."
         type="tel"
         autoComplete="tel"
         maxLength={30}
@@ -236,7 +236,7 @@ export function ApplicationForm() {
       <RadioGroup
         id={fieldIds.qualification}
         name="qualification"
-        legend="Ihre Qualifikation"
+        legend="Deine Qualifikation"
         requirement="required"
         options={qualificationOptions}
         value={values.qualification}
@@ -261,7 +261,7 @@ export function ApplicationForm() {
         name="message"
         label="Nachricht"
         requirement="optional"
-        hint="Zum Beispiel, ab wann Sie anfangen können."
+        hint="Zum Beispiel, ab wann du anfangen kannst."
         maxLength={1000}
         value={values.message}
         error={fieldErrors.message}
@@ -287,7 +287,7 @@ export function ApplicationForm() {
         }}
       />
 
-      <PrivacyNotice />
+      <PrivacyNotice address="du" />
       <SubmitButton label="Bewerbung senden" busy={isLoading} ready={hydrated} />
     </form>
   );
