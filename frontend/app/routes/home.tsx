@@ -68,9 +68,9 @@ export default function Home() {
               </div>
             </dl>
           </div>
-          <div className={styles.callbackCard}>
-            <p className={styles.cardLabel}>Rückruf</p>
-            <p className={styles.cardText}>Wir melden uns innerhalb von [[INHALT FEHLT: Rückruffrist]].</p>
+          {/* Decorative: the header already names Aram. Only on wide screens, where the space is free. */}
+          <div className={styles.heroLogo} aria-hidden="true">
+            <img src="/images/logo-aram-320.png" width={320} height={320} alt="" className={styles.heroLogoImage} />
           </div>
         </Container>
       </div>
