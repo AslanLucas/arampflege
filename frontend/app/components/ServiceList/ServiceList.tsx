@@ -12,15 +12,12 @@ type ServiceListProps = {
   showPhotos?: boolean;
 };
 
-/** Numbered rows; the whole row is clickable while the name stays the link's accessible name. */
+/** One row per service; the whole row is clickable while the name stays the link's accessible name. */
 export function ServiceList({ services, headingLevel: Heading, showPhotos = false }: ServiceListProps) {
   return (
     <ul className={styles.list}>
-      {services.map((service, index) => (
+      {services.map((service) => (
         <li key={service.slug} className={styles.item}>
-          <span className={styles.number} aria-hidden="true">
-            {String(index + 1).padStart(2, "0")}
-          </span>
           {showPhotos && (
             <span className={styles.thumb} aria-hidden="true">
               <ServicePhoto service={service} sizes="7rem" className={styles.thumbPhoto} />

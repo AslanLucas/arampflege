@@ -65,19 +65,6 @@
   box-shadow: var(--shadow-raised);
 }
 
-/* Large outlined number on the photo */
-.number {
-  position: absolute;
-  bottom: var(--space-3);
-  left: var(--space-4);
-  color: var(--color-on-brand);
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 1.8rem + 3vw, 4.5rem);
-  font-weight: var(--font-weight-heading);
-  line-height: 1;
-  text-shadow: 0 2px 16px rgb(63 10 32 / 0.55);
-}
-
 .payer {
   display: inline-block;
   margin: 0 0 var(--space-3);

@@ -17,13 +17,6 @@
   transition: background-color var(--duration-feedback) ease-out;
 }
 
-.number {
-  flex: 0 0 2.5rem;
-  color: var(--color-primary);
-  font-weight: var(--font-weight-semibold);
-  font-variant-numeric: tabular-nums;
-}
-
 .thumb {
   flex: 0 0 7rem;
   overflow: hidden;

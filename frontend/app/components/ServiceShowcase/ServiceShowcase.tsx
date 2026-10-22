@@ -12,10 +12,9 @@ function highlights(service: Service) {
 
 type ShowcaseItemProps = {
   service: Service;
-  index: number;
 };
 
-function ShowcaseItem({ service, index }: ShowcaseItemProps) {
+function ShowcaseItem({ service }: ShowcaseItemProps) {
   const ref = useReveal<HTMLLIElement>();
   const [payer] = service.facts;
 
@@ -23,9 +22,6 @@ function ShowcaseItem({ service, index }: ShowcaseItemProps) {
     <li ref={ref} className={styles.item}>
       <div className={styles.media}>
         <ServicePhoto service={service} sizes="(min-width: 60rem) 45vw, 100vw" className={styles.photo} />
-        <span className={styles.number} aria-hidden="true">
-          {String(index + 1).padStart(2, "0")}
-        </span>
       </div>
       <div className={styles.body}>
         <p className={styles.payer}>
@@ -68,8 +64,8 @@ type ServiceShowcaseProps = {
 export function ServiceShowcase({ services }: ServiceShowcaseProps) {
   return (
     <ol className={styles.list}>
-      {services.map((service, index) => (
-        <ShowcaseItem key={service.slug} service={service} index={index} />
+      {services.map((service) => (
+        <ShowcaseItem key={service.slug} service={service} />
       ))}
     </ol>
   );

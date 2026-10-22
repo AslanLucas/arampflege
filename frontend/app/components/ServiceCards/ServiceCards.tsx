@@ -42,9 +42,6 @@ function ServiceCard({ service, index }: ServiceCardProps) {
     <li ref={ref} className={styles.card}>
       <div className={styles.inner}>
         <div className={styles.front}>
-          <span className={styles.number} aria-hidden="true">
-            {String(index + 1).padStart(2, "0")}
-          </span>
           <span className={styles.icon} aria-hidden="true">
             <Icon size={28} />
           </span>
