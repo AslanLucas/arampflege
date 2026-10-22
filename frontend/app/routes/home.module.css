@@ -119,10 +119,6 @@
   font-weight: var(--font-weight-semibold);
 }
 
-.note {
-  color: var(--color-text-muted);
-}
-
 .sectionAction {
   margin: var(--space-7) 0 0;
 }

@@ -27,13 +27,14 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Recht – Löschfrist für Bewerbungen und Lebensläufe nach Abschluss des Verfahrens (lokal Platzhalter 180 Tage ab Eingang) – `Retention:ApplicationRetentionDays`
 
 ## Inhalte
-- [ ] Leistungen – Welche Leistungen werden angeboten, mit fachlicher Freigabe; vorläufige Liste aus DESIGN.md steht auf Start und Leistungen – `frontend/app/content/services.ts`
-- [ ] Leistungen – Kurzbeschreibung für „Entlastungsleistungen und Hauswirtschaft“ und „Pflegeberatung“ – `frontend/app/content/services.ts`
-- [ ] Leistungen – Entwürfe „Für wen“ und „Was wir übernehmen“ fachlich prüfen: Grundpflege, Behandlungspflege, Verhinderungspflege, Beratungsbesuche – `frontend/app/content/services.ts`
-- [ ] Leistungen – „Für wen“ und „Was wir übernehmen“ für Entlastungsleistungen und Hauswirtschaft sowie Pflegeberatung – `frontend/app/content/services.ts`
-- [ ] Leistungen – Je Leistung „Wer die Kosten trägt“ mit Quelle und Prüfdatum sowie „So beantragen Sie die Leistung“ – `frontend/app/content/services.ts`
-- [ ] Leistungen – Einleitung der Leistungsübersicht – `/leistungen`
-- [ ] Leistungen – Was der Dienst nicht anbietet (z. B. 24-Stunden-Betreuung) – `/leistungen`
+- [x] Leistungen – Angebot bestätigt (2026-10-22): Grundpflege, Behandlungspflege, Hauswirtschaftliche Versorgung, Betreuung und Entlastung, Verhinderungspflege, Pflegeberatung inkl. Beratungsbesuche – `frontend/app/content/services.ts`
+- [ ] Leistungen – Alle Leistungstexte fachlich prüfen (Für wen, Was wir übernehmen, Wer die Kosten trägt, So beantragen Sie die Leistung) und Prüfdatum freigeben; erst dann den Entwurfshinweis entfernen – `frontend/app/content/services.ts`
+- [ ] Leistungen – „Wer zahlt was?“ und „Noch kein Pflegegrad?“ fachlich prüfen – `/leistungen`
+- [ ] Leistungen – Rechnet Aram den Entlastungsbetrag und die Verhinderungspflege direkt mit der Pflegekasse ab? – `frontend/app/content/services.ts`
+- [ ] Leistungen – Ist die Pflegeberatung (über den Beratungsbesuch hinaus) kostenlos? – Pflegeberatung
+- [ ] Leistungen – Verhinderungspflege: ab wie vielen Stunden und zu welchen Zeiten? – Verhinderungspflege
+- [ ] Leistungen – Was der Dienst nicht anbietet (z. B. Palliativpflege, 24-Stunden-Betreuung) – `/leistungen`
+- [ ] Leistungen – Rechtliche Angaben vor dem Livegang gegen den aktuellen Gesetzesstand prüfen, besonders Verhinderungspflege (gemeinsamer Jahresbetrag seit Juli 2025, bis zu acht Wochen) und die Häufigkeit der Beratungsbesuche – `frontend/app/content/services.ts`
 - [ ] Start – Ablauf der Versorgung: Entwurf mit vier Schritten bestätigen oder korrigieren – `frontend/app/content/home.ts`
 - [ ] Team – Namen, Funktionen und Fotos der Pflegedienstleitung und Ansprechpartner – Über uns, Start
 - [ ] Team – Name, Qualifikation und zwei bis drei Sätze der Pflegedienstleitung für die Startseite – `frontend/app/content/home.ts`

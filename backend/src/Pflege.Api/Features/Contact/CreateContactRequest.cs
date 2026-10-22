@@ -18,9 +18,9 @@ public sealed record CreateContactRequest(
         "",
         "grundpflege",
         "behandlungspflege",
+        "hauswirtschaft",
+        "betreuung-und-entlastung",
         "verhinderungspflege",
-        "entlastung-und-hauswirtschaft",
-        "beratungsbesuche",
         "pflegeberatung",
         "sonstiges",
         ErrorMessage = FormMessages.TopicInvalid)]

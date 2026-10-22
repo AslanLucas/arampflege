@@ -3,20 +3,24 @@ import { formatDate } from "../../utils/formatDate";
 import styles from "./CostsInfo.module.css";
 
 type CostsInfoProps = {
-  costs: Costs | null;
+  costs: Costs;
 };
 
+/** Cost information always shows its legal source and the date the client checked it. */
 export function CostsInfo({ costs }: CostsInfoProps) {
-  if (!costs) {
-    return <p>[[INHALT FEHLT: Wer bezahlt? Nur mit Quelle und Prüfdatum]]</p>;
-  }
-
   return (
     <>
-      <p>{costs.text}</p>
+      {costs.text.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
       <p className={styles.source}>
-        Stand: <time dateTime={costs.checkedOn}>{formatDate(costs.checkedOn)}</time>
-        {" · "}Quelle: {costs.source}
+        Quelle: {costs.source}
+        {" · "}Stand:{" "}
+        {costs.checkedOn ? (
+          <time dateTime={costs.checkedOn}>{formatDate(costs.checkedOn)}</time>
+        ) : (
+          "[[INHALT FEHLT: Prüfdatum, vom Kunden freigegeben]]"
+        )}
       </p>
     </>
   );

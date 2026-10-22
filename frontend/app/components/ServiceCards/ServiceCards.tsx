@@ -11,6 +11,7 @@ import {
   RotateIcon,
   ShowerHeadIcon,
   SyringeIcon,
+  UsersIcon,
 } from "../Icon/icons";
 import styles from "./ServiceCards.module.css";
 
@@ -18,8 +19,8 @@ const icons: Partial<Record<string, ComponentType<{ size?: number }>>> = {
   grundpflege: ShowerHeadIcon,
   behandlungspflege: SyringeIcon,
   verhinderungspflege: CalendarClockIcon,
-  "entlastung-und-hauswirtschaft": HouseIcon,
-  beratungsbesuche: ClipboardCheckIcon,
+  hauswirtschaft: HouseIcon,
+  "betreuung-und-entlastung": UsersIcon,
   pflegeberatung: MessagesSquareIcon,
 };
 

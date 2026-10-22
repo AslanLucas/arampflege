@@ -74,11 +74,17 @@ export default function Leistung() {
         </ContentSection>
 
         <ContentSection section={sections.costs}>
+          {service.draft && <p className={styles.note}>{DRAFT_NOTE}</p>}
           <CostsInfo costs={service.costs} />
         </ContentSection>
 
         <ContentSection section={sections.application}>
-          <p>{service.application}</p>
+          {service.draft && <p className={styles.note}>{DRAFT_NOTE}</p>}
+          <ol className={styles.steps}>
+            {service.application.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
         </ContentSection>
 
         <ContactPrompt

@@ -5,7 +5,6 @@ import { servicePath, services } from "../content/services";
 import Leistung from "./leistung";
 
 const behandlungspflege = services.find((service) => service.slug === "behandlungspflege");
-const pflegeberatung = services.find((service) => service.slug === "pflegeberatung");
 
 function renderService(path: string) {
   const Stub = createRoutesStub([{ path: "/leistungen/:slug", Component: Leistung }]);
@@ -32,16 +31,21 @@ describe("Leistung", () => {
     }
   });
 
-  it("marks drafts only on services with draft content", () => {
+  it("marks every section of an unreviewed service as a draft", () => {
     renderService("/leistungen/behandlungspflege");
     expect(behandlungspflege?.draft).toBe(true);
-    expect(screen.getAllByText(/ENTWURF/)).toHaveLength(2);
+    expect(screen.getAllByText(/ENTWURF/)).toHaveLength(4);
   });
 
-  it("shows no draft note on services without draft content", () => {
-    renderService("/leistungen/pflegeberatung");
-    expect(pflegeberatung?.draft).toBe(false);
-    expect(screen.queryByText(/ENTWURF/)).not.toBeInTheDocument();
+  it("shows how to apply as numbered steps and names the legal source of the costs", () => {
+    renderService("/leistungen/behandlungspflege");
+
+    const application = screen.getByRole("region", { name: "So beantragen Sie die Leistung" });
+    expect(within(within(application).getByRole("list")).getAllByRole("listitem")).toHaveLength(
+      behandlungspflege?.application.length ?? -1,
+    );
+    const costs = screen.getByRole("region", { name: "Wer die Kosten trägt" });
+    expect(within(costs).getByText(/Quelle: §§ 37 und 61 SGB V/)).toBeInTheDocument();
   });
 
   it("links all other services but not the current one", () => {

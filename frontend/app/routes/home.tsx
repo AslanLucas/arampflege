@@ -76,7 +76,6 @@ export default function Home() {
       </div>
 
       <Section id="leistungen" title={servicesTeaser.title} intro={<p>{servicesTeaser.intro}</p>}>
-        <p className={styles.note}>[[INHALT FEHLT: Leistungen vom Kunden bestätigen]]</p>
         <ServiceCards services={services} />
         <p className={styles.sectionAction}>
           <ArrowLink to="/leistungen">Alle Leistungen im Überblick</ArrowLink>
