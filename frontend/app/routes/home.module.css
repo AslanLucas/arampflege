@@ -56,7 +56,7 @@
   margin-top: var(--space-2);
 }
 
-/* Logo on an ivory disc over the video; no backdrop blur: re-blurring every video frame is costly */
+/* Logo directly over the video, transparent background; a soft shadow keeps its edges visible */
 .heroLogo {
   display: none;
 }
@@ -65,6 +65,8 @@
   display: block;
   width: 100%;
   height: auto;
+  /* Slightly brighter than the original, so the raspberry stays visible on the wine overlay */
+  filter: brightness(1.35) saturate(1.1) drop-shadow(0 4px 16px rgb(63 10 32 / 0.5));
 }
 
 /* Availability inside the top area, below the actions; ivory like all text over the video */
@@ -239,10 +241,6 @@
     align-self: start;
     justify-self: end;
     width: min(100%, 15rem);
-    padding: var(--space-4);
-    border-radius: 50%;
-    background-color: var(--color-glass);
-    box-shadow: var(--shadow-raised);
   }
 
   .areaGrid {
