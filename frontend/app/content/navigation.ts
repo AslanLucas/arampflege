@@ -18,3 +18,6 @@ export const legalNavigation: NavigationItem[] = [
 ];
 
 export const callbackLink: NavigationItem = { label: "Rückruf anfordern", to: "/rueckruf" };
+
+/** Eye-catching header action; the first consultation is free (confirmed 2026-10-22) and starts with a callback. */
+export const firstConsultationLink: NavigationItem = { label: "Kostenloses Erstgespräch", to: callbackLink.to };

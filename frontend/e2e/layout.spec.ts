@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { callbackLink, legalNavigation, mainNavigation } from "../app/content/navigation";
+import { callbackLink, firstConsultationLink, legalNavigation, mainNavigation } from "../app/content/navigation";
 import { servicePath, services } from "../app/content/services";
 import { expectNoAxeViolations, expectNoHorizontalScroll, isCompact, tabTo } from "./helpers";
 
@@ -39,12 +39,21 @@ test("unknown pages show a 404 message with a way back", async ({ page }) => {
 });
 
 test.describe("Header", () => {
-  test("shows the phone number without scrolling", async ({ page }) => {
+  test("shows the phone number on small screens and the free first consultation on wider ones", async ({ page }) => {
     await page.goto("/");
 
-    const phone = page.getByRole("banner").getByRole("link", { name: /anrufen$/ });
-    await expect(phone).toBeInViewport();
-    await expect(phone).toHaveAttribute("href", /^tel:/);
+    const banner = page.getByRole("banner");
+    const phone = banner.getByRole("link", { name: /anrufen$/ });
+    const consult = banner.getByRole("link", { name: firstConsultationLink.label });
+    if ((page.viewportSize()?.width ?? 0) < 640) {
+      await expect(phone).toBeInViewport();
+      await expect(phone).toHaveAttribute("href", /^tel:/);
+      await expect(consult).toBeHidden();
+    } else {
+      await expect(consult).toBeInViewport();
+      await expect(consult).toHaveAttribute("href", firstConsultationLink.to);
+      await expect(phone).toBeHidden();
+    }
   });
 
   test("offers a skip link as the first focusable element", async ({ page }) => {

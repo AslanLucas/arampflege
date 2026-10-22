@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { firstConsultationLink } from "../app/content/navigation";
 import { expectNoAxeViolations, isCompact, tabTo } from "./helpers";
 
 test.describe("Effects with motion allowed", () => {
@@ -73,7 +74,9 @@ test.describe("Effects with motion allowed", () => {
     await page.mouse.wheel(0, 600);
 
     await expect(header).toHaveAttribute("data-scrolled", "true");
-    await expect(header.getByRole("link", { name: /anrufen$/ })).toBeInViewport();
+    // Small screens show the number, wider ones the free first consultation in its place
+    const action = (page.viewportSize()?.width ?? 0) < 640 ? /anrufen$/ : firstConsultationLink.label;
+    await expect(header.getByRole("link", { name: action })).toBeInViewport();
   });
 });
 

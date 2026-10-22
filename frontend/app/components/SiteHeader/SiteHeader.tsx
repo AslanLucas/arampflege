@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
-import { mainNavigation } from "../../content/navigation";
+import { firstConsultationLink, mainNavigation } from "../../content/navigation";
 import { useHydrated } from "../../hooks/useHydrated";
 import { site } from "../../content/site";
-import { CloseIcon, MenuIcon, PhoneIcon } from "../Icon/icons";
+import { ArrowRightIcon, CloseIcon, MenuIcon, MessagesSquareIcon } from "../Icon/icons";
 import { Container } from "../Container/Container";
 import styles from "./SiteHeader.module.css";
 
@@ -73,21 +73,18 @@ export function SiteHeader() {
           </span>
         </Link>
 
+        {/* Small screens: the number itself; from 40rem the free first consultation takes its place */}
         <a href={site.phone.href} className={styles.phone}>
-          <span className={styles.phoneIcon} aria-hidden="true">
-            <PhoneIcon />
-          </span>
-          <span className={styles.phoneText}>
-            <span className={styles.phoneLabel} aria-hidden="true">
-              Telefon
-            </span>
-            <span className={styles.phoneNumber}>
-              {site.phone.display}
-              {" "}
-              <span className="visually-hidden">anrufen</span>
-            </span>
-          </span>
+          {site.phone.display}
+          {" "}
+          <span className="visually-hidden">anrufen</span>
         </a>
+        <Link to={firstConsultationLink.to} className={styles.consult}>
+          <span className={styles.consultShine} aria-hidden="true" />
+          <MessagesSquareIcon size={20} />
+          {firstConsultationLink.label}
+          <ArrowRightIcon size={18} />
+        </Link>
 
         {hydrated ? (
           <button

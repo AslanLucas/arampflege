@@ -96,52 +96,107 @@
   justify-self: end;
   display: flex;
   align-items: center;
-  gap: var(--space-3);
   min-height: var(--tap-target-min);
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-.phone:hover {
-  color: var(--color-text);
-}
-
-.phone:hover .phoneNumber {
-  text-decoration: underline;
-}
-
-.phoneIcon {
-  display: none;
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
-  background-color: var(--color-primary);
-  color: var(--color-surface);
-  transition: background-color var(--duration-feedback) ease-out;
-}
-
-.phone:hover .phoneIcon {
-  background-color: var(--color-primary-hover);
-}
-
-.phoneText {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.phoneLabel {
-  display: none;
-  color: var(--color-text-muted);
-  font-size: var(--font-size-label);
-}
-
-.phoneNumber {
   color: var(--color-link);
   font-weight: var(--font-weight-semibold);
   font-variant-numeric: tabular-nums;
+  text-decoration: none;
   white-space: nowrap;
+}
+
+.phone:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+/*
+ * The free first consultation: the one loud element in the header. The ring pulses three
+ * times and the light sweeps twice after load (under 5 s, WCAG 2.2.2); on hover the ring
+ * keeps pulsing. "Reduce motion" stops both (base.css).
+ */
+.consult {
+  grid-area: phone;
+  justify-self: end;
+  position: relative;
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 3.25rem;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-control);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-brand-deep));
+  box-shadow: 0 6px 18px rgb(170 26 75 / 0.35);
+  color: var(--color-on-brand);
+  font-size: 1.0625rem;
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out);
+}
+
+.consult:hover {
+  color: var(--color-on-brand);
+  box-shadow: 0 10px 24px rgb(170 26 75 / 0.45);
+  transform: translateY(-2px);
+}
+
+.consult::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: consult-pulse 1.5s var(--ease-out) 800ms 3;
+}
+
+.consult:hover::after {
+  animation: consult-pulse 1.5s var(--ease-out) infinite;
+}
+
+.consultShine {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.consultShine::before {
+  content: "";
+  position: absolute;
+  inset: -50% auto -50% -40%;
+  width: 35%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.45), transparent);
+  transform: translateX(-100%) skewX(-20deg);
+  animation: consult-shine 1.6s var(--ease-out) 1s 2;
+}
+
+.consult svg {
+  position: relative;
+  flex-shrink: 0;
+  transition: transform var(--duration-hover) var(--ease-out);
+}
+
+.consult:hover svg:last-child {
+  transform: translateX(4px);
+}
+
+@keyframes consult-pulse {
+  from {
+    box-shadow: 0 0 0 0 rgb(170 26 75 / 0.55);
+  }
+
+  to {
+    box-shadow: 0 0 0 14px rgb(170 26 75 / 0);
+  }
+}
+
+@keyframes consult-shine {
+  to {
+    transform: translateX(520%) skewX(-20deg);
+  }
 }
 
 .menuButton {
@@ -218,17 +273,12 @@
     font-size: 1.875rem;
   }
 
-  .phoneIcon {
-    display: grid;
+  .phone {
+    display: none;
   }
 
-  .phoneLabel {
-    display: block;
-  }
-
-  .phoneNumber {
-    color: var(--color-text);
-    font-size: 1.1875rem;
+  .consult {
+    display: inline-flex;
   }
 }
 
@@ -240,7 +290,7 @@
   .bar {
     grid-template-columns: auto 1fr auto;
     grid-template-areas: "logo nav phone";
-    column-gap: var(--space-7);
+    column-gap: var(--space-5);
     padding-block: var(--space-4);
   }
 
@@ -258,7 +308,7 @@
   .navList {
     display: flex;
     flex-wrap: wrap;
-    column-gap: var(--space-6);
+    column-gap: var(--space-5);
     border-top: 0;
   }
 
@@ -285,5 +335,23 @@
     text-decoration-color: var(--color-primary);
     text-decoration-thickness: 3px;
     text-underline-offset: 0.5em;
+  }
+}
+
+/* Logo, five links and the consultation button share one row: on narrower desktops the button breaks into two lines */
+@media (min-width: 60rem) and (max-width: 79.99rem) {
+  .navList {
+    column-gap: var(--space-4);
+  }
+
+  .consult {
+    max-width: 12rem;
+    padding-inline: var(--space-4);
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .consult svg:first-of-type {
+    display: none;
   }
 }
