@@ -302,6 +302,11 @@ export const careGradeSteps = [
   },
 ];
 
+/** Up to three scope items for teasers; placeholders stay on the detail page. */
+export function serviceHighlights(service: Service): string[] {
+  return service.scope.filter((item) => !item.startsWith("[[")).slice(0, 3);
+}
+
 export function servicePath(service: Service): string {
   return `/leistungen/${service.slug}`;
 }

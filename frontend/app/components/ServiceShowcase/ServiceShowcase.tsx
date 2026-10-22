@@ -1,14 +1,9 @@
 import { Link } from "react-router";
-import { servicePath, type Service } from "../../content/services";
+import { serviceHighlights, servicePath, type Service } from "../../content/services";
 import { useReveal } from "../../hooks/useReveal";
 import { ArrowRightIcon, CheckIcon } from "../Icon/icons";
 import { ServicePhoto } from "../ServicePhoto/ServicePhoto";
 import styles from "./ServiceShowcase.module.css";
-
-/** Scope items worth showing as highlights; placeholders stay on the detail page. */
-function highlights(service: Service) {
-  return service.scope.filter((item) => !item.startsWith("[[")).slice(0, 3);
-}
 
 type ShowcaseItemProps = {
   service: Service;
@@ -35,7 +30,7 @@ function ShowcaseItem({ service }: ShowcaseItemProps) {
         </h2>
         <p className={styles.summary}>{service.summary}</p>
         <ul className={styles.highlights}>
-          {highlights(service).map((item) => (
+          {serviceHighlights(service).map((item) => (
             <li key={item}>
               <span className={styles.check} aria-hidden="true">
                 <CheckIcon size={16} />

@@ -20,54 +20,118 @@
   overflow: hidden;
 }
 
-.front,
-.back {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  padding: var(--space-6);
-}
-
 .front {
   position: relative;
+  display: flex;
+  flex-direction: column;
   border: var(--border-width) solid var(--color-border);
   border-bottom: 0;
   border-radius: var(--radius-card) var(--radius-card) 0 0;
   background-color: var(--color-surface);
+  overflow: hidden;
 }
 
-.back {
-  justify-content: space-between;
-  border-radius: 0 0 var(--radius-card) var(--radius-card);
-  background-color: var(--color-brand-deep);
-  color: var(--color-on-brand);
+/* Photo that fades out into the card itself, so there is no edge between photo and text */
+.media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  transition: transform 600ms var(--ease-out);
+}
+
+/* Icon badge on the edge between photo and text */
 .icon {
+  position: relative;
+  z-index: 1;
   display: grid;
   place-items: center;
   width: 3.5rem;
   height: 3.5rem;
+  margin: -1.75rem 0 0 var(--space-6);
+  border: 3px solid var(--color-surface);
   border-radius: 50%;
-  background-color: var(--color-surface-alt);
-  color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.frontText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-6) var(--space-6);
 }
 
 .name {
-  margin: var(--space-2) 0 0;
+  margin: 0;
   font-size: var(--font-size-h3);
   font-weight: var(--font-weight-display);
   line-height: 1.2;
+}
+
+/* Status chip: who pays */
+.payer {
+  margin: 0;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-alt);
+  color: var(--color-link);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
 }
 
 .flipHint {
   display: none;
 }
 
+.back {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border-radius: 0 0 var(--radius-card) var(--radius-card);
+  background: linear-gradient(150deg, var(--color-brand-darkest), var(--color-brand-deep) 70%);
+  color: var(--color-on-brand);
+}
+
 .summary {
   margin: 0;
-  font-size: var(--font-size-lead);
-  line-height: 1.5;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.45;
+}
+
+.highlights {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  max-width: none;
+  color: var(--color-on-brand-muted);
+  font-size: var(--font-size-small);
+}
+
+.highlights svg {
+  flex-shrink: 0;
+  margin-top: 0.3rem;
+  color: var(--color-on-brand);
 }
 
 .link {
@@ -86,17 +150,16 @@
   transform: translateX(4px);
 }
 
-/* Devices with a mouse and no motion reduction: the card turns over */
+/* Devices with a mouse and no motion reduction: the card lifts and turns over */
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (min-width: 40rem) {
   .card {
-    min-height: 19rem;
     perspective: 1200px;
   }
 
+  /* Both sides share one grid cell, so the card is as tall as its longer side */
   .inner {
     position: relative;
-    display: block;
-    min-height: 19rem;
+    display: grid;
     overflow: visible;
     box-shadow: none;
     transform-style: preserve-3d;
@@ -105,8 +168,7 @@
 
   .front,
   .back {
-    position: absolute;
-    inset: 0;
+    grid-area: 1 / 1;
     border: var(--border-width) solid var(--color-border);
     border-radius: var(--radius-card);
     backface-visibility: hidden;
@@ -117,6 +179,13 @@
     transition: box-shadow var(--duration-hover) var(--ease-out);
   }
 
+  /* The photo takes up whatever height the longer back side adds */
+  .media {
+    flex: 1 1 auto;
+    min-height: 10rem;
+    aspect-ratio: auto;
+  }
+
   .back {
     border-color: var(--color-brand-deep);
     transform: rotateY(180deg);
@@ -124,15 +193,22 @@
 
   .flipHint {
     position: absolute;
-    top: var(--space-6);
-    right: var(--space-6);
-    display: block;
-    color: var(--color-text-muted);
+    z-index: 1;
+    top: var(--space-4);
+    right: var(--space-4);
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background-color: var(--color-glass);
+    color: var(--color-brand-deep);
+    box-shadow: var(--shadow-card);
   }
 
   .card:hover .inner,
   .card:focus-within .inner {
-    transform: rotateY(180deg);
+    transform: translateY(-6px) rotateY(180deg);
   }
 
   .card:hover .front {

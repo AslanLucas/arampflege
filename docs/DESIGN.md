@@ -164,7 +164,7 @@ Auf Wunsch des Kunden ist die Seite lebendiger. Diese Effekte sind erlaubt, jewe
 | Effekt | Bedingungen |
 |--------|-------------|
 | Hintergrundvideo im oberen Bereich (`HeroVideo`) | Ohne Ton, mehrere kurze Clips nacheinander, darüber die Markenfarbe mit 80 % Deckkraft (Text mind. 7 : 1 auch über weißen Bildstellen), sichtbarer Pause-Knopf (WCAG 2.2.2). Nur ab 640 px, ohne „Bewegung reduzieren“ und ohne Datensparmodus; sonst ein Standbild. Lädt erst nach der Seite. |
-| Drehkarten der Leistungen (`ServiceCards`) | Drehen bei Hover und bei Tastaturfokus auf dem Link. Beide Seiten sind immer im DOM und werden vorgelesen. Bei Touch-Geräten, unter 640 px und bei „Bewegung reduzieren“ stehen beide Seiten ohne Drehung untereinander. |
+| Drehkarten der Leistungen (`ServiceCards`) | Vorne Foto der Leistung (läuft nach unten aus), Symbol auf der Kante, Name und Kostenträger als Status-Chip; hinten Kurztext, bis zu drei Beispiele und Link. Drehen bei Hover und bei Tastaturfokus auf dem Link. Beide Seiten sind immer im DOM und werden vorgelesen. Bei Touch-Geräten, unter 640 px und bei „Bewegung reduzieren“ stehen beide Seiten ohne Drehung untereinander. |
 | Einblenden beim Scrollen (`useReveal`) | Nur Elemente, die beim Laden unterhalb des sichtbaren Bereichs liegen; ohne JavaScript und bei „Bewegung reduzieren“ ist alles sofort sichtbar. |
 | Animierte Ablauf-Schritte | Linie zeichnet sich, Ziffer erscheint, Schritte versetzt; gleiche Bedingungen wie das Einblenden. |
 | Mitlaufender Header | Wird beim Scrollen kompakter und leicht durchscheinend mit Unschärfe (Deckkraft 88 %). In niedrigen Fenstern (unter 544 px Höhe, z. B. bei Zoom) läuft er nicht mit. `scroll-padding` hält fokussierte Elemente frei. |
