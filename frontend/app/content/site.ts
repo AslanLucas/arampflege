@@ -42,7 +42,7 @@ export const site = {
   /** Office hours per day group, for the table on the contact panel. */
   officeHoursByDay: [
     { days: "Montag bis Freitag", hours: "8–16\u00a0Uhr" },
-    { days: "Samstag und Sonntag", hours: "geschlossen" },
+    { days: "Samstag", hours: "geschlossen" },
   ],
   /** For structured data (schema.org openingHoursSpecification). */
   openingHours: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "16:00" },
