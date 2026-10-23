@@ -168,15 +168,6 @@ export default function Barrierefreiheit() {
         <p>Folgende Inhalte sind noch nicht oder nicht vollständig barrierefrei:</p>
         <ul>
           <li>
-            <strong>Fehlende Inhalte:</strong> An einigen Stellen stehen noch Platzhalter in doppelten eckigen Klammern
-            oder Bildflächen ohne Foto, weil Inhalte noch fehlen. Sie können beim Vorlesen verwirren. Wir ersetzen sie,
-            sobald die Inhalte vorliegen.
-          </li>
-          <li>
-            <strong>Formulare brauchen JavaScript:</strong> Ist JavaScript in Ihrem Browser ausgeschaltet, lassen sich
-            Kontakt- und Bewerbungsformular nicht absenden. Die Seite weist darauf hin und nennt unsere Telefonnummer.
-          </li>
-          <li>
             <strong>Keine Leichte Sprache und keine Gebärdensprache:</strong> Wir bieten bisher keine Texte in Leichter
             Sprache und keine Videos in Deutscher Gebärdensprache an. Wir schreiben aber möglichst einfach und erklären
             Fachbegriffe.

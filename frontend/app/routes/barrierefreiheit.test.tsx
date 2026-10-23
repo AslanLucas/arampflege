@@ -21,7 +21,7 @@ describe("Barrierefreiheit", () => {
   it("lists the known barriers and the exemptions", () => {
     renderPage();
     const barriers = screen.getByRole("region", { name: "Bekannte Barrieren" });
-    expect(within(barriers).getAllByRole("listitem").length).toBeGreaterThanOrEqual(5);
+    expect(within(barriers).getAllByRole("listitem").length).toBeGreaterThanOrEqual(3);
     expect(screen.getByRole("region", { name: "Ausnahmen" })).toHaveTextContent("Kleinstunternehmen");
   });
 

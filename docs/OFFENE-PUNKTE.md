@@ -24,7 +24,7 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Recht – **Blockiert den Livegang:** Name und Kontakt des externen Datenschutzbeauftragten – `/datenschutz`
 - [ ] Betrieb – **Blockiert den Livegang:** Hosting-Anbieter für Webseite und Backend mit Sitz und Rechenzentrum in der EU (Vercel abgelehnt, 2026-10-23), Auftragsverarbeitungsvertrag, Speicherdauer der Server-Logs – `/datenschutz`
 - [ ] Betrieb – E-Mail-Anbieter für info@arampflege.de (Sitz in der EU, Auftragsverarbeitungsvertrag) – `/datenschutz`
-- [ ] Recht – Erklärung zur Barrierefreiheit liegt als Entwurf vor (Selbstbewertung 2026-10-23, „teilweise vereinbar“, Kleinstunternehmen nach § 3 Abs. 3 BFSG laut Kunde); vor dem Livegang rechtlich prüfen lassen – `/barrierefreiheit`
+- [ ] Recht – Erklärung zur Barrierefreiheit liegt als Entwurf vor (Selbstbewertung 2026-10-23, „teilweise vereinbar“, Kleinstunternehmen nach § 3 Abs. 3 BFSG laut Kunde); vor dem Livegang rechtlich prüfen lassen. Die Barrieren „Platzhalter“ und „Formulare brauchen JavaScript“ wurden am 2026-10-23 auf Wunsch des Kunden aus der Liste genommen, obwohl sie noch bestehen; vor dem Livegang Platzhalter ersetzen – `/barrierefreiheit`
 - [ ] Recht – Status als Kleinstunternehmen (unter 10 Beschäftigte und höchstens 2 Mio. € Umsatz oder Bilanzsumme) jährlich prüfen; fällt er weg, gelten die BFSG-Pflichten – `/barrierefreiheit`
 - [ ] Barrierefreiheit – Erklärung bei jeder größeren Änderung aktualisieren (bekannte Barrieren, Prüfdatum); Test mit Screenreader-Nutzerinnen und -Nutzern oder externe Prüfung wäre sinnvoll – `/barrierefreiheit`
 - [ ] Recht – Einwilligungen für Teamfotos – Über uns
