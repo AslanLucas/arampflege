@@ -68,7 +68,7 @@ Vertrauen entsteht durch **Überprüfbarkeit**, nicht durch Behauptungen. Jedes 
 
 ### Was Vertrauen schafft
 - **Echte Menschen mit Namen**: Pflegedienstleitung und feste Ansprechpartnerin mit Foto, Funktion und Qualifikation, nur mit Einwilligung.
-- **Erreichbarkeit transparent**: Bürozeiten, Rufbereitschaft und die Antwortzeit auf Rückrufwünsche werden genau genannt.
+- **Erreichbarkeit transparent**: Bürozeiten, Rufbereitschaft und die Antwortzeit auf Nachrichten werden genau genannt.
 - **Wer steckt dahinter**: Inhaber oder Träger, Standort mit Adresse und Foto des Büros, Gründungsjahr, sofern vorhanden.
 - **Nachweise nur, wenn echt**: Versorgungsvertrag mit den Pflegekassen, Mitgliedschaften (z. B. Verbände) und Qualitätsprüfungen, jeweils nur nach Bestätigung durch den Kunden.
 - **Ablauf erklären**: „Was passiert nach Ihrem Anruf?“ in wenigen, nummerierten Schritten. Das nimmt Unsicherheit.
@@ -151,9 +151,9 @@ Diese Muster lassen eine Seite sofort generisch oder KI-generiert wirken. Sie we
 
 Die Seite soll wie ein neuer, digital aufgestellter Pflegedienst wirken. Dafür:
 
-- **Erreichbarkeit im oberen Bereich**: Bürozeiten und Rufbereitschaft stehen über dem Video direkt unter „Anrufen“ und „Rückruf anfordern“.
+- **Erreichbarkeit im oberen Bereich**: Bürozeiten und Rufbereitschaft stehen über dem Video direkt unter „Anrufen“ und „Kostenloses Beratungsgespräch“.
 - **Karte des Einsatzgebiets** (`ServiceAreaMap`, Entscheidung 2026-10-22, ersetzt die Lupen-Grafik): echte Umrisse von Gronau, Gronau-Epe, Ochtrup, Heek und Ahaus aus OpenStreetMap, einmalig mit `frontend/scripts/service-area-map.py` erzeugt (dazu Fahrstrecke und Fahrzeit vom Büro über OSRM, als feste Werte gespeichert). Beim Zeigen hebt sich der Ort an, die Route vom Standort zeichnet sich, das Standort-Schild zeigt Entfernung und Fahrzeit. Die Liste unter der Karte ist die zugängliche Fassung für Tastatur, Touch und Screenreader; die Karte selbst ist dekorativ. Keine Anfragen an Kartendienste beim Seitenaufruf.
-- **Kontakt-Karten** (`ContactPanel`, Entscheidung 2026-10-21): Telefon (hervorgehoben in Markenfarbe), E-Mail und Rückruf, Adresse mit Karte, Bürozeiten als Tabelle, Hinweis aufs Einsatzgebiet. Die Karten stehen untereinander, nur E-Mail und Rückruf teilen sich eine Zeile. Auf `/kontakt` neben dem Formular, auf der Startseite neben kurzem Text mit Buttons zum Formular und zum Rückruf, dort ohne Formular (JS-Budget).
+- **Kontakt-Karten** (`ContactPanel`, Entscheidung 2026-10-21): Telefon (hervorgehoben in Markenfarbe), E-Mail, Adresse mit Karte, Bürozeiten als Tabelle, Hinweis aufs Einsatzgebiet. Die Karten stehen untereinander. Auf `/kontakt` neben dem Formular, auf der Startseite neben kurzem Text mit Button zum Formular, dort ohne Formular (JS-Budget). Einen Rückrufwunsch gibt es nicht mehr (Entscheidung 2026-10-23).
 - **Statisches Kartenbild**: einmalig mit `frontend/scripts/static-map.py` aus OpenStreetMap-Kacheln erzeugt und selbst ausgeliefert (AVIF/WebP), Pin als SVG darüber, Quellenangabe „© OpenStreetMap-Mitwirkende“ und Link „In Karten-App öffnen“. Keine eingebettete Karte, keine Anfragen an Kartendienste beim Seitenaufruf.
 - **Was dich bei uns erwartet** (`EmployerPromises`, Karriereseite, Entscheidung 2026-10-22): der wichtigste Punkt als große Karte in Markenfarbe, die übrigen als ruhige Liste mit Symbol und Trennlinien daneben, versetzt einblendend. Bewusst kein Raster gleicher Karten. Nur vom Kunden bestätigte Zusagen.
 - Digitale Angebote werden nur genannt, wenn sie bestätigt sind (`docs/CONTENT.md`).
@@ -168,7 +168,7 @@ Auf Wunsch des Kunden ist die Seite lebendiger. Diese Effekte sind erlaubt, jewe
 | Drehkarten der Leistungen (`ServiceCards`) | Vorne Foto der Leistung (läuft nach unten aus), Symbol auf der Kante, Name und Kostenträger als Status-Chip; hinten Kurztext, bis zu drei Beispiele und Link. Drehen bei Hover und bei Tastaturfokus auf dem Link. Beide Seiten sind immer im DOM und werden vorgelesen. Bei Touch-Geräten, unter 640 px und bei „Bewegung reduzieren“ stehen beide Seiten ohne Drehung untereinander. |
 | Einblenden beim Scrollen (`useReveal`) | Nur Elemente, die beim Laden unterhalb des sichtbaren Bereichs liegen; ohne JavaScript und bei „Bewegung reduzieren“ ist alles sofort sichtbar. |
 | Animierte Ablauf-Schritte | Linie zeichnet sich, Ziffer erscheint, Schritte versetzt; gleiche Bedingungen wie das Einblenden. |
-| Erstgespräch-Button im Header (Entscheidung 2026-10-22) | Ab 640 px ersetzt „Kostenloses Erstgespräch“ (führt zum Rückrufformular) die Telefonnummer oben rechts; darunter bleibt die Nummer, dazu kommt die Kontaktleiste unten. Verlauf in Markenfarben, Ring pulsiert nach dem Laden dreimal, ein Lichtschimmer läuft zweimal (zusammen unter 5 s, WCAG 2.2.2); beim Darüberfahren pulsiert der Ring weiter. Bei „Bewegung reduzieren“ steht alles still. |
+| Erstgespräch-Button im Header (Entscheidung 2026-10-22) | Ab 640 px ersetzt „Kostenloses Erstgespräch“ (führt zum Kontaktformular, `/kontakt#nachricht`) die Telefonnummer oben rechts; darunter bleibt die Nummer, dazu kommt die Kontaktleiste unten. Verlauf in Markenfarben, Ring pulsiert nach dem Laden dreimal, ein Lichtschimmer läuft zweimal (zusammen unter 5 s, WCAG 2.2.2); beim Darüberfahren pulsiert der Ring weiter. Bei „Bewegung reduzieren“ steht alles still. |
 | Mitlaufender Header | Wird beim Scrollen kompakter und leicht durchscheinend mit Unschärfe (Deckkraft 88 %). In niedrigen Fenstern (unter 544 px Höhe, z. B. bei Zoom) läuft er nicht mit. `scroll-padding` hält fokussierte Elemente frei. |
 | Hover | Buttons heben sich leicht an, Pfeile gleiten, Karten bekommen einen dezenten Schatten, Fotos zoomen leicht. |
 | Leistungsübersicht (`ServiceShowcase`, Entscheidung 2026-10-22) | Eine große Zeile pro Leistung, Foto und Text im Wechsel links und rechts; das Foto gleitet von seiner Seite herein. Die ganze Zeile ist anklickbar, der Leistungsname bleibt der Linkname. Oben eine Collage aus drei Fotos, die sich beim Laden einmal auffächert. |
@@ -254,19 +254,19 @@ Regeln:
 - Höchstens sechs Navigationspunkte. Mobil gibt es ein Menü mit echtem `<button>`, `aria-expanded` und Fokus-Management.
 
 ### Mobile Kontaktleiste
-- Auf Mobilgeräten eine feste Leiste unten mit „Anrufen“ und „Rückruf anfordern“
+- Auf Mobilgeräten eine feste Leiste unten mit „Anrufen“ und „Kostenloses Erstgespräch“
 - Verdeckt keinen Inhalt (Platz am Seitenende reservieren) und berücksichtigt `env(safe-area-inset-bottom)`
 
 ### Buttons und Links
 - Drei Varianten: primär, sekundär und Textlink
 - Mindestens 44 × 44 px Klickfläche
-- Beschriftungen sagen, was passiert: „Rückruf anfordern“, „Stelle ansehen“. Nicht: „Jetzt starten“, „Mehr erfahren“, „Los geht’s“.
+- Beschriftungen sagen, was passiert: „Nachricht schreiben“, „Stelle ansehen“. Nicht: „Jetzt starten“, „Mehr erfahren“, „Los geht’s“.
 
 ### Formulare
 - Sichtbares Label über jedem Feld. Placeholder ersetzen niemals Labels.
 - Pflichtfelder werden im Label gekennzeichnet; optionale Felder sind als „optional“ markiert.
 - Fehlermeldungen stehen direkt am Feld, sind konkret und per `aria-describedby` verknüpft. Nach dem Absenden geht der Fokus auf die Fehlerzusammenfassung.
-- So wenige Felder wie möglich. Eine Rückrufbitte braucht Name, Telefon, PLZ/Ort und eine Wunschzeit.
+- So wenige Felder wie möglich. Eine Kontaktanfrage braucht Name, Telefon oder E-Mail und eine kurze Nachricht.
 - Erfolgsmeldung mit nächstem Schritt: „Wir rufen Sie innerhalb eines Werktags zurück.“ (nur wenn der Kunde das bestätigt hat)
 
 ### Fokus
@@ -279,7 +279,7 @@ Regeln:
 
 | Seite | Kerninhalt |
 |-------|------------|
-| Start | Oberer Bereich: ein Satz, was der Dienst macht und wo, dazu Telefon und Rückruf. Danach Leistungen als verlinkte Liste, Ablauf der Versorgung, Team-Ausschnitt mit echtem Foto, Karriere-Hinweis, Kontakt. |
+| Start | Oberer Bereich: ein Satz, was der Dienst macht und wo, dazu Telefon und kostenloses Beratungsgespräch. Danach Leistungen als verlinkte Liste, Ablauf der Versorgung, Team-Ausschnitt mit echtem Foto, Karriere-Hinweis, Kontakt. |
 | Leistungen | Eine Übersicht und eine Unterseite je Leistung. Jede Unterseite beantwortet: Für wen? Was genau? Wer bezahlt? Wie beantrage ich das? |
 | Einsatzgebiet | Liste der Orte und Postleitzahlen, statisches Kartenbild ohne Google-Maps-Einbettung |
 | Über uns | Geschichte, Team mit Namen und Funktion, Pflegedienstleitung |

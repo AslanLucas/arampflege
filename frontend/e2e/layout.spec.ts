@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { callbackLink, firstConsultationLink, legalNavigation, mainNavigation } from "../app/content/navigation";
+import { firstConsultationLink, legalNavigation, mainNavigation } from "../app/content/navigation";
 import { servicePath, services } from "../app/content/services";
 import { expectNoAxeViolations, expectNoHorizontalScroll, isCompact, tabTo } from "./helpers";
 
@@ -7,7 +7,6 @@ const pages = [
   "/",
   ...mainNavigation.map((item) => item.to),
   ...services.map(servicePath),
-  callbackLink.to,
   "/karriere/bewerben",
   ...legalNavigation.map((item) => item.to),
 ];
@@ -132,13 +131,16 @@ test.describe("Header", () => {
 });
 
 test.describe("Mobile contact bar", () => {
-  test("offers call and callback on small screens without covering the page end", async ({ page }) => {
+  test("offers a call and the free first consultation on small screens without covering the page end", async ({ page }) => {
     test.skip(!isCompact(page), "Contact bar exists below 960 px only");
     await page.goto("/");
     const bar = page.getByRole("complementary", { name: "Schnellkontakt" });
 
     await expect(bar.getByRole("link", { name: "Anrufen" })).toHaveAttribute("href", /^tel:/);
-    await expect(bar.getByRole("link", { name: "Rückruf anfordern" })).toHaveAttribute("href", "/rueckruf");
+    await expect(bar.getByRole("link", { name: firstConsultationLink.label })).toHaveAttribute(
+      "href",
+      firstConsultationLink.to,
+    );
 
     await page.evaluate(() => {
       window.scrollTo(0, document.documentElement.scrollHeight);

@@ -7,7 +7,7 @@ import { Eyebrow } from "../components/Eyebrow/Eyebrow";
 import { ServicePhoto } from "../components/ServicePhoto/ServicePhoto";
 import { ServiceShowcase } from "../components/ServiceShowcase/ServiceShowcase";
 import { StepList } from "../components/StepList/StepList";
-import { callbackLink } from "../content/navigation";
+import { contactFormLink } from "../content/navigation";
 import { careGradeSteps, payers, serviceBySlug, services, type Payer, type Service } from "../content/services";
 import { site } from "../content/site";
 import { useReveal } from "../hooks/useReveal";
@@ -94,7 +94,7 @@ export default function Leistungen() {
           </p>
           <StepList steps={careGradeSteps} />
           <p className={styles.action}>
-            <ArrowLink to={callbackLink.to}>{callbackLink.label}</ArrowLink>
+            <ArrowLink to={contactFormLink.to}>{contactFormLink.label}</ArrowLink>
           </p>
         </section>
 

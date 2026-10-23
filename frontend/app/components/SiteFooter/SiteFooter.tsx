@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { callbackLink, legalNavigation, mainNavigation } from "../../content/navigation";
+import { contactFormLink, legalNavigation, mainNavigation } from "../../content/navigation";
 import { site } from "../../content/site";
 import { Container } from "../Container/Container";
 import { DetailList } from "../DetailList/DetailList";
@@ -35,7 +35,7 @@ export function SiteFooter() {
             ]}
           />
           <p>
-            <Link to={callbackLink.to}>{callbackLink.label}</Link>
+            <Link to={contactFormLink.to}>{contactFormLink.label}</Link>
           </p>
         </section>
 

@@ -4,7 +4,7 @@ export const hero = {
   eyebrow: `Ambulante Pflege in ${site.region}`,
   title: `Wir pflegen Menschen zu Hause in ${site.region} und den umliegenden Gemeinden.`,
   lead: "Rufen Sie uns an. Wir besprechen mit Ihnen, welche Unterstützung Sie brauchen und was die Pflegekasse übernimmt.",
-  /** Confirmed by the client on 2026-10-22: the first consultation is free. Leads to the callback form. */
+  /** Confirmed by the client on 2026-10-22: the first consultation is free. Leads to the contact form. */
   consultation: "Kostenloses Beratungsgespräch",
 };
 
@@ -17,7 +17,7 @@ export const careProcess = {
   title: "Was passiert nach Ihrem Anruf?",
   steps: [
     {
-      title: "Sie rufen an oder bitten um Rückruf",
+      title: "Sie rufen an oder schreiben uns",
       text: "Wir sprechen kurz darüber, wer Unterstützung braucht und wobei.",
     },
     {
@@ -63,5 +63,5 @@ export const careerTeaser = {
 export const contactTeaser = {
   eyebrow: "Kontakt",
   title: "Sprechen Sie mit uns",
-  text: "Rufen Sie an, schreiben Sie uns oder lassen Sie sich zurückrufen. Wir besprechen mit Ihnen, welche Unterstützung Sie brauchen und was die Pflegekasse übernimmt.",
+  text: "Rufen Sie an oder schreiben Sie uns. Wir besprechen mit Ihnen, welche Unterstützung Sie brauchen und was die Pflegekasse übernimmt.",
 };

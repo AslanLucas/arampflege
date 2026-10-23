@@ -14,7 +14,6 @@ export default [
   route("karriere/bewerben", "routes/bewerben.tsx"),
   ...jobs.map((job) => route(`karriere/${job.slug}`, "routes/stelle.tsx", { id: `stelle-${job.slug}` })),
   route("kontakt", "routes/kontakt.tsx"),
-  route("rueckruf", "routes/rueckruf.tsx"),
   route("impressum", "routes/impressum.tsx"),
   route("datenschutz", "routes/datenschutz.tsx"),
   route("barrierefreiheit", "routes/barrierefreiheit.tsx"),

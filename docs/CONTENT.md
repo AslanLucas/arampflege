@@ -42,7 +42,7 @@ Einzige Ausnahme (Entscheidung 2026-10-22): der eigene Leitsatz des Kunden „Pf
 - Emojis
 
 ### Inhalte, die nicht erfunden werden dürfen
-- Digitale Angebote, die der Kunde nicht bestätigt hat (bestätigt am 2026-10-21: Kontakt per E-Mail und Messenger; **nicht** vorhanden: digitale Pflegedokumentation, Online-Termine). Über die Webseite selbst darf gesagt werden, was technisch stimmt: Rückruf, Kontakt und Kurzbewerbung online, verschlüsselte Übertragung, keine Tracking-Cookies.
+- Digitale Angebote, die der Kunde nicht bestätigt hat (bestätigt am 2026-10-21: Kontakt per E-Mail und Messenger; **nicht** vorhanden: digitale Pflegedokumentation, Online-Termine). Über die Webseite selbst darf gesagt werden, was technisch stimmt: Kontaktformular und Kurzbewerbung online, verschlüsselte Übertragung, keine Tracking-Cookies.
 - Kundenstimmen, Zitate, Bewertungen, Sterne
 - Zahlen zu Kunden, Mitarbeitenden, Jahren, Einsätzen oder Zufriedenheit
 - MDK-/MD-Noten, Siegel, Zertifikate, Auszeichnungen
@@ -91,7 +91,7 @@ Genderneutrale Formulierungen bevorzugen: „Pflegekräfte“, „Mitarbeitende�
 
 | Element | So | Nicht so |
 |---------|-----|----------|
-| Primärer Button | „Rückruf anfordern“ | „Jetzt Kontakt aufnehmen!“ |
+| Primärer Button | „Nachricht schreiben“ | „Jetzt Kontakt aufnehmen!“ |
 | Telefon-Link | „0521 123456 anrufen“ | „Rufen Sie uns an!“ |
 | Formular gesendet | „Danke. Wir melden uns innerhalb von [[Frist]].“ | „Vielen Dank für Ihre Nachricht! 🎉“ |
 | Fehler Pflichtfeld | „Bitte geben Sie Ihre Telefonnummer an.“ | „Ungültige Eingabe“ |

@@ -12,7 +12,7 @@ import { CheckIcon, PhoneIcon } from "../components/Icon/icons";
 import { OnThisPage, type PageSection } from "../components/OnThisPage/OnThisPage";
 import { ServiceList } from "../components/ServiceList/ServiceList";
 import { ServicePhoto } from "../components/ServicePhoto/ServicePhoto";
-import { callbackLink } from "../content/navigation";
+import { contactFormLink } from "../content/navigation";
 import { serviceBySlug, services, type Service } from "../content/services";
 import { site } from "../content/site";
 import { useReveal } from "../hooks/useReveal";
@@ -109,7 +109,7 @@ export default function Leistung() {
                 <PhoneIcon />
                 {site.phone.display} anrufen
               </ButtonLink>
-              <ArrowLink to={callbackLink.to}>{callbackLink.label}</ArrowLink>
+              <ArrowLink to={contactFormLink.to}>{contactFormLink.label}</ArrowLink>
             </div>
           </div>
           {service.heroAnimation ? (

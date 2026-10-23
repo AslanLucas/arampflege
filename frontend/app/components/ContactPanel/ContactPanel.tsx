@@ -1,9 +1,7 @@
 import type { ReactNode } from "react";
-import { Link } from "react-router";
-import { callbackLink } from "../../content/navigation";
 import { site } from "../../content/site";
 import { ArrowLink } from "../ArrowLink/ArrowLink";
-import { ClockIcon, MailIcon, MapPinIcon, PhoneCallIcon, PhoneIcon } from "../Icon/icons";
+import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from "../Icon/icons";
 import { PostalAddress } from "../PostalAddress/PostalAddress";
 import styles from "./ContactPanel.module.css";
 
@@ -32,21 +30,12 @@ export function ContactPanel() {
         <p className={styles.cardText}>Rufbereitschaft: {site.onCallService}</p>
       </div>
 
-      <div className={styles.pair}>
-        <div className={styles.card}>
-          <CardTitle icon={<MailIcon size={18} />}>E-Mail</CardTitle>
-          <a href={site.email.href} className={styles.value}>
-            {site.email.display}
-          </a>
-          <p className={styles.cardText}>Antwort innerhalb von {site.replyTime}</p>
-        </div>
-        <div className={styles.card}>
-          <CardTitle icon={<PhoneCallIcon size={18} />}>Rückruf</CardTitle>
-          <Link to={callbackLink.to} className={styles.value}>
-            {callbackLink.label}
-          </Link>
-          <p className={styles.cardText}>Name und Telefonnummer genügen.</p>
-        </div>
+      <div className={styles.card}>
+        <CardTitle icon={<MailIcon size={18} />}>E-Mail</CardTitle>
+        <a href={site.email.href} className={styles.value}>
+          {site.email.display}
+        </a>
+        <p className={styles.cardText}>Antwort innerhalb von {site.replyTime}</p>
       </div>
 
       <div className={styles.card}>

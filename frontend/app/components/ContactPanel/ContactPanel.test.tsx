@@ -15,7 +15,6 @@ describe("ContactPanel", () => {
 
     expect(screen.getByRole("link", { name: `${site.phone.display} anrufen` })).toHaveAttribute("href", site.phone.href);
     expect(screen.getByRole("link", { name: site.email.display })).toHaveAttribute("href", site.email.href);
-    expect(screen.getByRole("link", { name: "Rückruf anfordern" })).toHaveAttribute("href", "/rueckruf");
     expect(screen.getByRole("link", { name: "Einsatzgebiet ansehen" })).toHaveAttribute("href", "/einsatzgebiet");
     expect(screen.getByText(site.address.street, { exact: false })).toBeInTheDocument();
   });

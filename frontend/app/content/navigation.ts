@@ -17,7 +17,8 @@ export const legalNavigation: NavigationItem[] = [
   { label: "Barrierefreiheit", to: "/barrierefreiheit" },
 ];
 
-export const callbackLink: NavigationItem = { label: "Rückruf anfordern", to: "/rueckruf" };
+/** The contact form on /kontakt; its heading carries this anchor. */
+export const contactFormLink: NavigationItem = { label: "Nachricht schreiben", to: "/kontakt#nachricht" };
 
-/** Eye-catching header action; the first consultation is free (confirmed 2026-10-22) and starts with a callback. */
-export const firstConsultationLink: NavigationItem = { label: "Kostenloses Erstgespräch", to: callbackLink.to };
+/** Eye-catching action; the first consultation is free (confirmed 2026-10-22) and starts with a message. */
+export const firstConsultationLink: NavigationItem = { label: "Kostenloses Erstgespräch", to: contactFormLink.to };

@@ -1,4 +1,4 @@
-import { callbackLink } from "../../content/navigation";
+import { contactFormLink } from "../../content/navigation";
 import { site } from "../../content/site";
 import { ArrowLink } from "../ArrowLink/ArrowLink";
 import { ButtonLink } from "../ButtonLink/ButtonLink";
@@ -10,7 +10,7 @@ type ContactPromptProps = {
   text: string;
 };
 
-/** Closing call to action of a content page: phone call first, callback as the alternative. */
+/** Closing call to action of a content page: phone call first, a message as the alternative. */
 export function ContactPrompt({ title, text }: ContactPromptProps) {
   return (
     <section aria-labelledby="kontakt-aufnehmen" className={styles.prompt}>
@@ -23,7 +23,7 @@ export function ContactPrompt({ title, text }: ContactPromptProps) {
           <PhoneIcon />
           {site.phone.display} anrufen
         </ButtonLink>
-        <ArrowLink to={callbackLink.to}>{callbackLink.label}</ArrowLink>
+        <ArrowLink to={contactFormLink.to}>{contactFormLink.label}</ArrowLink>
       </div>
     </section>
   );

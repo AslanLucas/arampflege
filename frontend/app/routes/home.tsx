@@ -21,7 +21,7 @@ import {
   servicesTeaser,
   teamTeaser,
 } from "../content/home";
-import { callbackLink } from "../content/navigation";
+import { contactFormLink, firstConsultationLink } from "../content/navigation";
 import { services } from "../content/services";
 import { site } from "../content/site";
 import type { Route } from "./+types/home";
@@ -52,7 +52,7 @@ export default function Home() {
                 <PhoneIcon />
                 {site.phone.display} anrufen
               </ButtonLink>
-              <Link to={callbackLink.to} className={styles.consult}>
+              <Link to={firstConsultationLink.to} className={styles.consult}>
                 {hero.consultation}
                 <ArrowRightIcon size={18} />
               </Link>
@@ -111,7 +111,7 @@ export default function Home() {
       >
         <StepList steps={careProcess.steps} />
         <p className={styles.sectionAction}>
-          <ButtonLink to={callbackLink.to}>{callbackLink.label}</ButtonLink>
+          <ButtonLink to={firstConsultationLink.to}>{firstConsultationLink.label}</ButtonLink>
         </p>
       </Section>
 
@@ -157,8 +157,7 @@ export default function Home() {
               {heading}
               <p className={styles.contactLead}>{contactTeaser.text}</p>
               <div className={styles.contactActions}>
-                <ButtonLink to="/kontakt">Nachricht schreiben</ButtonLink>
-                <ArrowLink to={callbackLink.to}>{callbackLink.label}</ArrowLink>
+                <ButtonLink to={contactFormLink.to}>{contactFormLink.label}</ButtonLink>
               </div>
             </div>
             <ContactPanel />

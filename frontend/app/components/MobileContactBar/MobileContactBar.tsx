@@ -1,4 +1,4 @@
-import { callbackLink } from "../../content/navigation";
+import { firstConsultationLink } from "../../content/navigation";
 import { site } from "../../content/site";
 import { ButtonLink } from "../ButtonLink/ButtonLink";
 import { PhoneIcon } from "../Icon/icons";
@@ -14,8 +14,8 @@ export function MobileContactBar() {
           <PhoneIcon />
           Anrufen
         </ButtonLink>
-        <ButtonLink to={callbackLink.to} variant="secondary">
-          {callbackLink.label}
+        <ButtonLink to={firstConsultationLink.to} variant="secondary">
+          {firstConsultationLink.label}
         </ButtonLink>
       </aside>
     </>

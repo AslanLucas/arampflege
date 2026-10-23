@@ -4,13 +4,9 @@ import { site } from "../../content/site";
 export const messages = {
   nameRequired: "Bitte geben Sie Ihren Namen an.",
   nameTooLong: "Bitte kürzen Sie Ihren Namen auf höchstens 100 Zeichen.",
-  phoneRequired: "Bitte geben Sie Ihre Telefonnummer an.",
   phoneInvalid: "Bitte geben Sie eine Telefonnummer nur mit Ziffern an, zum Beispiel 0521\u00a0123456.",
   phoneOrEmailRequired: "Bitte geben Sie eine Telefonnummer oder eine E-Mail-Adresse an.",
   emailInvalid: "Bitte geben Sie eine vollständige E-Mail-Adresse an, zum Beispiel name@beispiel.de.",
-  locationRequired: "Bitte geben Sie Ihre Postleitzahl oder Ihren Ort an.",
-  locationTooLong: "Bitte kürzen Sie die Angabe auf höchstens 100 Zeichen.",
-  preferredTimeRequired: "Bitte wählen Sie, wann wir Sie anrufen dürfen.",
   topicInvalid: "Bitte wählen Sie ein Thema aus der Liste.",
   messageRequired: "Bitte schreiben Sie uns kurz, worum es geht.",
   messageTooLong: "Bitte kürzen Sie Ihre Nachricht auf höchstens 2000 Zeichen.",

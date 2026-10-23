@@ -25,8 +25,8 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Recht – Einwilligungen für Teamfotos – Über uns
 - [ ] Recht – **Blockiert den Livegang:** Quelle und Lizenz des Fotos auf `/karriere` (Handschlag im Bewerbungsgespräch) nachweisen; besser durch ein eigenes Foto des Teams ersetzen – `frontend/public/images/karriere/LICENSES.txt`
 - [ ] Recht – **Vor dem Livegang:** Quelle und Lizenz der zwei Lottie-Animationen („Helping the needy“, „Helping Doctor to aged people“) nachweisen; kommerzielle Nutzung und Umfärben müssen erlaubt sein – `frontend/public/animations/LICENSES.txt`
-- [ ] Recht – **Blockiert den Livegang:** Einwilligungstext für Kontakt- und Rückrufformular (Gesundheitsdaten, Art. 9 DSGVO), freigegeben vom Datenschutzbeauftragten; danach Versionskennung in `Consent.CurrentVersion` setzen (derzeit „entwurf“) – `frontend/app/features/forms/FormNotices.tsx`, `backend/src/Pflege.Api/Features/Forms/Consent.cs`
-- [ ] Recht – Löschfrist für Kontakt- und Rückrufanfragen (lokal Platzhalter 90 Tage) – `Retention:RequestRetentionDays`, Datenschutzhinweis an den Formularen
+- [ ] Recht – **Blockiert den Livegang:** Einwilligungstext für das Kontaktformular (Gesundheitsdaten, Art. 9 DSGVO), freigegeben vom Datenschutzbeauftragten; danach Versionskennung in `Consent.CurrentVersion` setzen (derzeit „entwurf“) – `frontend/app/features/forms/FormNotices.tsx`, `backend/src/Pflege.Api/Features/Forms/Consent.cs`
+- [ ] Recht – Löschfrist für Kontaktanfragen (lokal Platzhalter 90 Tage) – `Retention:RequestRetentionDays`, Datenschutzhinweis an den Formularen
 - [ ] Recht – Löschfrist für Bewerbungen und Lebensläufe nach Abschluss des Verfahrens (lokal Platzhalter 180 Tage ab Eingang) – `Retention:ApplicationRetentionDays`
 
 ## Inhalte
@@ -50,7 +50,7 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Karriere – Frist für die Rückmeldung auf Bewerbungen – Bestätigung im Bewerbungsformular
 - [ ] Karriere – Dienstwagen oder Fahrtkostenerstattung? – „Was dich bei uns erwartet“ (`frontend/app/content/careers.ts`)
 - [ ] Karriere – Weitere Zusagen nur nach Bestätigung, z. B. Zuschläge, Einarbeitung mit fester Ansprechperson, bezahlte Fortbildung – `frontend/app/content/careers.ts`
-- [ ] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – Startseite, `/rueckruf`, Bestätigung im Rückrufformular
+- [x] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – entfallen: Rückruf wurde am 2026-10-23 auf Wunsch des Kunden entfernt
 - [ ] Kontakt – Zusage, in welcher Frist auf Nachrichten geantwortet wird – `site.replyTime`: Kontakt-Karten (E-Mail), `/kontakt`, Bestätigung im Kontaktformular
 - [x] Kontakt – Rufbereitschaft rund um die Uhr erreichbar, auch am Wochenende (bestätigt 2026-10-21) – Kontakt-Karten
 - [x] Kontakt – Das erste Beratungsgespräch ist kostenlos (bestätigt 2026-10-22) – Startseite oben

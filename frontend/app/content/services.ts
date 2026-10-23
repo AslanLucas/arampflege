@@ -248,7 +248,7 @@ export const services: Service[] = [
       checkedOn: null,
     },
     application: [
-      "Rufen Sie uns an oder fordern Sie einen Rückruf an. Wir vereinbaren einen Termin bei Ihnen zu Hause.",
+      "Rufen Sie uns an oder schreiben Sie uns. Wir vereinbaren einen Termin bei Ihnen zu Hause.",
       "Für den Beratungsbesuch brauchen wir den Namen Ihrer Pflegekasse und Ihre Versichertennummer.",
       "Nach dem Beratungsbesuch schicken wir den Nachweis an Ihre Pflegekasse.",
     ],
