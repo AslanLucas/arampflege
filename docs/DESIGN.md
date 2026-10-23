@@ -241,7 +241,7 @@ Regeln:
 
 - Abstandsskala: 4, 8, 12, 16, 24, 32, 48, 64, 96, 128 px (`--space-1` bis `--space-10`)
 - Breakpoints: Basis 360 px, dann 640, 960 und 1280 px. Container maximal 1280 px.
-- Eckenradius: 10 px für Buttons und Formularfelder (`--radius-control`), 16 px für Karten, Kacheln, Panels und Bilder (`--radius-card`). Kreise für Symbol-Schaltflächen, voll gerundete Form nur für Status-Chips (`--radius-pill`). Keine Pill-Buttons.
+- Eckenradius: 10 px für Buttons und Formularfelder (`--radius-control`), 16 px für Karten, Kacheln, Panels und Bilder (`--radius-card`). Kreise für Symbol-Schaltflächen, voll gerundete Form nur für Status-Chips (`--radius-pill`). Keine Pill-Buttons. Ausnahme: der Credit-Link „Designed by Eulah IT“ unten mittig im Footer (Entscheidung 2026-10-23 auf Wunsch des Kunden).
 - Schatten: weich (`--shadow-card`) für Karten und Kacheln, stärker (`--shadow-raised`) nur bei Hover und für die Karte über dem Video.
 - Schatten: standardmäßig keiner. Höchstens ein dezenter Schatten für Dropdowns und Overlays.
 

@@ -78,6 +78,15 @@ export function SiteFooter() {
           />
         </div>
       </Container>
+
+      {/* Credit requested by the client; eulah.de is only contacted on click */}
+      <Container className={styles.credit}>
+        <a href="https://eulah.de" className={styles.creditLink}>
+          <span className={styles.creditLabel}>Designed by</span>
+          <span className={styles.creditName}>Eulah IT</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </Container>
     </footer>
   );
 }
