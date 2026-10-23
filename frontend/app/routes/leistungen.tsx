@@ -15,8 +15,6 @@ import { pageMeta } from "../meta";
 import type { Route } from "./+types/leistungen";
 import styles from "./leistungen.module.css";
 
-const DRAFT_NOTE = "[[ENTWURF: vom Kunden fachlich prüfen]]";
-
 const collage = ["grundpflege", "betreuung-und-entlastung", "hauswirtschaft"]
   .map((slug) => serviceBySlug(slug))
   .filter((service): service is Service => service !== undefined);
@@ -73,7 +71,6 @@ export default function Leistungen() {
 
         <section id="kostentraeger" aria-labelledby="kostentraeger-titel" className={styles.block}>
           <h2 id="kostentraeger-titel">Wer zahlt was?</h2>
-          <p className={styles.note}>{DRAFT_NOTE}</p>
           <p className={styles.intro}>
             Die meisten Leistungen zahlt die Pflegekasse oder die Krankenkasse. Die aktuellen Beträge für Ihren
             Pflegegrad besprechen wir persönlich mit Ihnen.
@@ -87,7 +84,6 @@ export default function Leistungen() {
 
         <section id="pflegegrad" aria-labelledby="pflegegrad-titel" className={styles.block}>
           <h2 id="pflegegrad-titel">Noch kein Pflegegrad?</h2>
-          <p className={styles.note}>{DRAFT_NOTE}</p>
           <p className={styles.intro}>
             Für die meisten Leistungen der Pflegekasse brauchen Sie einen Pflegegrad. So kommen Sie dazu. Wir helfen
             Ihnen gern beim Antrag.

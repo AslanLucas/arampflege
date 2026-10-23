@@ -73,10 +73,6 @@
   margin-top: var(--section-space);
 }
 
-.note {
-  color: var(--color-text-muted);
-}
-
 .block {
   margin-top: var(--section-space);
   scroll-margin-top: var(--space-9);

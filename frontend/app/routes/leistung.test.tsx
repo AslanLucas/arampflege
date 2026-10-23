@@ -31,10 +31,10 @@ describe("Leistung", () => {
     }
   });
 
-  it("marks every section of an unreviewed service as a draft", () => {
+  it("shows no draft notes, even while the texts are unreviewed", () => {
     renderService("/leistungen/behandlungspflege");
     expect(behandlungspflege?.draft).toBe(true);
-    expect(screen.getAllByText(/ENTWURF/)).toHaveLength(4);
+    expect(screen.queryByText(/ENTWURF/)).not.toBeInTheDocument();
   });
 
   it("shows how to apply as numbered steps and names the legal source of the costs", () => {

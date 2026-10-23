@@ -31,8 +31,8 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 
 ## Inhalte
 - [x] Leistungen – Angebot bestätigt (2026-10-22): Grundpflege, Behandlungspflege, Hauswirtschaftliche Versorgung, Betreuung und Entlastung, Verhinderungspflege, Pflegeberatung inkl. Beratungsbesuche – `frontend/app/content/services.ts`
-- [ ] Leistungen – Alle Leistungstexte fachlich prüfen (Für wen, Was wir übernehmen, Wer die Kosten trägt, So beantragen Sie die Leistung) und Prüfdatum freigeben; erst dann den Entwurfshinweis entfernen – `frontend/app/content/services.ts`
-- [ ] Leistungen – „Wer zahlt was?“ und „Noch kein Pflegegrad?“ fachlich prüfen – `/leistungen`
+- [ ] Leistungen – Alle Leistungstexte fachlich prüfen (Für wen, Was wir übernehmen, Wer die Kosten trägt, So beantragen Sie die Leistung) und Prüfdatum freigeben. Der sichtbare Entwurfshinweis wurde am 2026-10-23 auf Wunsch des Kunden entfernt; die Prüfung steht noch aus – `frontend/app/content/services.ts`
+- [ ] Leistungen – „Wer zahlt was?“ und „Noch kein Pflegegrad?“ fachlich prüfen (Entwurfshinweis am 2026-10-23 auf Wunsch des Kunden entfernt) – `/leistungen`
 - [ ] Leistungen – Rechnet Aram den Entlastungsbetrag und die Verhinderungspflege direkt mit der Pflegekasse ab? – `frontend/app/content/services.ts`
 - [ ] Leistungen – Ist die Pflegeberatung (über den Beratungsbesuch hinaus) kostenlos? – Pflegeberatung
 - [ ] Leistungen – Verhinderungspflege: ab wie vielen Stunden und zu welchen Zeiten? – Verhinderungspflege

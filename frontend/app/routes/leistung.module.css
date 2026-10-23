@@ -110,10 +110,6 @@
   max-width: 48rem;
 }
 
-.note {
-  color: var(--color-text-muted);
-}
-
 .section {
   padding-top: var(--space-7);
   scroll-margin-top: var(--space-9);

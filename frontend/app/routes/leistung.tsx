@@ -20,8 +20,6 @@ import { pageMeta } from "../meta";
 import type { Route } from "./+types/leistung";
 import styles from "./leistung.module.css";
 
-const DRAFT_NOTE = "[[ENTWURF: vom Kunden fachlich prüfen]]";
-
 const sections = {
   audience: { id: "fuer-wen", label: "Für wen diese Leistung gedacht ist" },
   scope: { id: "leistungsumfang", label: "Was wir übernehmen" },
@@ -45,15 +43,13 @@ export const meta: Route.MetaFunction = ({ location }) => {
 
 type ContentSectionProps = {
   section: PageSection;
-  draft: boolean;
   children: ReactNode;
 };
 
-function ContentSection({ section, draft, children }: ContentSectionProps) {
+function ContentSection({ section, children }: ContentSectionProps) {
   return (
     <section id={section.id} aria-labelledby={`${section.id}-titel`} className={styles.section}>
       <h2 id={`${section.id}-titel`}>{section.label}</h2>
-      {draft && <p className={styles.note}>{DRAFT_NOTE}</p>}
       {children}
     </section>
   );
@@ -138,21 +134,21 @@ export default function Leistung() {
           </aside>
 
           <div className={styles.content}>
-            <ContentSection section={sections.audience} draft={service.draft}>
+            <ContentSection section={sections.audience}>
               <p className={styles.audience}>{service.audience}</p>
             </ContentSection>
 
-            <ContentSection section={sections.scope} draft={service.draft}>
+            <ContentSection section={sections.scope}>
               <ScopeList items={service.scope} />
             </ContentSection>
 
-            <ContentSection section={sections.costs} draft={service.draft}>
+            <ContentSection section={sections.costs}>
               <div className={styles.costs}>
                 <CostsInfo costs={service.costs} />
               </div>
             </ContentSection>
 
-            <ContentSection section={sections.application} draft={service.draft}>
+            <ContentSection section={sections.application}>
               <Timeline steps={service.application} />
             </ContentSection>
 
