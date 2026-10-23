@@ -85,7 +85,7 @@
   }
 }
 
-/* 12-column grid: contact in columns 1–6, pages 8–10, legal 11–12 */
+/* 12-column grid: contact in columns 1–6, pages 8–9, legal and logo 10–12 */
 @media (min-width: 60rem) {
   .grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -102,10 +102,14 @@
 
   .legal {
     grid-column: 10 / 13;
+    grid-row: 1;
+    align-self: start;
   }
 
+  /* Shares the first row with the legal links, at its bottom: level with the last contact lines */
   .logo {
     grid-column: 10 / 13;
+    grid-row: 1;
     width: min(100%, 10rem);
   }
 }
