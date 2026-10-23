@@ -73,7 +73,7 @@ frontend/
 - Keine externen Requests beim Seitenaufruf. Fonts, Icons und Bilder werden lokal ausgeliefert.
 - Keine Cookies und kein `localStorage` ohne Einwilligung, außer technisch notwendig.
 - Kein Analytics standardmäßig. Falls gewünscht: selbst gehostetes, cookieloses Tool nach Absprache.
-- Karten nur als statisches Bild mit Link „In Karten-App öffnen“.
+- Karten nur als statisches Bild mit Link „In Google Maps öffnen“ (Entscheidung 2026-10-23); keine eingebettete Karte ohne Einwilligung.
 
 ## Performance
 

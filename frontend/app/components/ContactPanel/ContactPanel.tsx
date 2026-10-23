@@ -65,7 +65,7 @@ export function ContactPanel() {
           </figcaption>
         </figure>
         <a href={site.address.mapUrl} className={styles.mapLink}>
-          In Karten-App öffnen
+          In Google Maps öffnen
         </a>
       </div>
 

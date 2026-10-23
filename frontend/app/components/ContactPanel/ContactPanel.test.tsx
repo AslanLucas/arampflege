@@ -25,7 +25,7 @@ describe("ContactPanel", () => {
     const map = screen.getByRole("figure");
     expect(within(map).getByRole("img")).toHaveAttribute("src", "/images/karte-standort.webp");
     expect(within(map).getByRole("link", { name: "OpenStreetMap-Mitwirkende" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "In Karten-App öffnen" })).toHaveAttribute("href", site.address.mapUrl);
+    expect(screen.getByRole("link", { name: "In Google Maps öffnen" })).toHaveAttribute("href", site.address.mapUrl);
   });
 
   it("lists the office hours as a table with a row header per day", () => {

@@ -25,8 +25,9 @@ export const site = {
   address: {
     street: "Ochtruper Straße 83",
     postalCodeAndCity: "48599 Gronau (Westfalen)",
-    /** Opens the location in OpenStreetMap; only requested when the visitor clicks. */
-    mapUrl: "https://www.openstreetmap.org/?mlat=52.20777&mlon=7.03951#map=17/52.20777/7.03951",
+    /** Opens the office in Google Maps (app on phones); Google is only contacted when the visitor clicks. */
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=Aram%20Pflege%20GmbH%2C%20Ochtruper%20Stra%C3%9Fe%2083%2C%2048599%20Gronau",
   },
   register: {
     court: "Amtsgericht Coesfeld",
