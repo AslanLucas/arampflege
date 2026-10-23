@@ -79,9 +79,6 @@ export default function UeberUns() {
           <div>
             <h2 id="unser-team">Unser Team</h2>
             <p className={styles.lead}>{about.team}</p>
-            <p className={styles.note}>
-              [[INHALT FEHLT: Namen, Funktionen und Fotos der Pflegedienstleitung und der Ansprechpersonen]]
-            </p>
           </div>
         </section>
 

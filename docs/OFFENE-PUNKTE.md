@@ -40,7 +40,7 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Leistungen – Rechtliche Angaben vor dem Livegang gegen den aktuellen Gesetzesstand prüfen, besonders Verhinderungspflege (gemeinsamer Jahresbetrag seit Juli 2025, bis zu acht Wochen) und die Häufigkeit der Beratungsbesuche – `frontend/app/content/services.ts`
 - [ ] Start – Ablauf der Versorgung: Entwurf mit vier Schritten bestätigen oder korrigieren – `frontend/app/content/home.ts`
 - [x] Über uns – Text, Leitsatz und Start ab Januar 2027 (geliefert 2026-10-22) – `frontend/app/content/about.ts`
-- [ ] Team – Namen, Funktionen und Fotos der Pflegedienstleitung und Ansprechpartner – Über uns, Start
+- [ ] Team – Namen, Funktionen und Fotos der Pflegedienstleitung und Ansprechpartner (sichtbarer Platzhalter am 2026-10-23 auf Wunsch des Kunden entfernt) – Über uns, Start
 - [ ] Team – Name und Foto der Pflegedienstleitung für die Startseite (Text zum Team liegt vor) – `frontend/app/content/home.ts`
 - [x] Karriere – Hinweis auf offene Stellen für die Startseite – `frontend/app/content/home.ts`
 - [x] Karriere – Einleitung der Karriereseite – `frontend/app/content/careers.ts`

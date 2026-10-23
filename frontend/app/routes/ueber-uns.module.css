@@ -139,10 +139,6 @@
   align-items: center;
 }
 
-.note {
-  color: var(--color-text-muted);
-}
-
 .prompt {
   max-width: 48rem;
   margin-top: var(--space-8);
