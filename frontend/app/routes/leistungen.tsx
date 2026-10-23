@@ -94,13 +94,6 @@ export default function Leistungen() {
           </p>
         </section>
 
-        <section aria-labelledby="nicht-im-angebot" className={styles.limits}>
-          <h2 id="nicht-im-angebot">Was wir nicht anbieten</h2>
-          <p>
-            [[INHALT FEHLT: Leistungen, die der Dienst nicht anbietet, z. B. Palliativpflege oder 24-Stunden-Betreuung]]
-          </p>
-        </section>
-
         <div className={styles.prompt}>
           <ContactPrompt
             title="Wir beraten Sie, welche Leistungen passen"

@@ -36,7 +36,7 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Leistungen – Rechnet Aram den Entlastungsbetrag und die Verhinderungspflege direkt mit der Pflegekasse ab? – `frontend/app/content/services.ts`
 - [ ] Leistungen – Ist die Pflegeberatung (über den Beratungsbesuch hinaus) kostenlos? – Pflegeberatung
 - [ ] Leistungen – Verhinderungspflege: ab wie vielen Stunden und zu welchen Zeiten? – Verhinderungspflege
-- [ ] Leistungen – Was der Dienst nicht anbietet (z. B. Palliativpflege, 24-Stunden-Betreuung) – `/leistungen`
+- [x] Leistungen – Was der Dienst nicht anbietet (z. B. Palliativpflege, 24-Stunden-Betreuung) – entfallen: Abschnitt am 2026-10-23 auf Wunsch des Kunden entfernt
 - [ ] Leistungen – Rechtliche Angaben vor dem Livegang gegen den aktuellen Gesetzesstand prüfen, besonders Verhinderungspflege (gemeinsamer Jahresbetrag seit Juli 2025, bis zu acht Wochen) und die Häufigkeit der Beratungsbesuche – `frontend/app/content/services.ts`
 - [ ] Start – Ablauf der Versorgung: Entwurf mit vier Schritten bestätigen oder korrigieren – `frontend/app/content/home.ts`
 - [x] Über uns – Text, Leitsatz und Start ab Januar 2027 (geliefert 2026-10-22) – `frontend/app/content/about.ts`

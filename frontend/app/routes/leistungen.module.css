@@ -78,8 +78,7 @@
   scroll-margin-top: var(--space-9);
 }
 
-.block h2,
-.limits h2 {
+.block h2 {
   font-size: var(--font-size-h2);
 }
 
@@ -139,11 +138,6 @@
 
 .action {
   margin-top: var(--space-6);
-}
-
-.limits {
-  max-width: 48rem;
-  margin-top: var(--section-space);
 }
 
 .prompt {
