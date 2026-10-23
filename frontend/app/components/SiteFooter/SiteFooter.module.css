@@ -60,16 +60,11 @@
   min-height: var(--tap-target-min);
 }
 
-/* Legal links with the logo right below them */
-.side {
-  display: grid;
-  align-content: start;
-  gap: var(--space-5);
-}
-
-/* Right-aligned; slightly brighter so the raspberry stays visible on the dark wine */
+/* Logo at the bottom right; slightly brighter so the raspberry stays visible on the dark wine */
 .logo {
+  grid-column: 1 / -1;
   justify-self: end;
+  align-self: end;
   width: min(100%, 8rem);
 }
 
@@ -90,7 +85,7 @@
   }
 }
 
-/* 12-column grid: contact in columns 1–6, pages 8–9, legal links and logo 10–12 */
+/* 12-column grid: contact in columns 1–6, pages 8–9, legal and logo 10–12 */
 @media (min-width: 60rem) {
   .grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -105,11 +100,16 @@
     grid-column: 8 / 10;
   }
 
-  .side {
+  .legal {
     grid-column: 10 / 13;
+    grid-row: 1;
+    align-self: start;
   }
 
+  /* Shares the first row with the legal links, at its bottom: level with the last contact lines */
   .logo {
+    grid-column: 10 / 13;
+    grid-row: 1;
     width: min(100%, 10rem);
   }
 }

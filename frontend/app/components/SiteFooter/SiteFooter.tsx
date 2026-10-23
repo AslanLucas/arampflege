@@ -52,32 +52,30 @@ export function SiteFooter() {
           </ul>
         </nav>
 
-        <div className={styles.side}>
-          <nav aria-labelledby="footer-rechtliches">
-            <h2 id="footer-rechtliches" className={styles.heading}>
-              Rechtliches
-            </h2>
-            <ul className={styles.list}>
-              {legalNavigation.map((item) => (
-                <li key={item.to}>
-                  <Link to={item.to}>{item.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        <nav aria-labelledby="footer-rechtliches" className={styles.legal}>
+          <h2 id="footer-rechtliches" className={styles.heading}>
+            Rechtliches
+          </h2>
+          <ul className={styles.list}>
+            {legalNavigation.map((item) => (
+              <li key={item.to}>
+                <Link to={item.to}>{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-          {/* Decorative: the name is already written out above */}
-          <div className={styles.logo} aria-hidden="true">
-            <img
-              src="/images/logo-aram-160.png"
-              srcSet="/images/logo-aram-160.png 1x, /images/logo-aram-320.png 2x"
-              width={160}
-              height={160}
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+        {/* Decorative: the name is already written out above */}
+        <div className={styles.logo} aria-hidden="true">
+          <img
+            src="/images/logo-aram-160.png"
+            srcSet="/images/logo-aram-160.png 1x, /images/logo-aram-320.png 2x"
+            width={160}
+            height={160}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </Container>
     </footer>
