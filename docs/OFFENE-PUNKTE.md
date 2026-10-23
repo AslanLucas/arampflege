@@ -24,7 +24,9 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [ ] Recht – **Blockiert den Livegang:** Name und Kontakt des externen Datenschutzbeauftragten – `/datenschutz`
 - [ ] Betrieb – **Blockiert den Livegang:** Hosting-Anbieter für Webseite und Backend mit Sitz und Rechenzentrum in der EU (Vercel abgelehnt, 2026-10-23), Auftragsverarbeitungsvertrag, Speicherdauer der Server-Logs – `/datenschutz`
 - [ ] Betrieb – E-Mail-Anbieter für info@arampflege.de (Sitz in der EU, Auftragsverarbeitungsvertrag) – `/datenschutz`
-- [ ] Recht – Erklärung zur Barrierefreiheit – Barrierefreiheit
+- [ ] Recht – Erklärung zur Barrierefreiheit liegt als Entwurf vor (Selbstbewertung 2026-10-23, „teilweise vereinbar“, Kleinstunternehmen nach § 3 Abs. 3 BFSG laut Kunde); vor dem Livegang rechtlich prüfen lassen – `/barrierefreiheit`
+- [ ] Recht – Status als Kleinstunternehmen (unter 10 Beschäftigte und höchstens 2 Mio. € Umsatz oder Bilanzsumme) jährlich prüfen; fällt er weg, gelten die BFSG-Pflichten – `/barrierefreiheit`
+- [ ] Barrierefreiheit – Erklärung bei jeder größeren Änderung aktualisieren (bekannte Barrieren, Prüfdatum); Test mit Screenreader-Nutzerinnen und -Nutzern oder externe Prüfung wäre sinnvoll – `/barrierefreiheit`
 - [ ] Recht – Einwilligungen für Teamfotos – Über uns
 - [ ] Recht – **Blockiert den Livegang:** Quelle und Lizenz des Fotos auf `/karriere` (Handschlag im Bewerbungsgespräch) nachweisen; besser durch ein eigenes Foto des Teams ersetzen – `frontend/public/images/karriere/LICENSES.txt`
 - [ ] Recht – **Vor dem Livegang:** Quelle und Lizenz der zwei Lottie-Animationen („Helping the needy“, „Helping Doctor to aged people“) nachweisen; kommerzielle Nutzung und Umfärben müssen erlaubt sein – `frontend/public/animations/LICENSES.txt`

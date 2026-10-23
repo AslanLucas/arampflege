@@ -5,7 +5,7 @@ import { PostalAddress } from "../components/PostalAddress/PostalAddress";
 import { site } from "../content/site";
 import { pageMeta } from "../meta";
 import type { Route } from "./+types/datenschutz";
-import styles from "./datenschutz.module.css";
+import styles from "./legalPage.module.css";
 
 export const meta: Route.MetaFunction = () =>
   pageMeta(

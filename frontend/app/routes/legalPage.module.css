@@ -1,4 +1,4 @@
-/* Long legal text: comfortable reading width */
+/* Long legal texts (privacy policy, accessibility statement): comfortable reading width */
 .page > * {
   max-width: 48rem;
 }
