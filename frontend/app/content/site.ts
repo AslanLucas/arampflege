@@ -47,5 +47,6 @@ export const site = {
   /** For structured data (schema.org openingHoursSpecification). */
   openingHours: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "16:00" },
   onCallService: "24/7 erreichbar, auch am Wochenende",
-  replyTime: "[[INHALT FEHLT: Antwortfrist]]",
+  /** Confirmed by the client on 2026-10-23; also used for applications. */
+  replyTime: "48 Stunden",
 } as const;

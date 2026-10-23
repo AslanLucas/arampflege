@@ -47,11 +47,11 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [x] Karriere – Drei Stellen mit Titel und Umfang (bestätigt 2026-10-22) – `frontend/app/content/jobs.ts`
 - [ ] Karriere – Entwürfe für Aufgaben und Voraussetzungen prüfen; Führerschein nötig?; Qualifikation für Pflegehilfskraft und Betreuungskraft; Arbeitsbedingungen (Arbeitszeiten, Dienstfahrzeug, Vergütung, falls veröffentlicht) – `frontend/app/content/jobs.ts`
 - [ ] Karriere – Qualifikationsoptionen im Bewerbungsformular bestätigen (Pflegefachkraft, Pflegehilfskraft oder Pflegeassistenz, Hauswirtschafts- oder Betreuungskraft, in Ausbildung, andere) – `frontend/app/content/careers.ts`
-- [ ] Karriere – Frist für die Rückmeldung auf Bewerbungen – Bestätigung im Bewerbungsformular
+- [x] Karriere – Frist für die Rückmeldung auf Bewerbungen: 48 Stunden (bestätigt 2026-10-23) – Bestätigung im Bewerbungsformular
 - [ ] Karriere – Dienstwagen oder Fahrtkostenerstattung? – „Was dich bei uns erwartet“ (`frontend/app/content/careers.ts`)
 - [ ] Karriere – Weitere Zusagen nur nach Bestätigung, z. B. Zuschläge, Einarbeitung mit fester Ansprechperson, bezahlte Fortbildung – `frontend/app/content/careers.ts`
 - [x] Kontakt – Zusage, in welcher Frist Rückrufe erfolgen – entfallen: Rückruf wurde am 2026-10-23 auf Wunsch des Kunden entfernt
-- [ ] Kontakt – Zusage, in welcher Frist auf Nachrichten geantwortet wird – `site.replyTime`: Kontakt-Karten (E-Mail), `/kontakt`, Bestätigung im Kontaktformular
+- [x] Kontakt – Zusage, in welcher Frist auf Nachrichten geantwortet wird: 48 Stunden (bestätigt 2026-10-23) – `site.replyTime`: Kontakt-Karten (E-Mail), `/kontakt`, Bestätigung im Kontaktformular
 - [x] Kontakt – Rufbereitschaft rund um die Uhr erreichbar, auch am Wochenende (bestätigt 2026-10-21) – Kontakt-Karten
 - [x] Kontakt – Das erste Beratungsgespräch ist kostenlos (bestätigt 2026-10-22) – Startseite oben
 - [ ] Kontakt – Optional: Hinweise zu Parkplätzen und barrierefreiem Zugang zum Büro – Kontakt-Karten (Adresse)

@@ -144,7 +144,7 @@ export function ApplicationForm() {
         <h2 ref={confirmationRef} tabIndex={-1}>
           Danke, wir haben deine Bewerbung erhalten
         </h2>
-        <p>Wir melden uns bei dir innerhalb von [[INHALT FEHLT: Frist für Rückmeldung auf Bewerbungen]].</p>
+        <p>Wir melden uns bei dir innerhalb von {site.replyTime}.</p>
         <p>
           Fragen beantworten wir dir gern am Telefon: <a href={site.phone.href}>{site.phone.display}</a>
         </p>
