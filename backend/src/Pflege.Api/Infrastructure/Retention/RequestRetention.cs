@@ -25,7 +25,6 @@ public sealed class RequestRetention(
         var applicationCutoff = now.AddDays(-settings.ApplicationRetentionDays);
 
         var deleted =
-            await db.CallbackRequests.Where(request => request.CreatedAt < requestCutoff).ExecuteDeleteAsync(cancellationToken) +
             await db.ContactRequests.Where(request => request.CreatedAt < requestCutoff).ExecuteDeleteAsync(cancellationToken);
 
         // Files first: a row without its file is harmless, a file without its row would be forgotten.

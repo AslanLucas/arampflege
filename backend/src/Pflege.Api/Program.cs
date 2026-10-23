@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Pflege.Api.Features.Applications;
-using Pflege.Api.Features.Callback;
 using Pflege.Api.Features.Contact;
 using Pflege.Api.Features.Forms;
 using Pflege.Api.Infrastructure.BackgroundJobs;
@@ -125,7 +124,6 @@ if (app.Environment.IsDevelopment())
 
 app.MapHealthChecks("/api/health");
 app.MapFormEndpoints();
-app.MapCallbackEndpoints();
 app.MapContactEndpoints();
 app.MapApplicationEndpoints();
 

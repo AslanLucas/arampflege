@@ -6,7 +6,7 @@ Ergänzt die `AGENTS.md` im Repository-Root.
 
 Das Backend ist bewusst schlank. Es stellt nur bereit, was die öffentliche Seite braucht:
 
-- Kontaktanfragen und Rückrufwünsche entgegennehmen
+- Kontaktanfragen entgegennehmen (einen Rückrufwunsch gibt es seit 2026-10-23 nicht mehr)
 - Kurzbewerbungen inklusive Lebenslauf-Upload entgegennehmen
 - Stellenanzeigen ausliefern (vorerst nicht: Stellen sind Frontend-Inhalt in `frontend/app/content/jobs.ts`, siehe unten)
 - Benachrichtigung des Pflegedienstes per E-Mail
@@ -36,7 +36,6 @@ backend/
           CreateContactRequest.cs
           CreateContactValidator.cs
           ContactRequest.cs        # Entity
-        Callback/
         Applications/
         Jobs/
       Infrastructure/
@@ -52,7 +51,7 @@ Vertical Slices nach Feature. Keine Repository-Schicht über EF Core, keine Abst
 
 ## API-Konventionen
 
-- Basis-Pfad `/api`, Ressourcen auf Englisch und im Plural: `/api/contact-requests`, `/api/callback-requests`, `/api/applications`, `/api/jobs`
+- Basis-Pfad `/api`, Ressourcen auf Englisch und im Plural: `/api/contact-requests`, `/api/applications`, `/api/jobs`
 - Fehler als **`ProblemDetails`** (RFC 9457) mit `errors`-Objekt je Feld, damit das Frontend Fehler direkt am Feld anzeigen kann
 - Fehlermeldungen für Nutzer auf Deutsch und gemäß `docs/CONTENT.md`; technische Logmeldungen auf Englisch
 - Request- und Response-DTOs als `record`, Entities nie direkt nach außen geben
@@ -72,7 +71,7 @@ Vertical Slices nach Feature. Keine Repository-Schicht über EF Core, keine Abst
 Kontaktanfragen können Gesundheitsdaten enthalten (Art. 9 DSGVO). Deshalb gilt:
 
 - **Datensparsamkeit**: Nur Felder speichern, die das Formular wirklich braucht. Keine IP-Adressen dauerhaft speichern.
-- **Löschfristen**: Kontakt- und Rückrufanfragen nach [[INHALT FEHLT: Frist vom Kunden]] löschen, Bewerbungen nach Abschluss des Verfahrens plus [[INHALT FEHLT: Frist]]. Umsetzung als Hintergrunddienst (`BackgroundService`), mit Test.
+- **Löschfristen**: Kontaktanfragen nach [[INHALT FEHLT: Frist vom Kunden]] löschen, Bewerbungen nach Abschluss des Verfahrens plus [[INHALT FEHLT: Frist]]. Umsetzung als Hintergrunddienst (`BackgroundService`), mit Test.
 - **E-Mail-Benachrichtigung ohne Inhalte**: Die Mail an den Pflegedienst enthält nur den Hinweis auf eine neue Anfrage und keine Gesundheitsdaten im Klartext, sofern kein verschlüsselter Versand eingerichtet ist. Abstimmung mit dem Kunden.
 - **Logging**: Keine personenbezogenen Daten in Logs. Strukturiertes Logging mit IDs statt Namen.
 - Einwilligung zur Datenverarbeitung wird mit Zeitstempel und Version des Datenschutztextes gespeichert.

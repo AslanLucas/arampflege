@@ -6,7 +6,7 @@ Diese Datei gilt für das gesamte Repository. Unterordner haben eigene `AGENTS.m
 
 Öffentliche Webseite eines ambulanten Pflegedienstes in Gronau (Westfalen) und Umgebung. Ziele in dieser Reihenfolge:
 
-1. **Pflegeanfragen**: Anruf, Rückrufwunsch, Kontaktformular
+1. **Pflegeanfragen**: Anruf, Kontaktformular
 2. **Bewerbungen** von Pflegefach- und Pflegehilfskräften
 3. **Vertrauen** bei Angehörigen, Hausarztpraxen und Klinik-Sozialdiensten
 

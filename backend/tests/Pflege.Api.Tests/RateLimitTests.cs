@@ -14,7 +14,6 @@ public sealed class RateLimitedApiFactory : ApiFactory
 public sealed class RateLimitTests(RateLimitedApiFactory factory) : IClassFixture<RateLimitedApiFactory>
 {
     [Theory]
-    [InlineData("/api/callback-requests")]
     [InlineData("/api/contact-requests")]
     [InlineData("/api/applications")]
     public async Task Rejects_too_many_submissions_with_a_german_problem(string path)

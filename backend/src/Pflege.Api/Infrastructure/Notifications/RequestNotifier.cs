@@ -25,7 +25,6 @@ public sealed class RequestNotifier(
     public async Task<int> NotifyPendingAsync(CancellationToken cancellationToken)
     {
         var sent =
-            await NotifyAsync(db.CallbackRequests, "Neue Rückrufbitte über die Webseite", "Rückrufbitte", cancellationToken) +
             await NotifyAsync(db.ContactRequests, "Neue Kontaktanfrage über die Webseite", "Kontaktanfrage", cancellationToken) +
             await NotifyAsync(db.JobApplications, "Neue Bewerbung über die Webseite", "Bewerbung", cancellationToken);
 

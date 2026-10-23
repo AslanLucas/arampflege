@@ -102,67 +102,6 @@ namespace Pflege.Api.Infrastructure.Persistence.Migrations
                     b.ToTable("job_applications", (string)null);
                 });
 
-            modelBuilder.Entity("Pflege.Api.Features.Callback.CallbackRequest", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id");
-
-                    b.Property<DateTimeOffset>("ConsentGivenAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("consent_given_at");
-
-                    b.Property<string>("ConsentVersion")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("consent_version");
-
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_at");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("location");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("name");
-
-                    b.Property<DateTimeOffset?>("NotifiedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("notified_at");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
-                        .HasColumnName("phone");
-
-                    b.Property<string>("PreferredTime")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
-                        .HasColumnName("preferred_time");
-
-                    b.HasKey("Id")
-                        .HasName("pk_callback_requests");
-
-                    b.HasIndex("CreatedAt")
-                        .HasDatabaseName("ix_callback_requests_created_at");
-
-                    b.HasIndex("NotifiedAt")
-                        .HasDatabaseName("ix_callback_requests_notified_at");
-
-                    b.ToTable("callback_requests", (string)null);
-                });
-
             modelBuilder.Entity("Pflege.Api.Features.Contact.ContactRequest", b =>
                 {
                     b.Property<Guid>("Id")

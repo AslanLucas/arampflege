@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Pflege.Api.Features.Applications;
-using Pflege.Api.Features.Callback;
 using Pflege.Api.Features.Contact;
 using Pflege.Api.Infrastructure.Persistence;
 using Pflege.Api.Infrastructure.Retention;
@@ -26,7 +25,6 @@ public sealed class RequestRetentionTests(ApiFactory factory)
         await using (var scope = factory.Services.CreateAsyncScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            db.CallbackRequests.AddRange(Callback($"expired {marker}", expired), Callback($"kept {marker}", kept));
             db.ContactRequests.AddRange(Contact($"expired {marker}", expired), Contact($"kept {marker}", kept));
             await db.SaveChangesAsync(cancellationToken);
         }
@@ -36,9 +34,7 @@ public sealed class RequestRetentionTests(ApiFactory factory)
             await scope.ServiceProvider.GetRequiredService<RequestRetention>().PurgeExpiredAsync(cancellationToken);
 
             var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            var callbacks = await db.CallbackRequests.Where(r => r.Name.EndsWith(marker)).Select(r => r.Name).ToListAsync(cancellationToken);
             var contacts = await db.ContactRequests.Where(r => r.Name.EndsWith(marker)).Select(r => r.Name).ToListAsync(cancellationToken);
-            Assert.Equal([$"kept {marker}"], callbacks);
             Assert.Equal([$"kept {marker}"], contacts);
         }
     }
@@ -90,17 +86,6 @@ public sealed class RequestRetentionTests(ApiFactory factory)
         Qualification = "pflegehilfskraft",
         ResumeFileId = fileId,
         ResumeContentType = "application/pdf",
-        ConsentVersion = "test",
-        ConsentGivenAt = createdAt,
-        CreatedAt = createdAt,
-    };
-
-    private static CallbackRequest Callback(string name, DateTimeOffset createdAt) => new()
-    {
-        Name = name,
-        Phone = "0521 123456",
-        Location = "Bielefeld",
-        PreferredTime = "anytime",
         ConsentVersion = "test",
         ConsentGivenAt = createdAt,
         CreatedAt = createdAt,
