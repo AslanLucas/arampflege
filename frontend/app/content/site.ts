@@ -50,4 +50,6 @@ export const site = {
   onCallService: "24/7 erreichbar, auch am Wochenende",
   /** Confirmed by the client on 2026-10-23; also used for applications. */
   replyTime: "48 Stunden",
+  /** Days after which requests and applications are deleted automatically (confirmed 2026-10-23); must match Retention__* in production. */
+  retention: { requestDays: 90, applicationDays: 180 },
 } as const;

@@ -1,0 +1,68 @@
+/* Long legal text: comfortable reading width */
+.page > * {
+  max-width: 48rem;
+}
+
+.lead {
+  font-size: var(--font-size-lead);
+}
+
+.toc {
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+}
+
+.tocTitle {
+  margin-bottom: var(--space-3);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.toc ol {
+  margin: 0;
+  padding-left: var(--space-5);
+}
+
+.toc a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-target-min);
+}
+
+.section {
+  margin-top: var(--space-8);
+}
+
+.section h2 {
+  font-size: var(--font-size-h3);
+  scroll-margin-top: var(--space-9);
+}
+
+/* The right to object must be presented separately and prominently (Art. 21 (4) GDPR) */
+.highlight {
+  margin-block: var(--space-5);
+  padding: var(--space-5);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 var(--radius-control) var(--radius-control) 0;
+  background-color: var(--color-surface-alt);
+}
+
+.highlight h3 {
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-h4);
+}
+
+.highlight p {
+  margin: 0;
+}
+
+.stand {
+  margin-top: var(--space-8);
+  color: var(--color-text-muted);
+}

@@ -20,14 +20,17 @@ Format: `- [ ] Bereich – Beschreibung – Datei/Seite`
 - [x] Recht – Impressum: Firma, Anschrift, E-Mail, Registereintrag (Amtsgericht Coesfeld, HRB 24086) – `/impressum`
 - [x] Recht – Impressum ergänzt: Geschäftsführer Stephan Gabriel, Telefon, Aufsichtsbehörde Kreis Borken (WTG-Behörde); keine USt-IdNr. (umsatzsteuerfreie Pflegeleistungen) – `/impressum`
 - [ ] Recht – Impressum rechtlich prüfen lassen; IK-Nummer angeben, falls gewünscht – `/impressum`
-- [ ] Recht – Datenschutzerklärung (vom Kunden bzw. Datenschutzbeauftragten freigegeben) – Datenschutz
+- [ ] Recht – **Blockiert den Livegang:** Datenschutzerklärung liegt als Entwurf vor (2026-10-23, nach dem tatsächlichen Verhalten der Seite geschrieben); von Anwalt bzw. Datenschutzbeauftragtem prüfen und freigeben lassen – `/datenschutz`
+- [ ] Recht – **Blockiert den Livegang:** Name und Kontakt des externen Datenschutzbeauftragten – `/datenschutz`
+- [ ] Betrieb – **Blockiert den Livegang:** Hosting-Anbieter für Webseite und Backend mit Sitz und Rechenzentrum in der EU (Vercel abgelehnt, 2026-10-23), Auftragsverarbeitungsvertrag, Speicherdauer der Server-Logs – `/datenschutz`
+- [ ] Betrieb – E-Mail-Anbieter für info@arampflege.de (Sitz in der EU, Auftragsverarbeitungsvertrag) – `/datenschutz`
 - [ ] Recht – Erklärung zur Barrierefreiheit – Barrierefreiheit
 - [ ] Recht – Einwilligungen für Teamfotos – Über uns
 - [ ] Recht – **Blockiert den Livegang:** Quelle und Lizenz des Fotos auf `/karriere` (Handschlag im Bewerbungsgespräch) nachweisen; besser durch ein eigenes Foto des Teams ersetzen – `frontend/public/images/karriere/LICENSES.txt`
 - [ ] Recht – **Vor dem Livegang:** Quelle und Lizenz der zwei Lottie-Animationen („Helping the needy“, „Helping Doctor to aged people“) nachweisen; kommerzielle Nutzung und Umfärben müssen erlaubt sein – `frontend/public/animations/LICENSES.txt`
 - [ ] Recht – **Blockiert den Livegang:** Einwilligungstext für das Kontaktformular (Gesundheitsdaten, Art. 9 DSGVO), freigegeben vom Datenschutzbeauftragten; danach Versionskennung in `Consent.CurrentVersion` setzen (derzeit „entwurf“) – `frontend/app/features/forms/FormNotices.tsx`, `backend/src/Pflege.Api/Features/Forms/Consent.cs`
-- [ ] Recht – Löschfrist für Kontaktanfragen (lokal Platzhalter 90 Tage) – `Retention:RequestRetentionDays`, Datenschutzhinweis an den Formularen
-- [ ] Recht – Löschfrist für Bewerbungen und Lebensläufe nach Abschluss des Verfahrens (lokal Platzhalter 180 Tage ab Eingang) – `Retention:ApplicationRetentionDays`
+- [x] Recht – Löschfrist für Kontaktanfragen: 90 Tage (bestätigt 2026-10-23) – `Retention:RequestRetentionDays`, Datenschutzhinweis an den Formularen
+- [x] Recht – Löschfrist für Bewerbungen und Lebensläufe: 180 Tage ab Eingang (bestätigt 2026-10-23) – `Retention:ApplicationRetentionDays`
 
 ## Inhalte
 - [x] Leistungen – Angebot bestätigt (2026-10-22): Grundpflege, Behandlungspflege, Hauswirtschaftliche Versorgung, Betreuung und Entlastung, Verhinderungspflege, Pflegeberatung inkl. Beratungsbesuche – `frontend/app/content/services.ts`

@@ -14,9 +14,9 @@ export function PrivacyNotice({ address = "sie" }: NoticeProps) {
   return (
     <p className={styles.privacy}>
       {address === "du"
-        ? "Wir verwenden deine Angaben nur, um deine Bewerbung zu bearbeiten, und löschen sie nach "
-        : "Wir verwenden Ihre Angaben nur, um Ihre Anfrage zu bearbeiten, und löschen sie nach "}
-      [[INHALT FEHLT: Löschfrist]]. Mehr dazu in unserer <Link to="/datenschutz">Datenschutzerklärung</Link>.
+        ? `Wir verwenden deine Angaben nur, um deine Bewerbung zu bearbeiten, und löschen sie nach ${String(site.retention.applicationDays)} Tagen. `
+        : `Wir verwenden Ihre Angaben nur, um Ihre Anfrage zu bearbeiten, und löschen sie nach ${String(site.retention.requestDays)} Tagen. `}
+      Mehr dazu in unserer <Link to="/datenschutz">Datenschutzerklärung</Link>.
     </p>
   );
 }

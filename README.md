@@ -48,8 +48,8 @@ Die API startet nur, wenn diese Werte gesetzt sind (Umgebungsvariablen, nie im R
 | `ConnectionStrings__Default` | PostgreSQL-Verbindung |
 | `Smtp__Host`, `Smtp__Port`, `Smtp__Security`, `Smtp__UserName`, `Smtp__Password` | Mailversand (`Security`: `StartTls` oder `SslOnConnect`) |
 | `Smtp__From`, `Smtp__To` | Absender und Empfangspostfach des Pflegedienstes |
-| `Retention__RequestRetentionDays` | Löschfrist für Anfragen in Tagen |
-| `Retention__ApplicationRetentionDays` | Löschfrist für Bewerbungen und Lebensläufe in Tagen |
+| `Retention__RequestRetentionDays` | Löschfrist für Anfragen in Tagen: **90** (bestätigt 2026-10-23, steht so in der Datenschutzerklärung) |
+| `Retention__ApplicationRetentionDays` | Löschfrist für Bewerbungen und Lebensläufe in Tagen: **180** (bestätigt 2026-10-23) |
 | `Storage__ApplicationFilesPath` | Verzeichnis für hochgeladene Lebensläufe, außerhalb des Web-Roots |
 
 Außerdem: `DataProtection__KeysPath` auf ein dauerhaftes, gesichertes Verzeichnis setzen. Davon hängen nicht nur die Formular-Tokens ab: Mit diesen Schlüsseln sind die **Lebensläufe verschlüsselt**. Geht der Schlüsselbund verloren, sind die Dateien nicht mehr lesbar; er gehört deshalb ins Backup, aber getrennt von den Dateien selbst. Läuft die API hinter einem Reverse Proxy, dessen IP unter `ForwardedHeaders__KnownProxies__0` eintragen, sonst teilen sich alle Besucher ein Rate Limit.
