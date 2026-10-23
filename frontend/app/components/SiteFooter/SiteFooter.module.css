@@ -149,10 +149,11 @@
     align-self: start;
   }
 
-  /* Shares the first row with the legal links, at its bottom: level with the last contact lines */
+  /* Shares the first row with the legal links, at its bottom: level with the last contact lines, left edge in line with the links */
   .logo {
     grid-column: 10 / 13;
     grid-row: 1;
+    justify-self: start;
     width: min(100%, 10rem);
   }
 }
