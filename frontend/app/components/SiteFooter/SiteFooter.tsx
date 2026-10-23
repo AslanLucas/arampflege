@@ -64,6 +64,19 @@ export function SiteFooter() {
             ))}
           </ul>
         </nav>
+
+        {/* Decorative: the name is already written out above */}
+        <div className={styles.logo} aria-hidden="true">
+          <img
+            src="/images/logo-aram-160.png"
+            srcSet="/images/logo-aram-160.png 1x, /images/logo-aram-320.png 2x"
+            width={160}
+            height={160}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       </Container>
     </footer>
   );
