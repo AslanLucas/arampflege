@@ -1,11 +1,9 @@
-cat > vercel.json <<'EOF'
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "regions": ["fra1"],
   "services": {
     "frontend": {
-      "root": "frontend/",
-      "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+      "root": "frontend/"
     },
     "backend": {
       "root": "backend/",
@@ -18,4 +16,3 @@ cat > vercel.json <<'EOF'
     { "source": "/(.*)", "destination": { "service": "frontend" } }
   ]
 }
-EOF
